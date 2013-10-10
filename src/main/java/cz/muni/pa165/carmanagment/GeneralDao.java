@@ -22,9 +22,10 @@ public abstract class GeneralDao<K, E> implements IGeneralDao<K, E> {
     @PersistenceContext
     private EntityManager em;
     
-    public GeneralDao() {
+    public GeneralDao(EntityManager em) {
         ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
         this.entityClass = (Class<E>) genericSuperclass.getActualTypeArguments()[1];
+        this.em = em;
     }
     
     public void persist(E entity) {

@@ -27,7 +27,7 @@ public class ServiceType {
     
     private String name;
     
-    @OneToMany(mappedBy = "servicetype", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "serviceType", cascade = CascadeType.ALL)
     private List<ServiceInterval> services = new ArrayList<ServiceInterval>();
     
     public ServiceType () {

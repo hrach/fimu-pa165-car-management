@@ -4,14 +4,16 @@
  */
 package cz.muni.pa165.carmanagment;
 
+import javax.persistence.EntityManager;
+
 /**
  *
  * @author tomasbobek
  */
 public class ServiceIntervalDao extends GeneralDao<Long, ServiceInterval> {
     
-    public ServiceIntervalDao() {
-        super();
+    public ServiceIntervalDao(EntityManager em) {
+        super(em);
     }
     
 }

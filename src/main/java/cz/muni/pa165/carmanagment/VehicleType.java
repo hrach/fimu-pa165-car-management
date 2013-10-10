@@ -28,7 +28,7 @@ public class VehicleType {
     private Long maxKm;
     
     
-    @OneToMany(mappedBy = "vehicletype", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
     private List<Vehicle> vehicles = new ArrayList<Vehicle>();
     
     public VehicleType() {
