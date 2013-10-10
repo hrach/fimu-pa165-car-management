@@ -79,7 +79,7 @@ public class ServiceInterval {
         this.vehicle = vehicle;
     }
     
-    public ServiceType getServiceTyp() {
+    public ServiceType getServiceType() {
         return this.serviceType;
     }
     
