@@ -32,6 +32,10 @@ public abstract class GeneralDao<K, E> implements IGeneralDao<K, E> {
         em.persist(entity);
     }
     
+    public void update(E entity) {
+        em.merge(entity);
+    }
+    
     public void remove(E entity) {
         em.remove(entity);
     }
