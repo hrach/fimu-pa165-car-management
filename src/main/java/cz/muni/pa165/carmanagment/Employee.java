@@ -91,6 +91,10 @@ public class Employee implements Serializable {
         this.rides = rides;
     }
     
+    public String getFullName(){
+        return this.firstName + " " + this.getFamilyName();
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -113,7 +117,7 @@ public class Employee implements Serializable {
 
     @Override
     public String toString() {
-        return "cz.muni.pa165.carmanagment.Employee[ id=" + id + " ]";
+        return "Employee: " + this.id + ", "+ this.firstName + " " + this.familyName + ", " + this.employeeRole;
     }
     
 }

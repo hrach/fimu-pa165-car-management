@@ -121,6 +121,10 @@ public class Ride implements Serializable {
         this.employee = employee;
     }
     
+    public Long getRideLength (){
+        return this.tachometerEnd-this.tachometerStart;
+    }
+    
 
     @Override
     public int hashCode() {
@@ -144,7 +148,12 @@ public class Ride implements Serializable {
 
     @Override
     public String toString() {
-        return "cz.muni.pa165.carmanagment.Ride[ id=" + id + " ]";
+        String output = "";
+        
+        output = "Ride: " + this.id + ", from: " + this.startTime.toString() + " to: " + this.endTime.toString() + ", ";
+        output = output + "length: " + this.getRideLength() + " km, vehicle: " + this.vehicle.getName() + ", employee: " + this.employee.getFullName();
+        
+        return output;
     }
     
 }
