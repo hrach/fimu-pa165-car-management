@@ -8,7 +8,7 @@ package cz.muni.pa165.carmanagment;
  *
  * @author tomasbobek
  */
-public class ServiceIntervalDao extends GeneralDao<Long, Vehicle> {
+public class ServiceIntervalDao extends GeneralDao<Long, ServiceInterval> {
     
     public ServiceIntervalDao() {
         super();

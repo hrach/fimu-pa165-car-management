@@ -8,7 +8,7 @@ package cz.muni.pa165.carmanagment;
  *
  * @author tomasbobek
  */
-public class VehicleTypeDao extends GeneralDao<Long, Vehicle> {
+public class VehicleTypeDao extends GeneralDao<Long, VehicleType> {
     
     public VehicleTypeDao() {
         super();
