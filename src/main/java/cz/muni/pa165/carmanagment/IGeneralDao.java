@@ -41,5 +41,5 @@ public interface IGeneralDao<K, E> {
      * @param entity
      * @return List<Entity>
      */
-    List<E> findAll(E entity);
+    List<E> findAll();
 }
