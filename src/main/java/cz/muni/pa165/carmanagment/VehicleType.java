@@ -4,12 +4,14 @@
  */
 package cz.muni.pa165.carmanagment;
 
-import javax.persistence.Column;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -17,27 +19,24 @@ import javax.persistence.ManyToOne;
  */
 
 @Entity
-public class Vehicle {
+public class VehicleType {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column(columnDefinition = "VARCHAR(50) NOT NULL")
-    private String name;
+    private Long maxKm;
     
-    private Long tachometer;
     
-    @ManyToOne
-    private VehicleType type;
+    @OneToMany(mappedBy = "vehicletype", cascade = CascadeType.ALL)
+    private List<Vehicle> vehicles = new ArrayList<Vehicle>();
     
-    public Vehicle() {
+    public VehicleType() {
         
     }
     
-    public Vehicle(String name, Long tachometer) {
-        this.name = name;
-        this.tachometer = tachometer;
+    public VehicleType(Long maxKm) {
+        this.maxKm = maxKm;
     }
     
     public Long getId() {
@@ -48,33 +47,25 @@ public class Vehicle {
         this.id = id;
     }
     
-    public String getName() {
-        return name;
+    public Long getMaxKm() {
+        return maxKm;
     }
     
-    public void setName(String name) {
-        this.name = name;
+    public void setMaxKm(Long maxKm) {
+        this.maxKm = maxKm;
     }
     
-    public Long getTachometer() {
-        return tachometer;
+    public List<Vehicle> getVehicles() {
+        return vehicles;
     }
-    
-    public void setTchometer(Long tachometer) {
-        this.tachometer = tachometer;
-    }
-    
-    public VehicleType getType() {
-        return type;
-    }
-    
-    public void setType(VehicleType type) {
-        this.type = type;
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
     }
     
     @Override
     public String toString() {
-        return this.name + " (" + this.tachometer.toString() + " km)";
+        return "Type: " + this.id.toString() + ", max km: " + this.maxKm.toString();
     }
     
     @Override
@@ -93,7 +84,7 @@ public class Vehicle {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Vehicle other = (Vehicle) obj;
+        final VehicleType other = (VehicleType) obj;
         if (this.id == null || !this.id.equals(other.id)) {
             return false;
         }
