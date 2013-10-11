@@ -35,6 +35,18 @@ public class ServiceInterval implements Serializable {
     
     @ManyToOne
     private ServiceType serviceType;
+
+    public ServiceInterval() {
+
+    }
+
+    public ServiceInterval(Date createdTime, Date dueTime, Date doneTime, Vehicle vehicle, ServiceType serviceType) {
+        this.createdTime = createdTime;
+        this.dueTime = dueTime;
+        this.doneTime = doneTime;
+        this.vehicle = vehicle;
+        this.serviceType = serviceType;
+    }
     
 
     public Long getId() {
