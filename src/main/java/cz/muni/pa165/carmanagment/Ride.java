@@ -31,9 +31,7 @@ public class Ride implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date endTime;
     
-    private Long tachometerStart;
-    
-    private Long tachometerEnd;
+    private int rideLength;
     
     @Column(length = 255)
     private String description;
@@ -48,11 +46,10 @@ public class Ride implements Serializable {
     public Ride() {
     }
 
-    public Ride(Date startTime, Date endTime, Long tachometerStart, Long tachometerEnd, String description, Vehicle vehicle, Employee employee) {
+    public Ride(Date startTime, Date endTime, int rideLength, String description, Vehicle vehicle, Employee employee) {
         this.startTime = startTime;
         this.endTime = endTime;
-        this.tachometerStart = tachometerStart;
-        this.tachometerEnd = tachometerEnd;
+        this.rideLength = rideLength;
         this.description = description;
         this.vehicle = vehicle;
         this.employee = employee;
@@ -83,22 +80,6 @@ public class Ride implements Serializable {
         this.endTime = endTime;
     }
 
-    public Long getTachometerStart() {
-        return tachometerStart;
-    }
-
-    public void setTachometerStart(Long tachometerStart) {
-        this.tachometerStart = tachometerStart;
-    }
-
-    public Long getTachometerEnd() {
-        return tachometerEnd;
-    }
-
-    public void setTachometerEnd(Long tachometerEnd) {
-        this.tachometerEnd = tachometerEnd;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -123,14 +104,12 @@ public class Ride implements Serializable {
         this.employee = employee;
     }
     
-    public Long getRideLength() {
-        if (this.tachometerStart == null) {
-            throw new IllegalStateException("Tachometer start value is not set.");
-        }
-        if (this.tachometerEnd == null) {
-            throw new IllegalStateException("Tachometer end value is not set.");
-        }
-        return this.tachometerEnd - this.tachometerStart;
+    public void setRideLength(int value) {
+        this.rideLength = value;
+    }
+    
+    public int getRideLength() {
+        return this.rideLength;
     }
     
     @Override
