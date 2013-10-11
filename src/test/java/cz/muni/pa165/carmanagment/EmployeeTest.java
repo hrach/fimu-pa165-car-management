@@ -45,6 +45,27 @@ public class EmployeeTest extends TestCase {
         e.setFirstName("peter");
         
         assertEquals("peter skrasek", e.getFullName());
+        
+        Employee e2 = new Employee("peter", "vomacka", Employee.ROLE_MANAGER);
+        assertEquals(Employee.ROLE_MANAGER, e2.getEmployeeRole());
+    }
+    
+    public void testInvalidRoles()
+    {
+        Employee e1 = new Employee();
+        try {
+            e1.setEmployeeRole(90934);
+            fail("IllegalArgumentException expected.");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Employee role '90934' is not allowed.", e.getMessage());
+        }
+
+        try {
+            Employee e2 = new Employee("peter", "quin", 90935);
+            fail("IllegalArgumentException expected.");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Employee role '90935' is not allowed.", e.getMessage());
+        }
     }
 
     public void testEmployeeIds()

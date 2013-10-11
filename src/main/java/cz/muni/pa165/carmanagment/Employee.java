@@ -85,6 +85,9 @@ public class Employee implements Serializable {
     }
 
     public void setEmployeeRole(int employeeRole) {
+        if (employeeRole != ROLE_STAFF && employeeRole != ROLE_MANAGER) {
+            throw new IllegalArgumentException("Employee role '" + employeeRole + "' is not allowed.");
+        }
         this.employeeRole = employeeRole;
     }
 
