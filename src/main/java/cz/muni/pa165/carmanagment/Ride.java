@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cz.muni.pa165.carmanagment;
 
 import java.io.Serializable;
@@ -14,13 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
+
 /**
- *
+ * Ride entity.
  * @author Jakub Marecek <xmarec at gmail.com>
  */
 @Entity
 public class Ride implements Serializable {
+    
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -44,6 +44,7 @@ public class Ride implements Serializable {
     @ManyToOne(optional = false)
     private Employee employee;
 
+
     public Ride() {
     }
 
@@ -56,6 +57,7 @@ public class Ride implements Serializable {
         this.vehicle = vehicle;
         this.employee = employee;
     }
+
 
     public Long getId() {
         return id;
@@ -121,10 +123,19 @@ public class Ride implements Serializable {
         this.employee = employee;
     }
     
-    public Long getRideLength (){
-        return this.tachometerEnd-this.tachometerStart;
+    public Long getRideLength() {
+        return this.tachometerEnd - this.tachometerStart;
     }
     
+    @Override
+    public String toString() {
+        String output = "";
+        
+        output = "Ride: " + this.id + ", from: " + this.startTime.toString() + " to: " + this.endTime.toString() + ", ";
+        output = output + "length: " + this.getRideLength() + " km, vehicle: " + this.vehicle.getName() + ", employee: " + this.employee.getFullName();
+        
+        return output;
+    }
 
     @Override
     public int hashCode() {
@@ -146,14 +157,4 @@ public class Ride implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        String output = "";
-        
-        output = "Ride: " + this.id + ", from: " + this.startTime.toString() + " to: " + this.endTime.toString() + ", ";
-        output = output + "length: " + this.getRideLength() + " km, vehicle: " + this.vehicle.getName() + ", employee: " + this.employee.getFullName();
-        
-        return output;
-    }
-    
 }

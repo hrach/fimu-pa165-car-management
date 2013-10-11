@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cz.muni.pa165.carmanagment;
 
 import java.io.Serializable;
@@ -15,13 +12,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
 /**
- *
+ * Employee entity.
  * @author Jakub Marecek <xmarec at gmail.com>
  */
 @Entity
 public class Employee implements Serializable {
+
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -37,6 +37,7 @@ public class Employee implements Serializable {
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<Ride> rides = new ArrayList<Ride>();
 
+
     public Employee() {
     }
 
@@ -50,6 +51,7 @@ public class Employee implements Serializable {
         this.familyName = familyName;
         this.employeeRole = employeeRole;
     }
+
 
     public Long getId() {
         return id;
@@ -96,6 +98,11 @@ public class Employee implements Serializable {
     }
     
     @Override
+    public String toString() {
+        return "Employee: " + this.id + ", "+ this.firstName + " " + this.familyName + ", " + this.employeeRole;
+    }
+
+    @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
@@ -115,9 +122,4 @@ public class Employee implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Employee: " + this.id + ", "+ this.firstName + " " + this.familyName + ", " + this.employeeRole;
-    }
-    
 }

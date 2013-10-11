@@ -1,9 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cz.muni.pa165.carmanagment;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,13 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
- *
+ * ServiceInterval entity.
  * @author tomasbobek
  */
-
 @Entity
-public class ServiceInterval {
-    
+public class ServiceInterval implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -39,6 +36,7 @@ public class ServiceInterval {
     @ManyToOne
     private ServiceType serviceType;
     
+
     public Long getId() {
         return id;
     }
@@ -108,10 +106,9 @@ public class ServiceInterval {
         if (getClass() != obj.getClass()) {
             return false;
         }
+
         final ServiceInterval other = (ServiceInterval) obj;
-        if (this.id == null || !this.id.equals(other.id)) {
-            return false;
-        }
-        return true;
+        return this.id != null && this.id.equals(other.id);
     }
+
 }

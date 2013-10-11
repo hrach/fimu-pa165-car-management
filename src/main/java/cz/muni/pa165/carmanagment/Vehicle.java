@@ -1,9 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cz.muni.pa165.carmanagment;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,14 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+
 /**
- *
+ * Vehicle entity.
  * @author tomasbobek
  */
-
 @Entity
-public class Vehicle {
-    
+public class Vehicle implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -31,6 +31,7 @@ public class Vehicle {
     @ManyToOne
     private VehicleType type;
     
+    
     public Vehicle() {
         
     }
@@ -39,6 +40,7 @@ public class Vehicle {
         this.name = name;
         this.tachometer = tachometer;
     }
+    
     
     public Long getId() {
         return id;
@@ -94,9 +96,7 @@ public class Vehicle {
             return false;
         }
         final Vehicle other = (Vehicle) obj;
-        if (this.id == null || !this.id.equals(other.id)) {
-            return false;
-        }
-        return true;
+        return this.id != null && this.id.equals(other.id);
     }
+
 }

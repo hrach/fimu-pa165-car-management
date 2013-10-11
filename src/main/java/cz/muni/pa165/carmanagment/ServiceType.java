@@ -1,9 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cz.muni.pa165.carmanagment;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -13,14 +11,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
 /**
- *
+ * ServiceType entity.
  * @author tomasbobek
  */
-
 @Entity
-public class ServiceType {
+public class ServiceType implements Serializable {
     
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -29,15 +29,17 @@ public class ServiceType {
     
     @OneToMany(mappedBy = "serviceType", cascade = CascadeType.ALL)
     private List<ServiceInterval> services = new ArrayList<ServiceInterval>();
-    
+
+
     public ServiceType () {
         
     }
-    
+
     public ServiceType(String name) {
         this.name = name;
     }
-    
+
+
     public Long getId() {
         return id;
     }
@@ -53,8 +55,7 @@ public class ServiceType {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
     public List<ServiceInterval> getServices() {
         return services;
     }
@@ -85,9 +86,7 @@ public class ServiceType {
             return false;
         }
         final ServiceType other = (ServiceType) obj;
-        if (this.id == null || !this.id.equals(other.id)) {
-            return false;
-        }
-        return true;
+        return this.id != null && this.id.equals(other.id);
     }
+
 }
