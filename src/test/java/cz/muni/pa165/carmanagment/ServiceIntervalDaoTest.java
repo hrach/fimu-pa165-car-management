@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 import junit.framework.TestCase;
 
 /**
- *
+ * ServiceIntervalDao Test
  * @author zvonicek
  */
 public class ServiceIntervalDaoTest extends TestCase {

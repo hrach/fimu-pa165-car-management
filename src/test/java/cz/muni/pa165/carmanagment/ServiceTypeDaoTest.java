@@ -11,14 +11,14 @@ import static junit.framework.Assert.assertTrue;
 import junit.framework.TestCase;
 
 /**
- *
+ * ServiceTypeDao Test
  * @author zvonicek
  */
-public class ServiceTypeTest extends TestCase {
+public class ServiceTypeDaoTest extends TestCase {
 
     public EntityManagerFactory emf;
 
-    public ServiceTypeTest(String testName) {
+    public ServiceTypeDaoTest(String testName) {
         super(testName);
     }
 
