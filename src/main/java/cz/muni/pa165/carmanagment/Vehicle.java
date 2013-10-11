@@ -2,6 +2,7 @@
 package cz.muni.pa165.carmanagment;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Vehicle implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column(columnDefinition = "VARCHAR(50) NOT NULL")
+    @Column(length = 50, nullable = false)
     private String name;
     
     private Long tachometer;
