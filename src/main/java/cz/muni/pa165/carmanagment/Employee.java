@@ -32,7 +32,7 @@ public class Employee implements Serializable {
     @Column (length = 40, nullable = false)
     private String familyName;
     
-    private Integer employeeRole; // "role" is reserved word..:-/
+    private int employeeRole; // "role" is reserved word..:-/
     
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<Ride> rides = new ArrayList<Ride>();
@@ -46,7 +46,7 @@ public class Employee implements Serializable {
         this.setFamilyName(familyName);
     }
 
-    public Employee(String firstName, String familyName, Integer employeeRole) {
+    public Employee(String firstName, String familyName, int employeeRole) {
         this.setFirstName(firstName);
         this.setFamilyName(familyName);
         this.setEmployeeRole(employeeRole);
@@ -77,11 +77,11 @@ public class Employee implements Serializable {
         this.familyName = familyName;
     }
 
-    public Integer getEmployeeRole() {
+    public int getEmployeeRole() {
         return employeeRole;
     }
 
-    public void setEmployeeRole(Integer employeeRole) {
+    public void setEmployeeRole(int employeeRole) {
         this.employeeRole = employeeRole;
     }
 
