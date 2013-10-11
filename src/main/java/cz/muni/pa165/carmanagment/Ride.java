@@ -124,6 +124,12 @@ public class Ride implements Serializable {
     }
     
     public Long getRideLength() {
+        if (this.tachometerStart == null) {
+            throw new IllegalStateException("Tachometer start value is not set.");
+        }
+        if (this.tachometerEnd == null) {
+            throw new IllegalStateException("Tachometer end value is not set.");
+        }
         return this.tachometerEnd - this.tachometerStart;
     }
     
