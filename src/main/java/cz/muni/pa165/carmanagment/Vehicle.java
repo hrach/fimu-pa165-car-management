@@ -28,7 +28,7 @@ public class Vehicle implements Serializable {
     
     private Long tachometer;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private VehicleType type;
     
     

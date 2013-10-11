@@ -3,6 +3,7 @@ package cz.muni.pa165.carmanagment;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,16 +37,21 @@ public class Ride implements Serializable {
     @Column(length = 255)
     private String description;
     
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Vehicle vehicle;  
     
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Employee employee;
 
 
     public Ride() {
     }
 
+    public Ride(Employee employee, Vehicle vehicle) {
+        this.employee = employee;
+        this.vehicle = vehicle;
+    }
+            
     public Ride(Date startTime, Date endTime, int rideLength, String description, Vehicle vehicle, Employee employee) {
         this.startTime = startTime;
         this.endTime = endTime;
