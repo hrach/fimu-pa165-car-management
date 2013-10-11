@@ -1,4 +1,4 @@
-﻿# NetBeans specific #
+# NetBeans specific #
 nbproject/private/
 build/
 nbbuild/
@@ -15,3 +15,4 @@ nb-configuration.xml
 *.war
 *.ear
 /target/
+derby.log
