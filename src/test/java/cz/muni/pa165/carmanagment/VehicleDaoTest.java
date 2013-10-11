@@ -33,9 +33,17 @@ public class VehicleDaoTest extends TestCase
 
     public void testCreateVehicle() {
         EntityManager em = emf.createEntityManager();
+        
+        VehicleTypeDao typeDao = new VehicleTypeDao(em);
+        VehicleType type = new VehicleType((long)12345);
+        em.getTransaction().begin();
+        typeDao.persist(type);
+        em.getTransaction().commit();
+        
         VehicleDao dao = new VehicleDao(em);
         
         Vehicle vehicle = new Vehicle("Skoda Octavia", (long)100000);
+        vehicle.setType(type);
         
         em.getTransaction().begin();
         dao.persist(vehicle);
@@ -47,6 +55,7 @@ public class VehicleDaoTest extends TestCase
         
         Vehicle vehicle2 = dao.findById(id);
         assertEquals(vehicle, vehicle2);
+        assertEquals(vehicle.getType(), vehicle2.getType());
     } 
     
     public void testGetVehicle() {
