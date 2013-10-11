@@ -6,8 +6,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import junit.framework.TestCase;
 
+
 /**
- *
+ * VehicleDao tests.
  * @author zvonicek
  */
 public class VehicleDaoTest extends TestCase 
@@ -15,27 +16,22 @@ public class VehicleDaoTest extends TestCase
 
     EntityManagerFactory emf;
 
-    public VehicleDaoTest(String testName)
-    {
+    public VehicleDaoTest(String testName) {
         super(testName);
     }
 
     @Override
-    protected void setUp() throws Exception
-    {
+    protected void setUp() throws Exception {
         super.setUp();
-
         this.emf = Persistence.createEntityManagerFactory("testPU");
     }
 
     @Override
-    protected void tearDown() throws Exception
-    {
+    protected void tearDown() throws Exception {
         super.tearDown();
     }
 
-    public void testCreateVehicle()
-    {
+    public void testCreateVehicle() {
         EntityManager em = emf.createEntityManager();
         VehicleDao dao = new VehicleDao(em);
         
@@ -53,8 +49,7 @@ public class VehicleDaoTest extends TestCase
         assertEquals(vehicle, vehicle2);
     } 
     
-    public void testGetVehicle()
-    {
+    public void testGetVehicle() {
         EntityManager em = emf.createEntityManager();
         VehicleDao dao = new VehicleDao(em);
         
@@ -87,9 +82,8 @@ public class VehicleDaoTest extends TestCase
         assertTrue(vehicles.contains(vehicle2));
         assertTrue(vehicles.contains(vehicle3));
     }
-    
-    public void testUpdateVehicle()
-    {
+
+    public void testUpdateVehicle() {
         Vehicle vehicle = new Vehicle("Audi A4 Allroad", (long)130500);
         
         EntityManager em = emf.createEntityManager();
@@ -107,16 +101,15 @@ public class VehicleDaoTest extends TestCase
         dao.update(vehicle);
         em.getTransaction().commit();
         em.clear();
-        
+
         Vehicle vehicle2 = dao.findById(vehicle.getId());
-        
+
         assertEquals(vehicle, vehicle2);
         assertEquals(vehicle.getName(), vehicle2.getName());
         assertEquals(vehicle.getTachometer(), vehicle2.getTachometer());        
     }
-    
-    public void testDeleteVehicle()
-    {
+
+    public void testDeleteVehicle() {
         EntityManager em = emf.createEntityManager();
         VehicleDao dao = new VehicleDao(em);
         
@@ -135,5 +128,5 @@ public class VehicleDaoTest extends TestCase
         
         assertNull(dao.findById(vehicleId));
     }
-           
+
 }
