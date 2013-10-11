@@ -14,7 +14,7 @@ import junit.framework.TestCase;
 public class VehicleDaoTest extends TestCase 
 {
 
-    EntityManagerFactory emf;
+    public EntityManagerFactory emf;
 
     public VehicleDaoTest(String testName) {
         super(testName);
