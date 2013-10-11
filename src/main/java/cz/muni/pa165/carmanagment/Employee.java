@@ -20,6 +20,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class Employee implements Serializable {
 
+    public static final int ROLE_STAFF = 1;
+    public static final int ROLE_MANAGER = 2;
+
     private static final long serialVersionUID = 1L;
 
     @Id
