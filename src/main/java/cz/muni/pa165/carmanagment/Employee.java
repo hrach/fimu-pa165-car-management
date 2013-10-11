@@ -42,14 +42,14 @@ public class Employee implements Serializable {
     }
 
     public Employee(String firstName, String familyName) {
-        this.firstName = firstName;
-        this.familyName = familyName;
+        this.setFirstName(firstName);
+        this.setFamilyName(familyName);
     }
 
     public Employee(String firstName, String familyName, Integer employeeRole) {
-        this.firstName = firstName;
-        this.familyName = familyName;
-        this.employeeRole = employeeRole;
+        this.setFirstName(firstName);
+        this.setFamilyName(familyName);
+        this.setEmployeeRole(employeeRole);
     }
 
 
