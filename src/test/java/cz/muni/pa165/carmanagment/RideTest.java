@@ -1,6 +1,7 @@
 
 package cz.muni.pa165.carmanagment;
 
+import cz.muni.pa165.carmanagment.model.Ride;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNull;

@@ -1,5 +1,5 @@
 
-package cz.muni.pa165.carmanagment;
+package cz.muni.pa165.carmanagment.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,11 +13,11 @@ import javax.persistence.OneToMany;
 
 
 /**
- * VehicleType entity.
+ * ServiceType entity.
  * @author tomasbobek
  */
 @Entity
-public class VehicleType implements Serializable {
+public class ServiceType implements Serializable {
     
     private static final long serialVersionUID = 1L;
 
@@ -25,18 +25,18 @@ public class VehicleType implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private Long maxKm;
+    private String name;
     
-    @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
-    private List<Vehicle> vehicles = new ArrayList<Vehicle>();
+    @OneToMany(mappedBy = "serviceType", cascade = CascadeType.ALL)
+    private List<ServiceInterval> services = new ArrayList<ServiceInterval>();
 
-   
-    public VehicleType() {
+
+    public ServiceType () {
         
     }
 
-    public VehicleType(Long maxKm) {
-        this.maxKm = maxKm;
+    public ServiceType(String name) {
+        this.name = name;
     }
 
 
@@ -48,25 +48,25 @@ public class VehicleType implements Serializable {
         this.id = id;
     }
     
-    public Long getMaxKm() {
-        return maxKm;
+    public String getName() {
+        return name;
     }
     
-    public void setMaxKm(Long maxKm) {
-        this.maxKm = maxKm;
-    }
-    
-    public List<Vehicle> getVehicles() {
-        return vehicles;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setVehicles(List<Vehicle> vehicles) {
-        this.vehicles = vehicles;
+    public List<ServiceInterval> getServices() {
+        return services;
+    }
+
+    public void setServices(List<ServiceInterval> services) {
+        this.services = services;
     }
     
     @Override
     public String toString() {
-        return "Type: " + this.id.toString() + ", max km: " + this.maxKm.toString();
+        return this.name;
     }
     
     @Override
@@ -85,8 +85,7 @@ public class VehicleType implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-
-        final VehicleType other = (VehicleType) obj;
+        final ServiceType other = (ServiceType) obj;
         return this.id != null && this.id.equals(other.id);
     }
 

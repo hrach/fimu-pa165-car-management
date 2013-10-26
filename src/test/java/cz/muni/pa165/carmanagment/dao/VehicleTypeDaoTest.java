@@ -1,5 +1,9 @@
-package cz.muni.pa165.carmanagment;
+package cz.muni.pa165.carmanagment.dao;
 
+import cz.muni.pa165.carmanagment.model.VehicleType;
+import cz.muni.pa165.carmanagment.model.Vehicle;
+import cz.muni.pa165.carmanagment.dao.VehicleTypeDao;
+import cz.muni.pa165.carmanagment.dao.VehicleDao;
 import java.util.Arrays;
 import java.util.List;
 import javax.persistence.EntityManager;

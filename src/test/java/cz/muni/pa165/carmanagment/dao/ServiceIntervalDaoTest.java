@@ -1,5 +1,11 @@
-package cz.muni.pa165.carmanagment;
+package cz.muni.pa165.carmanagment.dao;
 
+import cz.muni.pa165.carmanagment.model.ServiceType;
+import cz.muni.pa165.carmanagment.model.Vehicle;
+import cz.muni.pa165.carmanagment.model.ServiceInterval;
+import cz.muni.pa165.carmanagment.dao.ServiceTypeDao;
+import cz.muni.pa165.carmanagment.dao.ServiceIntervalDao;
+import cz.muni.pa165.carmanagment.dao.VehicleDao;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.EntityManager;

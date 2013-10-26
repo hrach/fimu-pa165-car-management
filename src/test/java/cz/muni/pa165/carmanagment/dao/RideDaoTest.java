@@ -1,6 +1,11 @@
 
-package cz.muni.pa165.carmanagment;
+package cz.muni.pa165.carmanagment.dao;
 
+import cz.muni.pa165.carmanagment.model.VehicleType;
+import cz.muni.pa165.carmanagment.model.Employee;
+import cz.muni.pa165.carmanagment.model.Vehicle;
+import cz.muni.pa165.carmanagment.model.Ride;
+import cz.muni.pa165.carmanagment.dao.RideDao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

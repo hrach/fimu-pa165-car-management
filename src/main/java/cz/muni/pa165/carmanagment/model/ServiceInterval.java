@@ -1,5 +1,5 @@
 
-package cz.muni.pa165.carmanagment;
+package cz.muni.pa165.carmanagment.model;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -1,6 +1,7 @@
 
 package cz.muni.pa165.carmanagment;
 
+import cz.muni.pa165.carmanagment.model.Employee;
 import junit.framework.TestCase;
 
 

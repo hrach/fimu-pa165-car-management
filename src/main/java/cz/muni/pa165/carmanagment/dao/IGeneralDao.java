@@ -1,5 +1,5 @@
 
-package cz.muni.pa165.carmanagment;
+package cz.muni.pa165.carmanagment.dao;
 
 import java.util.List;
 

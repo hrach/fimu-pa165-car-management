@@ -1,6 +1,7 @@
 
-package cz.muni.pa165.carmanagment;
+package cz.muni.pa165.carmanagment.dao;
 
+import cz.muni.pa165.carmanagment.model.ServiceType;
 import javax.persistence.EntityManager;
 
 

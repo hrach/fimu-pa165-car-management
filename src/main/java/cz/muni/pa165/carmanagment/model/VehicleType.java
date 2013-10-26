@@ -1,48 +1,45 @@
 
-package cz.muni.pa165.carmanagment;
+package cz.muni.pa165.carmanagment.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 /**
- * Vehicle entity.
+ * VehicleType entity.
  * @author tomasbobek
  */
 @Entity
-public class Vehicle implements Serializable {
-
+public class VehicleType implements Serializable {
+    
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column(length = 50, nullable = false)
-    private String name;
+    private Long maxKm;
     
-    private Long tachometer;
-    
-    @ManyToOne(cascade = CascadeType.ALL)
-    private VehicleType type;
-    
-    
-    public Vehicle() {
+    @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
+    private List<Vehicle> vehicles = new ArrayList<Vehicle>();
+
+   
+    public VehicleType() {
         
     }
-    
-    public Vehicle(String name, Long tachometer) {
-        this.name = name;
-        this.tachometer = tachometer;
+
+    public VehicleType(Long maxKm) {
+        this.maxKm = maxKm;
     }
-    
-    
+
+
     public Long getId() {
         return id;
     }
@@ -51,33 +48,25 @@ public class Vehicle implements Serializable {
         this.id = id;
     }
     
-    public String getName() {
-        return name;
+    public Long getMaxKm() {
+        return maxKm;
     }
     
-    public void setName(String name) {
-        this.name = name;
+    public void setMaxKm(Long maxKm) {
+        this.maxKm = maxKm;
     }
     
-    public Long getTachometer() {
-        return tachometer;
+    public List<Vehicle> getVehicles() {
+        return vehicles;
     }
-    
-    public void setTchometer(Long tachometer) {
-        this.tachometer = tachometer;
-    }
-    
-    public VehicleType getType() {
-        return type;
-    }
-    
-    public void setType(VehicleType type) {
-        this.type = type;
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
     }
     
     @Override
     public String toString() {
-        return this.name + " (" + this.tachometer.toString() + " km)";
+        return "Type: " + this.id.toString() + ", max km: " + this.maxKm.toString();
     }
     
     @Override
@@ -96,7 +85,8 @@ public class Vehicle implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Vehicle other = (Vehicle) obj;
+
+        final VehicleType other = (VehicleType) obj;
         return this.id != null && this.id.equals(other.id);
     }
 
