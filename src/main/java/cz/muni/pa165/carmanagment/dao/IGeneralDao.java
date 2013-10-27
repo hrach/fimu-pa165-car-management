@@ -18,6 +18,13 @@ public interface IGeneralDao<K, E> {
     void persist(E entity);
     
     /**
+     * Updates selected entity in database.
+     * 
+     * @param entity 
+     */
+    void update(E entity);
+    
+    /**
      * Removes selected entity in database.
      * 
      * @param entity 
