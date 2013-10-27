@@ -24,6 +24,40 @@ public class RideTest extends TestCase {
         super.tearDown();
     }
 
+
+    public void testRideLength()
+    {
+        Ride r = new Ride();
+        r.setTachometerStart(new Long(23));
+        r.setTachometerEnd(new Long(34));
+        
+        assertEquals(new Long(23), r.getTachometerStart());
+        assertEquals(new Long(11), r.getRideLength());
+    }
+    
+    public void testRideLengthWithWrongState()
+    {
+        Ride r1 = new Ride();
+        r1.setTachometerStart(new Long(23));
+
+        try {
+            r1.getRideLength();
+            fail("Expected an IllegalStateException to be thrown.");
+        } catch (IllegalStateException e) {
+            assertEquals("Tachometer end value is not set.", e.getMessage());
+        }
+
+        Ride r2 = new Ride();
+        r2.setTachometerEnd(new Long(23));
+
+        try {
+            r2.getRideLength();
+            fail("Expected an IllegalStateException to be thrown.");
+        } catch (IllegalStateException e) {
+            assertEquals("Tachometer start value is not set.", e.getMessage());
+        }
+    }
+
     public void testRideIds()
     {
         Ride n = new Ride();
