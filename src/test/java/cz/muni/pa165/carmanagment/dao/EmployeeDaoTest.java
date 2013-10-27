@@ -1,7 +1,7 @@
 package cz.muni.pa165.carmanagment.dao;
 
 import cz.muni.pa165.carmanagment.model.Employee;
-import cz.muni.pa165.carmanagment.dao.EmployeeDao;
+import cz.muni.pa165.carmanagment.dao.EmployeeDaoImpl;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -39,7 +39,7 @@ public class EmployeeDaoTest extends TestCase
 
     public void testCreateEmployee() {
         EntityManager em = emf.createEntityManager();
-        EmployeeDao emDao = new EmployeeDao(em);
+        EmployeeDaoImpl emDao = new EmployeeDaoImpl(em);
 
         Employee employee = new Employee("jan", "skrasek", Employee.ROLE_MANAGER);
         em.getTransaction().begin();
@@ -57,7 +57,7 @@ public class EmployeeDaoTest extends TestCase
     
     public void testGetEmployee() {
         EntityManager em = emf.createEntityManager();
-        EmployeeDao dao = new EmployeeDao(em);
+        EmployeeDaoImpl dao = new EmployeeDaoImpl(em);
         
         Employee employee1 = new Employee("user","one");
         Employee employee2 = new Employee("user","two");
@@ -93,7 +93,7 @@ public class EmployeeDaoTest extends TestCase
         Employee employee = new Employee("user", "name");
         
         EntityManager em = emf.createEntityManager();
-        EmployeeDao dao = new EmployeeDao(em);
+        EmployeeDaoImpl dao = new EmployeeDaoImpl(em);
                 
         em.getTransaction().begin();
         dao.persist(employee);
@@ -115,7 +115,7 @@ public class EmployeeDaoTest extends TestCase
 
     public void testDeleteEmployee() {
         EntityManager em = emf.createEntityManager();
-        EmployeeDao dao = new EmployeeDao(em);
+        EmployeeDaoImpl dao = new EmployeeDaoImpl(em);
         
         Employee employee = new Employee("martin", "dent");
         

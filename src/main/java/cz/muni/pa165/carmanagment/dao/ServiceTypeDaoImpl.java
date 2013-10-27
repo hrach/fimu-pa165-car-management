@@ -9,9 +9,9 @@ import javax.persistence.EntityManager;
  * DAO for ServiceType.
  * @author tomasbobek
  */
-public class ServiceTypeDao extends GeneralDao<Long, ServiceType> {
+public class ServiceTypeDaoImpl extends GeneralDaoImpl<Long, ServiceType> {
     
-    public ServiceTypeDao(EntityManager em) {
+    public ServiceTypeDaoImpl(EntityManager em) {
         super(em);
     }
     

@@ -5,7 +5,7 @@ import cz.muni.pa165.carmanagment.model.VehicleType;
 import cz.muni.pa165.carmanagment.model.Employee;
 import cz.muni.pa165.carmanagment.model.Vehicle;
 import cz.muni.pa165.carmanagment.model.Ride;
-import cz.muni.pa165.carmanagment.dao.RideDao;
+import cz.muni.pa165.carmanagment.dao.RideDaoImpl;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -43,7 +43,7 @@ public class RideDaoTest extends TestCase
 
     public void testCreateRide() {
         EntityManager em = emf.createEntityManager();
-        RideDao dao = new RideDao(em);
+        RideDaoImpl dao = new RideDaoImpl(em);
 
         Employee employee = new Employee("test","user");
         Vehicle vehicle = new Vehicle("super car", (long) 0);
@@ -68,7 +68,7 @@ public class RideDaoTest extends TestCase
     
     public void testGetRide() {
         EntityManager em = emf.createEntityManager();
-        RideDao dao = new RideDao(em);
+        RideDaoImpl dao = new RideDaoImpl(em);
         
         Employee employee = new Employee("test","user");
         Vehicle vehicle = new Vehicle("super car", (long) 0);
@@ -114,7 +114,7 @@ public class RideDaoTest extends TestCase
         Ride ride1 = new Ride(employee, vehicle);
         
         EntityManager em = emf.createEntityManager();
-        RideDao dao = new RideDao(em);
+        RideDaoImpl dao = new RideDaoImpl(em);
                 
         em.getTransaction().begin();
         dao.persist(ride1);
@@ -140,7 +140,7 @@ public class RideDaoTest extends TestCase
         vehicle.setType(new VehicleType((long) 233));
 
         EntityManager em = emf.createEntityManager();
-        RideDao dao = new RideDao(em);
+        RideDaoImpl dao = new RideDaoImpl(em);
         
         Ride ride = new Ride();
         ride.setEmployee(employee);

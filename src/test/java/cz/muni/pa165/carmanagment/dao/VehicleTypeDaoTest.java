@@ -2,8 +2,8 @@ package cz.muni.pa165.carmanagment.dao;
 
 import cz.muni.pa165.carmanagment.model.VehicleType;
 import cz.muni.pa165.carmanagment.model.Vehicle;
-import cz.muni.pa165.carmanagment.dao.VehicleTypeDao;
-import cz.muni.pa165.carmanagment.dao.VehicleDao;
+import cz.muni.pa165.carmanagment.dao.VehicleTypeDaoImpl;
+import cz.muni.pa165.carmanagment.dao.VehicleDaoImpl;
 import java.util.Arrays;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -43,7 +43,7 @@ public class VehicleTypeDaoTest extends TestCase {
     {
         EntityManager em = emf.createEntityManager();
         
-        VehicleDao vehicleDao = new VehicleDao(em);
+        VehicleDaoImpl vehicleDao = new VehicleDaoImpl(em);
         Vehicle v1 = new Vehicle("Skoda Octavia", (long) 8888);
         Vehicle v2 = new Vehicle("Skoda Fabia", (long) 11111);
         em.getTransaction().begin();
@@ -51,7 +51,7 @@ public class VehicleTypeDaoTest extends TestCase {
         vehicleDao.persist(v2);
         em.getTransaction().commit();
         
-        VehicleTypeDao dao = new VehicleTypeDao(em);
+        VehicleTypeDaoImpl dao = new VehicleTypeDaoImpl(em);
         
         VehicleType type = new VehicleType((long)500000);
         type.setVehicles(Arrays.asList(v1, v2));
@@ -70,7 +70,7 @@ public class VehicleTypeDaoTest extends TestCase {
 
     public void testGetVehicleType() {
         EntityManager em = emf.createEntityManager();
-        VehicleTypeDao dao = new VehicleTypeDao(em);
+        VehicleTypeDaoImpl dao = new VehicleTypeDaoImpl(em);
 
         VehicleType vehicle = new VehicleType((long) 500000);
         VehicleType vehicle2 = new VehicleType((long) 600000);
@@ -106,7 +106,7 @@ public class VehicleTypeDaoTest extends TestCase {
         VehicleType vehicle = new VehicleType((long) 400000);
 
         EntityManager em = emf.createEntityManager();
-        VehicleTypeDao dao = new VehicleTypeDao(em);
+        VehicleTypeDaoImpl dao = new VehicleTypeDaoImpl(em);
 
         em.getTransaction().begin();
         dao.persist(vehicle);
@@ -128,7 +128,7 @@ public class VehicleTypeDaoTest extends TestCase {
 
     public void testDeleteVehicleType() {
         EntityManager em = emf.createEntityManager();
-        VehicleTypeDao dao = new VehicleTypeDao(em);
+        VehicleTypeDaoImpl dao = new VehicleTypeDaoImpl(em);
 
         VehicleType vehicle = new VehicleType((long) 400000);
 

@@ -9,9 +9,9 @@ import javax.persistence.EntityManager;
  * DAO for Ride.
  * @author Jakub Marecek <xmarec at gmail.com>
  */
-public class RideDao extends GeneralDao<Long, Ride> {
+public class RideDaoImpl extends GeneralDaoImpl<Long, Ride> {
     
-    public RideDao(EntityManager em) {
+    public RideDaoImpl(EntityManager em) {
         super(em);        
     }
 

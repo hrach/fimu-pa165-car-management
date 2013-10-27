@@ -9,9 +9,9 @@ import javax.persistence.EntityManager;
  * DAO for Employee.
  * @author Jakub Marecek <xmarec at gmail.com>
  */
-public class EmployeeDao extends GeneralDao<Long, Employee> {
+public class EmployeeDaoImpl extends GeneralDaoImpl<Long, Employee> {
     
-    public EmployeeDao(EntityManager em) {
+    public EmployeeDaoImpl(EntityManager em) {
         super(em);        
     }
 

@@ -9,9 +9,9 @@ import javax.persistence.EntityManager;
  * DAO for Vehicle.
  * @author tomasbobek
  */
-public class VehicleDao extends GeneralDao<Long, Vehicle> {
+public class VehicleDaoImpl extends GeneralDaoImpl<Long, Vehicle> {
     
-    public VehicleDao(EntityManager em) {
+    public VehicleDaoImpl(EntityManager em) {
         super(em);
     }
     

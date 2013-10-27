@@ -2,8 +2,8 @@ package cz.muni.pa165.carmanagment.dao;
 
 import cz.muni.pa165.carmanagment.model.VehicleType;
 import cz.muni.pa165.carmanagment.model.Vehicle;
-import cz.muni.pa165.carmanagment.dao.VehicleTypeDao;
-import cz.muni.pa165.carmanagment.dao.VehicleDao;
+import cz.muni.pa165.carmanagment.dao.VehicleTypeDaoImpl;
+import cz.muni.pa165.carmanagment.dao.VehicleDaoImpl;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -38,13 +38,13 @@ public class VehicleDaoTest extends TestCase
     public void testCreateVehicle() {
         EntityManager em = emf.createEntityManager();
         
-        VehicleTypeDao typeDao = new VehicleTypeDao(em);
+        VehicleTypeDaoImpl typeDao = new VehicleTypeDaoImpl(em);
         VehicleType type = new VehicleType((long)12345);
         em.getTransaction().begin();
         typeDao.persist(type);
         em.getTransaction().commit();
         
-        VehicleDao dao = new VehicleDao(em);
+        VehicleDaoImpl dao = new VehicleDaoImpl(em);
         
         Vehicle vehicle = new Vehicle("Skoda Octavia", (long)100000);
         vehicle.setType(type);
@@ -64,7 +64,7 @@ public class VehicleDaoTest extends TestCase
     
     public void testGetVehicle() {
         EntityManager em = emf.createEntityManager();
-        VehicleDao dao = new VehicleDao(em);
+        VehicleDaoImpl dao = new VehicleDaoImpl(em);
         
         Vehicle vehicle = new Vehicle("Skoda Octavia", (long)100000);
         Vehicle vehicle2 = new Vehicle("Skoda Fabia", (long)80000);
@@ -100,7 +100,7 @@ public class VehicleDaoTest extends TestCase
         Vehicle vehicle = new Vehicle("Audi A4 Allroad", (long)130500);
         
         EntityManager em = emf.createEntityManager();
-        VehicleDao dao = new VehicleDao(em);
+        VehicleDaoImpl dao = new VehicleDaoImpl(em);
                 
         em.getTransaction().begin();
         dao.persist(vehicle);
@@ -124,7 +124,7 @@ public class VehicleDaoTest extends TestCase
 
     public void testDeleteVehicle() {
         EntityManager em = emf.createEntityManager();
-        VehicleDao dao = new VehicleDao(em);
+        VehicleDaoImpl dao = new VehicleDaoImpl(em);
         
         Vehicle vehicle = new Vehicle("Skoda Octavia", (long)100000);
         

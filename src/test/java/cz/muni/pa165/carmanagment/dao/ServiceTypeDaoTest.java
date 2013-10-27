@@ -1,7 +1,7 @@
 package cz.muni.pa165.carmanagment.dao;
 
 import cz.muni.pa165.carmanagment.model.ServiceType;
-import cz.muni.pa165.carmanagment.dao.ServiceTypeDao;
+import cz.muni.pa165.carmanagment.dao.ServiceTypeDaoImpl;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -39,7 +39,7 @@ public class ServiceTypeDaoTest extends TestCase {
     public void testCreateServiceType()
     {
         EntityManager em = emf.createEntityManager();
-        ServiceTypeDao dao = new ServiceTypeDao(em);
+        ServiceTypeDaoImpl dao = new ServiceTypeDaoImpl(em);
         
         ServiceType type = new ServiceType("Typ 1");
         
@@ -57,7 +57,7 @@ public class ServiceTypeDaoTest extends TestCase {
     
     public void testGetServiceType() {
         EntityManager em = emf.createEntityManager();
-        ServiceTypeDao dao = new ServiceTypeDao(em);
+        ServiceTypeDaoImpl dao = new ServiceTypeDaoImpl(em);
 
         ServiceType t1 = new ServiceType("Typ 1");
         ServiceType t2 = new ServiceType("Typ 2");
@@ -93,7 +93,7 @@ public class ServiceTypeDaoTest extends TestCase {
         ServiceType t1 = new ServiceType("Typ 1");
 
         EntityManager em = emf.createEntityManager();
-        ServiceTypeDao dao = new ServiceTypeDao(em);
+        ServiceTypeDaoImpl dao = new ServiceTypeDaoImpl(em);
 
         em.getTransaction().begin();
         dao.persist(t1);
@@ -115,7 +115,7 @@ public class ServiceTypeDaoTest extends TestCase {
 
     public void testDeleteServiceType() {
         EntityManager em = emf.createEntityManager();
-        ServiceTypeDao dao = new ServiceTypeDao(em);
+        ServiceTypeDaoImpl dao = new ServiceTypeDaoImpl(em);
 
         ServiceType t1 = new ServiceType("Typ 1");
 

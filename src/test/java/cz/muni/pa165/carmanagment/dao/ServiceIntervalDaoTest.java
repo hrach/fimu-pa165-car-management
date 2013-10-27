@@ -3,9 +3,9 @@ package cz.muni.pa165.carmanagment.dao;
 import cz.muni.pa165.carmanagment.model.ServiceType;
 import cz.muni.pa165.carmanagment.model.Vehicle;
 import cz.muni.pa165.carmanagment.model.ServiceInterval;
-import cz.muni.pa165.carmanagment.dao.ServiceTypeDao;
-import cz.muni.pa165.carmanagment.dao.ServiceIntervalDao;
-import cz.muni.pa165.carmanagment.dao.VehicleDao;
+import cz.muni.pa165.carmanagment.dao.ServiceTypeDaoImpl;
+import cz.muni.pa165.carmanagment.dao.ServiceIntervalDaoImpl;
+import cz.muni.pa165.carmanagment.dao.VehicleDaoImpl;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -39,9 +39,9 @@ public class ServiceIntervalDaoTest extends TestCase {
 
     public void testCreateServiceInterval() {
         EntityManager em = emf.createEntityManager();
-        ServiceIntervalDao dao = new ServiceIntervalDao(em);
-        VehicleDao vehicleDao = new VehicleDao(em);
-        ServiceTypeDao sevTypeDao = new ServiceTypeDao(em);
+        ServiceIntervalDaoImpl dao = new ServiceIntervalDaoImpl(em);
+        VehicleDaoImpl vehicleDao = new VehicleDaoImpl(em);
+        ServiceTypeDaoImpl sevTypeDao = new ServiceTypeDaoImpl(em);
 
         Vehicle vehicle = new Vehicle("Skoda Octavia", (long) 100000);
         ServiceType type = new ServiceType("Type 1");
@@ -70,7 +70,7 @@ public class ServiceIntervalDaoTest extends TestCase {
 
     public void testGetServiceInterval() {
         EntityManager em = emf.createEntityManager();
-        ServiceIntervalDao dao = new ServiceIntervalDao(em);
+        ServiceIntervalDaoImpl dao = new ServiceIntervalDaoImpl(em);
 
         ServiceInterval interval = new ServiceInterval(new GregorianCalendar(2011, 10, 10).getTime(), new GregorianCalendar(2012, 10, 01).getTime(), new GregorianCalendar(1012, 10, 10).getTime(), null, null);
         ServiceInterval interval2 = new ServiceInterval(new GregorianCalendar(2012, 10, 10).getTime(), new GregorianCalendar(2013, 10, 01).getTime(), new GregorianCalendar(1013, 10, 10).getTime(), null, null);
@@ -106,7 +106,7 @@ public class ServiceIntervalDaoTest extends TestCase {
         ServiceInterval interval = new ServiceInterval(new GregorianCalendar(2013, 10, 10).getTime(), new GregorianCalendar(2013, 12, 01).getTime(), null, null, null);
 
         EntityManager em = emf.createEntityManager();
-        ServiceIntervalDao dao = new ServiceIntervalDao(em);
+        ServiceIntervalDaoImpl dao = new ServiceIntervalDaoImpl(em);
 
         em.getTransaction().begin();
         dao.persist(interval);
@@ -128,7 +128,7 @@ public class ServiceIntervalDaoTest extends TestCase {
 
     public void testDeleteServiceInterval() {
         EntityManager em = emf.createEntityManager();
-        ServiceIntervalDao dao = new ServiceIntervalDao(em);
+        ServiceIntervalDaoImpl dao = new ServiceIntervalDaoImpl(em);
 
         ServiceInterval interval = new ServiceInterval(new GregorianCalendar(2013, 10, 10).getTime(), new GregorianCalendar(2013, 12, 01).getTime(), null, null, null);
 

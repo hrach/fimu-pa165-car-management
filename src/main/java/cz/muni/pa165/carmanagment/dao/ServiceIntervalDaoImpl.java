@@ -9,9 +9,9 @@ import javax.persistence.EntityManager;
  * DAO for ServiceInterval.
  * @author tomasbobek
  */
-public class ServiceIntervalDao extends GeneralDao<Long, ServiceInterval> {
+public class ServiceIntervalDaoImpl extends GeneralDaoImpl<Long, ServiceInterval> {
     
-    public ServiceIntervalDao(EntityManager em) {
+    public ServiceIntervalDaoImpl(EntityManager em) {
         super(em);
     }
     
