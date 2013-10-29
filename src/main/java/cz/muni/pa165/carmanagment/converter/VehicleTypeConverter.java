@@ -4,7 +4,6 @@ import cz.muni.pa165.carmanagment.dto.VehicleTypeDto;
 import cz.muni.pa165.carmanagment.model.VehicleType;
 import java.util.ArrayList;
 import java.util.List;
-import sun.org.mozilla.javascript.internal.ast.Yield;
 
 /**
  * Class converts entity to DTO and DTO to entity
