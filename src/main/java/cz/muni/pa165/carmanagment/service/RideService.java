@@ -6,7 +6,6 @@
 
 package cz.muni.pa165.carmanagment.service;
 
-import cz.muni.pa165.carmanagment.dto.EmployeeDto;
 import cz.muni.pa165.carmanagment.dto.RideDto;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -17,17 +16,16 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public interface EmployeeService {
+public interface RideService {
     
-    public void create(EmployeeDto employeeDto);
+    public void create(RideDto rideDto);
 
     public void delete(Long id);
 
-    public void update(EmployeeDto employeeDto);
+    public void update(RideDto rideDto);
 
-    public EmployeeDto findById(Long id);
+    public RideDto findById(Long id);
 
-    public List<EmployeeDto> findAll(); 
+    public List<RideDto> findAll(); 
     
-    public List<RideDto> getRidesForEmployee(Long id);
 }

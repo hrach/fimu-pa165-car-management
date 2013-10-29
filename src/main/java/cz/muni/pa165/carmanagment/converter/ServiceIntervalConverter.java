@@ -1,0 +1,83 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package cz.muni.pa165.carmanagment.converter;
+
+import cz.muni.pa165.carmanagment.dto.ServiceIntervalDto;
+import cz.muni.pa165.carmanagment.model.ServiceInterval;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author Jakub Marecek <xmarec at gmail.com>
+ */
+public class ServiceIntervalConverter {
+    
+    public static ServiceIntervalDto entityToDto(ServiceInterval entity) {
+        if (entity == null){
+            throw new IllegalArgumentException("ServiceIntervalConverter entityToDto - attribute entity is null");
+        }
+        
+        ServiceIntervalDto dto = new ServiceIntervalDto();
+        
+        dto.setId(entity.getId());
+        dto.setServiceType(ServiceTypeConverter.entityToDto(entity.getServiceType()));
+        dto.setVehicle(VehicleConverter.entityToDto(entity.getVehicle()));
+        dto.setCreatedTime(entity.getCreatedTime());
+        dto.setDueTime(entity.getDueTime());
+        dto.setDoneTime(entity.getDoneTime());
+               
+        return dto;
+    }
+    
+    public static List<ServiceIntervalDto> entityToDto(List<ServiceInterval> entities) {
+        if (entities == null){
+            throw new IllegalArgumentException("ServiceIntervalConverter entityToDto - attribute entities is null");
+        }
+        
+        List<ServiceIntervalDto> list = new ArrayList<ServiceIntervalDto>();
+        for (ServiceInterval serviceInterval : entities) {
+            list.add(ServiceIntervalConverter.entityToDto(serviceInterval));
+        }
+        
+        return list;
+    }
+
+    public static ServiceInterval dtoToEntity(ServiceIntervalDto dto) {
+        if (dto == null){
+            throw new IllegalArgumentException("ServiceIntervalConvertor dtoToEntity - attribute dto is null");
+        }
+        
+        ServiceInterval entity = new ServiceInterval();
+        
+        entity.setId(dto.getId());
+        entity.setServiceType(ServiceTypeConverter.dtoToEntity(dto.getServiceType()));
+        entity.setVehicle(VehicleConverter.dtoToEntity(dto.getVehicle()));
+        entity.setCreatedTime(dto.getCreatedTime());
+        entity.setDueTime(dto.getDueTime());
+        entity.setDoneTime(dto.getDoneTime());
+        
+        return entity;
+    }
+    
+    public static List<ServiceInterval> dtoToEntity (List<ServiceIntervalDto> dtos){
+        if (dtos == null){
+            throw new IllegalArgumentException("ServiceIntervalConvertor dtoToEntity - attribute dtos is null");
+        }
+        
+        List<ServiceInterval> list = new ArrayList<ServiceInterval>();
+        for (ServiceIntervalDto serviceIntervalDto : dtos) {
+            list.add(ServiceIntervalConverter.dtoToEntity(serviceIntervalDto));
+        }
+        
+        return list;
+    }
+    
+    
+
+    
+}

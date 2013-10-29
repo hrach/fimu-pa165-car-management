@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author Jakub Marecek <xmarec at gmail.com>
  */
-class RideDto {
+public class RideDto {
     private Long id;
     
     private Date startTime;
