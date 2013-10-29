@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -34,7 +33,6 @@ public abstract class GeneralDaoImpl<K, E> implements GeneralDao<K, E> {
     }
 
     @Override
-    @Transactional
     public void persist(E entity) {
         if (entity == null) {
             throw new IllegalArgumentException("Parameter entity is null");
@@ -44,7 +42,6 @@ public abstract class GeneralDaoImpl<K, E> implements GeneralDao<K, E> {
     }
     
     @Override
-    @Transactional
     public void update(E entity) {
         if (em == null) {
             throw new IllegalArgumentException("Parameter entity is null");
@@ -54,7 +51,6 @@ public abstract class GeneralDaoImpl<K, E> implements GeneralDao<K, E> {
     }
     
     @Override
-    @Transactional
     public void remove(E entity) {
         if (em == null) {
             throw new IllegalArgumentException("Parameter entity is null");
@@ -64,7 +60,6 @@ public abstract class GeneralDaoImpl<K, E> implements GeneralDao<K, E> {
     }
     
     @Override
-    @Transactional
     public E findById(K id) {
         if (id == null) {
             throw new IllegalArgumentException("Parameter id is null");
@@ -74,7 +69,6 @@ public abstract class GeneralDaoImpl<K, E> implements GeneralDao<K, E> {
     }
     
     @Override
-    @Transactional
     public List<E> findAll() {
         TypedQuery query = em.createQuery("SELECT e FROM " + entityClass.getName() + " e", entityClass);
         return (List<E>) query.getResultList();
