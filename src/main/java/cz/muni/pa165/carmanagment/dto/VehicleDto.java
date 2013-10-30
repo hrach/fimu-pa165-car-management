@@ -27,6 +27,12 @@ public class VehicleDto
         this.type = type;
     }
 
+    public VehicleDto(String name, Long tachometer, VehicleTypeDto type) {
+        this.name = name;
+        this.tachometer = tachometer;
+        this.type = type;
+    }
+        
     public VehicleDto()
     {
     }

@@ -18,6 +18,11 @@ public class VehicleTypeDto
         this.maxKm = maxKm;
     }
 
+    public VehicleTypeDto(Long maxKm) {
+        this.maxKm = maxKm;
+    }
+    
+
     public VehicleTypeDto()
     {
     }
