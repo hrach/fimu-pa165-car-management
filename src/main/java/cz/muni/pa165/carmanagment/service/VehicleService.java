@@ -6,16 +6,27 @@
 
 package cz.muni.pa165.carmanagment.service;
 
-import cz.muni.pa165.carmanagment.model.Vehicle;
+import cz.muni.pa165.carmanagment.dto.RideDto;
+import cz.muni.pa165.carmanagment.dto.VehicleDto;
+import java.util.List;
 
 /**
  *
  * @author Jakub Marecek <xmarec at gmail.com>
  */
-class VehicleService {
+public interface VehicleService {
 
-    static Vehicle findById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void create(VehicleDto v);
+
+    public void delete(Long id);
+
+    public void update(VehicleDto v);
     
+    public VehicleDto findById(Long id);
+    
+    public List<VehicleDto> findAll();   
+    
+    public List<VehicleDto> getAvailableVehicles();
+    
+    public List<RideDto> getRidesForVehicle(Long id);
 }

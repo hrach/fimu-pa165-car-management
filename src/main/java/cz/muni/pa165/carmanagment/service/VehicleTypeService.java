@@ -20,5 +20,7 @@ public interface VehicleTypeService
 
     public VehicleTypeDto findById(Long id);
 
-    public List<VehicleTypeDto> findAll();    
+    public List<VehicleTypeDto> findAll();   
+    
+    public List<VehicleDto> getVehiclesForType(Long id);
 }
