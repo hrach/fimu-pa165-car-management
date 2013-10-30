@@ -14,5 +14,9 @@ public class VehicleDaoImpl extends GeneralDaoImpl<Long, Vehicle> {
     public VehicleDaoImpl(EntityManager em) {
         super(em);
     }
-    
+
+    public VehicleDaoImpl() {
+        super();
+    }
+        
 }

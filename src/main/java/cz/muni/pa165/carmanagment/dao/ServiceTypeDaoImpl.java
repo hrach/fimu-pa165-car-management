@@ -14,5 +14,9 @@ public class ServiceTypeDaoImpl extends GeneralDaoImpl<Long, ServiceType> {
     public ServiceTypeDaoImpl(EntityManager em) {
         super(em);
     }
+
+    public ServiceTypeDaoImpl() {
+        super();
+    }
     
 }

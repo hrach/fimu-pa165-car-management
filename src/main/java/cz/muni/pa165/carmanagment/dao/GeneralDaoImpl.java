@@ -22,14 +22,19 @@ public abstract class GeneralDaoImpl<K, E> implements GeneralDao<K, E> {
     private EntityManager em;
 
     
-    public GeneralDaoImpl(EntityManager em) {
+    public GeneralDaoImpl(){
+        ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
+        this.entityClass = (Class<E>) genericSuperclass.getActualTypeArguments()[1];        
+    }    
+    
+    public GeneralDaoImpl(EntityManager em) {        
+        this();
+        
         if (em == null) {
             throw new IllegalArgumentException("Parameter em is null");
         }
         
-        ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
-        this.entityClass = (Class<E>) genericSuperclass.getActualTypeArguments()[1];
-        this.em = em;
+        this.em = em;        
     }
 
     @Override

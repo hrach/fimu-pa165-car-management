@@ -15,4 +15,7 @@ public class EmployeeDaoImpl extends GeneralDaoImpl<Long, Employee> {
         super(em);        
     }
 
+    public EmployeeDaoImpl() {
+        super();
+    }       
 }

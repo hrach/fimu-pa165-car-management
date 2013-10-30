@@ -15,4 +15,7 @@ public class RideDaoImpl extends GeneralDaoImpl<Long, Ride> {
         super(em);        
     }
 
+    public RideDaoImpl() {
+        super();
+    }   
 }

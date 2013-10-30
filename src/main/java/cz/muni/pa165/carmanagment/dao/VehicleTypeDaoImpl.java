@@ -15,4 +15,8 @@ public class VehicleTypeDaoImpl extends GeneralDaoImpl<Long, VehicleType> {
         super(em);
     }
     
+    public VehicleTypeDaoImpl() {
+        super();
+    }
+    
 }

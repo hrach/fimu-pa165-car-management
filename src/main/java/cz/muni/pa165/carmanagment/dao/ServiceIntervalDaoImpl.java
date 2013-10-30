@@ -14,5 +14,8 @@ public class ServiceIntervalDaoImpl extends GeneralDaoImpl<Long, ServiceInterval
     public ServiceIntervalDaoImpl(EntityManager em) {
         super(em);
     }
-    
+
+    public ServiceIntervalDaoImpl() {
+        super();
+    }            
 }
