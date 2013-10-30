@@ -24,6 +24,9 @@ public class ServiceTypeDto {
         this.name = name;
     }
 
+    public ServiceTypeDto() {
+    }        
+
     public Long getId() {
         return id;
     }
