@@ -24,9 +24,7 @@ public interface VehicleService {
     
     public VehicleDto findById(Long id);
     
-    public List<VehicleDto> findAll();   
-    
-    public List<VehicleDto> getAvailableVehicles();
+    public List<VehicleDto> findAll();       
     
     public List<RideDto> getRidesForVehicle(Long id);
 }

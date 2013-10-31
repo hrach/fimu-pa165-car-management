@@ -15,9 +15,9 @@ import java.util.List;
  *
  * @author zvonicek
  */
-class ServiceTypeConverter {
+public class ServiceTypeConverter {
 
-    static ServiceTypeDto entityToDto(ServiceType entity) {
+    public static ServiceTypeDto entityToDto(ServiceType entity) {
         if (entity == null)
             throw new IllegalArgumentException("attribute entity is null");
         
@@ -28,7 +28,7 @@ class ServiceTypeConverter {
         return dto;      
     }
 
-    static ServiceType dtoToEntity(ServiceTypeDto dto) {
+    public static ServiceType dtoToEntity(ServiceTypeDto dto) {
         if (dto == null)
             throw new IllegalArgumentException("attribute dto is null");
         

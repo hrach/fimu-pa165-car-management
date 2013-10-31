@@ -1,9 +1,12 @@
 
 package cz.muni.pa165.carmanagment.service;
 
+import cz.muni.pa165.carmanagment.converter.VehicleConverter;
 import cz.muni.pa165.carmanagment.converter.VehicleTypeConverter;
 import cz.muni.pa165.carmanagment.dao.VehicleTypeDaoImpl;
+import cz.muni.pa165.carmanagment.dto.VehicleDto;
 import cz.muni.pa165.carmanagment.dto.VehicleTypeDto;
+import cz.muni.pa165.carmanagment.model.Vehicle;
 import cz.muni.pa165.carmanagment.model.VehicleType;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +22,7 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
 {
     @Autowired
     private VehicleTypeDaoImpl dao;
-
+    
     @Transactional
     @Override    
     public void create(VehicleTypeDto type) {
@@ -62,5 +65,19 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
     @Override    
     public List<VehicleTypeDto> findAll() {
         return VehicleTypeConverter.entityToDto(dao.findAll());
-    }        
+    }     
+    
+    @Transactional
+    @Override
+    public List<VehicleDto> getVehiclesForType(Long id)
+    {
+        if (id == null)
+            throw new IllegalArgumentException("attribute id is null");
+        
+        VehicleType t = dao.findById(id);
+        
+        List<Vehicle> vehicles = t.getVehicles();
+        
+        return VehicleConverter.entityToDto(vehicles);
+    }
 }
