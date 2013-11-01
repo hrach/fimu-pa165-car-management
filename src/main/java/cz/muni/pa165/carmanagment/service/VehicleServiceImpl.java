@@ -54,14 +54,12 @@ public class VehicleServiceImpl implements VehicleService {
     
     @Transactional
     @Override
-    public Vehicle update(VehicleDto v) {
+    public void update(VehicleDto v) {
         if (v == null)
             throw new IllegalArgumentException("attribute type is null");
         
         Vehicle entity = VehicleConverter.dtoToEntity(v);
         dao.update(entity);
-        
-        return entity;
     }
 
     @Transactional

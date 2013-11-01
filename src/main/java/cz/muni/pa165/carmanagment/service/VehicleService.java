@@ -21,7 +21,7 @@ public interface VehicleService {
 
     public void delete(Long id);
 
-    public Vehicle update(VehicleDto v);
+    public void update(VehicleDto v);
     
     public VehicleDto findById(Long id);
     
