@@ -14,14 +14,16 @@ import junit.framework.TestCase;
  */
 public class RideConverterTest extends TestCase {
     private Vehicle vehicle;
-    private Date date;
+    private Date dates;
+    private Date datee;
     private Employee employee;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
         vehicle = new Vehicle();
-        date = new Date(2013, 11, 20);
+        dates = new Date(2013, 11, 20);
+        datee = new Date(2013, 11, 21);
         employee = e(1, "Jan", "Skrasek");
     }
 
@@ -65,13 +67,13 @@ public class RideConverterTest extends TestCase {
     }
 
     private Ride r (int i, int s, int e) {
-        Ride r = new Ride(date, date, (long) s, (long) e, "", vehicle, employee);
+        Ride r = new Ride(dates, datee, (long) s, (long) e, "", vehicle, employee);
         r.setId((long) i);
         return r;
     }
     
     private RideDto rdto (int i, int s, int e) {
-        return new RideDto((long) i, date, date, (long) s, (long) e, "", VehicleConverter.entityToDto(vehicle), EmployeeConverter.entityToDto(employee));
+        return new RideDto((long) i, dates, datee, (long) s, (long) e, "", VehicleConverter.entityToDto(vehicle), EmployeeConverter.entityToDto(employee));
     }
 
     private Employee e (int i, String f, String l) {
