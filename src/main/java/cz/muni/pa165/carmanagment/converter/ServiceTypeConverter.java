@@ -50,5 +50,18 @@ public class ServiceTypeConverter {
         }
         
         return list;
-    }        
+    }      
+    
+    public static List<ServiceType> dtoToEntity(List<ServiceTypeDto> entities) {
+        if (entities == null)
+            return null;
+        
+        List<ServiceType> list = new ArrayList<ServiceType>();
+        for (ServiceTypeDto type : entities) {
+            list.add(ServiceTypeConverter.dtoToEntity(type));
+        }
+        
+        return list;
+    }  
+
 }
