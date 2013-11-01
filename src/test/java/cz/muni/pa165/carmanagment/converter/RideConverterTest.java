@@ -1,6 +1,4 @@
 package cz.muni.pa165.carmanagment.converter;
-
-import cz.muni.pa165.carmanagment.dto.EmployeeDto;
 import cz.muni.pa165.carmanagment.dto.RideDto;
 import cz.muni.pa165.carmanagment.model.Employee;
 import cz.muni.pa165.carmanagment.model.Ride;
@@ -10,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 import static junit.framework.Assert.assertEquals;
 import junit.framework.TestCase;
-import org.apache.derby.client.am.DateTime;
 
 /**
  * @author skrasek
