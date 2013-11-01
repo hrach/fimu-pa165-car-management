@@ -45,4 +45,17 @@ public class VehicleTypeConverter {
         
         return entity;
     }
+    
+    public static List<VehicleType> dtoToEntity(List<VehicleTypeDto> entities) {
+        if (entities == null)
+            return null;
+        
+        List<VehicleType> list = new ArrayList<VehicleType>();
+        for (VehicleTypeDto vehicleType : entities) {
+            list.add(VehicleTypeConverter.dtoToEntity(vehicleType));
+        }
+
+        return list;
+    }
+
 }
