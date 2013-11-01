@@ -35,7 +35,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public Vehicle create(VehicleDto v) {
         if (v == null) {
-            throw new IllegalArgumentException("attribute v is null");
+            throw new NullPointerException("v");
         }
 
         Vehicle entity = VehicleConverter.dtoToEntity(v);
@@ -48,7 +48,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Override    
     public void delete(Long id) {
         if (id == null)
-            throw new IllegalArgumentException("attribute id is null");
+            throw new NullPointerException("id");
         
         dao.remove(dao.findById(id));
     }
@@ -57,7 +57,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public void update(VehicleDto v) {
         if (v == null)
-            throw new IllegalArgumentException("attribute type is null");
+            throw new NullPointerException("v");
         
         Vehicle entity = VehicleConverter.dtoToEntity(v);
         dao.update(entity);
@@ -67,7 +67,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Override    
     public VehicleDto findById(Long id) {
         if (id == null)
-            throw new IllegalArgumentException("attribute id is null");
+            throw new NullPointerException("id");
         
         return VehicleConverter.entityToDto(dao.findById(id));    
     }
@@ -82,7 +82,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Override    
     public List<RideDto> getRidesForVehicle(Long id) {
         if (id == null)
-            throw new IllegalArgumentException("attribute id is null");        
+            throw new NullPointerException("id");
         
         Vehicle v = dao.findById(id);
         
@@ -94,7 +94,7 @@ public class VehicleServiceImpl implements VehicleService {
 
     public List<ServiceIntervalDto> getServiceIntervalsForVehicle(Long id) {
         if (id == null)
-            throw new IllegalArgumentException("attribute id is null");        
+            throw new NullPointerException("id");
         
         Vehicle v = dao.findById(id);
         

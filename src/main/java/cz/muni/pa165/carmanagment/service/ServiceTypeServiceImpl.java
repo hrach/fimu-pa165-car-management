@@ -29,7 +29,7 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
     @Override        
     public ServiceType create(ServiceTypeDto type) {
         if (type == null)
-            throw new IllegalArgumentException("attribute type is null");
+            throw new NullPointerException("type");
         
         ServiceType entity = ServiceTypeConverter.dtoToEntity(type);
         dao.persist(entity);
@@ -41,7 +41,7 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
     @Override        
     public void delete(Long id) {
         if (id == null)
-            throw new IllegalArgumentException("attribute id is null");
+            throw new NullPointerException("id");
         
         dao.remove(dao.findById(id));
     }
@@ -50,7 +50,7 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
     @Override        
     public void update(ServiceTypeDto type) {
         if (type == null)
-            throw new IllegalArgumentException("attribute type is null");
+            throw new NullPointerException("type");
         
         ServiceType entity = ServiceTypeConverter.dtoToEntity(type);
         dao.update(entity);
@@ -60,7 +60,7 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
     @Override    
     public ServiceTypeDto findById(Long id) {
         if (id == null)
-            throw new IllegalArgumentException("attribute id is null");
+            throw new NullPointerException("id");
         
         return ServiceTypeConverter.entityToDto(dao.findById(id));
     }

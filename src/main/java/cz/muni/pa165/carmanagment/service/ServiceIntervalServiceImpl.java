@@ -24,7 +24,7 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
 
     public void create(ServiceIntervalDto serviceIntervalDto) {
         if (serviceIntervalDto == null) {
-            throw new IllegalArgumentException("Attribute serviceIntervalDto is null");
+            throw new NullPointerException("serviceIntervalDto");
         }
         
         ServiceInterval entity = ServiceIntervalConverter.dtoToEntity(serviceIntervalDto);
@@ -34,7 +34,7 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
 
     public void delete(Long id) {
         if (id == null){
-            throw new IllegalArgumentException("ID is null");
+            throw new NullPointerException("id");
         }
         
         dao.remove(dao.findById(id));
@@ -42,7 +42,7 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
 
     public void update(ServiceIntervalDto serviceIntervalDto) {
         if (serviceIntervalDto == null) {
-            throw new IllegalArgumentException("Attribute serviceIntervalDto is null");
+            throw new NullPointerException("serviceIntervalDto");
         }
         
         dao.update(ServiceIntervalConverter.dtoToEntity(serviceIntervalDto));
@@ -50,7 +50,7 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
 
     public ServiceIntervalDto findById(Long id) {
         if (id == null){
-            throw new IllegalArgumentException("ID is null");
+            throw new NullPointerException("id");
         }
         
         return ServiceIntervalConverter.entityToDto(dao.findById(id));
@@ -62,7 +62,7 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
 
     public void setIntervalAsDoneForId(Long id) {
         if (id == null){
-            throw new IllegalArgumentException("ID is null");
+            throw new NullPointerException("id");
         }
 
         ServiceInterval sid = dao.findById(id);

@@ -31,7 +31,7 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
     @Override    
     public VehicleType create(VehicleTypeDto type) {
         if (type == null)
-            throw new IllegalArgumentException("attribute type is null");
+            throw new NullPointerException("type");
         
         VehicleType entity = VehicleTypeConverter.dtoToEntity(type);
         dao.persist(entity);
@@ -43,7 +43,7 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
     @Override    
     public void delete(Long id) {
         if (id == null)
-            throw new IllegalArgumentException("attribute id is null");
+            throw new NullPointerException("id");
         
         dao.remove(dao.findById(id));
     }
@@ -52,7 +52,7 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
     @Override    
     public void update(VehicleTypeDto type) {
         if (type == null)
-            throw new IllegalArgumentException("attribute type is null");
+            throw new NullPointerException("type");
         
         VehicleType entity = VehicleTypeConverter.dtoToEntity(type);
         dao.update(entity);
@@ -62,7 +62,7 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
     @Override    
     public VehicleTypeDto findById(Long id) {
         if (id == null)
-            throw new IllegalArgumentException("attribute id is null");
+            throw new NullPointerException("id");
         
         return VehicleTypeConverter.entityToDto(dao.findById(id));
     }
@@ -78,7 +78,7 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
     public List<VehicleDto> getVehiclesForType(Long id)
     {
         if (id == null)
-            throw new IllegalArgumentException("attribute id is null");
+            throw new NullPointerException("id");
         
         VehicleType t = dao.findById(id);
         

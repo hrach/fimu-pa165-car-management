@@ -24,7 +24,7 @@ public class RideServiceImpl implements RideService {
 
     public void create(RideDto rideDto) {
         if (rideDto == null) {
-            throw new IllegalArgumentException("Attribute rideDto is null");
+            throw new NullPointerException("rideDto");
         }
         
         Ride entity = RideConverter.dtoToEntity(rideDto);
@@ -34,7 +34,7 @@ public class RideServiceImpl implements RideService {
 
     public void delete(Long id) {
         if (id == null){
-            throw new IllegalArgumentException("ID is null");
+            throw new NullPointerException("id");
         }
         
         dao.remove(dao.findById(id));
@@ -42,7 +42,7 @@ public class RideServiceImpl implements RideService {
 
     public void update(RideDto rideDto) {
         if (rideDto == null) {
-            throw new IllegalArgumentException("Attribute rideDto is null");
+            throw new NullPointerException("rideDto");
         }
         
         dao.update(RideConverter.dtoToEntity(rideDto));
@@ -50,7 +50,7 @@ public class RideServiceImpl implements RideService {
 
     public RideDto findById(Long id) {
         if (id == null){
-            throw new IllegalArgumentException("ID is null");
+            throw new NullPointerException("id");
         }
         
         return RideConverter.entityToDto(dao.findById(id));
