@@ -5,6 +5,7 @@
 package cz.muni.pa165.carmanagment.service;
 
 import cz.muni.pa165.carmanagment.dto.ServiceTypeDto;
+import cz.muni.pa165.carmanagment.model.ServiceType;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 interface ServiceTypeService {
 
-    public void create(ServiceTypeDto type);
+    public ServiceType create(ServiceTypeDto type);
 
     public void delete(Long id);
 

@@ -27,12 +27,14 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
     
     @Transactional
     @Override        
-    public void create(ServiceTypeDto type) {
+    public ServiceType create(ServiceTypeDto type) {
         if (type == null)
             throw new IllegalArgumentException("attribute type is null");
         
         ServiceType entity = ServiceTypeConverter.dtoToEntity(type);
         dao.persist(entity);
+        
+        return entity;
     }
 
     @Transactional
