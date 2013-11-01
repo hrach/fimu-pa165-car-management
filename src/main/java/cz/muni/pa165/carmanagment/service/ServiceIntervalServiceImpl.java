@@ -21,6 +21,10 @@ import org.springframework.stereotype.Service;
 public class ServiceIntervalServiceImpl implements ServiceIntervalService {
     
     private ServiceIntervalDaoImpl dao;
+    
+    public void setDao(ServiceIntervalDaoImpl dao) {
+        this.dao = dao;
+    }
 
     public void create(ServiceIntervalDto serviceIntervalDto) {
         if (serviceIntervalDto == null) {
