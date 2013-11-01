@@ -7,6 +7,7 @@
 package cz.muni.pa165.carmanagment.service;
 
 import cz.muni.pa165.carmanagment.dto.RideDto;
+import cz.muni.pa165.carmanagment.model.Ride;
 import java.util.List;
 import org.springframework.stereotype.Service;
 

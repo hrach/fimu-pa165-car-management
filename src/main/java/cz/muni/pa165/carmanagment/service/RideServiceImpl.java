@@ -17,6 +17,10 @@ import org.springframework.stereotype.Service;
 public class RideServiceImpl implements RideService {
     
     private RideDaoImpl dao;
+    
+    public void setRideDao(RideDaoImpl rideDao) {
+        this.dao = rideDao;
+    }
 
     public void create(RideDto rideDto) {
         if (rideDto == null) {
