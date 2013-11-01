@@ -19,7 +19,7 @@ public class ServiceIntervalConverter {
     
     public static ServiceIntervalDto entityToDto(ServiceInterval entity) {
         if (entity == null){
-            throw new IllegalArgumentException("ServiceIntervalConverter entityToDto - attribute entity is null");
+            return null;
         }
         
         ServiceIntervalDto dto = new ServiceIntervalDto();
@@ -36,7 +36,7 @@ public class ServiceIntervalConverter {
     
     public static List<ServiceIntervalDto> entityToDto(List<ServiceInterval> entities) {
         if (entities == null){
-            throw new IllegalArgumentException("ServiceIntervalConverter entityToDto - attribute entities is null");
+            return null;
         }
         
         List<ServiceIntervalDto> list = new ArrayList<ServiceIntervalDto>();
@@ -49,7 +49,7 @@ public class ServiceIntervalConverter {
 
     public static ServiceInterval dtoToEntity(ServiceIntervalDto dto) {
         if (dto == null){
-            throw new IllegalArgumentException("ServiceIntervalConvertor dtoToEntity - attribute dto is null");
+            return null;
         }
         
         ServiceInterval entity = new ServiceInterval();
@@ -66,7 +66,7 @@ public class ServiceIntervalConverter {
     
     public static List<ServiceInterval> dtoToEntity (List<ServiceIntervalDto> dtos){
         if (dtos == null){
-            throw new IllegalArgumentException("ServiceIntervalConvertor dtoToEntity - attribute dtos is null");
+            return null;
         }
         
         List<ServiceInterval> list = new ArrayList<ServiceInterval>();

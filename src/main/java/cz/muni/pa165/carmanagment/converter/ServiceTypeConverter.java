@@ -19,7 +19,7 @@ public class ServiceTypeConverter {
 
     public static ServiceTypeDto entityToDto(ServiceType entity) {
         if (entity == null)
-            throw new IllegalArgumentException("attribute entity is null");
+            return null;
         
         ServiceTypeDto dto = new ServiceTypeDto();
         dto.setId(entity.getId());
@@ -30,7 +30,7 @@ public class ServiceTypeConverter {
 
     public static ServiceType dtoToEntity(ServiceTypeDto dto) {
         if (dto == null)
-            throw new IllegalArgumentException("attribute dto is null");
+            return null;
         
         ServiceType entity = new ServiceType();
         entity.setId(dto.getId());
@@ -42,7 +42,7 @@ public class ServiceTypeConverter {
 
     public static List<ServiceTypeDto> entityToDto(List<ServiceType> entities) {
         if (entities == null)
-            throw new IllegalArgumentException("attribute entities is null");
+            return null;
         
         List<ServiceTypeDto> list = new ArrayList<ServiceTypeDto>();
         for (ServiceType type : entities) {

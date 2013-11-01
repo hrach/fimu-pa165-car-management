@@ -21,7 +21,7 @@ public class RideConverter {
     public static RideDto entityToDto (Ride entity){
         
         if (entity == null){
-            throw new IllegalArgumentException("RideConverter entityToDto - attribute entity is null");
+            return null;
         }
         
         RideDto dto = new RideDto();
@@ -42,7 +42,7 @@ public class RideConverter {
     
     public static List<RideDto> entityToDto (List<Ride> entities){
         if (entities == null){
-            throw new IllegalArgumentException("RideConverter entityToDto - attribute entities is null");
+            return null;
         }
         
         List<RideDto> list = new ArrayList<RideDto>();
@@ -55,7 +55,7 @@ public class RideConverter {
     
     public static Ride dtoToEntity(RideDto dto){
         if (dto == null){
-            throw new IllegalArgumentException("RideConverter dtoToEntity - attribute dto is null");
+            return null;
         }
         
         Ride entity = new Ride();
@@ -76,7 +76,7 @@ public class RideConverter {
     
     public static List<Ride> dtoToEntity (List<RideDto> dtos){
         if (dtos == null){
-            throw new IllegalArgumentException("RideConverter dtoToEntity - attribute dtos is null");
+            return null;
         }
         
         List<Ride> list = new ArrayList<Ride>();

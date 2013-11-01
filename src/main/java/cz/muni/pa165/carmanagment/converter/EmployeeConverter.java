@@ -19,7 +19,7 @@ public class EmployeeConverter {
     
     public static EmployeeDto entityToDto(Employee entity) {
         if (entity == null){
-            throw new IllegalArgumentException("EmployeeConverter entityToDto - attribute entity is null");
+            return null;
         }
         
         EmployeeDto dto = new EmployeeDto();
@@ -36,7 +36,7 @@ public class EmployeeConverter {
     
     public static List<EmployeeDto> entityToDto (List<Employee> entities){
         if (entities == null){
-            throw new IllegalArgumentException("EmployeeConverter entityToDto - attribute entities is null");
+            return null;
         }
         
         List<EmployeeDto> list = new ArrayList<EmployeeDto>();
@@ -49,7 +49,7 @@ public class EmployeeConverter {
     
     public static Employee dtoToEntity(EmployeeDto dto){
         if (dto == null){
-            throw new IllegalArgumentException("EmployeeConverter dtoToEntity - attribute dto is null");
+            return null;
         }
         
         Employee entity = new Employee();
@@ -65,7 +65,7 @@ public class EmployeeConverter {
     
     public static List<Employee> dtoToEntity (List<EmployeeDto> dtos){
         if (dtos == null){
-            throw new IllegalArgumentException("EmployeeConverter dtoToEntity - attribute dtos is null");
+            return null;
         }
         
         List<Employee> list = new ArrayList<Employee>();

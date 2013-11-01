@@ -20,7 +20,7 @@ public class VehicleConverter {
 
     public static Vehicle dtoToEntity(VehicleDto dto) {
         if (dto == null)
-            throw new IllegalArgumentException("attribute dto is null");
+            return null;
         
         Vehicle entity = new Vehicle();
         entity.setId(dto.getId());
@@ -33,7 +33,7 @@ public class VehicleConverter {
 
     public static VehicleDto entityToDto(Vehicle entity) {
         if (entity == null)
-            throw new IllegalArgumentException("attribute entity is null");
+            return null;
         
         VehicleDto dto = new VehicleDto();
         dto.setId(entity.getId());
@@ -46,7 +46,7 @@ public class VehicleConverter {
 
     public static List<VehicleDto> entityToDto(List<Vehicle> entities) {
         if (entities == null)
-            throw new IllegalArgumentException("attribute entities is null");
+            return null;
         
         List<VehicleDto> list = new ArrayList<VehicleDto>();
         for (Vehicle vehicle : entities) {
