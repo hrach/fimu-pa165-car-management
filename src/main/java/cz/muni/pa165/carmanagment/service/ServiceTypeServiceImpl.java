@@ -19,7 +19,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class ServiceTypeServiceImpl implements ServiceTypeService {
 
     @Autowired
-    private ServiceTypeDaoImpl dao;    
+    private ServiceTypeDaoImpl dao;
+    
+    public void setVehicleDao(ServiceTypeDaoImpl serviceTypeDao) {
+        this.dao = serviceTypeDao;
+    }
     
     @Transactional
     @Override        

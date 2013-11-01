@@ -23,6 +23,10 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
     @Autowired
     private VehicleTypeDaoImpl dao;
     
+    public void setVehicleDao(VehicleTypeDaoImpl vehicleTypeDao) {
+        this.dao = vehicleTypeDao;
+    }
+    
     @Transactional
     @Override    
     public void create(VehicleTypeDto type) {

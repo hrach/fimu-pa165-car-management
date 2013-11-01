@@ -6,6 +6,7 @@ package cz.muni.pa165.carmanagment.service;
 
 import cz.muni.pa165.carmanagment.converter.RideConverter;
 import cz.muni.pa165.carmanagment.converter.VehicleConverter;
+import cz.muni.pa165.carmanagment.dao.GeneralDao;
 import cz.muni.pa165.carmanagment.dao.VehicleDaoImpl;
 import cz.muni.pa165.carmanagment.dto.RideDto;
 import cz.muni.pa165.carmanagment.dto.VehicleDto;
@@ -23,7 +24,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class VehicleServiceImpl implements VehicleService {
 
     @Autowired
-    private VehicleDaoImpl dao;    
+    private VehicleDaoImpl dao;
+    
+    public void setVehicleDao(VehicleDaoImpl vehicleDao) {
+        this.dao = vehicleDao;
+    }
     
     @Transactional
     @Override
