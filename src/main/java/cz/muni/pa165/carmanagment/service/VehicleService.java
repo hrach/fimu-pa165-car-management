@@ -8,6 +8,7 @@ package cz.muni.pa165.carmanagment.service;
 
 import cz.muni.pa165.carmanagment.dto.RideDto;
 import cz.muni.pa165.carmanagment.dto.VehicleDto;
+import cz.muni.pa165.carmanagment.model.Vehicle;
 import java.util.List;
 
 /**
@@ -16,11 +17,11 @@ import java.util.List;
  */
 public interface VehicleService {
 
-    public void create(VehicleDto v);
+    public Vehicle create(VehicleDto v);
 
     public void delete(Long id);
 
-    public void update(VehicleDto v);
+    public Vehicle update(VehicleDto v);
     
     public VehicleDto findById(Long id);
     
