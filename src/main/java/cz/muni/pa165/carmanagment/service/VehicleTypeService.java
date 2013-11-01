@@ -2,6 +2,7 @@ package cz.muni.pa165.carmanagment.service;
 
 import cz.muni.pa165.carmanagment.dto.VehicleDto;
 import cz.muni.pa165.carmanagment.dto.VehicleTypeDto;
+import cz.muni.pa165.carmanagment.model.VehicleType;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
 public interface VehicleTypeService
 {
 
-    public void create(VehicleTypeDto type);
+    public VehicleType create(VehicleTypeDto type);
 
     public void delete(Long id);
 

@@ -53,7 +53,7 @@ public class VehicleServiceTest extends TestCase {
         Vehicle vehicle = vehicleService.create(v);
         
         assertNotNull(vehicle.getId());
-        assertEquals(4, (long) vehicle.getId());
+        assertEquals(v.getId(), vehicle.getId());
     }
     
     public void testGetVehicle() {
