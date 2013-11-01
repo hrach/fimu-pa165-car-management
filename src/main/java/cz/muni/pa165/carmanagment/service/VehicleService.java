@@ -7,6 +7,7 @@
 package cz.muni.pa165.carmanagment.service;
 
 import cz.muni.pa165.carmanagment.dto.RideDto;
+import cz.muni.pa165.carmanagment.dto.ServiceIntervalDto;
 import cz.muni.pa165.carmanagment.dto.VehicleDto;
 import cz.muni.pa165.carmanagment.model.Vehicle;
 import java.util.List;
@@ -28,4 +29,6 @@ public interface VehicleService {
     public List<VehicleDto> findAll();       
     
     public List<RideDto> getRidesForVehicle(Long id);
+    
+    public List<ServiceIntervalDto> getServiceIntervalsForVehicle(Long id);    
 }

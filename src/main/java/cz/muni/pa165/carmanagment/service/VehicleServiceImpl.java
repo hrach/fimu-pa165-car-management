@@ -5,10 +5,11 @@
 package cz.muni.pa165.carmanagment.service;
 
 import cz.muni.pa165.carmanagment.converter.RideConverter;
+import cz.muni.pa165.carmanagment.converter.ServiceIntervalConverter;
 import cz.muni.pa165.carmanagment.converter.VehicleConverter;
-import cz.muni.pa165.carmanagment.dao.GeneralDao;
 import cz.muni.pa165.carmanagment.dao.VehicleDaoImpl;
 import cz.muni.pa165.carmanagment.dto.RideDto;
+import cz.muni.pa165.carmanagment.dto.ServiceIntervalDto;
 import cz.muni.pa165.carmanagment.dto.VehicleDto;
 import cz.muni.pa165.carmanagment.model.Vehicle;
 import java.util.List;
@@ -85,4 +86,12 @@ public class VehicleServiceImpl implements VehicleService {
         Vehicle v = dao.findById(id);
         return RideConverter.entityToDto(v.getRides());        
     }   
+
+    public List<ServiceIntervalDto> getServiceIntervalsForVehicle(Long id) {
+        if (id == null)
+            throw new IllegalArgumentException("attribute id is null");        
+        
+        Vehicle v = dao.findById(id);
+        return ServiceIntervalConverter.entityToDto(v.getServiceIntervals());        
+    }
 }

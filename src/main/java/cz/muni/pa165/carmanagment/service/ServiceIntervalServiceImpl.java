@@ -60,27 +60,6 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
         return ServiceIntervalConverter.entityToDto(dao.findAll());
     }
 
-    public List<ServiceIntervalDto> getServiceIntervalsForVehicle(Long id) {
-        VehicleDto v = VehicleConverter.entityToDto(VehicleService.findById(id));
-        
-        if (v == null){
-            throw new IllegalArgumentException("Vehicle with given ID does not exist");
-        }
-        
-        List<ServiceIntervalDto> allIntervals = new ArrayList<ServiceIntervalDto>();
-        allIntervals = ServiceIntervalConverter.entityToDto(dao.findAll());
-        
-        List<ServiceIntervalDto> vehicleIntervals = new ArrayList<ServiceIntervalDto>();
-
-        for (ServiceIntervalDto serviceIntervalDto : allIntervals) {
-            if (serviceIntervalDto.getVehicle().equals(v)) {
-                vehicleIntervals.add(serviceIntervalDto);
-            }
-        }
-       
-        return vehicleIntervals;
-    }
-
     public void setIntervalAsDoneForId(Long id) {
         if (id == null){
             throw new IllegalArgumentException("ID is null");

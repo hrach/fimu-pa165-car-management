@@ -27,8 +27,6 @@ public interface ServiceIntervalService {
     public ServiceIntervalDto findById(Long id);
 
     public List<ServiceIntervalDto> findAll(); 
-    
-    public List<ServiceIntervalDto> getServiceIntervalsForVehicle(Long id);
-    
+        
     public void setIntervalAsDoneForId(Long id);
 }
