@@ -69,7 +69,8 @@ public class VehicleServiceImpl implements VehicleService {
         if (id == null)
             throw new IllegalArgumentException("attribute id is null");
         
-        return VehicleConverter.entityToDto(dao.findById(id));    }
+        return VehicleConverter.entityToDto(dao.findById(id));    
+    }
     
     @Transactional
     @Override
@@ -84,6 +85,10 @@ public class VehicleServiceImpl implements VehicleService {
             throw new IllegalArgumentException("attribute id is null");        
         
         Vehicle v = dao.findById(id);
+        
+        if (v == null)
+            return null;
+        
         return RideConverter.entityToDto(v.getRides());        
     }   
 
@@ -92,6 +97,10 @@ public class VehicleServiceImpl implements VehicleService {
             throw new IllegalArgumentException("attribute id is null");        
         
         Vehicle v = dao.findById(id);
+        
+        if (v == null)
+            return null;
+        
         return ServiceIntervalConverter.entityToDto(v.getServiceIntervals());        
     }
 }

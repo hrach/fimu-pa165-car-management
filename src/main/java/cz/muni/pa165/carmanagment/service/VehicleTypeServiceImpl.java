@@ -82,6 +82,9 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
         
         VehicleType t = dao.findById(id);
         
+        if (t == null)
+            return null;
+            
         List<Vehicle> vehicles = t.getVehicles();
         
         return VehicleConverter.entityToDto(vehicles);
