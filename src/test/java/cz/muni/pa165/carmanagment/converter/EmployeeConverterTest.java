@@ -12,10 +12,9 @@ import junit.framework.TestCase;
 public class EmployeeConverterTest extends TestCase {
 
     public void testEntityToDto() {
-        Employee testE = new Employee("Jan", "Skrasek", 2);
-        testE.setId((long) 5);
+        Employee testE = e(5, "Jan", "Skrasek");
 
-        EmployeeDto testEdto = new EmployeeDto((long) 5, "Jan", "Skrasek", 2);
+        EmployeeDto testEdto = new EmployeeDto((long) 5, "Jan", "Skrasek", Employee.ROLE_MANAGER);
         EmployeeDto convertedEdto = EmployeeConverter.entityToDto(testE);
 
         assertEquals(testEdto.getId(), convertedEdto.getId());
@@ -26,10 +25,9 @@ public class EmployeeConverterTest extends TestCase {
     }
 
     public void testDtoToEntity() {
-        Employee testE = new Employee("Jan", "Skrasek", 2);
-        testE.setId((long) 5);
+        Employee testE = e(5, "Jan", "Skrasek");
 
-        EmployeeDto testEdto = new EmployeeDto((long) 5, "Jan", "Skrasek", 2);
+        EmployeeDto testEdto = new EmployeeDto((long) 5, "Jan", "Skrasek", Employee.ROLE_MANAGER);
         Employee convertedE = EmployeeConverter.dtoToEntity(testEdto);
 
         assertEquals(testE.getId(), convertedE.getId());
