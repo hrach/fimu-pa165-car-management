@@ -8,105 +8,93 @@ import cz.muni.pa165.carmanagment.dao.VehicleDaoImpl;
 import cz.muni.pa165.carmanagment.dao.VehicleTypeDaoImpl;
 import cz.muni.pa165.carmanagment.dto.VehicleDto;
 import cz.muni.pa165.carmanagment.dto.VehicleTypeDto;
+import cz.muni.pa165.carmanagment.model.Vehicle;
 import cz.muni.pa165.carmanagment.model.VehicleType;
 import java.util.List;
 import static org.mockito.Mockito.*;
 import static junit.framework.Assert.*;
 import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
 
 /**
  *
  * @author tomasbobek
  */
+@RunWith(MockitoJUnitRunner.class)
 public class VehicleTypeServiceTest extends TestCase {
-    
-    private VehicleTypeDaoImpl vehicleTypeDao;
-    private VehicleTypeServiceImpl vehicleTypeService;
-    
-    private VehicleDaoImpl vehicleDao;
-    private VehicleServiceImpl vehicleService;
-    
-    @Override
+
+    private VehicleTypeServiceImpl vehicleTypeService;    
+    @Mock private VehicleTypeDaoImpl vehicleTypeDao;    
+
+    @Before
     public void setUp() throws Exception {
         super.setUp();
         
-        vehicleTypeDao = mock(VehicleTypeDaoImpl.class);
         vehicleTypeService = new VehicleTypeServiceImpl();
         vehicleTypeService.setVehicleTypeDao(vehicleTypeDao);
-        
-        vehicleDao = mock(VehicleDaoImpl.class);
-        vehicleService = new VehicleServiceImpl();
-        vehicleService.setVehicleDao(vehicleDao);
-    }
+    }        
     
-    @Override
-    public void tearDown() throws Exception {
-        super.tearDown();
-    }
-    
-    public void testCreateVehicleType() {
+    @Test
+    public void testCreate() {
         VehicleTypeDto t = new VehicleTypeDto((long) 3, (long) 200000);
         
         VehicleType type = vehicleTypeService.create(t);
         
-        assertNotNull(type.getId());
-        assertEquals(t.getId(), type.getId());
+        ArgumentCaptor<VehicleType> captor = ArgumentCaptor.forClass(VehicleType.class);        
+        Mockito.verify(vehicleTypeDao)
+               .persist(captor.capture());        
     }
     
-    public void testGetVehicleType() {
-        VehicleTypeDto t = new VehicleTypeDto((long) 95000);
-        VehicleTypeDto t1 = new VehicleTypeDto((long) 125000);
-        VehicleTypeDto t2 = new VehicleTypeDto((long) 150000);
-        
-        vehicleTypeService.create(t);
-        vehicleTypeService.create(t1);
-        vehicleTypeService.create(t2);
-        
-        assertEquals(t, vehicleTypeService.findById(t.getId()));
-        assertEquals(t1.getId(), vehicleTypeService.findById(t1.getId()).getId());
-        assertEquals(t2.getMaxKm(), vehicleTypeService.findById(t2.getId()).getMaxKm());
-        
-        List<VehicleTypeDto> types = vehicleTypeService.findAll();
-        assertEquals(3, types.size());
-        assertTrue(types.contains(t));
-        assertTrue(types.contains(t1));
-        assertTrue(types.contains(t2));
+    @Test
+    public void testCreateWithNull() {
+        try {
+            vehicleTypeService.create(null);
+            fail();
+        } catch (Exception e) {
+            assertEquals(NullPointerException.class, e.getClass());
+        }
+    }    
+    
+    @Test
+    public void testFindAll() {          
+        vehicleTypeService.findAll();        
+        Mockito.verify(vehicleTypeDao).findAll();
     }
     
-    public void testGetTypeVehicles() {
-        VehicleTypeDto t = new VehicleTypeDto((long) 3, (long) 200000);
-        VehicleDto v = new VehicleDto((long) 4, "Nissan GT-R", (long) 32000, t);
-        VehicleDto v1 = new VehicleDto((long) 7, "Mercedes CLS AMG", (long) 14300, t);
+    @Test
+    public void testFindById() {        
+        vehicleTypeService.findById((long)2);
         
-        vehicleTypeService.create(t);
-        vehicleService.create(v);
-        vehicleService.create(v1);
-        
-        List<VehicleDto> vehicles = vehicleTypeService.getVehiclesForType(t.getId());
-        assertEquals(2, vehicles.size());
-        assertTrue(vehicles.contains(v));
-        assertTrue(vehicles.contains(v1));
+        Mockito.verify(vehicleTypeDao)
+               .findById((long)2);
     }
     
-    public void testUpdateVehicleType() {
+    @Test
+    public void testUpdate() {        
         VehicleTypeDto t = new VehicleTypeDto((long) 3, (long) 200000);
         
-        vehicleTypeService.create(t);
-        t.setMaxKm((long) 300000);
+        ArgumentCaptor<VehicleType> captor = ArgumentCaptor.forClass(VehicleType.class);
         vehicleTypeService.update(t);
-        VehicleTypeDto t1 = vehicleTypeService.findById(t.getId());
         
-        assertEquals(t, t1);
-        assertEquals(t.getMaxKm(), t1.getMaxKm());
+        Mockito.verify(vehicleTypeDao)
+               .update(captor.capture());       
     }
     
-    public void testDeleteVehicleType() {
+    @Test
+    public void testDelete() {
         VehicleTypeDto t = new VehicleTypeDto((long) 3, (long) 200000);
         
-        VehicleType type = vehicleTypeService.create(t);
-        Long typeId = type.getId();
-        vehicleTypeService.delete(typeId);
+        ArgumentCaptor<VehicleType> captor = ArgumentCaptor.forClass(VehicleType.class);
+        vehicleTypeService.delete(t.getId());
         
-        assertNull(vehicleTypeService.findById(typeId));
-    }
+        Mockito.verify(vehicleTypeDao)
+               .remove(captor.capture());
+
+    }                
 }
