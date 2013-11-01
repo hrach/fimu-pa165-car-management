@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package cz.muni.pa165.carmanagment.service;
 
@@ -17,29 +12,29 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
- *
  * @author Jakub Marecek <xmarec at gmail.com>
  */
-
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
      
     private EmployeeDaoImpl dao;
 
+    public void setDao(EmployeeDaoImpl dao) {
+        this.dao = dao;
+    }
+
     public void create(EmployeeDto employeeDto) {
-        
         if (employeeDto == null) {
-            throw new IllegalArgumentException("Attribute employeeDto is null");
+            throw new NullPointerException("employeeDto");
         }
         
         Employee entity = EmployeeConverter.dtoToEntity(employeeDto);
-        
         dao.persist(entity);        
     }
 
     public void delete(Long id) {
         if (id == null){
-            throw new IllegalArgumentException("ID is null");
+            throw new NullPointerException("id");
         }
         
         dao.remove(dao.findById(id));
@@ -47,7 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public void update(EmployeeDto employeeDto) {
         if (employeeDto == null) {
-            throw new IllegalArgumentException("Attribute employeeDto is null");
+            throw new NullPointerException("employeeDto");
         }
         
         dao.update(EmployeeConverter.dtoToEntity(employeeDto));        
@@ -55,7 +50,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public EmployeeDto findById(Long id) {
         if (id == null){
-            throw new IllegalArgumentException("ID is null");
+            throw new NullPointerException("id");
         }
         
         return EmployeeConverter.entityToDto(dao.findById(id));
