@@ -35,10 +35,10 @@ public class Vehicle implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     private VehicleType type;
     
-    @OneToMany(mappedBy = "ride", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
     private List<Ride> rides = new ArrayList<Ride>();    
 
-    @OneToMany(mappedBy = "serviceInterval", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
     private List<ServiceInterval> serviceIntervals = new ArrayList<ServiceInterval>();        
     
     public Vehicle() {
