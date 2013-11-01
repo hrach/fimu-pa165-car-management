@@ -66,7 +66,6 @@ public class ServiceTypeServiceTest extends TestCase {
     
     @Test
     public void testFindById() {        
-        ArgumentCaptor<ServiceType> captor = ArgumentCaptor.forClass(ServiceType.class);
         serviceTypeService.findById((long)2);
         
         Mockito.verify(serviceTypeDao)
