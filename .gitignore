@@ -16,3 +16,5 @@ nb-configuration.xml
 *.ear
 /target/
 derby.log
+/CarManagement-API/target/
+/CarManagement-impl/target/
