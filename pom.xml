@@ -16,6 +16,7 @@
     <modules>
     <module>CarManagement-API</module>
     <module>CarManagement-impl</module>
+    <module>CarManagement-web</module>
   </modules>    
     
 </project>

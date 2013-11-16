@@ -18,3 +18,4 @@ nb-configuration.xml
 derby.log
 /CarManagement-API/target/
 /CarManagement-impl/target/
+/CarManagement-web/target/
