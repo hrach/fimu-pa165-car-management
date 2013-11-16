@@ -29,13 +29,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Transactional
     @Override        
-    public void create(EmployeeDto employeeDto) {
+    public EmployeeDto create(EmployeeDto employeeDto) {
         if (employeeDto == null) {
             throw new NullPointerException("employeeDto");
         }
         
         Employee entity = EmployeeConverter.dtoToEntity(employeeDto);
-        dao.persist(entity);        
+        dao.persist(entity);   
+        
+        return EmployeeConverter.entityToDto(entity);
     }
 
     @Transactional

@@ -17,7 +17,7 @@ import java.util.List;
  */
 public interface VehicleService {
 
-    public void create(VehicleDto v);
+    public VehicleDto create(VehicleDto v);
 
     public void delete(Long id);
 

@@ -45,7 +45,7 @@ public class RideServiceTest extends TestCase {
         VehicleDto v = new VehicleDto((long) 4, "Nissan GT-R", (long) 32000, t);        
         RideDto r = new RideDto((long)1, null, null, (long)150000, (long)151000, "Pracovní cesta", v, e);
                 
-        rideService.create(r);
+        RideDto r2 = rideService.create(r);
         
         ArgumentCaptor<Ride> captor = ArgumentCaptor.forClass(Ride.class);        
         Mockito.verify(rideDao)
@@ -56,7 +56,7 @@ public class RideServiceTest extends TestCase {
     @Test
     public void testCreateWithNull() {
         try {
-            rideService.create(null);
+            RideDto r2 = rideService.create(null);
             fail();
         } catch (Exception e) {
             assertEquals(NullPointerException.class, e.getClass());

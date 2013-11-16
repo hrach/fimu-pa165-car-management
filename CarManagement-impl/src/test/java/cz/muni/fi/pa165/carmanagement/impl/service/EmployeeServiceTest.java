@@ -39,7 +39,7 @@ public class EmployeeServiceTest extends TestCase {
     public void testCreate() {
         EmployeeDto t = new EmployeeDto((long)1, "John", "Doe", 1);
                 
-        employeeService.create(t);
+        EmployeeDto t2 = employeeService.create(t);
         
         ArgumentCaptor<Employee> captor = ArgumentCaptor.forClass(Employee.class);        
         Mockito.verify(employeeDao)
@@ -50,7 +50,7 @@ public class EmployeeServiceTest extends TestCase {
     @Test
     public void testCreateWithNull() {
         try {
-            employeeService.create(null);
+            EmployeeDto t2 = employeeService.create(null);
             fail();
         } catch (Exception e) {
             assertEquals(NullPointerException.class, e.getClass());

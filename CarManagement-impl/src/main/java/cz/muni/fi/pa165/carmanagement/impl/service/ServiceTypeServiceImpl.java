@@ -28,12 +28,14 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
     
     @Transactional
     @Override        
-    public void create(ServiceTypeDto type) {
+    public ServiceTypeDto create(ServiceTypeDto type) {
         if (type == null)
             throw new NullPointerException("type");
         
         ServiceType entity = ServiceTypeConverter.dtoToEntity(type);
         dao.persist(entity);        
+        
+        return ServiceTypeConverter.entityToDto(entity);
     }
 
     @Transactional

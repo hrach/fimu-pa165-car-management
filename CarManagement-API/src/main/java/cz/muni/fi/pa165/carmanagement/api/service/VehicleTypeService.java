@@ -12,7 +12,7 @@ import java.util.List;
 public interface VehicleTypeService
 {
 
-    public void create(VehicleTypeDto type);
+    public VehicleTypeDto create(VehicleTypeDto type);
 
     public void delete(Long id);
 

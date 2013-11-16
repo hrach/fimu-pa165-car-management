@@ -39,7 +39,7 @@ public class ServiceTypeServiceTest extends TestCase {
     public void testCreate() {
         ServiceTypeDto t = new ServiceTypeDto((long)1, "Výměna oleje");
                 
-        serviceTypeService.create(t);
+        ServiceTypeDto t2 = serviceTypeService.create(t);
         
         ArgumentCaptor<ServiceType> captor = ArgumentCaptor.forClass(ServiceType.class);        
         Mockito.verify(serviceTypeDao)
@@ -50,7 +50,7 @@ public class ServiceTypeServiceTest extends TestCase {
     @Test
     public void testCreateWithNull() {
         try {
-            serviceTypeService.create(null);
+            ServiceTypeDto t2 = serviceTypeService.create(null);
             fail();
         } catch (Exception e) {
             assertEquals(NullPointerException.class, e.getClass());

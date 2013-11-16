@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ServiceTypeService {
 
-    public void create(ServiceTypeDto type);
+    public ServiceTypeDto create(ServiceTypeDto type);
 
     public void delete(Long id);
 

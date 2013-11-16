@@ -28,7 +28,7 @@ public class RideServiceImpl implements RideService {
 
     @Transactional
     @Override        
-    public void create(RideDto rideDto) {
+    public RideDto create(RideDto rideDto) {
         if (rideDto == null) {
             throw new NullPointerException("rideDto");
         }
@@ -36,6 +36,8 @@ public class RideServiceImpl implements RideService {
         Ride entity = RideConverter.dtoToEntity(rideDto);
         
         dao.persist(entity);
+        
+        return RideConverter.entityToDto(entity);
     }
 
     @Transactional

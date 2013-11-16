@@ -30,12 +30,14 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
     
     @Transactional
     @Override    
-    public void create(VehicleTypeDto type) {
+    public VehicleTypeDto create(VehicleTypeDto type) {
         if (type == null)
             throw new NullPointerException("type");
         
         VehicleType entity = VehicleTypeConverter.dtoToEntity(type);
         dao.persist(entity);
+        
+        return VehicleTypeConverter.entityToDto(entity);
     }
 
     @Transactional

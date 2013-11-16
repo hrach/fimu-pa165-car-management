@@ -34,13 +34,15 @@ public class VehicleServiceImpl implements VehicleService {
     
     @Transactional
     @Override
-    public void create(VehicleDto v) {
+    public VehicleDto create(VehicleDto v) {
         if (v == null) {
             throw new NullPointerException("v");
         }
 
         Vehicle entity = VehicleConverter.dtoToEntity(v);
         dao.persist(entity);        
+        
+        return VehicleConverter.entityToDto(entity);
     }
 
     @Transactional

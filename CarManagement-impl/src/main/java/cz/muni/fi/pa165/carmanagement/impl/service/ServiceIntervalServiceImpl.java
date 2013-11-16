@@ -29,7 +29,7 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
 
     @Transactional
     @Override        
-    public void create(ServiceIntervalDto serviceIntervalDto) {
+    public ServiceIntervalDto create(ServiceIntervalDto serviceIntervalDto) {
         if (serviceIntervalDto == null) {
             throw new NullPointerException("serviceIntervalDto");
         }
@@ -37,6 +37,8 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
         ServiceInterval entity = ServiceIntervalConverter.dtoToEntity(serviceIntervalDto);
         
         dao.persist(entity);
+        
+        return ServiceIntervalConverter.entityToDto(entity);
     }
 
     public void delete(Long id) {

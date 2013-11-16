@@ -39,7 +39,7 @@ public class VehicleTypeServiceTest extends TestCase {
     public void testCreate() {
         VehicleTypeDto t = new VehicleTypeDto((long) 3, (long) 200000);
         
-        vehicleTypeService.create(t);
+        VehicleTypeDto t2 = vehicleTypeService.create(t);
         
         ArgumentCaptor<VehicleType> captor = ArgumentCaptor.forClass(VehicleType.class);        
         Mockito.verify(vehicleTypeDao)
@@ -49,7 +49,7 @@ public class VehicleTypeServiceTest extends TestCase {
     @Test
     public void testCreateWithNull() {
         try {
-            vehicleTypeService.create(null);
+            VehicleTypeDto t2 = vehicleTypeService.create(null);
             fail();
         } catch (Exception e) {
             assertEquals(NullPointerException.class, e.getClass());

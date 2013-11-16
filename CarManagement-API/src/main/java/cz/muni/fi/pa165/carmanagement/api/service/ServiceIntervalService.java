@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ServiceIntervalService {
     
-    public void create(ServiceIntervalDto serviceIntervalDto);
+    public ServiceIntervalDto create(ServiceIntervalDto serviceIntervalDto);
 
     public void delete(Long id);
 

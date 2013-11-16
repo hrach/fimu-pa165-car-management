@@ -45,7 +45,7 @@ public class ServiceIntervalServiceTest extends TestCase {
         ServiceTypeDto st = new ServiceTypeDto((long)1, "Výměna oleje");        
         ServiceIntervalDto i = new ServiceIntervalDto((long)1, null, null, null, v, st);
                 
-        serviceIntervalService.create(i);
+        ServiceIntervalDto i2 = serviceIntervalService.create(i);
         
         ArgumentCaptor<ServiceInterval> captor = ArgumentCaptor.forClass(ServiceInterval.class);        
         Mockito.verify(serviceIntervalDao)
@@ -56,7 +56,7 @@ public class ServiceIntervalServiceTest extends TestCase {
     @Test
     public void testCreateWithNull() {
         try {
-            serviceIntervalService.create(null);
+            ServiceIntervalDto i2 = serviceIntervalService.create(null);
             fail();
         } catch (Exception e) {
             assertEquals(NullPointerException.class, e.getClass());

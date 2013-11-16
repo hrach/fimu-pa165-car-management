@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface RideService {
     
-    public void create(RideDto rideDto);
+    public RideDto create(RideDto rideDto);
 
     public void delete(Long id);
 

@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface EmployeeService {
     
-    public void create(EmployeeDto employeeDto);
+    public EmployeeDto create(EmployeeDto employeeDto);
 
     public void delete(Long id);
 
