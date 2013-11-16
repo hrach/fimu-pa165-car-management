@@ -12,17 +12,22 @@ import cz.muni.fi.pa165.carmanagement.impl.converter.RideConverter;
 import cz.muni.fi.pa165.carmanagement.impl.dao.RideDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.Ride;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class RideServiceImpl implements RideService {
     
+    @Autowired
     private RideDaoImpl dao;
     
     public void setRideDao(RideDaoImpl rideDao) {
         this.dao = rideDao;
     }
 
+    @Transactional
+    @Override        
     public void create(RideDto rideDto) {
         if (rideDto == null) {
             throw new NullPointerException("rideDto");
@@ -33,6 +38,8 @@ public class RideServiceImpl implements RideService {
         dao.persist(entity);
     }
 
+    @Transactional
+    @Override        
     public void delete(Long id) {
         if (id == null){
             throw new NullPointerException("id");
@@ -41,6 +48,8 @@ public class RideServiceImpl implements RideService {
         dao.remove(dao.findById(id));
     }
 
+    @Transactional
+    @Override     
     public void update(RideDto rideDto) {
         if (rideDto == null) {
             throw new NullPointerException("rideDto");
@@ -49,6 +58,8 @@ public class RideServiceImpl implements RideService {
         dao.update(RideConverter.dtoToEntity(rideDto));
     }
 
+    @Transactional
+    @Override        
     public RideDto findById(Long id) {
         if (id == null){
             throw new NullPointerException("id");
@@ -57,6 +68,8 @@ public class RideServiceImpl implements RideService {
         return RideConverter.entityToDto(dao.findById(id));
     }
 
+    @Transactional
+    @Override        
     public List<RideDto> findAll() {
         return RideConverter.entityToDto(dao.findAll());
     }

@@ -13,17 +13,22 @@ import cz.muni.fi.pa165.carmanagement.impl.dao.ServiceIntervalDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.ServiceInterval;
 import java.util.Date;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ServiceIntervalServiceImpl implements ServiceIntervalService {
     
+    @Autowired    
     private ServiceIntervalDaoImpl dao;
     
     public void setDao(ServiceIntervalDaoImpl dao) {
         this.dao = dao;
     }
 
+    @Transactional
+    @Override        
     public void create(ServiceIntervalDto serviceIntervalDto) {
         if (serviceIntervalDto == null) {
             throw new NullPointerException("serviceIntervalDto");
@@ -42,6 +47,8 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
         dao.remove(dao.findById(id));
     }
 
+    @Transactional
+    @Override    
     public void update(ServiceIntervalDto serviceIntervalDto) {
         if (serviceIntervalDto == null) {
             throw new NullPointerException("serviceIntervalDto");
@@ -50,6 +57,8 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
         dao.update(ServiceIntervalConverter.dtoToEntity(serviceIntervalDto));
     }
 
+    @Transactional
+    @Override        
     public ServiceIntervalDto findById(Long id) {
         if (id == null){
             throw new NullPointerException("id");
@@ -58,10 +67,14 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
         return ServiceIntervalConverter.entityToDto(dao.findById(id));
     }
 
+    @Transactional
+    @Override        
     public List<ServiceIntervalDto> findAll() {
         return ServiceIntervalConverter.entityToDto(dao.findAll());
     }
 
+    @Transactional
+    @Override        
     public void setIntervalAsDoneForId(Long id) {
         if (id == null){
             throw new NullPointerException("id");
