@@ -23,14 +23,8 @@
                 <table>
                     <c:forEach items="${items}" var="item">
                         <tr>
-                            <td><c:out value="${vacation.destination}" /></td>
-                        <td><c:out value="${vacation.startDate}" /></td>
-                        <td><c:out value="${vacation.endDate}" /></td>
-                        <td><c:out value="${vacation.price}" /></td>
-                        <td><c:out value="${vacation.reserved}" /> / <c:out value="${vacation.maxCapacity}" /></td>
-                        <td>
-                           s
-                        </td>
+                            <td><c:out value="${item.id}" /></td>
+                            <td><c:out value="${item.maxKm}" /></td>
                         </tr>
                     </c:forEach>
                 </table>

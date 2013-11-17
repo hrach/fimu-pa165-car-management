@@ -30,6 +30,8 @@ public class HomeController {
     public ModelAndView renderHome() {
         ModelAndView mav = new ModelAndView();        
         mav.addObject("items", vehicleType.findAll());
+        System.out.println(vehicleType.findAll().size());
+        
         mav.setViewName("index");
         return mav;
     }
