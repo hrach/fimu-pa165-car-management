@@ -4,7 +4,7 @@
  */
 package cz.muni.fi.pa165.carmanagement.web;
 
-import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleTypeDaoImpl;
+import cz.muni.fi.pa165.carmanagement.api.service.VehicleTypeService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
     
     @Autowired
-    private VehicleTypeDaoImpl vehicleType;
+    private VehicleTypeService vehicleType;
     
     public HomeController() {
     }
