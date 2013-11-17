@@ -16,7 +16,7 @@ public class App
         ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"META-INF/applicationContext.xml"});
          
         VehicleTypeService service = (VehicleTypeService)context.getBean("vehicleTypeService");
-        service.create(new VehicleTypeDto((long)320));        
+        VehicleTypeDto dto = service.create(new VehicleTypeDto((long)320));        
         
         System.out.println("Size: "+service.findAll().size());   
 
