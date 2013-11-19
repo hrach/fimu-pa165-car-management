@@ -20,6 +20,7 @@
 
         <div id="content">
                 <h3><spring:message code="home" /></h3>
+                <h4><spring:message code="outside" /></h4>
                 <table>
                     <c:forEach items="${items}" var="item">
                         <tr>
