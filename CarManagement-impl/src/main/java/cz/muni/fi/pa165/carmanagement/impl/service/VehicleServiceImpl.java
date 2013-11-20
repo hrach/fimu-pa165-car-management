@@ -12,6 +12,7 @@ import cz.muni.fi.pa165.carmanagement.impl.converter.RideConverter;
 import cz.muni.fi.pa165.carmanagement.impl.converter.ServiceIntervalConverter;
 import cz.muni.fi.pa165.carmanagement.impl.converter.VehicleConverter;
 import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleDaoImpl;
+import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleTypeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.Vehicle;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class VehicleServiceImpl implements VehicleService {
     @Autowired
     private VehicleDaoImpl dao;
     
+    @Autowired
+    private VehicleTypeDaoImpl typeDao;
+    
     public void setVehicleDao(VehicleDaoImpl vehicleDao) {
         this.dao = vehicleDao;
     }
@@ -38,8 +42,11 @@ public class VehicleServiceImpl implements VehicleService {
         if (v == null) {
             throw new NullPointerException("v");
         }
-
+        
         Vehicle entity = VehicleConverter.dtoToEntity(v);
+        entity.setId(null);
+        entity.setType(typeDao.findById(entity.getType().getId()));
+        
         dao.persist(entity);        
         
         return VehicleConverter.entityToDto(entity);

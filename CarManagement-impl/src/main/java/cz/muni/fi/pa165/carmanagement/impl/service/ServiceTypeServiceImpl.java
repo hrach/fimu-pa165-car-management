@@ -32,6 +32,8 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
         if (type == null)
             throw new NullPointerException("type");
         
+        type.setId(null);
+        
         ServiceType entity = ServiceTypeConverter.dtoToEntity(type);
         dao.persist(entity);        
         

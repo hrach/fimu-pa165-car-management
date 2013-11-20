@@ -34,6 +34,8 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
             throw new NullPointerException("serviceIntervalDto");
         }
         
+        serviceIntervalDto.setId(null);
+        
         ServiceInterval entity = ServiceIntervalConverter.dtoToEntity(serviceIntervalDto);
         
         dao.persist(entity);

@@ -9,7 +9,9 @@ package cz.muni.fi.pa165.carmanagement.impl.service;
 import cz.muni.fi.pa165.carmanagement.api.dto.RideDto;
 import cz.muni.fi.pa165.carmanagement.api.service.RideService;
 import cz.muni.fi.pa165.carmanagement.impl.converter.RideConverter;
+import cz.muni.fi.pa165.carmanagement.impl.dao.EmployeeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.dao.RideDaoImpl;
+import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.Ride;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,12 @@ public class RideServiceImpl implements RideService {
     @Autowired
     private RideDaoImpl dao;
     
+    @Autowired
+    private EmployeeDaoImpl employeeDao;
+    
+    @Autowired
+    private VehicleDaoImpl vehicleDao;
+    
     public void setRideDao(RideDaoImpl rideDao) {
         this.dao = rideDao;
     }
@@ -32,9 +40,12 @@ public class RideServiceImpl implements RideService {
         if (rideDto == null) {
             throw new NullPointerException("rideDto");
         }
-        
+                
         Ride entity = RideConverter.dtoToEntity(rideDto);
-        
+        entity.setId(null);
+        entity.setEmployee(employeeDao.findById(rideDto.getEmployee().getId()));
+        entity.setVehicle(vehicleDao.findById(rideDto.getVehicle().getId()));
+                
         dao.persist(entity);
         
         return RideConverter.entityToDto(entity);

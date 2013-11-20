@@ -34,6 +34,8 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new NullPointerException("employeeDto");
         }
         
+        employeeDto.setId(null);
+        
         Employee entity = EmployeeConverter.dtoToEntity(employeeDto);
         dao.persist(entity);   
         
