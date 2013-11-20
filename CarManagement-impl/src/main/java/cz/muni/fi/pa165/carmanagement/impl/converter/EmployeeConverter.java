@@ -28,7 +28,9 @@ public class EmployeeConverter {
         dto.setFirstName(entity.getFirstName());
         dto.setFamilyName(entity.getFamilyName());
         dto.setEmployeeRole(entity.getEmployeeRole());
-                        
+        
+        dto.setRides(RideConverter.entityToDto(entity.getRides()));
+                
         return dto;
     }
     
