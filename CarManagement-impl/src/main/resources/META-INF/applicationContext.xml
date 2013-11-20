@@ -34,5 +34,10 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     </bean>
     
     <bean id="vehicleTypeService" class="cz.muni.fi.pa165.carmanagement.impl.service.VehicleTypeServiceImpl" />
+    <bean id="vehicleService" class="cz.muni.fi.pa165.carmanagement.impl.service.VehicleServiceImpl" />
+    <bean id="serviceTypeService" class="cz.muni.fi.pa165.carmanagement.impl.service.ServiceTypeServiceImpl" />
+    <bean id="serviceIntervalService" class="cz.muni.fi.pa165.carmanagement.impl.service.ServiceIntervalServiceImpl" />
+    <bean id="rideService" class="cz.muni.fi.pa165.carmanagement.impl.service.RideServiceImpl" />
+    <bean id="employeeService" class="cz.muni.fi.pa165.carmanagement.impl.service.EmployeeServiceImpl" />
         
 </beans>
