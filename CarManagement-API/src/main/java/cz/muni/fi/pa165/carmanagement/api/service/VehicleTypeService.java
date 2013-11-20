@@ -1,16 +1,12 @@
 package cz.muni.fi.pa165.carmanagement.api.service;
 
-import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleTypeDto;
 import java.util.List;
 
 /**
- *
  * @author zvonicek
  */
-
-public interface VehicleTypeService
-{
+public interface VehicleTypeService<E> extends ServiceInterface<E, VehicleTypeDto> {
 
     public VehicleTypeDto create(VehicleTypeDto type);
 
@@ -21,6 +17,5 @@ public interface VehicleTypeService
     public VehicleTypeDto findById(Long id);
 
     public List<VehicleTypeDto> findAll();   
-    
-    public List<VehicleDto> getVehiclesForType(Long id);
+
 }

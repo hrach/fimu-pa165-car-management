@@ -1,11 +1,10 @@
 
 package cz.muni.fi.pa165.carmanagement.impl.service;
 
+import cz.muni.fi.pa165.carmanagement.api.service.ServiceInterface;
 import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
-import cz.muni.fi.pa165.carmanagement.api.dto.RideDto;
 import cz.muni.fi.pa165.carmanagement.api.service.EmployeeService;
-import cz.muni.fi.pa165.carmanagement.impl.converter.EmployeeConverter;
-import cz.muni.fi.pa165.carmanagement.impl.converter.RideConverter;
+import cz.muni.fi.pa165.carmanagement.api.service.RideService;
 import cz.muni.fi.pa165.carmanagement.impl.dao.EmployeeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.Employee;
 import cz.muni.fi.pa165.carmanagement.impl.model.Ride;
@@ -18,8 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Jakub Marecek <xmarec at gmail.com>
  */
 @Service
-public class EmployeeServiceImpl implements EmployeeService {
-    
+public class EmployeeServiceImpl extends GeneralService<Employee, EmployeeDto> implements EmployeeService<Employee> {
+
     @Autowired
     private EmployeeDaoImpl dao;
 
@@ -27,8 +26,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.dao = dao;
     }
 
+    
+    @Autowired
+    private RideService<Ride> rideService;
+
+
     @Transactional
-    @Override        
+    @Override
     public EmployeeDto create(EmployeeDto employeeDto) {
         if (employeeDto == null) {
             throw new NullPointerException("employeeDto");
@@ -36,10 +40,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         
         employeeDto.setId(null);
         
-        Employee entity = EmployeeConverter.dtoToEntity(employeeDto);
+        Employee entity = this.dtoToEntity(employeeDto);
         dao.persist(entity);   
         
-        return EmployeeConverter.entityToDto(entity);
+        return this.entityToDto(entity);
     }
 
     @Transactional
@@ -59,7 +63,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new NullPointerException("employeeDto");
         }
         
-        dao.update(EmployeeConverter.dtoToEntity(employeeDto));        
+        dao.update(this.dtoToEntity(employeeDto));        
     }
 
     @Transactional
@@ -69,23 +73,52 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new NullPointerException("id");
         }
         
-        return EmployeeConverter.entityToDto(dao.findById(id));
+        return this.entityToDto(dao.findById(id));
     }
 
     @Transactional
     @Override        
     public List<EmployeeDto> findAll() {
-        return EmployeeConverter.entityToDto(dao.findAll());
+        return this.entityToDto(dao.findAll());
     }
     
-    @Transactional
-    @Override        
-    public List<RideDto> getRidesForEmployee(Long id) {
-        Employee e = dao.findById(id);
+
+    public EmployeeDto entityToDto(Employee entity, ServiceInterface parent) {
+        if (entity == null){
+            return null;
+        }
         
-        List<Ride> rides = e.getRides();
+        EmployeeDto dto = new EmployeeDto();
         
-        return RideConverter.entityToDto(rides);        
+        dto.setId(entity.getId());
+        dto.setFirstName(entity.getFirstName());
+        dto.setFamilyName(entity.getFamilyName());
+        dto.setEmployeeRole(entity.getEmployeeRole());
+        
+        if (!(parent instanceof RideService)) {
+            dto.setRides(this.rideService.entityToDto(entity.getRides(), this));
+        }
+
+        return dto;
+    }
+
+    public Employee dtoToEntity(EmployeeDto dto, ServiceInterface parent) {
+        if (dto == null) {
+            return null;
+        }
+
+        Employee entity = new Employee();
+        
+        entity.setId(dto.getId());
+        entity.setFirstName(dto.getFirstName());
+        entity.setFamilyName(dto.getFamilyName());
+        entity.setEmployeeRole(dto.getEmployeeRole());
+        
+        if (!(parent instanceof RideService)) {
+            entity.setRides(this.rideService.dtoToEntity(dto.getRides(), this));
+        }
+
+        return entity;
     }
     
 }

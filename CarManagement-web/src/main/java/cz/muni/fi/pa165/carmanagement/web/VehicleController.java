@@ -5,11 +5,8 @@
 package cz.muni.fi.pa165.carmanagement.web;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
-import cz.muni.fi.pa165.carmanagement.api.dto.VehicleTypeDto;
 import cz.muni.fi.pa165.carmanagement.api.service.VehicleService;
 import cz.muni.fi.pa165.carmanagement.api.service.VehicleTypeService;
-import cz.muni.fi.pa165.carmanagement.impl.converter.VehicleConverter;
-import cz.muni.fi.pa165.carmanagement.impl.model.Vehicle;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;

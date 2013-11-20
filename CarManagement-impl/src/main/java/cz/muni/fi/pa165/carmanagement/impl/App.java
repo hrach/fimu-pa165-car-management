@@ -13,6 +13,7 @@ import cz.muni.fi.pa165.carmanagement.api.service.ServiceTypeService;
 import cz.muni.fi.pa165.carmanagement.api.service.VehicleService;
 import cz.muni.fi.pa165.carmanagement.api.service.VehicleTypeService;
 import java.util.Date;
+import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -50,7 +51,6 @@ public class App
         
         RideDto ride = new RideDto((long)1, new Date(), new Date(), (long)123, (long)456, "abc", vehicle, employee);        
         ride = rideService.create(ride);
-        
         
         System.out.println("Size: "+vehicleTypeService.findAll().size());   
 

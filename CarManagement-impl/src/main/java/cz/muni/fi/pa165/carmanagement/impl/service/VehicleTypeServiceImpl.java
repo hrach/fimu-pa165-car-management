@@ -1,13 +1,9 @@
-
 package cz.muni.fi.pa165.carmanagement.impl.service;
 
-import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleTypeDto;
+import cz.muni.fi.pa165.carmanagement.api.service.ServiceInterface;
 import cz.muni.fi.pa165.carmanagement.api.service.VehicleTypeService;
-import cz.muni.fi.pa165.carmanagement.impl.converter.VehicleConverter;
-import cz.muni.fi.pa165.carmanagement.impl.converter.VehicleTypeConverter;
 import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleTypeDaoImpl;
-import cz.muni.fi.pa165.carmanagement.impl.model.Vehicle;
 import cz.muni.fi.pa165.carmanagement.impl.model.VehicleType;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- *
  * @author zvonicek
  */
 @Service
-public class VehicleTypeServiceImpl implements VehicleTypeService
+public class VehicleTypeServiceImpl extends GeneralService<VehicleType, VehicleTypeDto> implements VehicleTypeService<VehicleType>
 {
     @Autowired
     private VehicleTypeDaoImpl dao;
@@ -36,11 +31,11 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
         
         type.setId(null);
         
-        VehicleType entity = VehicleTypeConverter.dtoToEntity(type);
+        VehicleType entity = this.dtoToEntity(type);
         
         dao.persist(entity);
         
-        return VehicleTypeConverter.entityToDto(entity);
+        return this.entityToDto(entity);
     }
 
     @Transactional
@@ -58,7 +53,7 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
         if (type == null)
             throw new NullPointerException("type");
         
-        VehicleType entity = VehicleTypeConverter.dtoToEntity(type);
+        VehicleType entity = this.dtoToEntity(type);
         dao.update(entity);
     }
 
@@ -68,29 +63,37 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
         if (id == null)
             throw new NullPointerException("id");
         
-        return VehicleTypeConverter.entityToDto(dao.findById(id));
+        return this.entityToDto(dao.findById(id));
     }
 
     @Transactional
     @Override    
     public List<VehicleTypeDto> findAll() {
-        return VehicleTypeConverter.entityToDto(dao.findAll());
+        return this.entityToDto(dao.findAll());
     }     
-    
-    @Transactional
-    @Override
-    public List<VehicleDto> getVehiclesForType(Long id)
-    {
-        if (id == null)
-            throw new NullPointerException("id");
-        
-        VehicleType t = dao.findById(id);
-        
-        if (t == null)
+
+    public VehicleTypeDto entityToDto(VehicleType entity, ServiceInterface parent) {
+        if (entity == null) {
             return null;
-            
-        List<Vehicle> vehicles = t.getVehicles();
+        }
         
-        return VehicleConverter.entityToDto(vehicles);
+        VehicleTypeDto dto = new VehicleTypeDto();
+        dto.setId(entity.getId());
+        dto.setMaxKm(entity.getMaxKm());
+        
+        return dto;
     }
+
+    public VehicleType dtoToEntity(VehicleTypeDto dto, ServiceInterface parent) {
+        if (dto == null) {
+            return null;
+        }
+        
+        VehicleType entity = new VehicleType();
+        entity.setId(dto.getId());
+        entity.setMaxKm(dto.getMaxKm());
+        
+        return entity;
+    }
+
 }

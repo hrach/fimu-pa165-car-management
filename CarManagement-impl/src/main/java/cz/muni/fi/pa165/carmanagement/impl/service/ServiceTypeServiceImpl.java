@@ -1,12 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package cz.muni.fi.pa165.carmanagement.impl.service;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.ServiceTypeDto;
+import cz.muni.fi.pa165.carmanagement.api.service.ServiceInterface;
 import cz.muni.fi.pa165.carmanagement.api.service.ServiceTypeService;
-import cz.muni.fi.pa165.carmanagement.impl.converter.ServiceTypeConverter;
 import cz.muni.fi.pa165.carmanagement.impl.dao.ServiceTypeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.ServiceType;
 import java.util.List;
@@ -14,10 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- *
  * @author zvonicek
  */
-public class ServiceTypeServiceImpl implements ServiceTypeService {
+public class ServiceTypeServiceImpl extends GeneralService<ServiceType, ServiceTypeDto> implements ServiceTypeService<ServiceType> {
 
     @Autowired
     private ServiceTypeDaoImpl dao;
@@ -34,10 +29,10 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
         
         type.setId(null);
         
-        ServiceType entity = ServiceTypeConverter.dtoToEntity(type);
+        ServiceType entity = this.dtoToEntity(type);
         dao.persist(entity);        
         
-        return ServiceTypeConverter.entityToDto(entity);
+        return this.entityToDto(entity);
     }
 
     @Transactional
@@ -55,7 +50,7 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
         if (type == null)
             throw new NullPointerException("type");
         
-        ServiceType entity = ServiceTypeConverter.dtoToEntity(type);
+        ServiceType entity = this.dtoToEntity(type);
         dao.update(entity);
     }
 
@@ -65,13 +60,36 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
         if (id == null)
             throw new NullPointerException("id");
         
-        return ServiceTypeConverter.entityToDto(dao.findById(id));
+        return this.entityToDto(dao.findById(id));
     }
 
     @Transactional
     @Override        
     public List<ServiceTypeDto> findAll() {
-        return ServiceTypeConverter.entityToDto(dao.findAll());
+        return this.entityToDto(dao.findAll());
     }
     
+    
+    public ServiceTypeDto entityToDto(ServiceType entity, ServiceInterface parent) {
+        if (entity == null)
+            return null;
+        
+        ServiceTypeDto dto = new ServiceTypeDto();
+        dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        
+        return dto;      
+    }
+
+    public ServiceType dtoToEntity(ServiceTypeDto dto, ServiceInterface parent) {
+        if (dto == null)
+            return null;
+
+        ServiceType entity = new ServiceType();
+        entity.setId(dto.getId());
+        entity.setName(dto.getName());
+        
+        return entity;     
+    }
+
 }
