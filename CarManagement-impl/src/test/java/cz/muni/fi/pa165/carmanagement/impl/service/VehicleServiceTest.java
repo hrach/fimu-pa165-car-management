@@ -7,6 +7,7 @@ package cz.muni.fi.pa165.carmanagement.impl.service;
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleTypeDto;
 import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleDaoImpl;
+import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleTypeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.Vehicle;
 import static junit.framework.Assert.*;
 import junit.framework.TestCase;
@@ -27,13 +28,15 @@ public class VehicleServiceTest extends TestCase {
 
     private VehicleServiceImpl vehicleService;    
     @Mock private VehicleDaoImpl vehicleDao;    
-
+    @Mock private VehicleTypeDaoImpl vehicleTypeDao;
+    
     @Before
     public void setUp() throws Exception {
         super.setUp();
         
         vehicleService = new VehicleServiceImpl();
         vehicleService.setVehicleDao(vehicleDao);
+        vehicleService.setTypeDao(vehicleTypeDao);
     }    
     
     @Test

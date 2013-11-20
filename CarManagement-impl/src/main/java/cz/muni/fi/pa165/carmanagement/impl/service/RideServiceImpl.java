@@ -34,6 +34,14 @@ public class RideServiceImpl implements RideService {
         this.dao = rideDao;
     }
 
+    public void setEmployeeDao(EmployeeDaoImpl employeeDao) {
+        this.employeeDao = employeeDao;
+    }
+
+    public void setVehicleDao(VehicleDaoImpl vehicleDao) {
+        this.vehicleDao = vehicleDao;
+    }        
+
     @Transactional
     @Override        
     public RideDto create(RideDto rideDto) {

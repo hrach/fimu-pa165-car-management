@@ -35,6 +35,10 @@ public class VehicleServiceImpl implements VehicleService {
     public void setVehicleDao(VehicleDaoImpl vehicleDao) {
         this.dao = vehicleDao;
     }
+
+    public void setTypeDao(VehicleTypeDaoImpl typeDao) {
+        this.typeDao = typeDao;
+    }        
     
     @Transactional
     @Override

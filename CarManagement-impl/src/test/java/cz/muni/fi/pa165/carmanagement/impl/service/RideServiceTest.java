@@ -8,7 +8,9 @@ import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
 import cz.muni.fi.pa165.carmanagement.api.dto.RideDto;
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleTypeDto;
+import cz.muni.fi.pa165.carmanagement.impl.dao.EmployeeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.dao.RideDaoImpl;
+import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.Ride;
 import static junit.framework.Assert.*;
 import junit.framework.TestCase;
@@ -29,6 +31,9 @@ public class RideServiceTest extends TestCase {
     
     private RideServiceImpl rideService;    
     @Mock private RideDaoImpl rideDao;    
+    @Mock private EmployeeDaoImpl employeeDao;    
+    @Mock private VehicleDaoImpl vehicleDao;    
+    
     
     @Before
     public void setUp() throws Exception {
@@ -36,6 +41,8 @@ public class RideServiceTest extends TestCase {
         
         rideService = new RideServiceImpl();
         rideService.setRideDao(rideDao);
+        rideService.setEmployeeDao(employeeDao);
+        rideService.setVehicleDao(vehicleDao);
     }
 
     @Test
