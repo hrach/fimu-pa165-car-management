@@ -4,7 +4,10 @@
  */
 package cz.muni.fi.pa165.carmanagement.web;
 
+import cz.muni.fi.pa165.carmanagement.api.dto.RideDto;
+import cz.muni.fi.pa165.carmanagement.api.service.RideService;
 import cz.muni.fi.pa165.carmanagement.api.service.VehicleTypeService;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,9 @@ public class HomeController {
     @Autowired
     private VehicleTypeService vehicleType;
     
+    @Autowired
+    private RideService rideService;
+    
     public HomeController() {
     }
     
@@ -30,7 +36,9 @@ public class HomeController {
     public ModelAndView renderHome() {
         ModelAndView mav = new ModelAndView();        
         mav.addObject("items", vehicleType.findAll());
-        System.out.println(vehicleType.findAll().size());
+        
+        List<RideDto> rides = rideService.findAll();
+        System.out.println(rides.size());
         
         mav.setViewName("index");
         return mav;
