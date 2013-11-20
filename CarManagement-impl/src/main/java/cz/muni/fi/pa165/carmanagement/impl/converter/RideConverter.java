@@ -32,10 +32,6 @@ public class RideConverter {
         dto.setTachometerStart(entity.getTachometerStart());
         dto.setTachometerEnd(entity.getTachometerEnd());
         dto.setDescription(entity.getDescription());
-
-        dto.setEmployee(EmployeeConverter.entityToDto(entity.getEmployee()));
-
-        dto.setVehicle(VehicleConverter.entityToDto(entity.getVehicle()));
                
         return dto;
     }
