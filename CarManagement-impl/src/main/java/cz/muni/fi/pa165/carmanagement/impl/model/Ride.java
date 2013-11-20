@@ -39,10 +39,10 @@ public class Ride implements Serializable {
     @Column(length = 255)
     private String description;
     
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.PERSIST)
     private Vehicle vehicle;  
     
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.PERSIST)
     private Employee employee;
 
 

@@ -32,7 +32,7 @@ public class Vehicle implements Serializable {
     
     private Long tachometer;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private VehicleType type;
     
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
