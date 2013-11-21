@@ -38,7 +38,7 @@
                                 <td><spring:message code="employee.firstname" /></td>
                                 <td><spring:message code="employee.familyname" /></td>
                                 <td><spring:message code="employee.role" /></td>
-                                <td>&nbsp;</td>
+                                <td><spring:message code="employee.actions" /></td>
                             </tr>
                         </thead>
                         <tbody>
