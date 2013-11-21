@@ -47,7 +47,8 @@
                                 <td><c:out value="${employee.id}" /></td>
                                 <td><c:out value="${employee.firstName}" /></td>
                                 <td><c:out value="${employee.familyName}" /></td>
-                                <td><c:out value="${employee.employeeRole}" /></td>
+                                <c:if test="${employee.employeeRole==1}"><td><spring:message code="employee.role.staff" /></td></c:if>
+                                <c:if test="${employee.employeeRole==2}"><td><spring:message code="employee.role.manager" /></td></c:if>
                                 <td>
                                     <a href="${pageContext.request.contextPath}/employee/edit/${employee.id}.html" class="btn btn-warning btn-xs"><spring:message code="edit" /></a>
                                     <a href="${pageContext.request.contextPath}/employee/delete/${employee.id}.html" class="btn btn-danger btn-xs"><spring:message code="delete" /></a>
