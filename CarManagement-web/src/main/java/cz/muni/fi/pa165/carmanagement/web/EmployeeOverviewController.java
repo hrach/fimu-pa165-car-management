@@ -37,23 +37,13 @@ public class EmployeeOverviewController {
     @RequestMapping(value="/{id}")
     public ModelAndView renderHome(@PathVariable("id") int id) {
         ModelAndView mav = new ModelAndView();        
-        System.out.println((long) id);
         EmployeeDto e = this.employees.findById((long) id);
         if (e == null) {
             throw new ResourceNotFoundException();
         }
         mav.addObject("employee", e);
-
-        List<RideDto> ridesList = e.getRides();
-        mav.addObject("rides", ridesList);
         mav.setViewName("employee-overview");
         return mav;
     }
-    
-    protected ModelAndView handleRequestInternal(
-            HttpServletRequest request,
-            HttpServletResponse response) throws Exception {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-   
+  
 }
