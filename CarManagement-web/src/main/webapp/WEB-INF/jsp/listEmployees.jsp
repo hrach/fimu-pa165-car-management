@@ -18,9 +18,9 @@
         <jsp:include page="/WEB-INF/jsp/navigation.jsp" />
        
         <div class="container">
-            <div class="page-header">
+            <%--<div class="page-header">
                 <h1><spring:message code="employees" /></h1>
-            </div>
+            </div>--%>
             <c:if test="${not empty message}">
                 <div class="alert alert-success alert-dismissable">
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -28,14 +28,18 @@
                 </div> 
             </c:if> 
             <div id="content">
-                <h3><spring:message code="employees.search" /></h3>
+                
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#"><spring:message code="employee.find" /></a>
+                    </div>
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
-
+                </nav>
                 
                     <h3><spring:message code="employees.list" /></h3>
                     <table class="table table-hover">

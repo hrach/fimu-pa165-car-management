@@ -29,6 +29,19 @@
                 </div> 
             </c:if> 
             <div id="content">
+                
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#"><spring:message code="ride.find" /></a>
+                    </div>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                </nav>
+                
                     <h3><spring:message code="rides.list" /></h3>
                     <table class="table table-hover">
                         <thead>

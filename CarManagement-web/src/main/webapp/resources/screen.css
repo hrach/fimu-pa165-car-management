@@ -7,23 +7,27 @@
     background: #222222;
 }
 
-.navbar {
+.navbar-default {
+    margin-top: 25px;
+}
+
+.navbar-inverse {
     border-radius: 0;
     width: 960px;
     margin: 0 auto;
     border: 0;
 }
 
-.navbar div.collapse {
+.navbar-inverse div.collapse {
     margin: 0 0 0 175px;
 }
 
-.navbar ul li {
+.navbar-inverse ul li {
     display: inline-block;
     line-height: 30px;
 }
 
-.navbar ul li.active a {
+.navbar-inverse ul li.active a {
     color: #fff;
 }
 
