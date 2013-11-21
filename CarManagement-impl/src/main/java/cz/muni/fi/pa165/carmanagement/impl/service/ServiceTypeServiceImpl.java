@@ -7,11 +7,13 @@ import cz.muni.fi.pa165.carmanagement.impl.dao.ServiceTypeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.ServiceType;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author zvonicek
  */
+@Service
 public class ServiceTypeServiceImpl implements ServiceTypeService {
 
     @Autowired
