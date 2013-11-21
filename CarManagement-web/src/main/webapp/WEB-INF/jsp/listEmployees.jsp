@@ -28,19 +28,7 @@
                 </div> 
             </c:if> 
             <div id="content">
-                
-                <nav class="navbar navbar-default" role="navigation">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#"><spring:message code="employee.find" /></a>
-                    </div>
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                </nav>
-                
+
                     <h3><spring:message code="employees.list" /></h3>
                     <table class="table table-hover">
                         <thead>
@@ -61,6 +49,7 @@
                                 <c:if test="${employee.employeeRole==1}"><td><spring:message code="employee.role.staff" /></td></c:if>
                                 <c:if test="${employee.employeeRole==2}"><td><spring:message code="employee.role.manager" /></td></c:if>
                                 <td>
+                                    <a href="${pageContext.request.contextPath}/overview/employee/${employee.id}.html" class="btn btn-info btn-xs"><spring:message code="view" /></a>
                                     <a href="${pageContext.request.contextPath}/employee/edit/${employee.id}.html" class="btn btn-warning btn-xs"><spring:message code="edit" /></a>
                                     <a href="${pageContext.request.contextPath}/employee/delete/${employee.id}.html" class="btn btn-danger btn-xs"><spring:message code="delete" /></a>
                                 </td>

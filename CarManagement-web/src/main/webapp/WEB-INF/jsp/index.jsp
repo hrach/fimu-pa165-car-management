@@ -16,6 +16,31 @@
         <jsp:include page="/WEB-INF/jsp/navigation.jsp" />
                 
         <div id="content" class="container">
+            
+            <nav class="navbar navbar-default" role="navigation">
+               <div class="navbar-header">
+                   <a class="navbar-brand" href="#"><spring:message code="employee.find" /></a>
+               </div>
+               <form class="navbar-form navbar-left" role="search">
+                   <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                   </div>
+                   <button type="submit" class="btn btn-default">Submit</button>
+               </form>
+           </nav>
+                    
+           <nav class="navbar navbar-default" role="navigation">
+               <div class="navbar-header">
+                   <a class="navbar-brand" href="#"><spring:message code="vehicle.find" /></a>
+               </div>
+               <form class="navbar-form navbar-left" role="search">
+                   <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                   </div>
+                   <button type="submit" class="btn btn-default">Submit</button>
+               </form>
+           </nav>
+            
                 <table>
                     <c:forEach items="${items}" var="item">
                         <tr>

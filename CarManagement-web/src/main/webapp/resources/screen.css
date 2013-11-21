@@ -7,14 +7,10 @@
     background: #222222;
 }
 
-.navbar-default {
-    margin-top: 25px;
-}
-
 .navbar-inverse {
     border-radius: 0;
     width: 960px;
-    margin: 0 auto;
+    margin: 0 auto 25px auto;
     border: 0;
 }
 
