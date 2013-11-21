@@ -7,25 +7,27 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome to Spring Web MVC project</title>
+        <title>Car Management</title>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="<c:url value="/resources/screen.css"/>">
     </head>
 
     <body>
-        <p>Hello! This is the default welcome page for a Spring Web MVC project.</p>
-        <p><i>To display a different welcome page for this project, modify</i>
-            <tt>index.jsp</tt> <i>, or create your own welcome page then change
-                the redirection in</i> <tt>redirect.jsp</tt> <i>to point to the new
-                welcome page and also update the welcome-file setting in</i>
-            <tt>web.xml</tt>.</p>
 
-        <div id="content">
-                <h3><spring:message code="home" /></h3>
-                <h4><spring:message code="outside" /></h4>
-                <ul>
-                    <li><a href="${pageContext.request.contextPath}/ride/" >Rides</a></li>
+        <div class="navigation-container">
+        <nav class="navbar navbar-inverse" role="navigation">
+                <a class="navbar-brand" href="${pageContext.request.contextPath}"><spring:message code="home" /></a>
+                <%--<h4><spring:message code="outside" /></h4>--%>
+                <div class="collapse navbar-collapse">
+                <ul class="nav nav-navbar">
+                    <li class="active"><a href="${pageContext.request.contextPath}/ride/" >Rides</a></li>
                     <li><a href="${pageContext.request.contextPath}/vehicle/">Vehicles</a></li>
                     <li><a href="${pageContext.request.contextPath}/employee/">Employees</a></li>
                 </ul>
+                </div>
+        </nav>
+        </div>
+        <div id="content" class="container">
                 <table>
                     <c:forEach items="${items}" var="item">
                         <tr>
