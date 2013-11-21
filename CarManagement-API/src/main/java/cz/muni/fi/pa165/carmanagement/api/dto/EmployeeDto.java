@@ -7,7 +7,9 @@
 package cz.muni.fi.pa165.carmanagement.api.dto;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -76,5 +78,22 @@ public class EmployeeDto {
         this.rides = rides;
     }
     
+    public int getRideKmSum() {
+        int sum = 0;
+        for (RideDto r : this.getRides()) {
+            sum += r.getTachometerEnd() - r.getTachometerStart();
+        }
+        
+        return sum;
+    }
+    
+    public int getUniqueVehicleSum() {
+        Set<Long> ids = new HashSet<Long>();
+        for (RideDto r : this.getRides()) {
+            ids.add(r.getVehicle().getId());
+        }
+        
+        return ids.size();
+    }
     
 }
