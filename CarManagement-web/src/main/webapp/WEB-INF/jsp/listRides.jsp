@@ -57,6 +57,7 @@
                                 <td><c:out value="${ride.vehicle.name}" />&nbsp;(ID:<c:out value="${ride.vehicle.id}" />)</td>
                                 <td><c:out value="${ride.employee.firstName}" />&nbsp;<c:out value="${ride.employee.familyName}" /> (ID:<c:out value="${ride.employee.id})" /></td>
                                 <td>
+                                    <a href="${pageContext.request.contextPath}/ride/detail/${ride.id}.html" class="btn btn-info btn-xs"><spring:message code="view" /></a>                                    
                                     <a href="${pageContext.request.contextPath}/ride/edit/${ride.id}.html" class="btn btn-warning btn-xs"><spring:message code="edit" /></a>
                                     <a href="${pageContext.request.contextPath}/ride/delete/${ride.id}.html" class="btn btn-danger btn-xs"><spring:message code="delete" /></a>
                                 </td>
