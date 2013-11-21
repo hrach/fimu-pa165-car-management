@@ -28,6 +28,15 @@
                 </div> 
             </c:if> 
             <div id="content">
+                <h3><spring:message code="employees.search" /></h3>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+
+                
                     <h3><spring:message code="employees.list" /></h3>
                     <table class="table table-hover">
                         <thead>
