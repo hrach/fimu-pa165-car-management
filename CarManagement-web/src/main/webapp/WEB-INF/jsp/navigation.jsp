@@ -1,4 +1,10 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<c:set var="path" value="${requestScope['javax.servlet.forward.request_uri']}"/>
+<c:set var="urlpart" value="${fn:split(path,'/')}"/>
+
 <div class="navigation-container">
     <nav class="navbar navbar-inverse" role="navigation">
         <a class="navbar-brand" href="${pageContext.request.contextPath}"><spring:message code="home" /></a>
@@ -10,10 +16,11 @@
                 <li><a href="${pageContext.request.contextPath}/employee/"><spring:message code="navigation.employees" /></a></li>
             </ul>
         </div>--%>
+        
         <div class="pull-right">
         <div class="btn-group">
-            <a href="${pageContext.request.contextPath}/employee/" class="btn btn-default link"><spring:message code="navigation.employees" /></a>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <a href="${pageContext.request.contextPath}/employee/" class="${urlpart[1] eq 'employee' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.employees" /></a>
+            <button type="button" class="${urlpart[1] eq 'employee' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
@@ -24,8 +31,8 @@
         </div>
             
         <div class="btn-group">
-            <a href="${pageContext.request.contextPath}/vehicle/" class="btn btn-default link"><spring:message code="navigation.vehicles" /></a>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <a href="${pageContext.request.contextPath}/vehicle/" class="${urlpart[1] eq 'vehicle' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.vehicles" /></a>
+            <button type="button" class="${urlpart[1] eq 'vehicle' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
@@ -36,8 +43,8 @@
         </div>
             
         <div class="btn-group">
-            <a href="${pageContext.request.contextPath}/ride/" class="btn btn-default link"><spring:message code="navigation.rides" /></a>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <a href="${pageContext.request.contextPath}/ride/" class="${urlpart[1] eq 'ride' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.rides" /></a>
+            <button type="button" class="${urlpart[1] eq 'ride' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
