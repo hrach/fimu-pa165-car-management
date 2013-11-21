@@ -1,6 +1,7 @@
 package cz.muni.fi.pa165.carmanagement.impl.converter;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
+import cz.muni.fi.pa165.carmanagement.impl.converters.ConverterContainer;
 import cz.muni.fi.pa165.carmanagement.impl.model.Employee;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +16,7 @@ public class EmployeeConverterTest extends TestCase {
         Employee testE = e(5, "Jan", "Skrasek");
 
         EmployeeDto testEdto = new EmployeeDto((long) 5, "Jan", "Skrasek", Employee.ROLE_MANAGER);
-        EmployeeDto convertedEdto = EmployeeConverter.entityToDto(testE);
+        EmployeeDto convertedEdto = ConverterContainer.getEmployeeConverter().entityToDto(testE);
 
         assertEquals(testEdto.getId(), convertedEdto.getId());
         assertEquals(testEdto.getFirstName(), convertedEdto.getFirstName());
@@ -28,7 +29,7 @@ public class EmployeeConverterTest extends TestCase {
         Employee testE = e(5, "Jan", "Skrasek");
 
         EmployeeDto testEdto = new EmployeeDto((long) 5, "Jan", "Skrasek", Employee.ROLE_MANAGER);
-        Employee convertedE = EmployeeConverter.dtoToEntity(testEdto);
+        Employee convertedE = ConverterContainer.getEmployeeConverter().dtoToEntity(testEdto);
 
         assertEquals(testE.getId(), convertedE.getId());
         assertEquals(testE.getFirstName(), convertedE.getFirstName());
@@ -44,7 +45,7 @@ public class EmployeeConverterTest extends TestCase {
 
         List<Employee> list = Arrays.asList(e0, e1, e2);
 
-        List<Employee> listCheck = EmployeeConverter.dtoToEntity(EmployeeConverter.entityToDto(list));
+        List<Employee> listCheck = ConverterContainer.getEmployeeConverter().dtoToEntity(ConverterContainer.getEmployeeConverter().entityToDto(list));
         
         assertEquals(listCheck.get(0), e0);
         assertEquals(listCheck.get(1), e1);

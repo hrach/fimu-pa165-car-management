@@ -1,5 +1,6 @@
 package cz.muni.fi.pa165.carmanagement.impl.converter;
 import cz.muni.fi.pa165.carmanagement.api.dto.RideDto;
+import cz.muni.fi.pa165.carmanagement.impl.converters.ConverterContainer;
 import cz.muni.fi.pa165.carmanagement.impl.model.Employee;
 import cz.muni.fi.pa165.carmanagement.impl.model.Ride;
 import cz.muni.fi.pa165.carmanagement.impl.model.Vehicle;
@@ -30,7 +31,7 @@ public class RideConverterTest extends TestCase {
     public void testEntityToDto() {
         Ride testE = r(4, 22, 122);
         RideDto testEdto = rdto(4, 22, 122);
-        RideDto convertedEdto = RideConverter.entityToDto(testE);
+        RideDto convertedEdto = ConverterContainer.getRideConverter().entityToDto(testE);
 
         assertEquals(testEdto.getId(), convertedEdto.getId());
         assertEquals(testEdto.getStartTime(), convertedEdto.getStartTime());
@@ -42,7 +43,7 @@ public class RideConverterTest extends TestCase {
     public void testDtoToEntity() {
         Ride testE = r(4, 22, 122);
         RideDto testEdto = rdto(4, 22, 122);
-        Ride convertedE = RideConverter.dtoToEntity(testEdto);
+        Ride convertedE = ConverterContainer.getRideConverter().dtoToEntity(testEdto);
 
         assertEquals(testE.getId(), convertedE.getId());
         assertEquals(testE.getStartTime(), convertedE.getStartTime());
@@ -59,7 +60,7 @@ public class RideConverterTest extends TestCase {
 
         List<Ride> list = Arrays.asList(e0, e1, e2);
 
-        List<Ride> listCheck = RideConverter.dtoToEntity(RideConverter.entityToDto(list));
+        List<Ride> listCheck = ConverterContainer.getRideConverter().dtoToEntity(ConverterContainer.getRideConverter().entityToDto(list));
         
         assertEquals(listCheck.get(0), e0);
         assertEquals(listCheck.get(1), e1);
@@ -73,7 +74,7 @@ public class RideConverterTest extends TestCase {
     }
     
     private RideDto rdto (int i, int s, int e) {
-        return new RideDto((long) i, dates, datee, (long) s, (long) e, "", VehicleConverter.entityToDto(vehicle), EmployeeConverter.entityToDto(employee));
+        return new RideDto((long) i, dates, datee, (long) s, (long) e, "", ConverterContainer.getVehicleConverter().entityToDto(vehicle), ConverterContainer.getEmployeeConverter().entityToDto(employee));
     }
 
     private Employee e (int i, String f, String l) {
