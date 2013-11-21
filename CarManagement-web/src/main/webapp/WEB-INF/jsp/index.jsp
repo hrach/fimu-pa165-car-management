@@ -8,8 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Car Management</title>
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="<c:url value="/resources/screen.css"/>">
+        <jsp:include page="/WEB-INF/jsp/header.jsp" />
     </head>
 
     <body>
