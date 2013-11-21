@@ -1,6 +1,7 @@
 package cz.muni.fi.pa165.carmanagement.impl.converter;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleTypeDto;
+import cz.muni.fi.pa165.carmanagement.impl.converters.ConverterContainer;
 import cz.muni.fi.pa165.carmanagement.impl.model.VehicleType;
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +22,7 @@ public class VehicleTypeConverterTest extends TestCase {
         VehicleType testE = new VehicleType((long) 22);
         testE.setId((long) 2);
         VehicleTypeDto testEdto = new VehicleTypeDto((long) 2, (long) 22);
-        VehicleTypeDto convertedEdto = VehicleTypeConverter.entityToDto(testE);
+        VehicleTypeDto convertedEdto = ConverterContainer.getVehicleTypeConverter().entityToDto(testE);
 
         assertEquals(testEdto.getId(), convertedEdto.getId());
         assertEquals(testEdto.getMaxKm(), convertedEdto.getMaxKm());
@@ -31,7 +32,7 @@ public class VehicleTypeConverterTest extends TestCase {
         VehicleType testE = new VehicleType((long) 22);
         testE.setId((long) 2);
         VehicleTypeDto testEdto = new VehicleTypeDto((long) 2, (long) 22);
-        VehicleType convertedE = VehicleTypeConverter.dtoToEntity(testEdto);
+        VehicleType convertedE = ConverterContainer.getVehicleTypeConverter().dtoToEntity(testEdto);
 
         assertEquals(testE.getId(), convertedE.getId());
         assertEquals(testE.getMaxKm(), convertedE.getMaxKm());
@@ -44,7 +45,7 @@ public class VehicleTypeConverterTest extends TestCase {
 
         List<VehicleType> list = Arrays.asList(e0, e1, e2);
 
-        List<VehicleType> listCheck = VehicleTypeConverter.dtoToEntity(VehicleTypeConverter.entityToDto(list));
+        List<VehicleType> listCheck = ConverterContainer.getVehicleTypeConverter().dtoToEntity(ConverterContainer.getVehicleTypeConverter().entityToDto(list));
 
         assertEquals(listCheck.get(0), e0);
         assertEquals(listCheck.get(1), e1);

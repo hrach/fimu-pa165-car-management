@@ -1,6 +1,7 @@
 package cz.muni.fi.pa165.carmanagement.impl.converter;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
+import cz.muni.fi.pa165.carmanagement.impl.converters.ConverterContainer;
 import cz.muni.fi.pa165.carmanagement.impl.model.Vehicle;
 import cz.muni.fi.pa165.carmanagement.impl.model.VehicleType;
 import java.util.Arrays;
@@ -24,7 +25,7 @@ public class VehicleConverterTest extends TestCase {
     public void testEntityToDto() {
         Vehicle testE = v(1, "test", 2000);
         VehicleDto testEdto = vdto(1, "test", 2000);
-        VehicleDto convertedEdto = VehicleConverter.entityToDto(testE);
+        VehicleDto convertedEdto = ConverterContainer.getVehicleConverter().entityToDto(testE);
 
         assertEquals(testEdto.getId(), convertedEdto.getId());
         assertEquals(testEdto.getName(), convertedEdto.getName());
@@ -35,7 +36,7 @@ public class VehicleConverterTest extends TestCase {
     public void testDtoToEntity() {
         Vehicle testE = v(1, "test", 2000);
         VehicleDto testEdto = vdto(1, "test", 2000);
-        Vehicle convertedE = VehicleConverter.dtoToEntity(testEdto);
+        Vehicle convertedE = ConverterContainer.getVehicleConverter().dtoToEntity(testEdto);
 
         assertEquals(testE.getId(), convertedE.getId());
         assertEquals(testE.getName(), convertedE.getName());
@@ -50,7 +51,7 @@ public class VehicleConverterTest extends TestCase {
 
         List<Vehicle> list = Arrays.asList(e0, e1, e2);
 
-        List<Vehicle> listCheck = VehicleConverter.dtoToEntity(VehicleConverter.entityToDto(list));
+        List<Vehicle> listCheck = ConverterContainer.getVehicleConverter().dtoToEntity(ConverterContainer.getVehicleConverter().entityToDto(list));
 
         assertEquals(listCheck.get(0), e0);
         assertEquals(listCheck.get(1), e1);
@@ -65,6 +66,6 @@ public class VehicleConverterTest extends TestCase {
     }
 
     private VehicleDto vdto(int i, String name, int km) {
-        return new VehicleDto((long) i, name, (long) km, VehicleTypeConverter.entityToDto(type));
+        return new VehicleDto((long) i, name, (long) km, ConverterContainer.getVehicleTypeConverter().entityToDto(type));
     }
 }

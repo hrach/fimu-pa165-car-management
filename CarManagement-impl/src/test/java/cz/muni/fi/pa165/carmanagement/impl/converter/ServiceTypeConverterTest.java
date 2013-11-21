@@ -1,6 +1,7 @@
 package cz.muni.fi.pa165.carmanagement.impl.converter;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.ServiceTypeDto;
+import cz.muni.fi.pa165.carmanagement.impl.converters.ConverterContainer;
 import cz.muni.fi.pa165.carmanagement.impl.model.ServiceType;
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +22,7 @@ public class ServiceTypeConverterTest extends TestCase {
         ServiceType testE = new ServiceType("testa");
         testE.setId((long) 2);
         ServiceTypeDto testEdto = new ServiceTypeDto((long) 2, "testa");
-        ServiceTypeDto convertedEdto = ServiceTypeConverter.entityToDto(testE);
+        ServiceTypeDto convertedEdto = ConverterContainer.getServiceTypeConverter().entityToDto(testE);
 
         assertEquals(testEdto.getId(), convertedEdto.getId());
         assertEquals(testEdto.getName(), convertedEdto.getName());
@@ -31,7 +32,7 @@ public class ServiceTypeConverterTest extends TestCase {
         ServiceType testE = new ServiceType("testa");
         testE.setId((long) 2);
         ServiceTypeDto testEdto = new ServiceTypeDto((long) 2, "testa");
-        ServiceType convertedE = ServiceTypeConverter.dtoToEntity(testEdto);
+        ServiceType convertedE = ConverterContainer.getServiceTypeConverter().dtoToEntity(testEdto);
 
         assertEquals(testE.getId(), convertedE.getId());
         assertEquals(testE.getName(), convertedE.getName());
@@ -44,7 +45,7 @@ public class ServiceTypeConverterTest extends TestCase {
 
         List<ServiceType> list = Arrays.asList(e0, e1, e2);
 
-        List<ServiceType> listCheck = ServiceTypeConverter.dtoToEntity(ServiceTypeConverter.entityToDto(list));
+        List<ServiceType> listCheck = ConverterContainer.getServiceTypeConverter().dtoToEntity(ConverterContainer.getServiceTypeConverter().entityToDto(list));
 
         assertEquals(listCheck.get(0), e0);
         assertEquals(listCheck.get(1), e1);

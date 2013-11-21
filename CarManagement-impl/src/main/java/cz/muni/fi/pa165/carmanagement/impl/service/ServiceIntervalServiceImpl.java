@@ -8,7 +8,7 @@ package cz.muni.fi.pa165.carmanagement.impl.service;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.ServiceIntervalDto;
 import cz.muni.fi.pa165.carmanagement.api.service.ServiceIntervalService;
-import cz.muni.fi.pa165.carmanagement.impl.converter.ServiceIntervalConverter;
+import cz.muni.fi.pa165.carmanagement.impl.converters.ConverterContainer;
 import cz.muni.fi.pa165.carmanagement.impl.dao.ServiceIntervalDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.ServiceInterval;
 import java.util.Date;
@@ -26,7 +26,7 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
     public void setDao(ServiceIntervalDaoImpl dao) {
         this.dao = dao;
     }
-
+    
     @Transactional
     @Override        
     public ServiceIntervalDto create(ServiceIntervalDto serviceIntervalDto) {
@@ -36,11 +36,11 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
         
         serviceIntervalDto.setId(null);
         
-        ServiceInterval entity = ServiceIntervalConverter.dtoToEntity(serviceIntervalDto);
+        ServiceInterval entity = ConverterContainer.getServiceIntervalConverter().dtoToEntity(serviceIntervalDto);
         
         dao.persist(entity);
         
-        return ServiceIntervalConverter.entityToDto(entity);
+        return ConverterContainer.getServiceIntervalConverter().entityToDto(entity);
     }
 
     public void delete(Long id) {
@@ -58,7 +58,7 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
             throw new NullPointerException("serviceIntervalDto");
         }
         
-        dao.update(ServiceIntervalConverter.dtoToEntity(serviceIntervalDto));
+        dao.update(ConverterContainer.getServiceIntervalConverter().dtoToEntity(serviceIntervalDto));
     }
 
     @Transactional
@@ -68,13 +68,13 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
             throw new NullPointerException("id");
         }
         
-        return ServiceIntervalConverter.entityToDto(dao.findById(id));
+        return ConverterContainer.getServiceIntervalConverter().entityToDto(dao.findById(id));
     }
 
     @Transactional
     @Override        
     public List<ServiceIntervalDto> findAll() {
-        return ServiceIntervalConverter.entityToDto(dao.findAll());
+        return ConverterContainer.getServiceIntervalConverter().entityToDto(dao.findAll());
     }
 
     @Transactional
@@ -90,5 +90,5 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
         
         dao.update(sid);
     }
-    
+
 }

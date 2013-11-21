@@ -1,6 +1,7 @@
 package cz.muni.fi.pa165.carmanagement.impl.converter;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.ServiceIntervalDto;
+import cz.muni.fi.pa165.carmanagement.impl.converters.ConverterContainer;
 import cz.muni.fi.pa165.carmanagement.impl.model.ServiceInterval;
 import cz.muni.fi.pa165.carmanagement.impl.model.ServiceType;
 import cz.muni.fi.pa165.carmanagement.impl.model.Vehicle;
@@ -36,7 +37,7 @@ public class ServiceIntervalConverterTest extends TestCase {
     public void testEntityToDto() {
         ServiceInterval testE = si(4);
         ServiceIntervalDto testEdto = sidto(4);
-        ServiceIntervalDto convertedEdto = ServiceIntervalConverter.entityToDto(testE);
+        ServiceIntervalDto convertedEdto = ConverterContainer.getServiceIntervalConverter().entityToDto(testE);
 
         assertEquals(testEdto.getId(), convertedEdto.getId());
         assertEquals(testEdto.getCreatedTime(), convertedEdto.getCreatedTime());
@@ -49,7 +50,7 @@ public class ServiceIntervalConverterTest extends TestCase {
     public void testDtoToEntity() {
         ServiceInterval testE = si(4);
         ServiceIntervalDto testEdto = sidto(4);
-        ServiceInterval convertedE = ServiceIntervalConverter.dtoToEntity(testEdto);
+        ServiceInterval convertedE = ConverterContainer.getServiceIntervalConverter().dtoToEntity(testEdto);
 
         assertEquals(testE.getId(), convertedE.getId());
         assertEquals(testE.getCreatedTime(), convertedE.getCreatedTime());
@@ -66,7 +67,7 @@ public class ServiceIntervalConverterTest extends TestCase {
 
         List<ServiceInterval> list = Arrays.asList(e0, e1, e2);
 
-        List<ServiceInterval> listCheck = ServiceIntervalConverter.dtoToEntity(ServiceIntervalConverter.entityToDto(list));
+        List<ServiceInterval> listCheck = ConverterContainer.getServiceIntervalConverter().dtoToEntity(ConverterContainer.getServiceIntervalConverter().entityToDto(list));
 
         assertEquals(listCheck.get(0), e0);
         assertEquals(listCheck.get(1), e1);
@@ -80,7 +81,7 @@ public class ServiceIntervalConverterTest extends TestCase {
     }
     
     private ServiceIntervalDto sidto(int i) {
-        return new ServiceIntervalDto((long) i, date1, date2, date3, VehicleConverter.entityToDto(vehicle), ServiceTypeConverter.entityToDto(type));
+        return new ServiceIntervalDto((long) i, date1, date2, date3, ConverterContainer.getVehicleConverter().entityToDto(vehicle), ConverterContainer.getServiceTypeConverter().entityToDto(type));
     }
-    
+
 }

@@ -8,7 +8,7 @@ package cz.muni.fi.pa165.carmanagement.impl.service;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.RideDto;
 import cz.muni.fi.pa165.carmanagement.api.service.RideService;
-import cz.muni.fi.pa165.carmanagement.impl.converter.RideConverter;
+import cz.muni.fi.pa165.carmanagement.impl.converters.ConverterContainer;
 import cz.muni.fi.pa165.carmanagement.impl.dao.EmployeeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.dao.RideDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleDaoImpl;
@@ -49,14 +49,14 @@ public class RideServiceImpl implements RideService {
             throw new NullPointerException("rideDto");
         }
                 
-        Ride entity = RideConverter.dtoToEntity(rideDto);
+        Ride entity = ConverterContainer.getRideConverter().dtoToEntity(rideDto);
         entity.setId(null);
         entity.setEmployee(employeeDao.findById(rideDto.getEmployee().getId()));
         entity.setVehicle(vehicleDao.findById(rideDto.getVehicle().getId()));
                 
         dao.persist(entity);
         
-        return RideConverter.entityToDto(entity);
+        return ConverterContainer.getRideConverter().entityToDto(entity);
     }
 
     @Transactional
@@ -76,7 +76,7 @@ public class RideServiceImpl implements RideService {
             throw new NullPointerException("rideDto");
         }
         
-        dao.update(RideConverter.dtoToEntity(rideDto));
+        dao.update(ConverterContainer.getRideConverter().dtoToEntity(rideDto));
     }
 
     @Transactional
@@ -86,13 +86,13 @@ public class RideServiceImpl implements RideService {
             throw new NullPointerException("id");
         }
         
-        return RideConverter.entityToDto(dao.findById(id));
+        return ConverterContainer.getRideConverter().entityToDto(dao.findById(id));
     }
 
     @Transactional
     @Override        
     public List<RideDto> findAll() {
-        return RideConverter.entityToDto(dao.findAll());
+        return ConverterContainer.getRideConverter().entityToDto(dao.findAll());
     }
-    
+
 }
