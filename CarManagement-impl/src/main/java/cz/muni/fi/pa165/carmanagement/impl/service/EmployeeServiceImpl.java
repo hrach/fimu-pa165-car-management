@@ -1,13 +1,12 @@
 
 package cz.muni.fi.pa165.carmanagement.impl.service;
 
-import cz.muni.fi.pa165.carmanagement.api.service.ServiceInterface;
 import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
 import cz.muni.fi.pa165.carmanagement.api.service.EmployeeService;
 import cz.muni.fi.pa165.carmanagement.api.service.RideService;
+import cz.muni.fi.pa165.carmanagement.impl.converters.ConverterContainer;
 import cz.muni.fi.pa165.carmanagement.impl.dao.EmployeeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.Employee;
-import cz.muni.fi.pa165.carmanagement.impl.model.Ride;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Jakub Marecek <xmarec at gmail.com>
  */
 @Service
-public class EmployeeServiceImpl extends GeneralService<Employee, EmployeeDto> implements EmployeeService<Employee> {
+public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeDaoImpl dao;
@@ -25,10 +24,6 @@ public class EmployeeServiceImpl extends GeneralService<Employee, EmployeeDto> i
     public void setDao(EmployeeDaoImpl dao) {
         this.dao = dao;
     }
-
-    
-    @Autowired
-    private RideService<Ride> rideService;
 
 
     @Transactional
@@ -40,10 +35,10 @@ public class EmployeeServiceImpl extends GeneralService<Employee, EmployeeDto> i
         
         employeeDto.setId(null);
         
-        Employee entity = this.dtoToEntity(employeeDto);
+        Employee entity = ConverterContainer.getEmployeeConverter().dtoToEntity(employeeDto);
         dao.persist(entity);   
         
-        return this.entityToDto(entity);
+        return ConverterContainer.getEmployeeConverter().entityToDto(entity);
     }
 
     @Transactional
@@ -63,7 +58,7 @@ public class EmployeeServiceImpl extends GeneralService<Employee, EmployeeDto> i
             throw new NullPointerException("employeeDto");
         }
         
-        dao.update(this.dtoToEntity(employeeDto));        
+        dao.update(ConverterContainer.getEmployeeConverter().dtoToEntity(employeeDto));        
     }
 
     @Transactional
@@ -73,52 +68,13 @@ public class EmployeeServiceImpl extends GeneralService<Employee, EmployeeDto> i
             throw new NullPointerException("id");
         }
         
-        return this.entityToDto(dao.findById(id));
+        return ConverterContainer.getEmployeeConverter().entityToDto(dao.findById(id));
     }
 
     @Transactional
     @Override        
     public List<EmployeeDto> findAll() {
-        return this.entityToDto(dao.findAll());
-    }
-    
-
-    public EmployeeDto entityToDto(Employee entity, ServiceInterface parent) {
-        if (entity == null){
-            return null;
-        }
-        
-        EmployeeDto dto = new EmployeeDto();
-        
-        dto.setId(entity.getId());
-        dto.setFirstName(entity.getFirstName());
-        dto.setFamilyName(entity.getFamilyName());
-        dto.setEmployeeRole(entity.getEmployeeRole());
-        
-        if (!(parent instanceof RideService)) {
-            dto.setRides(this.rideService.entityToDto(entity.getRides(), this));
-        }
-
-        return dto;
+        return ConverterContainer.getEmployeeConverter().entityToDto(dao.findAll());
     }
 
-    public Employee dtoToEntity(EmployeeDto dto, ServiceInterface parent) {
-        if (dto == null) {
-            return null;
-        }
-
-        Employee entity = new Employee();
-        
-        entity.setId(dto.getId());
-        entity.setFirstName(dto.getFirstName());
-        entity.setFamilyName(dto.getFamilyName());
-        entity.setEmployeeRole(dto.getEmployeeRole());
-        
-        if (!(parent instanceof RideService)) {
-            entity.setRides(this.rideService.dtoToEntity(dto.getRides(), this));
-        }
-
-        return entity;
-    }
-    
 }

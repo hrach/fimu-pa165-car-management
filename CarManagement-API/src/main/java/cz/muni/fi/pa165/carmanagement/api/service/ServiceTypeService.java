@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * @author zvonicek
  */
 @Service
-public interface ServiceTypeService<E> extends ServiceInterface<E, ServiceTypeDto> {
+public interface ServiceTypeService {
 
     public ServiceTypeDto create(ServiceTypeDto type);
 

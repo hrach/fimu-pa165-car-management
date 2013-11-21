@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * @author Jakub Marecek <xmarec at gmail.com>
  */
 @Service
-public interface RideService<E> extends ServiceInterface<E, RideDto> {
+public interface RideService {
     
     public RideDto create(RideDto rideDto);
 

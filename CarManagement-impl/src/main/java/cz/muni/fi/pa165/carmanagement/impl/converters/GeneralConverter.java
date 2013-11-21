@@ -1,19 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package cz.muni.fi.pa165.carmanagement.impl.service;
+package cz.muni.fi.pa165.carmanagement.impl.converters;
 
-import cz.muni.fi.pa165.carmanagement.api.service.ServiceInterface;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author skrasek
  */
-public abstract class GeneralService<E, D> implements ServiceInterface<E, D> {
-    
-    abstract public D entityToDto(E entity, ServiceInterface parent);
+public abstract class GeneralConverter<E, D> implements ConverterInterface {
+
+    abstract public D entityToDto(E entity, ConverterInterface parent);
     
     public D entityToDto(E entity) {
         return this.entityToDto(entity, null);
@@ -23,7 +18,7 @@ public abstract class GeneralService<E, D> implements ServiceInterface<E, D> {
         return this.entityToDto(entities, null);
     }
 
-    public List<D> entityToDto(List<E> entities, ServiceInterface parent) {
+    public List<D> entityToDto(List<E> entities, ConverterInterface parent) {
         if (entities == null){
             return null;
         }
@@ -36,7 +31,7 @@ public abstract class GeneralService<E, D> implements ServiceInterface<E, D> {
         return list;
     }
 
-    abstract public E dtoToEntity(D dto, ServiceInterface parent);
+    abstract public E dtoToEntity(D dto, ConverterInterface parent);
     
     public E dtoToEntity(D dto) {
         return this.dtoToEntity(dto, null);
@@ -46,7 +41,7 @@ public abstract class GeneralService<E, D> implements ServiceInterface<E, D> {
         return this.dtoToEntity(dtos, null);
     }
     
-    public List<E> dtoToEntity(List<D> dtos, ServiceInterface parent) {
+    public List<E> dtoToEntity(List<D> dtos, ConverterInterface parent) {
         if (dtos == null){
             return null;
         }
@@ -58,5 +53,5 @@ public abstract class GeneralService<E, D> implements ServiceInterface<E, D> {
         
         return list;
     }
-   
+
 }

@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author zvonicek
  */
-public interface VehicleTypeService<E> extends ServiceInterface<E, VehicleTypeDto> {
+public interface VehicleTypeService {
 
     public VehicleTypeDto create(VehicleTypeDto type);
 

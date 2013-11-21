@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * @author Jakub Marecek <xmarec at gmail.com>
  */
 @Service
-public interface ServiceIntervalService<E> extends ServiceInterface<E, ServiceIntervalDto> {
+public interface ServiceIntervalService {
     
     public ServiceIntervalDto create(ServiceIntervalDto serviceIntervalDto);
 

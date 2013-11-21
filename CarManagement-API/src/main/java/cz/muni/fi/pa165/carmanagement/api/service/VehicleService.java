@@ -1,14 +1,12 @@
 package cz.muni.fi.pa165.carmanagement.api.service;
 
-import cz.muni.fi.pa165.carmanagement.api.dto.RideDto;
-import cz.muni.fi.pa165.carmanagement.api.dto.ServiceIntervalDto;
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import java.util.List;
 
 /**
  * @author Jakub Marecek <xmarec at gmail.com>
  */
-public interface VehicleService<E> extends ServiceInterface<E, VehicleDto> {
+public interface VehicleService {
 
     public VehicleDto create(VehicleDto v);
 

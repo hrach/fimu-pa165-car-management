@@ -7,14 +7,10 @@
 package cz.muni.fi.pa165.carmanagement.impl.service;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.ServiceIntervalDto;
-import cz.muni.fi.pa165.carmanagement.api.service.ServiceInterface;
 import cz.muni.fi.pa165.carmanagement.api.service.ServiceIntervalService;
-import cz.muni.fi.pa165.carmanagement.api.service.ServiceTypeService;
-import cz.muni.fi.pa165.carmanagement.api.service.VehicleService;
+import cz.muni.fi.pa165.carmanagement.impl.converters.ConverterContainer;
 import cz.muni.fi.pa165.carmanagement.impl.dao.ServiceIntervalDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.ServiceInterval;
-import cz.muni.fi.pa165.carmanagement.impl.model.ServiceType;
-import cz.muni.fi.pa165.carmanagement.impl.model.Vehicle;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ServiceIntervalServiceImpl extends GeneralService<ServiceInterval, ServiceIntervalDto> implements ServiceIntervalService<ServiceInterval> {
+public class ServiceIntervalServiceImpl implements ServiceIntervalService {
     
     @Autowired    
     private ServiceIntervalDaoImpl dao;
@@ -31,12 +27,6 @@ public class ServiceIntervalServiceImpl extends GeneralService<ServiceInterval, 
         this.dao = dao;
     }
     
-    @Autowired
-    private VehicleService<Vehicle> vehicleService;
-    
-    @Autowired
-    private ServiceTypeService<ServiceType> serviceTypeService;
-
     @Transactional
     @Override        
     public ServiceIntervalDto create(ServiceIntervalDto serviceIntervalDto) {
@@ -46,11 +36,11 @@ public class ServiceIntervalServiceImpl extends GeneralService<ServiceInterval, 
         
         serviceIntervalDto.setId(null);
         
-        ServiceInterval entity = this.dtoToEntity(serviceIntervalDto);
+        ServiceInterval entity = ConverterContainer.getServiceIntervalConverter().dtoToEntity(serviceIntervalDto);
         
         dao.persist(entity);
         
-        return this.entityToDto(entity);
+        return ConverterContainer.getServiceIntervalConverter().entityToDto(entity);
     }
 
     public void delete(Long id) {
@@ -68,7 +58,7 @@ public class ServiceIntervalServiceImpl extends GeneralService<ServiceInterval, 
             throw new NullPointerException("serviceIntervalDto");
         }
         
-        dao.update(this.dtoToEntity(serviceIntervalDto));
+        dao.update(ConverterContainer.getServiceIntervalConverter().dtoToEntity(serviceIntervalDto));
     }
 
     @Transactional
@@ -78,13 +68,13 @@ public class ServiceIntervalServiceImpl extends GeneralService<ServiceInterval, 
             throw new NullPointerException("id");
         }
         
-        return this.entityToDto(dao.findById(id));
+        return ConverterContainer.getServiceIntervalConverter().entityToDto(dao.findById(id));
     }
 
     @Transactional
     @Override        
     public List<ServiceIntervalDto> findAll() {
-        return this.entityToDto(dao.findAll());
+        return ConverterContainer.getServiceIntervalConverter().entityToDto(dao.findAll());
     }
 
     @Transactional
@@ -99,48 +89,6 @@ public class ServiceIntervalServiceImpl extends GeneralService<ServiceInterval, 
         sid.setDoneTime(actualDate);
         
         dao.update(sid);
-    }
-    
-    public ServiceIntervalDto entityToDto(ServiceInterval entity, ServiceInterface parent) {
-        if (entity == null){
-            return null;
-        }
-        
-        ServiceIntervalDto dto = new ServiceIntervalDto();
-        
-        dto.setId(entity.getId());
-        dto.setCreatedTime(entity.getCreatedTime());
-        dto.setDueTime(entity.getDueTime());
-        dto.setDoneTime(entity.getDoneTime());
-
-        if (!(parent instanceof ServiceTypeService)) {
-            dto.setServiceType(this.serviceTypeService.entityToDto(entity.getServiceType(), this));
-        } else if (!(parent instanceof VehicleService)) {
-            dto.setVehicle(this.vehicleService.entityToDto(entity.getVehicle(), this));
-        }
-
-        return dto;
-    }
-    
-    public ServiceInterval dtoToEntity(ServiceIntervalDto dto, ServiceInterface parent) {
-        if (dto == null) {
-            return null;
-        }
-        
-        ServiceInterval entity = new ServiceInterval();
-        
-        entity.setId(dto.getId());
-        entity.setCreatedTime(dto.getCreatedTime());
-        entity.setDueTime(dto.getDueTime());
-        entity.setDoneTime(dto.getDoneTime());
-
-        if (!(parent instanceof ServiceTypeService)) {
-            entity.setServiceType(this.serviceTypeService.dtoToEntity(dto.getServiceType(), this));
-        } else if (!(parent instanceof VehicleService)) {
-            entity.setVehicle(this.vehicleService.dtoToEntity(dto.getVehicle(), this));
-        }
-
-        return entity;
     }
 
 }
