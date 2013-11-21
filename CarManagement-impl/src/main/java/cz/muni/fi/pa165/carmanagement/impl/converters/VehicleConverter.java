@@ -18,9 +18,17 @@ public class VehicleConverter extends GeneralConverter<Vehicle, VehicleDto> {
         dto.setName(entity.getName());
         dto.setTachometer(entity.getTachometer());
         
-        VehicleTypeConverter vtc = ConverterContainer.getVehicleTypeConverter();
+        VehicleTypeConverter vtc     = ConverterContainer.getVehicleTypeConverter();
+        RideConverter rc             = ConverterContainer.getRideConverter();
+        ServiceIntervalConverter sic = ConverterContainer.getServiceIntervalConverter();
         if (!(parent == vtc)) {
             dto.setType(vtc.entityToDto(entity.getType(), this));
+        }
+        if (!(parent == rc)) {
+            dto.setRides(rc.entityToDto(entity.getRides(), this));
+        }
+        if (!(parent == sic)) {
+            dto.setServiceIntervals(sic.entityToDto(entity.getServiceIntervals(), this));
         }
 
         return dto;    
@@ -36,9 +44,17 @@ public class VehicleConverter extends GeneralConverter<Vehicle, VehicleDto> {
         entity.setName(dto.getName());
         entity.setTchometer(dto.getTachometer());
         
-        VehicleTypeConverter vtc = ConverterContainer.getVehicleTypeConverter();
+        VehicleTypeConverter vtc     = ConverterContainer.getVehicleTypeConverter();
+        RideConverter rc             = ConverterContainer.getRideConverter();
+        ServiceIntervalConverter sic = ConverterContainer.getServiceIntervalConverter();
         if (!(parent == vtc)) {
             entity.setType(vtc.dtoToEntity(dto.getType(), this));
+        }
+        if (!(parent == rc)) {
+            entity.setRides(rc.dtoToEntity(dto.getRides(), this));
+        }
+        if (!(parent == sic)) {
+            entity.setServiceIntervals(sic.dtoToEntity(dto.getServiceIntervals(), this));
         }
         
         return entity;        

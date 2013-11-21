@@ -4,6 +4,10 @@
  */
 package cz.muni.fi.pa165.carmanagement.api.dto;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Vehicle data transfer object
  * 
@@ -18,6 +22,11 @@ public class VehicleDto
     private Long tachometer;
 
     private VehicleTypeDto type;
+    
+    private List<RideDto> rides;
+    
+    private List<ServiceIntervalDto> serviceIntervals;
+
 
     public VehicleDto(Long id, String name, Long tachometer, VehicleTypeDto type)
     {
@@ -77,6 +86,40 @@ public class VehicleDto
         this.type = type;
     }
 
+    public List<RideDto> getRides() {
+        return rides;
+    }
+
+    public void setRides(List<RideDto> rides) {
+        this.rides = rides;
+    }
+
+    public List<ServiceIntervalDto> getServiceIntervals() {
+        return serviceIntervals;
+    }
+
+    public void setServiceIntervals(List<ServiceIntervalDto> serviceIntervals) {
+        this.serviceIntervals = serviceIntervals;
+    }
+    
+    public int getSumKm() {
+        int sum = 0;
+        for (RideDto r : this.getRides()) {
+            sum += r.getTachometerEnd() - r.getTachometerStart();
+        }
+        
+        return sum;
+    }
+    
+    public int getSumDrivers() {
+        Set<Long> ids = new HashSet<Long>();
+        for (RideDto r : this.getRides()) {
+            ids.add(r.getEmployee().getId());
+        }
+        
+        return ids.size();
+    }
+   
     @Override
     public int hashCode()
     {

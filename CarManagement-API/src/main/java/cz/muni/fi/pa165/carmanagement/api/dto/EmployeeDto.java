@@ -61,6 +61,10 @@ public class EmployeeDto {
     public void setFamilyName(String familyName) {
         this.familyName = familyName;
     }
+    
+    public String getName() {
+        return this.firstName + ' ' + this.familyName;
+    }
 
     public int getEmployeeRole() {
         return employeeRole;

@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<h2><c:out value="${employee.firstName}"/> <c:out value="${employee.familyName}"/> <small><spring:message code="detail.employee" /></small></h2>
+<h2><c:out value="${employee.name}"/> <small><spring:message code="detail.employee" /></small></h2>
 <table class="table">
     <tr>
         <th><spring:message code="detail.emp.id" /></th>
@@ -10,7 +10,7 @@
     </tr>
     <tr>
         <th><spring:message code="detail.emp.name" /></th>
-        <td><c:out value="${employee.firstName}"/> <c:out value="${employee.familyName}"/></td>
+        <td><c:out value="${employee.name}"/></td>
     </tr>
     <tr>
         <th><spring:message code="detail.emp.role" /></th>
