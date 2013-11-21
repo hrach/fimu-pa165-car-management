@@ -3,3 +3,4 @@
 <link rel="stylesheet" href="<c:url value="/resources/screen.css"/>">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+<script src="<c:url value="/resources/typeahead.min.js"/>"></script>

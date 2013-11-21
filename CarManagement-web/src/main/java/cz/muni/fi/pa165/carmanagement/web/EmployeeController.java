@@ -6,12 +6,15 @@ package cz.muni.fi.pa165.carmanagement.web;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
 import cz.muni.fi.pa165.carmanagement.api.service.EmployeeService;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -99,5 +102,12 @@ public class EmployeeController {
         redirectAttributes.addFlashAttribute("message", message);
 
         return "redirect:/employee/";
+    }
+    
+    @RequestMapping(value="/search", method= RequestMethod.POST)
+    public @ResponseBody List<EmployeeDto> getJsonData() {
+        final List<EmployeeDto> data = new ArrayList();
+        data.addAll(employeeService.findAll());
+        return data;
     }
 }

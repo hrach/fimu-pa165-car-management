@@ -9,6 +9,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Car Management</title>
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#employeeSearch").typeahead({
+                    name: "employees",
+                    prefetch: "${pageContext.request.contextPath}/employee/search",
+                    limit: 10
+                });
+            });
+        </script>
+        <style>
+            .typeahead { z-index: 1100; }
+        </style>
     </head>
 
     <body>
@@ -24,7 +36,7 @@
                </div>
                <form class="navbar-form navbar-left" role="search">
                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" placeholder="Search" id="employeeSearch">
                    </div>
                    <button type="submit" class="btn btn-default">Submit</button>
                </form>
