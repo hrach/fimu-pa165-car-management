@@ -14,19 +14,8 @@
 
     <body>
 
-        <div class="navigation-container">
-        <nav class="navbar navbar-inverse" role="navigation">
-                <a class="navbar-brand" href="${pageContext.request.contextPath}"><spring:message code="home" /></a>
-                <%--<h4><spring:message code="outside" /></h4>--%>
-                <div class="collapse navbar-collapse">
-                <ul class="nav nav-navbar">
-                    <li class="active"><a href="${pageContext.request.contextPath}/ride/" >Rides</a></li>
-                    <li><a href="${pageContext.request.contextPath}/vehicle/">Vehicles</a></li>
-                    <li><a href="${pageContext.request.contextPath}/employee/">Employees</a></li>
-                </ul>
-                </div>
-        </nav>
-        </div>
+        <jsp:include page="/WEB-INF/jsp/navigation.jsp" />
+                
         <div id="content" class="container">
                 <table>
                     <c:forEach items="${items}" var="item">

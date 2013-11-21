@@ -1,3 +1,7 @@
+.container {
+    width: 960px;
+}
+
 .navigation-container {
     width: 100%;
     background: #222222;
@@ -17,4 +21,8 @@
 .navbar ul li {
     display: inline-block;
     line-height: 30px;
+}
+
+.navbar ul li.active a {
+    color: #fff;
 }
