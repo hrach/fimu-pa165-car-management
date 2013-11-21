@@ -42,8 +42,7 @@
     </bean>    
 
     <bean id="localeResolver"
-        class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
-        <property name="defaultLocale" value="en"/>
+        class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver">
     </bean>
 
     <bean id="viewResolver"
