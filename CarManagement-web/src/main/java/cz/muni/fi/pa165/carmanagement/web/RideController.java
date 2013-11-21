@@ -65,4 +65,17 @@ public class RideController {
         mav.setViewName("editRide");
         return mav;
     }
+    
+    @RequestMapping(value="/detail/{id}", method=RequestMethod.GET)
+    public ModelAndView detailRide(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView();  
+        
+        mav.addObject("ride", rideService.findById(id));
+        mav.addObject("vehicles", vehicleService.findAll());
+        mav.addObject("employees", employeeService.findAll());
+        
+        mav.setViewName("detailRide");
+        return mav;
+    }
+    
 }
