@@ -8,6 +8,7 @@ import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
 import cz.muni.fi.pa165.carmanagement.api.service.EmployeeService;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -104,8 +105,9 @@ public class EmployeeController {
         return "redirect:/employee/";
     }
     
-    @RequestMapping(value="/search", method= RequestMethod.POST)
-    public @ResponseBody List<EmployeeDto> getJsonData() {
+    @RequestMapping(value="/search")
+    public @ResponseBody List<EmployeeDto> getJsonData(HttpServletResponse response) {
+        response.setContentType("application/json");
         final List<EmployeeDto> data = new ArrayList();
         data.addAll(employeeService.findAll());
         return data;

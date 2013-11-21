@@ -13,14 +13,11 @@
             $(document).ready(function() {
                 $("#employeeSearch").typeahead({
                     name: "employees",
-                    prefetch: "${pageContext.request.contextPath}/employee/search",
+                    remote: "${pageContext.request.contextPath}/employee/search/",
                     limit: 10
                 });
             });
         </script>
-        <style>
-            .typeahead { z-index: 1100; }
-        </style>
     </head>
 
     <body>
