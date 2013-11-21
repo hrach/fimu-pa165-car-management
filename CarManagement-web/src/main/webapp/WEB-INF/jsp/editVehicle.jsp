@@ -17,6 +17,9 @@
 
     </head>
     <body>
+        
+        <jsp:include page="/WEB-INF/jsp/navigation.jsp" />
+        
         <div class="container">
             <div class="page-header">
                 <h1>Edit Vehicle</h1>

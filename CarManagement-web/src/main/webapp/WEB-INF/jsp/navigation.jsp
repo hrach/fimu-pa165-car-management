@@ -10,6 +10,7 @@
                 <li><a href="${pageContext.request.contextPath}/employee/"><spring:message code="navigation.employees" /></a></li>
             </ul>
         </div>--%>
+        <div class="pull-right">
         <div class="btn-group">
             <a href="${pageContext.request.contextPath}/employee/" class="btn btn-default link"><spring:message code="navigation.employees" /></a>
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -44,6 +45,7 @@
                 <li><a href="${pageContext.request.contextPath}/ride/list/"><spring:message code="navigation.rides.list" /></a></li>
                 <li><a href="${pageContext.request.contextPath}/ride/add/"><spring:message code="navigation.rides.new" /></a></li>
             </ul>
+        </div>
         </div>
     </nav>
 </div>
