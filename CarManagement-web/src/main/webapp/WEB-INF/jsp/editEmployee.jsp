@@ -48,8 +48,8 @@
                     <div class="col-sm-10">
                         <form:select path="employeeRole" id="input-role" cssClass="form-control">
                             <option value="-">-- <spring:message code="employee.select.role" /></option>
-                            <option value="1" ${employee.employeeRole == 1 ? 'selected="selected"' : ''}">Staff</option>
-                            <option value="2" ${employee.employeeRole == 2 ? 'selected="selected"' : ''}">Manager</option>
+                            <option value="1" ${employee.employeeRole == 1 ? 'selected="selected"' : ''}>Staff</option>
+                            <option value="2" ${employee.employeeRole == 2 ? 'selected="selected"' : ''}>Manager</option>
                         </form:select>
                     </div>
                 </div>

@@ -21,6 +21,11 @@
         <div id="content">
                 <h3><spring:message code="home" /></h3>
                 <h4><spring:message code="outside" /></h4>
+                <ul>
+                    <li><a href="${pageContext.request.contextPath}/ride/" >Rides</a></li>
+                    <li><a href="${pageContext.request.contextPath}/vehicle/">Vehicles</a></li>
+                    <li><a href="${pageContext.request.contextPath}/employee/">Employees</a></li>
+                </ul>
                 <table>
                     <c:forEach items="${items}" var="item">
                         <tr>
