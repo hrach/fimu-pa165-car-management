@@ -17,6 +17,7 @@
                 
         <div id="content" class="container">
             
+            <h3><spring:message code="employees.search" /></h3>
             <nav class="navbar navbar-default" role="navigation">
                <div class="navbar-header">
                    <a class="navbar-brand" href="#"><spring:message code="employee.find" /></a>
@@ -28,7 +29,8 @@
                    <button type="submit" class="btn btn-default">Submit</button>
                </form>
            </nav>
-                    
+           
+           <h3><spring:message code="vehilces.search" /></h3>
            <nav class="navbar navbar-default" role="navigation">
                <div class="navbar-header">
                    <a class="navbar-brand" href="#"><spring:message code="vehicle.find" /></a>
