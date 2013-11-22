@@ -63,17 +63,24 @@
     border-collapse: separate;
 }
 
-.table-hover thead tr td {
+.table-hover thead tr td, .table-hover tbody th {
     padding: 10px 15px;
-    border-top: 1px solid #fafafa;
+    
     color:#666;
     font-size:12px;
     text-shadow: 1px 1px 0px #fff; 
     font-weight: bold;
 
     background: #ededed;
-    background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
-    background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+    background: linear-gradient(to bottom,  #ededed,  #ebebeb);
+}
+
+.table-hover thead tr td {
+    border-top: 1px solid #fafafa;
+}
+
+.table-hover tbody th {
+    border-right: 1px solid #ddd;
 }
 
 .table-hover thead td:first-child {
@@ -90,4 +97,8 @@
 
 .table-hover tbody tr td {
     padding: 7px 15px;
+}
+
+.table-autosize {
+    width: auto;
 }

@@ -1,9 +1,24 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Edit Vehicle</title>
+        <jsp:include page="/WEB-INF/jsp/header.jsp" />
+    </head>
+    <body>
+        
+        <jsp:include page="/WEB-INF/jsp/navigation.jsp" />
+        
+        <div class="container">
+            <div class="page-header">
+                <h1><c:out value="${employee.name}"/> <small><spring:message code="detail.employee" /></small></h1>
+            </div>
+            <div class="content">
 
-<h2><c:out value="${employee.name}"/> <small><spring:message code="detail.employee" /></small></h2>
-<table class="table">
+<table class="table table-hover table-autosize">
     <tr>
         <th><spring:message code="detail.emp.id" /></th>
         <td><c:out value="${employee.id}"/></td>
@@ -28,7 +43,7 @@
 </table>
     
 <h3><spring:message code="detail.employee.rides" /></h3>
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
             <td><spring:message code="detail.ride.id" /></td>
@@ -56,3 +71,8 @@
     </c:forEach>
     </tbody>
 </table>
+
+        </div>
+        </div>
+    </body>
+</html>
