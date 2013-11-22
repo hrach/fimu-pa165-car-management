@@ -11,11 +11,20 @@
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
         <script type="text/javascript">
             $(document).ready(function() {
-                $(".typeahead").typeahead({
+                $("#employeeSearch").typeahead({
                     name: "employees",
                     valueKey: "name",
                     remote: "${pageContext.request.contextPath}/employee/search/%QUERY",
                     template: "<a href=\"/pa165/overview/employee/{{id}}\">{{name}}</p>",
+                    engine: Hogan,
+                    limit: 5
+                });
+                
+                $("#vehicleSearch").typeahead({
+                    name: "vehicles",
+                    valueKey: "name",
+                    remote: "${pageContext.request.contextPath}/vehicle/search/%QUERY",
+                    template: "<a href=\"/pa165/overview/vehicle/{{id}}\">{{name}}</p>",
                     engine: Hogan,
                     limit: 5
                 });
@@ -38,7 +47,7 @@
                    <div class="form-group">
                         <input type="text" class="form-control typeahead" placeholder="Search" id="employeeSearch">
                    </div>
-                   <button type="submit" class="btn btn-default">Submit</button>
+                   <%--<button type="submit" class="btn btn-default">Submit</button>--%>
                </form>
            </nav>
            
@@ -49,9 +58,9 @@
                </div>
                <form class="navbar-form navbar-left" role="search">
                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control typeahead" placeholder="Search" id="vehicleSearch">
                    </div>
-                   <button type="submit" class="btn btn-default">Submit</button>
+                   <%--<button type="submit" class="btn btn-default">Submit</button>--%>
                </form>
            </nav>
             

@@ -25,7 +25,9 @@
 
 .tt-suggestion {
   display: block;
-  padding: 3px 20px;
+  padding: 0;
+  height: 30px;
+  line-height: 30px;
 }
 
 .tt-suggestion.tt-is-under-cursor {
@@ -40,8 +42,15 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
 }
 
+.tt-suggestion a {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .tt-suggestion.tt-is-under-cursor a {
   color: #fff;
+  display: block;
+  width: 100%;
 }
 
 .tt-suggestion p {

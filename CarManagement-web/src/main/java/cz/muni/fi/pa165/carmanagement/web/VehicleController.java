@@ -7,6 +7,8 @@ package cz.muni.fi.pa165.carmanagement.web;
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import cz.muni.fi.pa165.carmanagement.api.service.VehicleService;
 import cz.muni.fi.pa165.carmanagement.api.service.VehicleTypeService;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -123,6 +126,18 @@ public class VehicleController {
             HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         throw new UnsupportedOperationException("Not yet implemented");
+    }
+    
+    @RequestMapping(value="/search/{term}")
+    public @ResponseBody List<VehicleDto> getJsonData(@PathVariable String term, HttpServletResponse response) {
+        response.setContentType("application/json");
+        final List<VehicleDto> data = new ArrayList();
+        for(VehicleDto d : vehicleService.findAll()) {
+            if(d.getName().toLowerCase().contains(term.toLowerCase())) {
+                data.add(d);
+            }
+        }
+        return data;
     }
     
 }
