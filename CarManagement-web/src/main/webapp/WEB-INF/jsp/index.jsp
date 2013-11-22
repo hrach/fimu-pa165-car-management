@@ -45,7 +45,7 @@
                </div>
                <form class="navbar-form navbar-left" role="search">
                    <div class="form-group">
-                        <input type="text" class="form-control typeahead" placeholder="Search" id="employeeSearch">
+                        <input type="text" class="form-control typeahead" placeholder="<spring:message code="search" />" id="employeeSearch">
                    </div>
                    <%--<button type="submit" class="btn btn-default">Submit</button>--%>
                </form>
@@ -58,7 +58,7 @@
                </div>
                <form class="navbar-form navbar-left" role="search">
                    <div class="form-group">
-                        <input type="text" class="form-control typeahead" placeholder="Search" id="vehicleSearch">
+                        <input type="text" class="form-control typeahead" placeholder="<spring:message code="search" />" id="vehicleSearch">
                    </div>
                    <%--<button type="submit" class="btn btn-default">Submit</button>--%>
                </form>
