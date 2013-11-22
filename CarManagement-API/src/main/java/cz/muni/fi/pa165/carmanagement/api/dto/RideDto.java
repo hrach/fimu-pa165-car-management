@@ -7,6 +7,7 @@
 package cz.muni.fi.pa165.carmanagement.api.dto;
 
 import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -15,8 +16,10 @@ import java.util.Date;
 public class RideDto {
     private Long id;
     
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date startTime;
     
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date endTime;
     
     private Long tachometerStart;
