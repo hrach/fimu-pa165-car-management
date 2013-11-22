@@ -14,6 +14,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><spring:message code="ride.edit" /></title>
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
+        <script>
+            $(function() {
+                $( ".datepicker" ).datepicker({
+                    dateFormat: "dd/mm/yy",
+                    dayNamesMin: [ '<spring:message code="days.short.su" />','<spring:message code="days.short.mo" />','<spring:message code="days.short.tu" />','<spring:message code="days.short.we" />','<spring:message code="days.short.th" />','<spring:message code="days.short.fr" />','<spring:message code="days.short.sa" />' ],
+                    monthNames: [ '<spring:message code="months.long.jan" />', '<spring:message code="months.long.feb" />','<spring:message code="months.long.mar" />','<spring:message code="months.long.apr" />','<spring:message code="months.long.may" />','<spring:message code="months.long.jun" />','<spring:message code="months.long.jul" />','<spring:message code="months.long.aug" />','<spring:message code="months.long.sep" />','<spring:message code="months.long.oct" />','<spring:message code="months.long.nov" />','<spring:message code="months.long.dec" />' ],
+                    firstDay: 1
+                }
+                    );
+            });
+            </script>
     </head>
     <body>
         
@@ -36,13 +47,13 @@
                 <div class="form-group">
                     <label for="input-starttime" class="col-sm-2 control-label"><spring:message code="ride.starttime" />:</label>  
                     <div class="col-sm-10">
-                        <form:input path="startTime" id="input-starttime" cssClass="form-control"></form:input>
+                        <form:input path="startTime" id="input-starttime" cssClass="form-control datepicker"></form:input>
                     </div> 
                 </div>
                 <div class="form-group">
                     <label for="input-endtime" class="col-sm-2 control-label"><spring:message code="ride.endtime" />:</label>
                     <div class="col-sm-10">
-                        <form:input path="endTime" id="input-endtime" cssClass="form-control"></form:input>
+                        <form:input path="endTime" id="input-endtime" cssClass="form-control datepicker"></form:input>
                     </div>  
                 </div>
                     
