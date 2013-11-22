@@ -3,6 +3,10 @@
   margin-bottom: 0;
 }
 
+.tt-hint {
+    padding: 6px 11px;
+}
+
 .tt-dropdown-menu {
   min-width: 160px;
   margin-top: 2px;
