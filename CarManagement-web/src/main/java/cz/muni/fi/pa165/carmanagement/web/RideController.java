@@ -124,6 +124,18 @@ public class RideController {
         return "redirect:/ride/"; 
     }
     
+    @RequestMapping(value="/delete/{id}")
+    public String deleteRide(@PathVariable Long id, RedirectAttributes redirectAttributes){
+        
+        rideService.delete(id);
+        
+        String message = "Ride #"+id+" was successfully deleted."; 
+
+        redirectAttributes.addFlashAttribute("message", message);
+
+        return "redirect:/ride/";
+    }
+    
     @RequestMapping(value="/detail/{id}", method=RequestMethod.GET)
     public ModelAndView detailRide(@PathVariable Long id) {
         ModelAndView mav = new ModelAndView();  
