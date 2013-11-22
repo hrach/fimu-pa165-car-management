@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <h2><c:out value="${vehicle.name}"/></h2>
 
@@ -19,7 +20,7 @@
 
 <h3><spring:message code="detail.employee.rides" /></h3>
 <table class="table">
-    <thread>
+    <thead>
         <tr>
             <td><spring:message code="detail.ride.id" /></td>
             <td><spring:message code="detail.ride.starttime" /></td>
@@ -71,3 +72,29 @@
     </c:forEach>
     </tbody>
 </table>
+
+        
+        
+<form:form cssClass="form-horizontal" method="POST" modelAttribute="newServiceInterval" action="">
+    <div class="form-group">
+        <label for="input-type" class="col-sm-2 control-label"><spring:message code="serviceInterval.type" />:</label>  
+        <div class="col-sm-10">
+            <form:select path="serviceType.id" id="input-type" cssClass="form-control">
+                <spring:message code="serviceInterval.select" var="emptyVal"/>
+                <form:option label="${emptyVal}" value="${null}"/>
+                <form:options items="${allTypes}" itemLabel="name" itemValue="id"/>
+            </form:select>
+        </div> 
+    </div>
+    <div class="form-group">
+        <label for="input-due" class="col-sm-2 control-label"><spring:message code="serviceInterval.dueTime" />:</label>
+        <div class="col-sm-10">
+            <form:input path="dueTime" id="input-due" cssClass="form-control"></form:input>
+        </div>  
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success"><spring:message code="changes.save" /></button>
+        </div>
+    </div>    
+</form:form>  

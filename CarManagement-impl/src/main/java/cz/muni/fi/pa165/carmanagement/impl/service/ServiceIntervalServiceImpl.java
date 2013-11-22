@@ -7,6 +7,8 @@
 package cz.muni.fi.pa165.carmanagement.impl.service;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.ServiceIntervalDto;
+import cz.muni.fi.pa165.carmanagement.api.dto.ServiceTypeDto;
+import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import cz.muni.fi.pa165.carmanagement.api.service.ServiceIntervalService;
 import cz.muni.fi.pa165.carmanagement.impl.converters.ConverterContainer;
 import cz.muni.fi.pa165.carmanagement.impl.dao.ServiceIntervalDaoImpl;
@@ -89,6 +91,19 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
         sid.setDoneTime(actualDate);
         
         dao.update(sid);
+    }
+    
+    @Transactional
+    @Override
+    public ServiceIntervalDto updateServiceIntervalAsDone(VehicleDto vehicle, ServiceTypeDto newServiceType) {
+        for (ServiceIntervalDto s : vehicle.getServiceIntervals()) {
+            if (s.getDoneTime() == null && s.getServiceType().equals(newServiceType)) {
+                s.setDoneTime(new Date());
+                return s;
+            }
+        }
+        
+        return null;
     }
 
 }

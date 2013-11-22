@@ -1,6 +1,8 @@
 package cz.muni.fi.pa165.carmanagement.api.service;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.ServiceIntervalDto;
+import cz.muni.fi.pa165.carmanagement.api.dto.ServiceTypeDto;
+import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -21,4 +23,7 @@ public interface ServiceIntervalService {
     public List<ServiceIntervalDto> findAll(); 
         
     public void setIntervalAsDoneForId(Long id);
+    
+    public ServiceIntervalDto updateServiceIntervalAsDone(VehicleDto vehicle, ServiceTypeDto newServiceType);
+
 }

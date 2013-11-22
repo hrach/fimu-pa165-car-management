@@ -51,6 +51,8 @@ public class App
                 
         ServiceTypeDto serviceType = new ServiceTypeDto("Výměna oleje");
         serviceType = serviceTypeService.create(serviceType);
+        serviceType = new ServiceTypeDto("Výměna benzinu");
+        serviceType = serviceTypeService.create(serviceType);
         
         ServiceIntervalDto serviceInterval = new ServiceIntervalDto((long)1, new Date(), new Date(), new Date(), vehicle, serviceType);
         serviceInterval = serviceIntervalService.create(serviceInterval);

@@ -2,7 +2,6 @@ package cz.muni.fi.pa165.carmanagement.impl.service;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import cz.muni.fi.pa165.carmanagement.api.service.VehicleService;
-import cz.muni.fi.pa165.carmanagement.api.service.VehicleTypeService;
 import cz.muni.fi.pa165.carmanagement.impl.converters.ConverterContainer;
 import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleTypeDaoImpl;

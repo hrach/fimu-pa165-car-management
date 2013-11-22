@@ -12,13 +12,13 @@
 
     
     <context:annotation-config/>
-    
+   
     <context:component-scan base-package="cz.muni.fi.pa165.carmanagement.impl"/>
         
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>     
     
-    <tx:annotation-driven/>    
+    <tx:annotation-driven/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver" />

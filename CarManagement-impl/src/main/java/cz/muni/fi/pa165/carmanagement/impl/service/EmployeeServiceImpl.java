@@ -3,7 +3,6 @@ package cz.muni.fi.pa165.carmanagement.impl.service;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
 import cz.muni.fi.pa165.carmanagement.api.service.EmployeeService;
-import cz.muni.fi.pa165.carmanagement.api.service.RideService;
 import cz.muni.fi.pa165.carmanagement.impl.converters.ConverterContainer;
 import cz.muni.fi.pa165.carmanagement.impl.dao.EmployeeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.Employee;

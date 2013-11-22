@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cz.muni.fi.pa165.carmanagement.api.dto;
 
 /**
- *
  * @author zvonicek
  */
 public class ServiceTypeDto {
@@ -47,7 +41,6 @@ public class ServiceTypeDto {
     public int hashCode() {
         int hash = 7;
         hash = 47 * hash + (this.id != null ? this.id.hashCode() : 0);
-        hash = 47 * hash + (this.name != null ? this.name.hashCode() : 0);
         return hash;
     }
 
@@ -61,9 +54,6 @@ public class ServiceTypeDto {
         }
         final ServiceTypeDto other = (ServiceTypeDto) obj;
         if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
-            return false;
-        }
-        if ((this.name == null) ? (other.name != null) : !this.name.equals(other.name)) {
             return false;
         }
         return true;

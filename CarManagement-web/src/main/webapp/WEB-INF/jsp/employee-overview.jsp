@@ -29,7 +29,7 @@
     
 <h3><spring:message code="detail.employee.rides" /></h3>
 <table class="table">
-    <thread>
+    <thead>
         <tr>
             <td><spring:message code="detail.ride.id" /></td>
             <td><spring:message code="detail.ride.starttime" /></td>
