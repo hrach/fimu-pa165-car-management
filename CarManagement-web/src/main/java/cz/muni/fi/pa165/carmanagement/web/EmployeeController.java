@@ -80,7 +80,7 @@ public class EmployeeController {
         ModelAndView mav = new ModelAndView();  
         
         mav.addObject("employee", employeeService.findById(id));
-        System.out.println("Employee edit:"+id+"\n");
+        System.out.println("Employee #"+id+" edit opened.");
         
         mav.setViewName("editEmployee");
         return mav;
@@ -91,7 +91,7 @@ public class EmployeeController {
         
         employeeService.update(employee);
         
-        System.out.println("Employee edit:"+id+" - ok.");
+        System.out.println("Employee #"+id+" edited.");
 
         String[] messageParams = {employee.getId().toString()};        
         String message = messageSource.getMessage("message.employee.edited", messageParams, locale);
@@ -103,6 +103,8 @@ public class EmployeeController {
     @RequestMapping(value="/delete/{id}")
     public String deleteEmployee(@PathVariable Long id, RedirectAttributes redirectAttributes){
         employeeService.delete(id);
+        
+        System.out.println("Employee #"+id+" deleted.");
         
         String[] messageParams = {id.toString()};        
         String message = messageSource.getMessage("message.employee.deleted", messageParams, locale);

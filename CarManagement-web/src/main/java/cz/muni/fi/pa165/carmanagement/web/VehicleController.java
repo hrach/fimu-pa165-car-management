@@ -9,9 +9,12 @@ import cz.muni.fi.pa165.carmanagement.api.service.VehicleService;
 import cz.muni.fi.pa165.carmanagement.api.service.VehicleTypeService;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +31,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/vehicle/")
 public class VehicleController {
+    
+    @Autowired
+    private MessageSource messageSource;
+    
+    private Locale locale = LocaleContextHolder.getLocale();
 
     @Autowired
     private VehicleService vehicleService;
@@ -71,8 +79,7 @@ public class VehicleController {
         
         vehicleService.create(vd);
                 
-        String message = "Vehicle was successfully added."; 
-
+        String message = messageSource.getMessage("message.vehicle.added", null, locale);
         redirectAttributes.addFlashAttribute("message", message);
 
         return "redirect:/vehicle/";  
@@ -101,8 +108,8 @@ public class VehicleController {
         
         vehicleService.update(vd);
                 
-        String message = "Vehicle #"+id+" was successfully edited."; 
-
+        String[] messageParams = {id.toString()};        
+        String message = messageSource.getMessage("message.vehicle.edited", messageParams, locale);
         redirectAttributes.addFlashAttribute("message", message);
 
         return "redirect:/vehicle/";        
@@ -114,9 +121,8 @@ public class VehicleController {
         
         vehicleService.delete(id);
         
-        String message = "Vehicle #"+id+" was successfully deleted."; 
-        message = "Vehicle #"+id+" was successfully deleted."; 
-
+        String[] messageParams = {id.toString()};        
+        String message = messageSource.getMessage("message.vehicle.deleted", messageParams, locale);
         redirectAttributes.addFlashAttribute("message", message);
 
         return "redirect:/vehicle/";
