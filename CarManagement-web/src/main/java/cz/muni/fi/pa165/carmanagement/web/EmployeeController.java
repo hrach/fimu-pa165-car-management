@@ -34,7 +34,7 @@ public class EmployeeController {
         
     }
     
-    @RequestMapping("/")
+    @RequestMapping(value={"/" , "/list/"})
     public ModelAndView listEmployees() {
         ModelAndView mav = new ModelAndView();        
         mav.addObject("employees", employeeService.findAll());

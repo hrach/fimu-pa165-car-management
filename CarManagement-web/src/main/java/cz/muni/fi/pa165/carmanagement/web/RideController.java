@@ -44,7 +44,7 @@ public class RideController {
         
     }
     
-    @RequestMapping("/")
+    @RequestMapping(value={"/" , "/list/"})
     public ModelAndView listRides() {
         ModelAndView mav = new ModelAndView();        
         List<RideDto> rides = new ArrayList<RideDto>();

@@ -39,7 +39,7 @@ public class VehicleController {
         
     }
     
-    @RequestMapping("/")
+    @RequestMapping(value={"/" , "/list/"})
     public ModelAndView listVehicles() {
         ModelAndView mav = new ModelAndView();        
         mav.addObject("vehicles", vehicleService.findAll());
