@@ -41,7 +41,10 @@ public class VehicleServiceImpl implements VehicleService {
         
         Vehicle entity = ConverterContainer.getVehicleConverter().dtoToEntity(v);
         entity.setId(null);
-        entity.setType(typeDao.findById(entity.getType().getId()));
+        if (entity.getType() != null)
+        {
+            entity.setType(typeDao.findById(entity.getType().getId()));
+        }
         
         dao.persist(entity);        
         

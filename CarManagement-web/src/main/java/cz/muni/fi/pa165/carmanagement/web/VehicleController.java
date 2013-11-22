@@ -75,8 +75,10 @@ public class VehicleController {
         vd.setId(vehicle.getId());
         vd.setName(vehicle.getName());
         vd.setTachometer(vehicle.getTachometer());
-        vd.setType(vehicleTypeService.findById(vehicle.getType().getId()));
-        
+        if (vehicle.getType() != null)
+        {
+             vd.setType(vehicleTypeService.findById(vehicle.getType().getId()));
+        }
         vehicleService.create(vd);
                 
         String message = messageSource.getMessage("message.vehicle.added", null, locale);
@@ -104,8 +106,10 @@ public class VehicleController {
         vd.setId(vehicle.getId());
         vd.setName(vehicle.getName());
         vd.setTachometer(vehicle.getTachometer());
-        vd.setType(vehicleTypeService.findById(vehicle.getType().getId()));
-        
+        if (vehicle.getType() != null)
+        {
+            vd.setType(vehicleTypeService.findById(vehicle.getType().getId()));
+        }
         vehicleService.update(vd);
                 
         String[] messageParams = {id.toString()};        
