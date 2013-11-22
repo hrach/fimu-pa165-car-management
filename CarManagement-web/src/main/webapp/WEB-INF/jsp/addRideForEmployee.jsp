@@ -79,19 +79,11 @@
                         </form:select>
                     </div>
                 </div>
-<%--                    
-                <div class="form-group">
-                    <label for="input-employee" class="col-sm-2 control-label"><spring:message code="ride.employee" />:</label>
-                    <div class="col-sm-10">
-                        <p>${newRide.employee.name}</p>
-                    </div>
-                </div>
-                --%>
                 <form:hidden path="employee.id" />
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-success"><spring:message code="changes.save" /></button>
-                        <a href="${pageContext.request.contextPath}/ride/" class="btn btn-warning"><spring:message code="cancel" /></a>
+                        <a href="${pageContext.request.contextPath}/overview/employee/${newRide.employee.id}.html" class="btn btn-warning"><spring:message code="cancel" /></a>
                     </div>
                 </div>    
             </form:form>  

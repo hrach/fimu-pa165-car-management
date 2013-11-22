@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Edit Vehicle</title>
+        <title><spring:message code="detail.employee" /></title>
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
     </head>
     <body>
@@ -71,6 +71,12 @@
     </c:forEach>
     </tbody>
 </table>
+        
+        <p>
+            <a href="${pageContext.request.contextPath}/ride/add/${employee.id}" class="btn btn-success"><spring:message code="detail.emp.newrideforemp" /></a>            
+        </p>
+        
+        
 
         </div>
         </div>
