@@ -111,7 +111,15 @@ public class EmployeeController {
         final List<EmployeeDto> data = new ArrayList();
         for(EmployeeDto d : employeeService.findAll()) {
             if(d.getName().toLowerCase().contains(term.toLowerCase())) {
-                data.add(d);
+/* Delano pres novy objekt typu EmployeeDto protoze se Json dostal az na getKmSum a vyhodil Nullpointer exception */                
+                EmployeeDto newE = new EmployeeDto();
+                
+                newE.setId(d.getId());
+                newE.setFirstName(d.getFirstName());
+                newE.setFamilyName(d.getFamilyName());
+                                
+                data.add(newE);
+
             }
         }
         return data;
