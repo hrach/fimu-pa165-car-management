@@ -41,7 +41,7 @@
             <h3><spring:message code="employees.search" /></h3>
             <nav class="navbar navbar-default" role="navigation">
                <div class="navbar-header">
-                   <a class="navbar-brand" href="#"><spring:message code="employee.find" /></a>
+                   <a class="navbar-brand"><spring:message code="employee.find" /></a>
                </div>
                <form class="navbar-form navbar-left" role="search">
                    <div class="form-group">
@@ -54,7 +54,7 @@
            <h3><spring:message code="vehilces.search" /></h3>
            <nav class="navbar navbar-default" role="navigation">
                <div class="navbar-header">
-                   <a class="navbar-brand" href="#"><spring:message code="vehicle.find" /></a>
+                   <a class="navbar-brand"><spring:message code="vehicle.find" /></a>
                </div>
                <form class="navbar-form navbar-left" role="search">
                    <div class="form-group">

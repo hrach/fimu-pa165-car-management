@@ -5,6 +5,11 @@
 
 .tt-hint {
     padding: 6px 11px;
+    width: 300px;
+}
+
+.tt-query {
+    width: 300px;
 }
 
 .tt-dropdown-menu {

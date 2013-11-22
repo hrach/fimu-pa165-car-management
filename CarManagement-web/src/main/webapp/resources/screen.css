@@ -27,6 +27,14 @@
     color: #fff;
 }
 
+.navbar-default .navbar-brand {
+    width: 220px;
+}
+
+.page-header {
+    margin-top: 10px;
+}
+
 .btn.link {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
