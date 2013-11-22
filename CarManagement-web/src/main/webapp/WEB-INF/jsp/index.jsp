@@ -11,10 +11,13 @@
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
         <script type="text/javascript">
             $(document).ready(function() {
-                $("#employeeSearch").typeahead({
+                $(".typeahead").typeahead({
                     name: "employees",
-                    remote: "${pageContext.request.contextPath}/employee/search/",
-                    limit: 10
+                    valueKey: "name",
+                    remote: "${pageContext.request.contextPath}/employee/search/%QUERY",
+                    template: "<a href=\"/pa165/overview/employee/{{id}}\">{{name}}</p>",
+                    engine: Hogan,
+                    limit: 5
                 });
             });
         </script>
@@ -33,7 +36,7 @@
                </div>
                <form class="navbar-form navbar-left" role="search">
                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search" id="employeeSearch">
+                        <input type="text" class="form-control typeahead" placeholder="Search" id="employeeSearch">
                    </div>
                    <button type="submit" class="btn btn-default">Submit</button>
                </form>

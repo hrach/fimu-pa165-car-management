@@ -105,11 +105,15 @@ public class EmployeeController {
         return "redirect:/employee/";
     }
     
-    @RequestMapping(value="/search")
-    public @ResponseBody List<EmployeeDto> getJsonData(HttpServletResponse response) {
+    @RequestMapping(value="/search/{term}")
+    public @ResponseBody List<EmployeeDto> getJsonData(@PathVariable String term, HttpServletResponse response) {
         response.setContentType("application/json");
         final List<EmployeeDto> data = new ArrayList();
-        data.addAll(employeeService.findAll());
+        for(EmployeeDto d : employeeService.findAll()) {
+            if(d.getName().toLowerCase().contains(term.toLowerCase())) {
+                data.add(d);
+            }
+        }
         return data;
     }
 }
