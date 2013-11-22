@@ -48,6 +48,7 @@
                                 <td><c:out value="${vehicle.tachometer}" /></td>
                                 <td><c:out value="${vehicle.type.maxKm}" /></td>
                                 <td>
+                                    <a href="${pageContext.request.contextPath}/overview/vehicle/${vehicle.id}.html" class="btn btn-info btn-xs"><spring:message code="view" /></a>
                                     <a href="${pageContext.request.contextPath}/vehicle/edit/${vehicle.id}.html" class="btn btn-warning btn-xs"><spring:message code="edit" /></a>
                                     <a href="${pageContext.request.contextPath}/vehicle/delete/${vehicle.id}.html" class="btn btn-danger btn-xs"><spring:message code="delete" /></a>
                                 </td>

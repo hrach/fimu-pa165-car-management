@@ -4,6 +4,7 @@
  */
 package cz.muni.fi.pa165.carmanagement.web;
 
+import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
 import cz.muni.fi.pa165.carmanagement.api.dto.RideDto;
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import cz.muni.fi.pa165.carmanagement.api.service.EmployeeService;
@@ -65,6 +66,31 @@ public class RideController {
         mav.addObject("employees", employeeService.findAll());
         
         mav.setViewName("addRide");
+        return mav;
+    }
+    
+    @RequestMapping(value="/add/{id}", method=RequestMethod.GET)
+    public ModelAndView addRideForEmployee(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView();
+        
+        EmployeeDto e = employeeService.findById(id);
+        
+        if (e == null) {
+            System.out.println("Employee with id "+id+" not found");
+            throw new ResourceNotFoundException();
+        }
+        
+        System.out.println("Adding new ride for employee #"+e.getId());
+        
+        RideDto newRide = new RideDto();
+        
+        newRide.setEmployee(e);
+        
+        mav.addObject("newRide", newRide);
+        mav.addObject("vehicles", vehicleService.findAll());
+   //     mav.addObject("employees", employeeService.findAll());
+        
+        mav.setViewName("addRideForEmployee");
         return mav;
     }
     
