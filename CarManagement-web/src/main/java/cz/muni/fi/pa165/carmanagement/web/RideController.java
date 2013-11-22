@@ -9,6 +9,7 @@ import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import cz.muni.fi.pa165.carmanagement.api.service.EmployeeService;
 import cz.muni.fi.pa165.carmanagement.api.service.RideService;
 import cz.muni.fi.pa165.carmanagement.api.service.VehicleService;
+import cz.muni.fi.pa165.carmanagement.web.exceptions.ResourceNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,7 +94,12 @@ public class RideController {
     public ModelAndView editRide(@PathVariable Long id) {
         ModelAndView mav = new ModelAndView();  
         
-        mav.addObject("ride", rideService.findById(id));
+        RideDto ride = this.rideService.findById((long) id);
+        if (ride == null) {
+            throw new ResourceNotFoundException();
+        }
+        
+        mav.addObject("ride", ride);
         mav.addObject("vehicles", vehicleService.findAll());
         mav.addObject("employees", employeeService.findAll());
 
@@ -105,6 +111,7 @@ public class RideController {
     
     @RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
     public String doEditRide(@ModelAttribute("ride") RideDto ride, @PathVariable Long id, RedirectAttributes redirectAttributes) {
+        
         RideDto rd = new RideDto();
         rd.setId(ride.getId());
         rd.setStartTime(ride.getStartTime());
@@ -127,6 +134,11 @@ public class RideController {
     @RequestMapping(value="/delete/{id}")
     public String deleteRide(@PathVariable Long id, RedirectAttributes redirectAttributes){
         
+        RideDto ride = this.rideService.findById((long) id);
+        if (ride == null) {
+            throw new ResourceNotFoundException();
+        }
+        
         rideService.delete(id);
         
         String message = "Ride #"+id+" was successfully deleted."; 
@@ -140,7 +152,12 @@ public class RideController {
     public ModelAndView detailRide(@PathVariable Long id) {
         ModelAndView mav = new ModelAndView();  
         
-        mav.addObject("ride", rideService.findById(id));
+        RideDto ride = this.rideService.findById((long) id);
+        if (ride == null) {
+            throw new ResourceNotFoundException();
+        }
+        
+        mav.addObject("ride", ride);
         mav.addObject("vehicles", vehicleService.findAll());
         mav.addObject("employees", employeeService.findAll());
         

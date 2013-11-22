@@ -69,6 +69,8 @@
                     <label for="input-vehicle" class="col-sm-2 control-label"><spring:message code="ride.vehicle" />:</label>
                     <div class="col-sm-10">
                         <form:select path="vehicle.id" id="input-vehicle" cssClass="form-control">
+                            <spring:message code="vehicle.select" var="emptyVal"/>
+                            <form:option label="${emptyVal}" value="${null}"/>
                             <form:options items="${vehicles}" itemValue="id" itemLabel="name"/>
                         </form:select>
                     </div>
@@ -78,6 +80,8 @@
                     <label for="input-employee" class="col-sm-2 control-label"><spring:message code="ride.employee" />:</label>
                     <div class="col-sm-10">
                         <form:select path="employee.id" id="input-employee" cssClass="form-control">
+                            <spring:message code="employee.select" var="emptyVal"/>
+                            <form:option label="${emptyVal}" value="${null}"/>
                             <form:options items="${employees}" itemValue="id" itemLabel="name"/>
                         </form:select>
                         <%--<select name="employee" class="form-control">

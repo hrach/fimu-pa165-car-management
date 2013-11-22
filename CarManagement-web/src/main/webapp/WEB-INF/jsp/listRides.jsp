@@ -39,7 +39,7 @@
                                 <td><spring:message code="ride.endtime" /></td>
                                 <td><spring:message code="ride.tachometerstart" /></td>
                                 <td><spring:message code="ride.tachometerend" /></td>
-                                <td><spring:message code="ride.description" /></td>
+<%--                                <td><spring:message code="ride.description" /></td> --%>
                                 <td><spring:message code="ride.vehicle" /></td>
                                 <td><spring:message code="ride.employee" /></td>
                                 <td>&nbsp;</td>
@@ -53,9 +53,9 @@
                                 <td><c:out value="${ride.endTime}" /></td>
                                 <td><c:out value="${ride.tachometerStart}" /></td>
                                 <td><c:out value="${ride.tachometerEnd}" /></td>
-                                <td><c:out value="${ride.description}" /></td>
-                                <td><c:out value="${ride.vehicle.name}" />&nbsp;(ID:<c:out value="${ride.vehicle.id}" />)</td>
-                                <td><c:out value="${ride.employee.firstName}" />&nbsp;<c:out value="${ride.employee.familyName}" /> (ID:<c:out value="${ride.employee.id})" /></td>
+<%--                                <td><c:out value="${ride.description}" /></td> --%>
+                                <td><c:out value="${ride.vehicle.name}" /></td>
+                                <td><c:out value="${ride.employee.firstName}" />&nbsp;<c:out value="${ride.employee.familyName}" /></td>
                                 <td>
                                     <a href="${pageContext.request.contextPath}/ride/detail/${ride.id}.html" class="btn btn-info btn-xs"><spring:message code="view" /></a>                                    
                                     <a href="${pageContext.request.contextPath}/ride/edit/${ride.id}.html" class="btn btn-warning btn-xs"><spring:message code="edit" /></a>

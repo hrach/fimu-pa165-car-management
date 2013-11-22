@@ -12,14 +12,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><spring:message code="ride.edit" /></title>
+        <title><spring:message code="ride.new" /></title>
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
           <script>
             $(function() {
                 $( ".datepicker" ).datepicker({
                     dateFormat: "dd/mm/yy",
-                    dayNamesMin: [ "<spring:message code="days.short.su" />","<spring:message code="days.short.mo" />","<spring:message code="days.short.tu" />","<spring:message code="days.short.we" />","<spring:message code="days.short.th" />","<spring:message code="days.short.fr" />","<spring:message code="days.short.sa" />" ],
-                    monthNames: [ "<spring:message code="months.long.jan" />", "<spring:message code="months.long.feb" />", "<spring:message code="months.long.mar" />", "<spring:message code="months.long.apr" />", "<spring:message code="months.long.may" />", "<spring:message code="months.long.jun" />", "<spring:message code="months.long.jul" />", "<spring:message code="months.long.aug" />", "<spring:message code="months.long.sep" />", "<spring:message code="months.long.oct" />", "<spring:message code="months.long.nov" />", "<spring:message code="months.long.dec" />" ],
+                    dayNamesMin: [ '<spring:message code="days.short.su" />','<spring:message code="days.short.mo" />','<spring:message code="days.short.tu" />','<spring:message code="days.short.we" />','<spring:message code="days.short.th" />','<spring:message code="days.short.fr" />','<spring:message code="days.short.sa" />' ],
+                    monthNames: [ '<spring:message code="months.long.jan" />', '<spring:message code="months.long.feb" />','<spring:message code="months.long.mar" />','<spring:message code="months.long.apr" />','<spring:message code="months.long.may" />','<spring:message code="months.long.jun" />','<spring:message code="months.long.jul" />','<spring:message code="months.long.aug" />','<spring:message code="months.long.sep" />','<spring:message code="months.long.oct" />','<spring:message code="months.long.nov" />','<spring:message code="months.long.dec" />' ],
                     firstDay: 1
                 }
                     );
@@ -35,7 +35,7 @@
                 <h1><spring:message code="rides" /></h1>
             </div>
             
-            <h3><spring:message code="ride.edit" /></h3>
+            <h3><spring:message code="ride.new" /></h3>
 
             <form:form cssClass="form-horizontal" method="POST" modelAttribute="newRide" action="${pageContext.request.contextPath}/ride/add">  
                 <div class="form-group">
@@ -74,6 +74,8 @@
                     <label for="input-vehicle" class="col-sm-2 control-label"><spring:message code="ride.vehicle" />:</label>
                     <div class="col-sm-10">
                         <form:select path="vehicle.id" id="input-vehicle" cssClass="form-control">
+                            <spring:message code="vehicle.select" var="emptyVal"/>
+                            <form:option label="${emptyVal}" value="${null}"/>
                             <form:options items="${vehicles}" itemValue="id" itemLabel="name"/>
                         </form:select>
                     </div>
@@ -83,6 +85,8 @@
                     <label for="input-employee" class="col-sm-2 control-label"><spring:message code="ride.employee" />:</label>
                     <div class="col-sm-10">
                         <form:select path="employee.id" id="input-employee" cssClass="form-control">
+                            <spring:message code="employee.select" var="emptyVal"/>
+                            <form:option label="${emptyVal}" value="${null}"/>
                             <form:options items="${employees}" itemValue="id" itemLabel="name"/>
                         </form:select>
                         <%--<select name="employee" class="form-control">

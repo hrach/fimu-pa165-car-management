@@ -64,6 +64,13 @@
             </a>
         </td>
     </tr>    
+    <tr>
+        <th><spring:message code="detail.ride.description" /></th>
+        
+        <td>
+                    <c:out value="${ride.description}"/>
+        </td>
+    </tr>  
 </table>
             </div>
         </div>
