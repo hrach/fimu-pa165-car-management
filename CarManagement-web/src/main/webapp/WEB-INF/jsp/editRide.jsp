@@ -77,11 +77,14 @@
                 <div class="form-group">
                     <label for="input-employee" class="col-sm-2 control-label"><spring:message code="ride.employee" />:</label>
                     <div class="col-sm-10">
-                        <select name="employee" class="form-control">
+                        <form:select path="employee.id" id="input-employee" cssClass="form-control">
+                            <form:options items="${employees}" itemValue="id" itemLabel="name"/>
+                        </form:select>
+                        <%--<select name="employee" class="form-control">
                             <c:forEach var="employee" items="${employees}" >
                                 <option value="${employee.id}" label="${employee.firstName} ${employee.familyName}" ${employee.id == ride.employee.id ? 'selected="selected"' : ''} />
                             </c:forEach>
-                        </select>
+                        </select>--%>
                     </div>
                 </div>
                     

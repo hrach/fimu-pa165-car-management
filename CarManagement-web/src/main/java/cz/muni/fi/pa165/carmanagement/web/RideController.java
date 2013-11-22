@@ -103,6 +103,27 @@ public class RideController {
         return mav;
     }
     
+    @RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
+    public String doEditRide(@ModelAttribute("ride") RideDto ride, @PathVariable Long id, RedirectAttributes redirectAttributes) {
+        RideDto rd = new RideDto();
+        rd.setId(ride.getId());
+        rd.setStartTime(ride.getStartTime());
+        rd.setEndTime(ride.getEndTime());
+        rd.setTachometerStart(ride.getTachometerStart());
+        rd.setTachometerEnd(ride.getTachometerEnd());
+        rd.setDescription(ride.getDescription());
+        rd.setEmployee(employeeService.findById(ride.getEmployee().getId()));
+        rd.setVehicle(vehicleService.findById(ride.getVehicle().getId()));
+        
+        rideService.update(rd);
+                
+        String message = "Ride #" + id + " was successfully modified."; 
+
+        redirectAttributes.addFlashAttribute("message", message);
+
+        return "redirect:/ride/"; 
+    }
+    
     @RequestMapping(value="/detail/{id}", method=RequestMethod.GET)
     public ModelAndView detailRide(@PathVariable Long id) {
         ModelAndView mav = new ModelAndView();  
