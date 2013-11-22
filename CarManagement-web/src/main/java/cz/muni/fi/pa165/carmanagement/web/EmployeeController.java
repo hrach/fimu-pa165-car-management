@@ -8,8 +8,11 @@ import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
 import cz.muni.fi.pa165.carmanagement.api.service.EmployeeService;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +29,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/employee/")
 public class EmployeeController {
+    
+    @Autowired
+    private MessageSource messageSource;
+    
+    private Locale locale = LocaleContextHolder.getLocale();
     
     @Autowired
     private EmployeeService employeeService;
@@ -58,13 +66,12 @@ public class EmployeeController {
     public String doAddEmployee(@ModelAttribute("newEmployee") EmployeeDto employee, RedirectAttributes redirectAttributes) {
         
         employeeService.create(employee);
-                
-        String message = "New employee was successfully added."; 
-        System.out.println("New employee added\n");
+      
+        String message = messageSource.getMessage("message.employee.added", null, locale);
 
+        System.out.println("New employee added.");
 
         redirectAttributes.addFlashAttribute("message", message);
-
         return "redirect:/employee/";  
     }    
     
@@ -84,10 +91,10 @@ public class EmployeeController {
         
         employeeService.update(employee);
         
-        System.out.println("Employee edit:"+id+" - ok\n");
+        System.out.println("Employee edit:"+id+" - ok.");
 
-        String message = "Employee #"+employee.getId()+" was successfully edited."; 
-
+        String[] messageParams = {employee.getId().toString()};        
+        String message = messageSource.getMessage("message.employee.edited", messageParams, locale);
         redirectAttributes.addFlashAttribute("message", message);
 
         return "redirect:/employee/"; 
@@ -97,9 +104,8 @@ public class EmployeeController {
     public String deleteEmployee(@PathVariable Long id, RedirectAttributes redirectAttributes){
         employeeService.delete(id);
         
-        String message = "Employee #"+id+" was successfully deleted."; 
-        message = "Employee #"+id+" was successfully deleted."; 
-
+        String[] messageParams = {id.toString()};        
+        String message = messageSource.getMessage("message.employee.deleted", messageParams, locale);
         redirectAttributes.addFlashAttribute("message", message);
 
         return "redirect:/employee/";
