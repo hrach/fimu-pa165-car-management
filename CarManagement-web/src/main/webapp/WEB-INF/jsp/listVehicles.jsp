@@ -46,7 +46,7 @@
                                 <td><c:out value="${vehicle.id}" /></td>
                                 <td><c:out value="${vehicle.name}" /></td>
                                 <td><c:out value="${vehicle.tachometer}" /></td>
-                                <td><c:out value="${vehicle.type.maxKm}" /></td>
+                                <td><c:out value="${vehicle.type.name}" /></td>
                                 <td>
                                     <a href="${pageContext.request.contextPath}/overview/vehicle/${vehicle.id}.html" class="btn btn-info btn-xs"><spring:message code="view" /></a>
                                     <a href="${pageContext.request.contextPath}/vehicle/edit/${vehicle.id}.html" class="btn btn-warning btn-xs"><spring:message code="edit" /></a>

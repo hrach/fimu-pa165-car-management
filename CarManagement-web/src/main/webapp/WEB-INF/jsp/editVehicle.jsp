@@ -37,14 +37,14 @@
                         <form:input path="tachometer" id="input-tachometer" cssClass="form-control"></form:input>
                     </div>  
                 </div>
-                <!--<div class="form-group">
+                <div class="form-group">
                     <label for="input-type" class="col-sm-2 control-label"><spring:message code="vehicle.type" />:</label>
                     <div class="col-sm-10">
                         <form:select path="type.id" id="input-type" cssClass="form-control">
-                            <form:options items="${vehicleTypes}" itemValue="id" itemLabel="maxKm"/>
+                            <form:options items="${vehicleTypes}" itemValue="id" itemLabel="name"/>
                         </form:select>
                     </div>
-                </div>-->
+                </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-success"><spring:message code="changes.save" /></button>
