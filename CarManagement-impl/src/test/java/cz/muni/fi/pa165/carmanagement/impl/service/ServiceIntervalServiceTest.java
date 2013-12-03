@@ -40,7 +40,7 @@ public class ServiceIntervalServiceTest extends TestCase {
 
     @Test
     public void testCreate() {
-        VehicleTypeDto t = new VehicleTypeDto((long) 95000);
+        VehicleTypeDto t = new VehicleTypeDto((long) 95000, "name");
         VehicleDto v = new VehicleDto((long) 4, "Nissan GT-R", (long) 32000, t);        
         ServiceTypeDto st = new ServiceTypeDto((long)1, "Výměna oleje");        
         ServiceIntervalDto i = new ServiceIntervalDto((long)1, null, null, null, v, st);
@@ -79,7 +79,7 @@ public class ServiceIntervalServiceTest extends TestCase {
     
     @Test
     public void testUpdate() {        
-        VehicleTypeDto t = new VehicleTypeDto((long) 95000);
+        VehicleTypeDto t = new VehicleTypeDto((long) 95000, "name");
         VehicleDto v = new VehicleDto((long) 4, "Nissan GT-R", (long) 32000, t);        
         ServiceTypeDto st = new ServiceTypeDto((long)1, "Výměna oleje");        
         ServiceIntervalDto i = new ServiceIntervalDto((long)1, null, null, null, v, st);
@@ -93,7 +93,7 @@ public class ServiceIntervalServiceTest extends TestCase {
     
     @Test
     public void testDelete() {
-        VehicleTypeDto t = new VehicleTypeDto((long) 95000);
+        VehicleTypeDto t = new VehicleTypeDto((long) 95000, "name");
         VehicleDto v = new VehicleDto((long) 4, "Nissan GT-R", (long) 32000, t);        
         ServiceTypeDto st = new ServiceTypeDto((long)1, "Výměna oleje");        
         ServiceIntervalDto i = new ServiceIntervalDto((long)1, null, null, null, v, st);

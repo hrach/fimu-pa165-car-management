@@ -17,6 +17,7 @@ public class VehicleTypeConverter extends GeneralConverter<VehicleType, VehicleT
         VehicleTypeDto dto = new VehicleTypeDto();
         dto.setId(entity.getId());
         dto.setMaxKm(entity.getMaxKm());
+        dto.setName(entity.getName());
         
         return dto;
     }
@@ -29,6 +30,7 @@ public class VehicleTypeConverter extends GeneralConverter<VehicleType, VehicleT
         VehicleType entity = new VehicleType();
         entity.setId(dto.getId());
         entity.setMaxKm(dto.getMaxKm());
+        entity.setName(dto.getName());
         
         return entity;
     }

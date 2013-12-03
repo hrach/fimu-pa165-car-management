@@ -37,7 +37,7 @@ public class VehicleTypeServiceTest extends TestCase {
     
     @Test
     public void testCreate() {
-        VehicleTypeDto t = new VehicleTypeDto((long) 3, (long) 200000);
+        VehicleTypeDto t = new VehicleTypeDto((long) 3, (long) 200000, "name");
         
         VehicleTypeDto t2 = vehicleTypeService.create(t);
         
@@ -72,7 +72,7 @@ public class VehicleTypeServiceTest extends TestCase {
     
     @Test
     public void testUpdate() {        
-        VehicleTypeDto t = new VehicleTypeDto((long) 3, (long) 200000);
+        VehicleTypeDto t = new VehicleTypeDto((long) 3, (long) 200000, "name");
         
         ArgumentCaptor<VehicleType> captor = ArgumentCaptor.forClass(VehicleType.class);
         vehicleTypeService.update(t);
@@ -83,7 +83,7 @@ public class VehicleTypeServiceTest extends TestCase {
     
     @Test
     public void testDelete() {
-        VehicleTypeDto t = new VehicleTypeDto((long) 3, (long) 200000);
+        VehicleTypeDto t = new VehicleTypeDto((long) 3, (long) 200000, "name");
         
         ArgumentCaptor<VehicleType> captor = ArgumentCaptor.forClass(VehicleType.class);
         vehicleTypeService.delete(t.getId());

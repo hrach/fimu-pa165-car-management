@@ -10,16 +10,20 @@ public class VehicleTypeDto
     private Long id;
     
     private Long maxKm;
+    
+    private String name;
         
 
-    public VehicleTypeDto(Long id, Long maxKm)
+    public VehicleTypeDto(Long id, Long maxKm, String name)
     {
         this.id = id;
         this.maxKm = maxKm;
+        this.name = name;
     }
 
-    public VehicleTypeDto(Long maxKm) {
+    public VehicleTypeDto(Long maxKm, String name) {
         this.maxKm = maxKm;
+        this.name = name;
     }
     
 
@@ -46,6 +50,14 @@ public class VehicleTypeDto
     public void setMaxKm(Long maxKm)
     {
         this.maxKm = maxKm;
+    }        
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }        
 
     @Override

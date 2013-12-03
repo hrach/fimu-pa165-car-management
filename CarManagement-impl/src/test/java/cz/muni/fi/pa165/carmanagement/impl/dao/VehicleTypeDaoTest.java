@@ -51,7 +51,7 @@ public class VehicleTypeDaoTest extends TestCase {
         
         VehicleTypeDaoImpl dao = new VehicleTypeDaoImpl(em);
         
-        VehicleType type = new VehicleType((long)500000);
+        VehicleType type = new VehicleType((long)500000, "name");
         type.setVehicles(Arrays.asList(v1, v2));
         
         em.getTransaction().begin();
@@ -70,9 +70,9 @@ public class VehicleTypeDaoTest extends TestCase {
         EntityManager em = emf.createEntityManager();
         VehicleTypeDaoImpl dao = new VehicleTypeDaoImpl(em);
 
-        VehicleType vehicle = new VehicleType((long) 500000);
-        VehicleType vehicle2 = new VehicleType((long) 600000);
-        VehicleType vehicle3 = new VehicleType((long) 450000);
+        VehicleType vehicle = new VehicleType((long) 500000, "name 1");
+        VehicleType vehicle2 = new VehicleType((long) 600000, "name 2");
+        VehicleType vehicle3 = new VehicleType((long) 450000, "name 3");
 
         em.getTransaction().begin();
         dao.persist(vehicle);
@@ -101,7 +101,7 @@ public class VehicleTypeDaoTest extends TestCase {
     }
 
     public void testUpdateVehicleType() {
-        VehicleType vehicle = new VehicleType((long) 400000);
+        VehicleType vehicle = new VehicleType((long) 400000, "name");
 
         EntityManager em = emf.createEntityManager();
         VehicleTypeDaoImpl dao = new VehicleTypeDaoImpl(em);
@@ -128,7 +128,7 @@ public class VehicleTypeDaoTest extends TestCase {
         EntityManager em = emf.createEntityManager();
         VehicleTypeDaoImpl dao = new VehicleTypeDaoImpl(em);
 
-        VehicleType vehicle = new VehicleType((long) 400000);
+        VehicleType vehicle = new VehicleType((long) 400000, "name");
 
         em.getTransaction().begin();
         dao.persist(vehicle);

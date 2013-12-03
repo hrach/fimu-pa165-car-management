@@ -46,7 +46,7 @@ public class RideDaoTest extends TestCase
 
         Employee employee = new Employee("test","user");
         Vehicle vehicle = new Vehicle("super car", (long) 0);
-        vehicle.setType(new VehicleType((long) 233));
+        vehicle.setType(new VehicleType((long) 233, "name"));
         Ride ride = new Ride();
         ride.setEmployee(employee);
         ride.setVehicle(vehicle);
@@ -71,7 +71,7 @@ public class RideDaoTest extends TestCase
         
         Employee employee = new Employee("test","user");
         Vehicle vehicle = new Vehicle("super car", (long) 0);
-        vehicle.setType(new VehicleType((long) 233));
+        vehicle.setType(new VehicleType((long) 233, "name"));
         
         Ride ride1 = new Ride(employee, vehicle);
         Ride ride2 = new Ride(employee, vehicle);
@@ -108,7 +108,7 @@ public class RideDaoTest extends TestCase
     public void testUpdateRide() {
         Employee employee = new Employee("test","user");
         Vehicle vehicle = new Vehicle("super car", (long) 0);
-        vehicle.setType(new VehicleType((long) 233));
+        vehicle.setType(new VehicleType((long) 233, "name"));
         
         Ride ride1 = new Ride(employee, vehicle);
         
@@ -136,7 +136,7 @@ public class RideDaoTest extends TestCase
     public void testDeleteRide() {
         Employee employee = new Employee("test","user");
         Vehicle vehicle = new Vehicle("super car", (long) 0);
-        vehicle.setType(new VehicleType((long) 233));
+        vehicle.setType(new VehicleType((long) 233, "name"));
 
         EntityManager em = emf.createEntityManager();
         RideDaoImpl dao = new RideDaoImpl(em);

@@ -37,7 +37,7 @@ public class VehicleDaoTest extends TestCase
         EntityManager em = emf.createEntityManager();
         
         VehicleTypeDaoImpl typeDao = new VehicleTypeDaoImpl(em);
-        VehicleType type = new VehicleType((long)12345);
+        VehicleType type = new VehicleType((long)12345, "name");
         em.getTransaction().begin();
         typeDao.persist(type);
         em.getTransaction().commit();

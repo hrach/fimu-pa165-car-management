@@ -48,7 +48,7 @@ public class RideServiceTest extends TestCase {
     @Test
     public void testCreate() {
         EmployeeDto e = new EmployeeDto((long)1, "John", "Doe", 1);
-        VehicleTypeDto t = new VehicleTypeDto((long) 95000);
+        VehicleTypeDto t = new VehicleTypeDto((long) 95000, "name");
         VehicleDto v = new VehicleDto((long) 4, "Nissan GT-R", (long) 32000, t);        
         RideDto r = new RideDto((long)1, null, null, (long)150000, (long)151000, "Pracovní cesta", v, e);
                 
@@ -87,7 +87,7 @@ public class RideServiceTest extends TestCase {
     @Test
     public void testUpdate() {        
         EmployeeDto e = new EmployeeDto((long)1, "John", "Doe", 1);
-        VehicleTypeDto t = new VehicleTypeDto((long) 95000);
+        VehicleTypeDto t = new VehicleTypeDto((long) 95000, "name");
         VehicleDto v = new VehicleDto((long) 4, "Nissan GT-R", (long) 32000, t);        
         RideDto r = new RideDto((long)1, null, null, (long)150000, (long)151000, "Pracovní cesta", v, e);
         
@@ -101,7 +101,7 @@ public class RideServiceTest extends TestCase {
     @Test
     public void testDelete() {
         EmployeeDto e = new EmployeeDto((long)1, "John", "Doe", 1);
-        VehicleTypeDto t = new VehicleTypeDto((long) 95000);
+        VehicleTypeDto t = new VehicleTypeDto((long) 95000, "Name");
         VehicleDto v = new VehicleDto((long) 4, "Nissan GT-R", (long) 32000, t);        
         RideDto r = new RideDto((long)1, null, null, (long)150000, (long)151000, "Pracovní cesta", v, e);
         

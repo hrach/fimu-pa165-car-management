@@ -23,9 +23,11 @@ public class VehicleType implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long id;    
     
-    private Long maxKm;
+    private Long maxKm; 
+    
+    private String name;
     
     @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
     private List<Vehicle> vehicles = new ArrayList<Vehicle>();
@@ -35,10 +37,18 @@ public class VehicleType implements Serializable {
         
     }
 
-    public VehicleType(Long maxKm) {
+    public VehicleType(Long maxKm, String name) {
         this.maxKm = maxKm;
+        this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }   
 
     public Long getId() {
         return id;

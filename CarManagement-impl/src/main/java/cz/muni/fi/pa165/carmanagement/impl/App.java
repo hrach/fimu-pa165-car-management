@@ -40,7 +40,7 @@ public class App
         employee2 = employeeService.create(employee2);
 
                 
-        VehicleTypeDto vehicleType = new VehicleTypeDto((long)320);        
+        VehicleTypeDto vehicleType = new VehicleTypeDto((long)320, "jmeno");        
         vehicleType = vehicleTypeService.create(vehicleType);
         
         VehicleDto vehicle = new VehicleDto("Audi A4", (long)50000, vehicleType);
