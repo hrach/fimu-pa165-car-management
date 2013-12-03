@@ -25,24 +25,30 @@
             </div>
 
             <form:form cssClass="form-horizontal" method="POST" modelAttribute="newVehicle" action="${pageContext.request.contextPath}/vehicle/add">  
-                <div class="form-group">
+                <c:set var="hasError"><form:errors path="name"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">                
                     <label for="input-name" class="col-sm-2 control-label"><spring:message code="vehicle.name" />:</label>  
                     <div class="col-sm-10">
                         <form:input path="name" id="input-name" cssClass="form-control"></form:input>
+                        <form:errors path="name" cssClass="help-block"></form:errors>                                                
                     </div> 
                 </div>
-                <div class="form-group">
+                <c:set var="hasError"><form:errors path="tachometer"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">                
                     <label for="input-tachometer" class="col-sm-2 control-label"><spring:message code="vehicle.tachometer" />:</label>
                     <div class="col-sm-10">
                         <form:input path="tachometer" id="input-tachometer" cssClass="form-control"></form:input>
+                        <form:errors path="tachometer" cssClass="help-block"></form:errors>                                                
                     </div>  
                 </div>
-                <div class="form-group">
+                <c:set var="hasError"><form:errors path="type.id"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">                
                     <label for="input-type" class="col-sm-2 control-label"><spring:message code="vehicle.type" />:</label>
                     <div class="col-sm-10">
                         <form:select path="type.id" id="input-type" cssClass="form-control">
                             <form:options items="${vehicleTypes}" itemValue="id" itemLabel="name"/>
                         </form:select>
+                        <form:errors path="type.id" cssClass="help-block"></form:errors>                                                
                     </div>
                 </div>
                 <div class="form-group">
