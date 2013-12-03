@@ -27,26 +27,34 @@
             <h3><spring:message code="employee.add" /></h3>
 
             <form:form cssClass="form-horizontal" method="POST" modelAttribute="newEmployee" action="${pageContext.request.contextPath}/employee/add">  
-                <div class="form-group">
+                <c:set var="hasError"><form:errors path="firstName"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">                
                     <label for="input-firstname" class="col-sm-2 control-label"><spring:message code="employee.firstname" />:</label>  
                     <div class="col-sm-10">
                         <form:input path="firstName" id="input-firstname" cssClass="form-control"></form:input>
+                        <form:errors path="firstName" cssClass="help-block"></form:errors>                        
                     </div> 
                 </div>
-                <div class="form-group">
+                    
+                <c:set var="hasError"><form:errors path="familyName"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
                     <label for="input-familyname" class="col-sm-2 control-label"><spring:message code="employee.familyname" />:</label>
                     <div class="col-sm-10">
                         <form:input path="familyName" id="input-familyname" cssClass="form-control"></form:input>
+                        <form:errors path="familyName" cssClass="help-block"></form:errors>
                     </div>  
                 </div>
-                <div class="form-group">
+                    
+                <c:set var="hasError"><form:errors path="employeeRole"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
                     <label for="input-role" class="col-sm-2 control-label"><spring:message code="employee.role" />:</label>
                     <div class="col-sm-10">
                         <form:select path="employeeRole" id="input-role" cssClass="form-control">
-                            <option value="-" selected="selected">-- <spring:message code="employee.select.role" /></option>
-                            <option value="1">Staff</option>
-                            <option value="2">Manager</option>
+                            <option value="0" selected="selected">-- <spring:message code="employee.select.role" /></option>
+                            <option value="1"><spring:message code="employee.role.staff" /></option>
+                            <option value="2"><spring:message code="employee.role.manager" /></option>
                         </form:select>
+                        <form:errors path="employeeRole" cssClass="help-block"></form:errors>                            
                     </div>
                 </div>
                 <div class="form-group">

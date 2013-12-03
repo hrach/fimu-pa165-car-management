@@ -6,14 +6,17 @@ package cz.muni.fi.pa165.carmanagement.web;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
 import cz.muni.fi.pa165.carmanagement.api.service.EmployeeService;
+import cz.muni.fi.pa165.carmanagement.web.validators.EmployeeValidator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +40,10 @@ public class EmployeeController {
     
     @Autowired
     private EmployeeService employeeService;
+    
+    @Autowired
+    @Qualifier("employeeValidator")
+    private EmployeeValidator employeeValidator;    
     
     public EmployeeController(){
         
@@ -63,16 +70,23 @@ public class EmployeeController {
     }
     
     @RequestMapping(value="/add", method=RequestMethod.POST)
-    public String doAddEmployee(@ModelAttribute("newEmployee") EmployeeDto employee, RedirectAttributes redirectAttributes) {
+    public String doAddEmployee(@ModelAttribute("newEmployee") EmployeeDto employee, BindingResult result, RedirectAttributes redirectAttributes) {
         
-        employeeService.create(employee);
-      
-        String message = messageSource.getMessage("message.employee.added", null, locale);
+        employeeValidator.validate(employee, result);
+        
+        if (result.hasErrors()) {
+            
+            return "addEmployee";
+        } else {
+            employeeService.create(employee);
 
-        System.out.println("New employee added.");
+            String message = messageSource.getMessage("message.employee.added", null, locale);
 
-        redirectAttributes.addFlashAttribute("message", message);
-        return "redirect:/employee/";  
+            System.out.println("New employee added.");
+
+            redirectAttributes.addFlashAttribute("message", message);
+            return "redirect:/employee/";  
+        }
     }    
     
     @RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
@@ -87,17 +101,23 @@ public class EmployeeController {
     }
     
     @RequestMapping(value="/edit/{id}", method= RequestMethod.POST)
-    public String doEditEmployee(@ModelAttribute(value="employee") EmployeeDto employee, @PathVariable Long id, RedirectAttributes redirectAttributes){
+    public String doEditEmployee(@ModelAttribute(value="employee") EmployeeDto employee, BindingResult result, @PathVariable Long id, RedirectAttributes redirectAttributes){
         
-        employeeService.update(employee);
+        employeeValidator.validate(employee, result);
         
-        System.out.println("Employee #"+id+" edited.");
+        if (result.hasErrors()) {            
+            return "editEmployee";
+        } else {                
+            employeeService.update(employee);
 
-        String[] messageParams = {employee.getId().toString()};        
-        String message = messageSource.getMessage("message.employee.edited", messageParams, locale);
-        redirectAttributes.addFlashAttribute("message", message);
+            System.out.println("Employee #"+id+" edited.");
 
-        return "redirect:/employee/"; 
+            String[] messageParams = {employee.getId().toString()};        
+            String message = messageSource.getMessage("message.employee.edited", messageParams, locale);
+            redirectAttributes.addFlashAttribute("message", message);
+
+            return "redirect:/employee/"; 
+        }
     }
     
     @RequestMapping(value="/delete/{id}")
