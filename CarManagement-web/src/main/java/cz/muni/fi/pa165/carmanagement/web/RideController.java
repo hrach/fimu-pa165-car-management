@@ -6,18 +6,20 @@ package cz.muni.fi.pa165.carmanagement.web;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
 import cz.muni.fi.pa165.carmanagement.api.dto.RideDto;
-import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import cz.muni.fi.pa165.carmanagement.api.service.EmployeeService;
 import cz.muni.fi.pa165.carmanagement.api.service.RideService;
 import cz.muni.fi.pa165.carmanagement.api.service.VehicleService;
 import cz.muni.fi.pa165.carmanagement.web.exceptions.ResourceNotFoundException;
+import cz.muni.fi.pa165.carmanagement.web.validators.RideValidator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,6 +49,11 @@ public class RideController {
     
     @Autowired
     private EmployeeService employeeService;
+    
+    @Autowired
+    @Qualifier("rideValidator")
+    private RideValidator rideValidator;     
+    
     
     public RideController(){
         
@@ -103,24 +110,35 @@ public class RideController {
     }
     
     @RequestMapping(value="/add", method=RequestMethod.POST)
-    public String doAddRide(@ModelAttribute("newRide") RideDto ride, RedirectAttributes redirectAttributes) {
+    public ModelAndView doAddRide(@ModelAttribute("newRide") RideDto ride, BindingResult result, RedirectAttributes redirectAttributes) {
         
-        RideDto rd = new RideDto();
-        rd.setId(ride.getId());
-        rd.setStartTime(ride.getStartTime());
-        rd.setEndTime(ride.getEndTime());
-        rd.setTachometerStart(ride.getTachometerStart());
-        rd.setTachometerEnd(ride.getTachometerEnd());
-        rd.setDescription(ride.getDescription());
-        rd.setEmployee(employeeService.findById(ride.getEmployee().getId()));
-        rd.setVehicle(vehicleService.findById(ride.getVehicle().getId()));
+        rideValidator.validate(ride, result);        
         
-        rideService.create(rd);
-                
-        String message = messageSource.getMessage("message.ride.added", null, locale);
-        redirectAttributes.addFlashAttribute("message", message);
+        if (result.hasErrors()) {
+            ModelAndView mav = new ModelAndView();        
+            mav.addObject("vehicles", vehicleService.findAll());
+            mav.addObject("employees", employeeService.findAll());            
+            mav.setViewName("addRide");
+            
+            return mav;
+        } else {       
+            RideDto rd = new RideDto();
+            rd.setId(ride.getId());
+            rd.setStartTime(ride.getStartTime());
+            rd.setEndTime(ride.getEndTime());
+            rd.setTachometerStart(ride.getTachometerStart());
+            rd.setTachometerEnd(ride.getTachometerEnd());
+            rd.setDescription(ride.getDescription());
+            rd.setEmployee(employeeService.findById(ride.getEmployee().getId()));
+            rd.setVehicle(vehicleService.findById(ride.getVehicle().getId()));
 
-        return "redirect:/ride/";  
+            rideService.create(rd);
+
+            String message = messageSource.getMessage("message.ride.added", null, locale);
+            redirectAttributes.addFlashAttribute("message", message);
+
+            return new ModelAndView("redirect:/ride/");
+        }
     }
     
     @RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
@@ -143,25 +161,36 @@ public class RideController {
     }
     
     @RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
-    public String doEditRide(@ModelAttribute("ride") RideDto ride, @PathVariable Long id, RedirectAttributes redirectAttributes) {
+    public ModelAndView doEditRide(@ModelAttribute("ride") RideDto ride, BindingResult result, @PathVariable Long id, RedirectAttributes redirectAttributes) {
         
-        RideDto rd = new RideDto();
-        rd.setId(ride.getId());
-        rd.setStartTime(ride.getStartTime());
-        rd.setEndTime(ride.getEndTime());
-        rd.setTachometerStart(ride.getTachometerStart());
-        rd.setTachometerEnd(ride.getTachometerEnd());
-        rd.setDescription(ride.getDescription());
-        rd.setEmployee(employeeService.findById(ride.getEmployee().getId()));
-        rd.setVehicle(vehicleService.findById(ride.getVehicle().getId()));
+        rideValidator.validate(ride, result);        
         
-        rideService.update(rd);
-                
-        String[] messageParams = {id.toString()};        
-        String message = messageSource.getMessage("message.ride.edited", messageParams, locale);
-        redirectAttributes.addFlashAttribute("message", message);
+        if (result.hasErrors()) {
+            ModelAndView mav = new ModelAndView();        
+            mav.addObject("vehicles", vehicleService.findAll());
+            mav.addObject("employees", employeeService.findAll());             
+            mav.setViewName("editRide");
+            
+            return mav;
+        } else {                     
+            RideDto rd = new RideDto();
+            rd.setId(ride.getId());
+            rd.setStartTime(ride.getStartTime());
+            rd.setEndTime(ride.getEndTime());
+            rd.setTachometerStart(ride.getTachometerStart());
+            rd.setTachometerEnd(ride.getTachometerEnd());
+            rd.setDescription(ride.getDescription());
+            rd.setEmployee(employeeService.findById(ride.getEmployee().getId()));
+            rd.setVehicle(vehicleService.findById(ride.getVehicle().getId()));
 
-        return "redirect:/ride/"; 
+            rideService.update(rd);
+
+            String[] messageParams = {id.toString()};        
+            String message = messageSource.getMessage("message.ride.edited", messageParams, locale);
+            redirectAttributes.addFlashAttribute("message", message);
+
+            return new ModelAndView("redirect:/ride/"); 
+        }
     }
     
     @RequestMapping(value="/delete/{id}")

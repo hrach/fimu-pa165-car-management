@@ -38,39 +38,50 @@
             <h3><spring:message code="ride.new" /></h3>
 
             <form:form cssClass="form-horizontal" method="POST" modelAttribute="newRide" action="${pageContext.request.contextPath}/ride/add">  
-                <div class="form-group">
+                <c:set var="hasError"><form:errors path="startTime"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">                
                     <label for="input-starttime" class="col-sm-2 control-label"><spring:message code="ride.starttime" />:</label>  
                     <div class="col-sm-10">
                         <form:input path="startTime" id="input-starttime" cssClass="form-control datepicker"></form:input>
+                        <form:errors path="startTime" cssClass="help-block"></form:errors>                                                
                     </div> 
                 </div>
-                <div class="form-group">
+                <c:set var="hasError"><form:errors path="endTime"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
                     <label for="input-endtime" class="col-sm-2 control-label"><spring:message code="ride.endtime" />:</label>
                     <div class="col-sm-10">
                         <form:input path="endTime" id="input-endtime" cssClass="form-control datepicker"></form:input>
+                        <form:errors path="endTime" cssClass="help-block"></form:errors>                                                
                     </div>  
                 </div>
                     
-                <div class="form-group">
+                <c:set var="hasError"><form:errors path="tachometerStart"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
                     <label for="input-tachometerstart" class="col-sm-2 control-label"><spring:message code="ride.tachometerstart" />:</label>
                     <div class="col-sm-10">
                         <form:input path="tachometerStart" id="input-tachometerstart" cssClass="form-control"></form:input>
+                        <form:errors path="tachometerStart" cssClass="help-block"></form:errors>                        
                     </div>  
                 </div>
-                <div class="form-group">
+                <c:set var="hasError"><form:errors path="tachometerEnd"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
                     <label for="input-tachometerend" class="col-sm-2 control-label"><spring:message code="ride.tachometerend" />:</label>
                     <div class="col-sm-10">
                         <form:input path="tachometerEnd" id="input-tachometerend" cssClass="form-control"></form:input>
+                        <form:errors path="tachometerEnd" cssClass="help-block"></form:errors>                        
                     </div>  
                 </div>
-                <div class="form-group">
+                <c:set var="hasError"><form:errors path="description"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
                     <label for="input-description" class="col-sm-2 control-label"><spring:message code="ride.description" />:</label>
                     <div class="col-sm-10">
                         <form:input path="description" id="input-description" cssClass="form-control"></form:input>
+                        <form:errors path="description" cssClass="help-block"></form:errors>                        
                     </div>  
                 </div>
                     
-                <div class="form-group">
+                <c:set var="hasError"><form:errors path="vehicle.id"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
                     <label for="input-vehicle" class="col-sm-2 control-label"><spring:message code="ride.vehicle" />:</label>
                     <div class="col-sm-10">
                         <form:select path="vehicle.id" id="input-vehicle" cssClass="form-control">
@@ -78,10 +89,12 @@
                             <form:option label="${emptyVal}" value="${null}"/>
                             <form:options items="${vehicles}" itemValue="id" itemLabel="name"/>
                         </form:select>
+                        <form:errors path="vehicle.id" cssClass="help-block"></form:errors>                                                
                     </div>
                 </div>
                     
-                <div class="form-group">
+                <c:set var="hasError"><form:errors path="employee.id"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
                     <label for="input-employee" class="col-sm-2 control-label"><spring:message code="ride.employee" />:</label>
                     <div class="col-sm-10">
                         <form:select path="employee.id" id="input-employee" cssClass="form-control">
@@ -89,11 +102,7 @@
                             <form:option label="${emptyVal}" value="${null}"/>
                             <form:options items="${employees}" itemValue="id" itemLabel="name"/>
                         </form:select>
-                        <%--<select name="employee" class="form-control">
-                            <c:forEach var="employee" items="${employees}" >
-                                <option value="${employee.id}" label="${employee.firstName} ${employee.familyName}" ${employee.id == ride.employee.id ? 'selected="selected"' : ''} />
-                            </c:forEach>
-                        </select>--%>
+                        <form:errors path="employee.id" cssClass="help-block"></form:errors>                                                
                     </div>
                 </div>
                     
