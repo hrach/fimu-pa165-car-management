@@ -19,3 +19,4 @@ derby.log
 /CarManagement-API/target/
 /CarManagement-impl/target/
 /CarManagement-web/target/
+/CarManagement-soap-server/target/
