@@ -18,6 +18,7 @@
     <module>CarManagement-impl</module>
     <module>CarManagement-web</module>
         <module>CarManagement-soap-server</module>
-    </modules>    
+    <module>CarManagement-soap-client</module>
+  </modules>    
     
 </project>
