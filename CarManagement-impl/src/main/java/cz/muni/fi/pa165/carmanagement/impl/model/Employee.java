@@ -38,7 +38,7 @@ public class Employee implements Serializable {
     
     private int employeeRole; // "role" is reserved word..:-/
     
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "employee", orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Ride> rides = new ArrayList<Ride>();
 
 

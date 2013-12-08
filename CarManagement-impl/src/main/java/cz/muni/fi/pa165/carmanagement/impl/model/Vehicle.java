@@ -35,7 +35,7 @@ public class Vehicle implements Serializable {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private VehicleType type;
     
-    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vehicle", orphanRemoval = true)
     private List<Ride> rides = new ArrayList<Ride>();    
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
