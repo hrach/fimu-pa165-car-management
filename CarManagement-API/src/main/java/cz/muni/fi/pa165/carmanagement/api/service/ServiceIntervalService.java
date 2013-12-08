@@ -4,12 +4,10 @@ import cz.muni.fi.pa165.carmanagement.api.dto.ServiceIntervalDto;
 import cz.muni.fi.pa165.carmanagement.api.dto.ServiceTypeDto;
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import java.util.List;
-import org.springframework.stereotype.Service;
 
 /**
  * @author Jakub Marecek <xmarec at gmail.com>
  */
-@Service
 public interface ServiceIntervalService {
     
     public ServiceIntervalDto create(ServiceIntervalDto serviceIntervalDto);

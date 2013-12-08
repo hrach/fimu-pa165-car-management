@@ -7,7 +7,6 @@
 package cz.muni.fi.pa165.carmanagement.api.dto;
 
 import java.util.Date;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -16,13 +15,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class ServiceIntervalDto {
     private Long id;
     
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdTime;
     
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dueTime;
     
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date doneTime;
     
     private VehicleDto vehicle;
