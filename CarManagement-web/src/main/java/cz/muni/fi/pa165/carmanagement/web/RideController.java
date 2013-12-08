@@ -11,7 +11,11 @@ import cz.muni.fi.pa165.carmanagement.api.service.RideService;
 import cz.muni.fi.pa165.carmanagement.api.service.VehicleService;
 import cz.muni.fi.pa165.carmanagement.web.exceptions.ResourceNotFoundException;
 import cz.muni.fi.pa165.carmanagement.web.validators.RideValidator;
+import java.beans.PropertyEditorSupport;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +24,8 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,6 +63,30 @@ public class RideController {
     
     public RideController(){
         
+    }
+    
+    @InitBinder
+    public void bind(WebDataBinder binder) {
+        binder.registerCustomEditor(Date.class, new PropertyEditorSupport() {
+            
+            @Override
+            public void setAsText(String value) {
+                try {
+                    setValue(new SimpleDateFormat("dd/MM/yyyy").parse(value));
+                } catch (ParseException ex) {
+                    setValue(null);
+                }
+            }
+            
+            @Override
+            public String getAsText() {
+                if (getValue() == null) {
+                    return null;
+                }
+                return new SimpleDateFormat("dd/MM/yyyy").format((Date) getValue());
+            }
+            
+        });
     }
     
     @RequestMapping(value={"/" , "/list/"})

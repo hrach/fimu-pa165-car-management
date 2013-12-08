@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,8 +50,8 @@
                         <c:forEach items="${rides}" var="ride">
                             <tr>
                                 <td><c:out value="${ride.id}" /></td>
-                                <td><c:out value="${ride.startTime}" /></td>
-                                <td><c:out value="${ride.endTime}" /></td>
+                                <td><fmt:formatDate value="${ride.startTime}" pattern="dd/MM/yyyy" /></td>
+                                <td><fmt:formatDate value="${ride.endTime}" pattern="dd/MM/yyyy" /></td>
                                 <td><c:out value="${ride.tachometerStart}" /></td>
                                 <td><c:out value="${ride.tachometerEnd}" /></td>
 <%--                                <td><c:out value="${ride.description}" /></td> --%>

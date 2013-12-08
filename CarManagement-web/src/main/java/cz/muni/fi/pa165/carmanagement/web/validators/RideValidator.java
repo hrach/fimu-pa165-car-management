@@ -29,10 +29,10 @@ public class RideValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "tachometerStart", "ride.empty.tachometerStart");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "tachometerEnd", "ride.empty.tachometerEnd");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "ride.empty.description");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "vehicle", "ride.empty.vehicle");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "employee", "ride.empty.employee");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "vehicle.id", "ride.empty.vehicle");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "employee.id", "ride.empty.employee");
                 
-        RideDto dto = (RideDto) target;      
+        RideDto dto = (RideDto) target;           
     }        
 }
 
