@@ -32,7 +32,19 @@ public class RideValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "vehicle.id", "ride.empty.vehicle");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "employee.id", "ride.empty.employee");
                 
-        RideDto dto = (RideDto) target;           
+        RideDto dto = (RideDto) target;     
+        
+        if (dto.getTachometerStart() != null && dto.getTachometerStart() < 0)
+            errors.rejectValue("tachometerStart", "ride.negative.tachometerStart");            
+        
+        if (dto.getTachometerEnd() != null && dto.getTachometerEnd() < 0)
+            errors.rejectValue("tachometerEnd", "ride.negative.tachometerEnd");                    
+        
+        if (dto.getTachometerStart() != null && dto.getTachometerEnd() != null && dto.getTachometerStart() > dto.getTachometerEnd())
+            errors.rejectValue("tachometerEnd", "ride.invalid.tachometerEnd");     
+        
+        if (dto.getStartTime() != null && dto.getEndTime() != null && dto.getStartTime().after(dto.getEndTime()))
+            errors.rejectValue("endTime", "ride.invalid.endTime");     
     }        
 }
 
