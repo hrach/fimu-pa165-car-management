@@ -108,7 +108,8 @@
 
                 <h3><spring:message code="detail.newServiceInterval" /></h3>
                 <form:form cssClass="form-horizontal" method="POST" modelAttribute="newServiceInterval" action="">
-                    <div class="form-group">
+                    <c:set var="hasError"><form:errors path="serviceType.id"/></c:set>
+                    <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
                         <label for="input-type" class="col-sm-2 control-label"><spring:message code="serviceInterval.type" />:</label>  
                         <div class="col-sm-4">
                             <form:select path="serviceType.id" id="input-type" cssClass="form-control">
@@ -116,12 +117,15 @@
                                 <form:option label="${emptyVal}" value="${null}"/>
                                 <form:options items="${allTypes}" itemLabel="name" itemValue="id"/>
                             </form:select>
+                            <form:errors path="serviceType.id" cssClass="help-block"></form:errors>                                                                            
                         </div> 
                     </div>
-                    <div class="form-group">
+                    <c:set var="hasError"><form:errors path="dueTime"/></c:set>
+                    <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
                         <label for="input-due" class="col-sm-2 control-label"><spring:message code="serviceInterval.dueTime" />:</label>
                         <div class="col-sm-4">
                             <form:input path="dueTime" id="input-due" cssClass="form-control datepicker"></form:input>
+                            <form:errors path="dueTime" cssClass="help-block"></form:errors>                                                                            
                         </div>  
                     </div>
                     <div class="form-group">
