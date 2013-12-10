@@ -4,12 +4,12 @@
  */
 package cz.muni.fi.pa165.carmanagement.soap.client;
 
-import cz.muni.fi.pa165.carmanagement.soap.server.EmployeeDto;
-import cz.muni.fi.pa165.carmanagement.soap.server.EmployeeManager;
-import cz.muni.fi.pa165.carmanagement.soap.server.EmployeeManager_Service;
-import cz.muni.fi.pa165.carmanagement.soap.server.VehicleDto;
-import cz.muni.fi.pa165.carmanagement.soap.server.VehicleManager;
-import cz.muni.fi.pa165.carmanagement.soap.server.VehicleManager_Service;
+import cz.muni.fi.pa165.carmanagement.web.soap.EmployeeDto;
+import cz.muni.fi.pa165.carmanagement.web.soap.EmployeeManager;
+import cz.muni.fi.pa165.carmanagement.web.soap.EmployeeManager_Service;
+import cz.muni.fi.pa165.carmanagement.web.soap.VehicleDto;
+import cz.muni.fi.pa165.carmanagement.web.soap.VehicleManager;
+import cz.muni.fi.pa165.carmanagement.web.soap.VehicleManager_Service;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
