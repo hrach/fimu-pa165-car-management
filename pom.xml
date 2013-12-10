@@ -17,6 +17,7 @@
     <module>CarManagement-API</module>
     <module>CarManagement-impl</module>
     <module>CarManagement-web</module>
+        <module>CarManagement-soap-server</module>
     <module>CarManagement-soap-client</module>
   </modules>    
     

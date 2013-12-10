@@ -1,4 +1,4 @@
-package cz.muni.fi.pa165.carmanagement.web.soap;
+package cz.muni.fi.pa165.carmanagement.soap.server;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import java.util.List;
@@ -12,9 +12,6 @@ import javax.jws.WebService;
 
 @WebService
 public interface VehicleManager {
-    
-    String sayHi();
-    
     void createVehicle(@WebParam(name = "vehicleDto")VehicleDto vehicleDTO);
     
     public VehicleDto getVehicle(@WebParam(name = "id")Long id);

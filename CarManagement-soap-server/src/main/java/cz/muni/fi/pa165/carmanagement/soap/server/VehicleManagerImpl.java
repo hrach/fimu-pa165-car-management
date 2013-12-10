@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package cz.muni.fi.pa165.carmanagement.web.soap;
+package cz.muni.fi.pa165.carmanagement.soap.server;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.VehicleDto;
 import cz.muni.fi.pa165.carmanagement.api.service.VehicleService;
@@ -16,16 +16,11 @@ import org.springframework.stereotype.Component;
  * @author zvonicek
  */
 @Component
-@WebService(endpointInterface = "cz.muni.fi.pa165.carmanagement.web.soap.VehicleManager", serviceName = "VehicleManager")
+@WebService(endpointInterface = "cz.muni.fi.pa165.carmanagement.soap.server.VehicleManager", serviceName = "VehicleManager")
 public class VehicleManagerImpl implements VehicleManager {
 
     @Autowired
     private VehicleService vehicleService;
-    
-    public String sayHi()
-    {
-        return "hi";
-    } 
 
     public void createVehicle(VehicleDto vehicleDTO) {
         vehicleService.create(vehicleDTO);
