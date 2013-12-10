@@ -1,4 +1,4 @@
-package cz.muni.fi.pa165.carmanagement.soap.server;
+package cz.muni.fi.pa165.carmanagement.web.soap;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
 import java.util.List;

@@ -7,15 +7,40 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <listener>
+        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+    </listener>
     <servlet>
         <servlet-name>dispatcher</servlet-name>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+        </init-param>        
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>EmployeeManager</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>VehicleManager</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeManager</servlet-name>
+        <url-pattern>/EmployeeManager</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VehicleManager</servlet-name>
+        <url-pattern>/VehicleManager</url-pattern>
+    </servlet-mapping>        
     <session-config>
         <session-timeout>
             30

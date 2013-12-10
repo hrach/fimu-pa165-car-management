@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package cz.muni.fi.pa165.carmanagement.soap.server;
+package cz.muni.fi.pa165.carmanagement.web.soap;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
 import cz.muni.fi.pa165.carmanagement.api.service.EmployeeService;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  * @author zvonicek
  */
 @Component
-@WebService(endpointInterface = "cz.muni.fi.pa165.carmanagement.soap.server.EmployeeManager", serviceName = "EmployeeManager")
+@WebService(endpointInterface = "cz.muni.fi.pa165.carmanagement.web.soap.EmployeeManager", serviceName = "EmployeeManager")
 public class EmployeeManagerImpl implements EmployeeManager {
 
    @Autowired
