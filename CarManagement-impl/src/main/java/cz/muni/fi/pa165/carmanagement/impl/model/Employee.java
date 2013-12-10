@@ -4,7 +4,6 @@ package cz.muni.fi.pa165.carmanagement.impl.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 
 
 /**
@@ -38,9 +38,8 @@ public class Employee implements Serializable {
     
     private int employeeRole; // "role" is reserved word..:-/
     
-    @OneToMany(mappedBy = "employee", orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<Ride> rides = new ArrayList<Ride>();
-
+    @OneToMany(mappedBy = "employee", orphanRemoval = false, fetch = FetchType.EAGER)
+    private List<Ride> rides = new ArrayList<Ride>();  
 
     public Employee() {
     }
@@ -129,4 +128,10 @@ public class Employee implements Serializable {
         return true;
     }
 
+    @PreRemove
+    private void preRemove() {
+        for (Ride r : rides) {
+            r.setEmployee(null);
+        }
+    }    
 }
