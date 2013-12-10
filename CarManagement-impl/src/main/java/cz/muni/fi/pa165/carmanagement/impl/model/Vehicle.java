@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 
 
 /**
@@ -35,7 +36,7 @@ public class Vehicle implements Serializable {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private VehicleType type;
     
-    @OneToMany(mappedBy = "vehicle", orphanRemoval = true)
+    @OneToMany(mappedBy = "vehicle", orphanRemoval = false)
     private List<Ride> rides = new ArrayList<Ride>();    
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
@@ -124,4 +125,11 @@ public class Vehicle implements Serializable {
         return this.id != null && this.id.equals(other.id);
     }
 
+    @PreRemove
+    private void preRemove() {
+        for (Ride r : rides) {
+            r.setVehicle(null);
+        }
+    }        
+    
 }
