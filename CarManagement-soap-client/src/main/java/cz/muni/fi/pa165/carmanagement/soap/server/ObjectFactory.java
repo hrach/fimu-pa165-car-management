@@ -34,6 +34,10 @@ public class ObjectFactory {
     private final static QName _FindAllEmployeesResponse_QNAME = new QName("http://server.soap.carmanagement.pa165.fi.muni.cz/", "findAllEmployeesResponse");
     private final static QName _GetEmployee_QNAME = new QName("http://server.soap.carmanagement.pa165.fi.muni.cz/", "getEmployee");
     private final static QName _UpdateEmployeeResponse_QNAME = new QName("http://server.soap.carmanagement.pa165.fi.muni.cz/", "updateEmployeeResponse");
+    private final static QName _FindAllVehicleTypes_QNAME = new QName("http://server.soap.carmanagement.pa165.fi.muni.cz/", "findAllVehicleTypes");
+    private final static QName _FindAllVehicleTypesResponse_QNAME = new QName("http://server.soap.carmanagement.pa165.fi.muni.cz/", "findAllVehicleTypesResponse");
+    private final static QName _GetVehicleType_QNAME = new QName("http://server.soap.carmanagement.pa165.fi.muni.cz/", "getVehicleType");
+    private final static QName _GetVehicleTypeResponse_QNAME = new QName("http://server.soap.carmanagement.pa165.fi.muni.cz/", "getVehicleTypeResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: cz.muni.fi.pa165.carmanagement.soap.server
@@ -258,6 +262,74 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://server.soap.carmanagement.pa165.fi.muni.cz/", name = "updateEmployeeResponse")
     public JAXBElement<UpdateEmployeeResponse> createUpdateEmployeeResponse(UpdateEmployeeResponse value) {
         return new JAXBElement<UpdateEmployeeResponse>(_UpdateEmployeeResponse_QNAME, UpdateEmployeeResponse.class, null, value);
+    }
+    
+    /**
+     * Create an instance of {@link FindAllVehicleTypesResponse }
+     * 
+     */
+    public FindAllVehicleTypesResponse createFindAllVehicleTypesResponse() {
+        return new FindAllVehicleTypesResponse();
+    }
+
+    /**
+     * Create an instance of {@link FindAllVehicleTypes }
+     * 
+     */
+    public FindAllVehicleTypes createFindAllVehicleTypes() {
+        return new FindAllVehicleTypes();
+    }
+
+    /**
+     * Create an instance of {@link GetVehicleTypeResponse }
+     * 
+     */
+    public GetVehicleTypeResponse createGetVehicleTypeResponse() {
+        return new GetVehicleTypeResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetVehicleType }
+     * 
+     */
+    public GetVehicleType createGetVehicleType() {
+        return new GetVehicleType();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllVehicleTypes }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://server.soap.carmanagement.pa165.fi.muni.cz/", name = "findAllVehicleTypes")
+    public JAXBElement<FindAllVehicleTypes> createFindAllVehicleTypes(FindAllVehicleTypes value) {
+        return new JAXBElement<FindAllVehicleTypes>(_FindAllVehicleTypes_QNAME, FindAllVehicleTypes.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllVehicleTypesResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://server.soap.carmanagement.pa165.fi.muni.cz/", name = "findAllVehicleTypesResponse")
+    public JAXBElement<FindAllVehicleTypesResponse> createFindAllVehicleTypesResponse(FindAllVehicleTypesResponse value) {
+        return new JAXBElement<FindAllVehicleTypesResponse>(_FindAllVehicleTypesResponse_QNAME, FindAllVehicleTypesResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetVehicleType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://server.soap.carmanagement.pa165.fi.muni.cz/", name = "getVehicleType")
+    public JAXBElement<GetVehicleType> createGetVehicleType(GetVehicleType value) {
+        return new JAXBElement<GetVehicleType>(_GetVehicleType_QNAME, GetVehicleType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetVehicleTypeResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://server.soap.carmanagement.pa165.fi.muni.cz/", name = "getVehicleTypeResponse")
+    public JAXBElement<GetVehicleTypeResponse> createGetVehicleTypeResponse(GetVehicleTypeResponse value) {
+        return new JAXBElement<GetVehicleTypeResponse>(_GetVehicleTypeResponse_QNAME, GetVehicleTypeResponse.class, null, value);
     }
 
 }
