@@ -4,12 +4,12 @@
  */
 package cz.muni.fi.pa165.carmanagement.soap.client;
 
-import cz.muni.fi.pa165.carmanagement.soap.server.EmployeeDto;
-import cz.muni.fi.pa165.carmanagement.soap.server.EmployeeManager;
-import cz.muni.fi.pa165.carmanagement.soap.server.EmployeeManager_Service;
-import cz.muni.fi.pa165.carmanagement.soap.server.VehicleDto;
-import cz.muni.fi.pa165.carmanagement.soap.server.VehicleManager;
-import cz.muni.fi.pa165.carmanagement.soap.server.VehicleManager_Service;
+import cz.muni.fi.pa165.carmanagement.soap.EmployeeDto;
+import cz.muni.fi.pa165.carmanagement.soap.EmployeeManagerImpl;
+import cz.muni.fi.pa165.carmanagement.soap.EmployeeManagerImplService;
+import cz.muni.fi.pa165.carmanagement.soap.VehicleDto;
+import cz.muni.fi.pa165.carmanagement.soap.VehicleManagerImpl;
+import cz.muni.fi.pa165.carmanagement.soap.VehicleManagerImplService;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,12 +32,12 @@ public class MainController {
     public ModelAndView renderMain() {
         ModelAndView mav = new ModelAndView();        
         
-        VehicleManager_Service vehicleManagerService = new VehicleManager_Service();
-        VehicleManager manVehicle = vehicleManagerService.getVehicleManagerImplPort();
+        VehicleManagerImplService vehicleManagerService = new VehicleManagerImplService();
+        VehicleManagerImpl manVehicle = vehicleManagerService.getVehicleManagerImplPort();
         List<VehicleDto> vehicles = manVehicle.findAllVehicles();
         
-        EmployeeManager_Service employeeManagerService = new EmployeeManager_Service();
-        EmployeeManager manEmployee = employeeManagerService.getEmployeeManagerImplPort();
+        EmployeeManagerImplService employeeManagerService = new EmployeeManagerImplService();
+        EmployeeManagerImpl manEmployee = employeeManagerService.getEmployeeManagerImplPort();
         List<EmployeeDto> employees = manEmployee.findAllEmployees();
         
         mav.addObject("vehicles", vehicles);

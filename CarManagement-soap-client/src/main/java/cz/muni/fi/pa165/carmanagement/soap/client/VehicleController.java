@@ -4,16 +4,12 @@
  */
 package cz.muni.fi.pa165.carmanagement.soap.client;
 
-import cz.muni.fi.pa165.carmanagement.soap.server.VehicleDto;
-import cz.muni.fi.pa165.carmanagement.soap.server.VehicleManager;
-import cz.muni.fi.pa165.carmanagement.soap.server.VehicleManager_Service;
-import cz.muni.fi.pa165.carmanagement.soap.server.VehicleTypeManager;
-import cz.muni.fi.pa165.carmanagement.soap.server.VehicleTypeManager_Service;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import cz.muni.fi.pa165.carmanagement.soap.VehicleDto;
+import cz.muni.fi.pa165.carmanagement.soap.VehicleManagerImpl;
+import cz.muni.fi.pa165.carmanagement.soap.VehicleManagerImplService;
+import cz.muni.fi.pa165.carmanagement.soap.VehicleTypeManagerImpl;
+import cz.muni.fi.pa165.carmanagement.soap.VehicleTypeManagerImplService;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,8 +34,8 @@ public class VehicleController {
     public ModelAndView addVehicle() {
         ModelAndView mav = new ModelAndView();
         
-        VehicleTypeManager_Service vehicleTypeManagerService = new VehicleTypeManager_Service();
-        VehicleTypeManager manVehicleType = vehicleTypeManagerService.getVehicleTypeManagerImplPort();
+        VehicleTypeManagerImplService vehicleTypeManagerService = new VehicleTypeManagerImplService();
+        VehicleTypeManagerImpl manVehicleType = vehicleTypeManagerService.getVehicleTypeManagerImplPort();
         
         mav.addObject("newVehicle", new VehicleDto());
         mav.addObject("vehicleTypes", manVehicleType.findAllVehicleTypes());
@@ -52,8 +48,8 @@ public class VehicleController {
     public String doAddVehicle(@ModelAttribute("newVehicle") VehicleDto vehicle, RedirectAttributes redirectAttributes) {
         ModelAndView mav = new ModelAndView();        
         
-        VehicleManager_Service vehicleManagerService = new VehicleManager_Service();
-        VehicleManager manVehicle = vehicleManagerService.getVehicleManagerImplPort();
+        VehicleManagerImplService vehicleManagerService = new VehicleManagerImplService();
+        VehicleManagerImpl manVehicle = vehicleManagerService.getVehicleManagerImplPort();
         
         manVehicle.createVehicle(vehicle);
         
@@ -65,8 +61,8 @@ public class VehicleController {
     @RequestMapping(value="/delete/{id}")
     public String deleteVehicle(@PathVariable Long id, RedirectAttributes redirectAttributes){
         
-        VehicleManager_Service vehicleManagerService = new VehicleManager_Service();
-        VehicleManager manVehicle = vehicleManagerService.getVehicleManagerImplPort();
+        VehicleManagerImplService vehicleManagerService = new VehicleManagerImplService();
+        VehicleManagerImpl manVehicle = vehicleManagerService.getVehicleManagerImplPort();
         manVehicle.removeVehicle(manVehicle.getVehicle(id));
         
         redirectAttributes.addFlashAttribute("message", "Vehicle with id " + id.toString() + " was deleted.");
