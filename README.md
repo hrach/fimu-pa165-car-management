@@ -13,7 +13,7 @@ Webová aplikace lze spustit pomocí 'mvn tomcat7:run' na modulu CarManagement-w
 
 ### SOAP API
 
-Spuštění SOAP serveru lze provést pomocí 'mvn exec:java' na modulu CarManagement-soap-server. Následně dojde k publikaci WSDL souborů na adresu http://localhost:9000/vehicleManager?wsdl (resp. http://localhost:9000/employeeManager?wsdl).
+SOAP API je součástí webového modulu. Jeho funkčnost tedy vyžaduje běžící webový modul. WSDL soubory jsou dostupné na adrese http://localhost:8080/pa165/ws/vehicleManager?wsdl (resp. http://localhost:8080/pa165/ws/employeeManager?wsdl).
 
 Klientskou aplikaci, která využívá výše uvedeného SOAP API lze spustit příkazem 'mvn tomcat7:run' na modulu CarManagement-soap-client. Webová aplikace následně běží na adrese http://localhost:8081/pa165-soap-client/
 
