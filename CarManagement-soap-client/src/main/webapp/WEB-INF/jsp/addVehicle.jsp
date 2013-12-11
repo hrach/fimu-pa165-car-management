@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -29,14 +29,12 @@
                         <form:input path="name" id="input-name" cssClass="form-control"></form:input>                                               
                     </div> 
                 </div>
-                <c:set var="hasError"><form:errors path="tachometer"/></c:set>
                 <div class="form-group">                
                     <label for="input-tachometer" class="col-sm-2 control-label">Tachometer:</label>
                     <div class="col-sm-10">
                         <form:input path="tachometer" id="input-tachometer" cssClass="form-control"></form:input>
                     </div>  
                 </div>
-                <c:set var="hasError"><form:errors path="type.id"/></c:set>
                 <div class="form-group">                
                     <label for="input-type" class="col-sm-2 control-label">Type:</label>
                     <div class="col-sm-10">

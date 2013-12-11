@@ -4,12 +4,11 @@
  */
 package cz.muni.fi.pa165.carmanagement.soap.client;
 
-import cz.muni.fi.pa165.carmanagement.soap.server.EmployeeDto;
-import cz.muni.fi.pa165.carmanagement.soap.server.EmployeeManager;
-import cz.muni.fi.pa165.carmanagement.soap.server.EmployeeManager_Service;
 import cz.muni.fi.pa165.carmanagement.soap.server.VehicleDto;
 import cz.muni.fi.pa165.carmanagement.soap.server.VehicleManager;
 import cz.muni.fi.pa165.carmanagement.soap.server.VehicleManager_Service;
+import cz.muni.fi.pa165.carmanagement.soap.server.VehicleTypeManager;
+import cz.muni.fi.pa165.carmanagement.soap.server.VehicleTypeManager_Service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -38,15 +37,18 @@ public class VehicleController {
     public ModelAndView addVehicle() {
         ModelAndView mav = new ModelAndView();
         
+        VehicleTypeManager_Service vehicleTypeManagerService = new VehicleTypeManager_Service();
+        VehicleTypeManager manVehicleType = vehicleTypeManagerService.getVehicleTypeManagerImplPort();
+        
         mav.addObject("newVehicle", new VehicleDto());
-        //mav.addObject("vehicleTypes", vehicleTypeService.findAll());
+        mav.addObject("vehicleTypes", manVehicleType.findAllVehicleTypes());
         
         mav.setViewName("addVehicle");
         return mav;
     }
     
     @RequestMapping(value="/add", method=RequestMethod.POST)
-    public ModelAndView doAddVehicle(@ModelAttribute("newVehicle") VehicleDto vehicle, RedirectAttributes redirectAttributes) {
+    public String doAddVehicle(@ModelAttribute("newVehicle") VehicleDto vehicle, RedirectAttributes redirectAttributes) {
         ModelAndView mav = new ModelAndView();        
         
         VehicleManager_Service vehicleManagerService = new VehicleManager_Service();
@@ -56,8 +58,7 @@ public class VehicleController {
         
         redirectAttributes.addFlashAttribute("message", "Vehicle was sucessfully added.");
         
-        mav.setViewName("addVehicle");
-        return mav;
+        return "redirect:/index.htm";
     }
     
     
