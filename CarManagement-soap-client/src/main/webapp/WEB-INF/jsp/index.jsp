@@ -19,6 +19,71 @@
         </div>
         <div id="content" class="container">
             
+            <h3 class="pull-left">Vehicles</h3>
+            <div class="pull-right">
+                <a href="${pageContext.request.contextPath}/vehicle/add" class="btn btn-success pushDown">Add new vehicle</a>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Tachometer</td>
+                        <td>Type</td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${vehicles}" var="vehicle">
+                        <tr>
+                            <td><c:out value="${vehicle.id}" /></td>
+                            <td><c:out value="${vehicle.name}" /></td>
+                            <td><c:out value="${vehicle.tachometer}" /></td>
+                            <td><c:out value="${vehicle.type.name}" /></td>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/overview/vehicle/${vehicle.id}.html" class="btn btn-info btn-xs">view</a>
+                                <a href="${pageContext.request.contextPath}/vehicle/edit/${vehicle.id}.html" class="btn btn-warning btn-xs">edit</a>
+                                <a href="${pageContext.request.contextPath}/vehicle/delete/${vehicle.id}.html" class="btn btn-danger btn-xs">delete</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+            
+            <hr>
+            
+            <h3 class="pull-left">Employees</h3>
+            <div class="pull-right">
+                <a href="${pageContext.request.contextPath}/employee/add" class="btn btn-success pushDown">Add new employee</a>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>First name</td>
+                        <td>Last name</td>
+                        <td>Role</td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${employees}" var="employee">
+                        <tr>
+                            <td><c:out value="${employee.id}" /></td>
+                            <td><c:out value="${employee.firstName}" /></td>
+                            <td><c:out value="${employee.familyName}" /></td>
+                            <c:if test="${employee.employeeRole==1}"><td>Staff</td></c:if>
+                            <c:if test="${employee.employeeRole==2}"><td>Manager</td></c:if>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/overview/employee/${employee.id}.html" class="btn btn-info btn-xs">View</a>
+                                <a href="${pageContext.request.contextPath}/employee/edit/${employee.id}.html" class="btn btn-warning btn-xs">Edit</a>
+                                <a href="${pageContext.request.contextPath}/employee/delete/${employee.id}.html" class="btn btn-danger btn-xs">Delete</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+            
         </div>
     </body>
 </html>

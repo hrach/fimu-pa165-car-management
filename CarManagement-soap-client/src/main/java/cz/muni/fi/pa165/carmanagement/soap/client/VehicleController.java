@@ -11,9 +11,15 @@ import cz.muni.fi.pa165.carmanagement.soap.server.VehicleDto;
 import cz.muni.fi.pa165.carmanagement.soap.server.VehicleManager;
 import cz.muni.fi.pa165.carmanagement.soap.server.VehicleManager_Service;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -24,24 +30,33 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/vehicle/")
 public class VehicleController {
 
-    private VehicleManager vehicleManager;
-    
     public VehicleController() {
-        VehicleManager_Service vehicleManagerService = new VehicleManager_Service();
-        VehicleManager vehicleManager = vehicleManagerService.getVehicleManagerImplPort();
-        
 
-    }    
+    }
     
-    @RequestMapping("/")
-    public ModelAndView listVehicles() {
+    @RequestMapping(value="/add", method=RequestMethod.GET)
+    public ModelAndView addVehicle() {
+        ModelAndView mav = new ModelAndView();
+        
+        mav.addObject("newVehicle", new VehicleDto());
+        mav.addObject("vehicleTypes", vehicleTypeService.findAll());
+        
+        mav.setViewName("addVehicle");
+        return mav;
+    }
+    
+    @RequestMapping(value="/add", method=RequestMethod.POST)
+    public ModelAndView doAddVehicle(@ModelAttribute("newVehicle") VehicleDto vehicle, RedirectAttributes redirectAttributes) {
         ModelAndView mav = new ModelAndView();        
-        List<VehicleDto> vehicles = vehicleManager.findAllVehicles();
         
-        mav.addObject("vehicles", vehicles);
-        System.out.println(vehicles.size());
+        VehicleManager_Service vehicleManagerService = new VehicleManager_Service();
+        VehicleManager manVehicle = vehicleManagerService.getVehicleManagerImplPort();
         
-        mav.setViewName("listVehicles");
+        manVehicle.createVehicle(vehicle);
+        
+        redirectAttributes.addFlashAttribute("message", "Vehicle was sucessfully added.");
+        
+        mav.setViewName("addVehicle");
         return mav;
     }
     
