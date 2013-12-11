@@ -12,12 +12,15 @@ public class App
         
         EmployeeManager employeeManager = ctx.getBean(EmployeeManagerImpl.class);
         VehicleManager vehicleManager = ctx.getBean(VehicleManagerImpl.class);
+        VehicleTypeManager vehicleTypeManager = ctx.getBean(VehicleTypeManagerImpl.class);
         
         String employeeAddress = "http://localhost:9000/employeeManager";
         String vehicleAddress = "http://localhost:9000/vehicleManager";
+        String vehicleTypeAddress = "http://localhost:9000/vehicleTypeManager";
         
         Endpoint.publish(employeeAddress, employeeManager);
         Endpoint.publish(vehicleAddress, vehicleManager);
+        Endpoint.publish(vehicleTypeAddress, vehicleTypeManager);
         
         System.out.println("Server is ready now.");    }
 }
