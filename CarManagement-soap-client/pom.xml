@@ -153,6 +153,15 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.1</version>
+		<configuration>
+			<port>8081</port>
+                        <path>/pa165-soap-client</path>
+                </configuration>                
+            </plugin>               
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>

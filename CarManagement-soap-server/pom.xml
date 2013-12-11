@@ -32,4 +32,18 @@
       <version>${project.version}</version>
     </dependency>
   </dependencies>
+  
+  <build>
+      <plugins>
+          <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>exec-maven-plugin</artifactId>
+              <version>1.1</version>
+              <configuration>
+                  <mainClass>cz.muni.fi.pa165.carmanagement.soap.server.App</mainClass>
+              </configuration>
+          </plugin>
+      </plugins>
+  </build>
+  
 </project>
