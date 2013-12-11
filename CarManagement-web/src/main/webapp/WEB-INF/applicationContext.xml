@@ -29,6 +29,7 @@
     <!-- Web Service definition -->
     <bean id="vehicleManager" class="cz.muni.fi.pa165.carmanagement.soap.VehicleManagerImpl"></bean>
     <bean id="employeeManager" class="cz.muni.fi.pa165.carmanagement.soap.EmployeeManagerImpl"></bean>
+    <bean id="vehicleTypeManager" class="cz.muni.fi.pa165.carmanagement.soap.VehicleTypeManagerImpl"></bean>
 
     <wss:binding url="/ws/vehicleManager">
         <wss:service>
@@ -41,7 +42,12 @@
             <ws:service bean="#employeeManager" />
         </wss:service>
     </wss:binding>     
-              
+     
+   <wss:binding url="/ws/vehicleTypeManager">
+        <wss:service>
+            <ws:service bean="#vehicleTypeManager" />
+        </wss:service>
+    </wss:binding>                         
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver" />
