@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -61,5 +62,16 @@ public class VehicleController {
         return "redirect:/index.htm";
     }
     
+    @RequestMapping(value="/delete/{id}")
+    public String deleteVehicle(@PathVariable Long id, RedirectAttributes redirectAttributes){
+        
+        VehicleManager_Service vehicleManagerService = new VehicleManager_Service();
+        VehicleManager manVehicle = vehicleManagerService.getVehicleManagerImplPort();
+        manVehicle.removeVehicle(manVehicle.getVehicle(id));
+        
+        redirectAttributes.addFlashAttribute("message", "Vehicle with id " + id.toString() + " was deleted.");
+
+        return "redirect:/index.htm";
+    }
     
 }
