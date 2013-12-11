@@ -19,6 +19,13 @@
         </div>
         <div id="content" class="container">
             
+            <c:if test="${not empty message}">
+                <div class="alert alert-success alert-dismissable">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    ${message}
+                </div> 
+            </c:if>
+            
             <h3 class="pull-left">Vehicles</h3>
             <div class="pull-right">
                 <a href="${pageContext.request.contextPath}/vehicle/add" class="btn btn-success pushDown">Add new vehicle</a>
