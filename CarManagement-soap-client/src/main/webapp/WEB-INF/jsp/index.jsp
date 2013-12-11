@@ -48,7 +48,6 @@
                             <td><c:out value="${vehicle.tachometer}" /></td>
                             <td><c:out value="${vehicle.type.name}" /></td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/overview/vehicle/${vehicle.id}.html" class="btn btn-info btn-xs">view</a>
                                 <a href="${pageContext.request.contextPath}/vehicle/edit/${vehicle.id}.html" class="btn btn-warning btn-xs">edit</a>
                                 <a href="${pageContext.request.contextPath}/vehicle/delete/${vehicle.id}.html" class="btn btn-danger btn-xs">delete</a>
                             </td>
@@ -82,7 +81,6 @@
                             <c:if test="${employee.employeeRole==1}"><td>Staff</td></c:if>
                             <c:if test="${employee.employeeRole==2}"><td>Manager</td></c:if>
                             <td>
-                                <a href="${pageContext.request.contextPath}/overview/employee/${employee.id}.html" class="btn btn-info btn-xs">View</a>
                                 <a href="${pageContext.request.contextPath}/employee/edit/${employee.id}.html" class="btn btn-warning btn-xs">Edit</a>
                                 <a href="${pageContext.request.contextPath}/employee/delete/${employee.id}.html" class="btn btn-danger btn-xs">Delete</a>
                             </td>
