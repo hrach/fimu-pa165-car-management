@@ -39,7 +39,7 @@ public class VehicleController {
         ModelAndView mav = new ModelAndView();
         
         mav.addObject("newVehicle", new VehicleDto());
-        mav.addObject("vehicleTypes", vehicleTypeService.findAll());
+        //mav.addObject("vehicleTypes", vehicleTypeService.findAll());
         
         mav.setViewName("addVehicle");
         return mav;
