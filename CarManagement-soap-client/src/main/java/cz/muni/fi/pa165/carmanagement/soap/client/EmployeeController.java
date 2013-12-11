@@ -9,6 +9,7 @@ import cz.muni.fi.pa165.carmanagement.soap.server.EmployeeManager;
 import cz.muni.fi.pa165.carmanagement.soap.server.EmployeeManager_Service;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,6 +48,17 @@ public class EmployeeController {
         
         redirectAttributes.addFlashAttribute("message", "Employee was sucessfully added.");
         
+        return "redirect:/index.htm";
+    }
+    
+    @RequestMapping(value="/delete/{id}")
+    public String deleteEmployee(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        EmployeeManager_Service employeeManagerService = new EmployeeManager_Service();
+        EmployeeManager manEmployee = employeeManagerService.getEmployeeManagerImplPort();
+        manEmployee.removeEmployee(manEmployee.getEmployee(id));
+        
+        redirectAttributes.addFlashAttribute("message", "Employee with id " + id.toString() + " was deleted.");
+
         return "redirect:/index.htm";
     }
     
