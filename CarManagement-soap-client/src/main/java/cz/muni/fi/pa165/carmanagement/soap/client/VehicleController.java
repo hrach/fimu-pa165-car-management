@@ -24,28 +24,24 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/vehicle/")
 public class VehicleController {
 
-    private EmployeeManager employeeManager;
+    private VehicleManager vehicleManager;
     
     public VehicleController() {
-        EmployeeManager_Service managerService = new EmployeeManager_Service();
-        employeeManager = managerService.getEmployeeManagerImplPort();
+        VehicleManager_Service vehicleManagerService = new VehicleManager_Service();
+        VehicleManager vehicleManager = vehicleManagerService.getVehicleManagerImplPort();
         
 
     }    
     
-    @RequestMapping("/index")
-    public ModelAndView renderIndex() {
+    @RequestMapping("/")
+    public ModelAndView listVehicles() {
         ModelAndView mav = new ModelAndView();        
-                
-        List<EmployeeDto> employees = employeeManager.findAllEmployees();
+        List<VehicleDto> vehicles = vehicleManager.findAllVehicles();
         
-        VehicleManager_Service vehicleManagerService = new VehicleManager_Service();
-        VehicleManager man = vehicleManagerService.getVehicleManagerImplPort();
-        List<VehicleDto> vehicles = man.findAllVehicles();
+        mav.addObject("vehicles", vehicles);
+        System.out.println(vehicles.size());
         
-        System.out.println("test!"+employees.size()+" "+vehicles.size());
-        
-        mav.setViewName("index");
+        mav.setViewName("listVehicles");
         return mav;
     }
     
