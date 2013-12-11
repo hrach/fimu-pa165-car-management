@@ -28,6 +28,14 @@
                     engine: Hogan,
                     limit: 5
                 });
+                
+                $('#employeeSearch').bind('typeahead:selected', function(obj, datum, name) {
+                    window.location.href = '${pageContext.request.contextPath}/overview/employee/'+datum.id;
+                });
+                
+                $('#vehicleSearch').bind('typeahead:selected', function(obj, datum, name) {
+                    window.location.href = '${pageContext.request.contextPath}/overview/vehicle/'+datum.id;
+                });
             });
         </script>
     </head>
