@@ -24,8 +24,8 @@ public class VehicleTypeValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "vehicle.empty.name");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "maxkm", "vehicle.empty.maxkm");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "vehicletype.empty.name");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "maxKm", "vehicletype.empty.maxkm");
                 
         VehicleTypeDto dto = (VehicleTypeDto) target;              
     }
