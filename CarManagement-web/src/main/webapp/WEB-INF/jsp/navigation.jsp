@@ -43,6 +43,18 @@
         </div>
             
         <div class="btn-group">
+            <a href="${pageContext.request.contextPath}/vehicle-type/" class="${urlpart[1] eq 'vehicle-type' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.vehicletypes" /></a>
+            <button type="button" class="${urlpart[1] eq 'vehicle-type' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="${pageContext.request.contextPath}/vehicle-type/list/"><spring:message code="navigation.vehicletypes.list" /></a></li>
+                <li><a href="${pageContext.request.contextPath}/vehicle-type/add/"><spring:message code="navigation.vehicletypes.new" /></a></li>
+            </ul>
+        </div>
+            
+        <div class="btn-group">
             <a href="${pageContext.request.contextPath}/ride/" class="${urlpart[1] eq 'ride' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.rides" /></a>
             <button type="button" class="${urlpart[1] eq 'ride' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
                 <span class="caret"></span>
