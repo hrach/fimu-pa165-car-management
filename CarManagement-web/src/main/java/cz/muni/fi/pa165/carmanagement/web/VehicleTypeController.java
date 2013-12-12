@@ -50,7 +50,7 @@ public class VehicleTypeController {
     @RequestMapping(value={"/" , "/list/"})
     public ModelAndView listVehicleTypes() {
         ModelAndView mav = new ModelAndView();        
-        mav.addObject("vehicle-types", vehicleTypeService.findAll());
+        mav.addObject("vehicleTypes", vehicleTypeService.findAll());
         System.out.println(vehicleTypeService.findAll().size());
         
         mav.setViewName("listVehicleTypes");
@@ -68,7 +68,7 @@ public class VehicleTypeController {
     }
     
     @RequestMapping(value="/add", method=RequestMethod.POST)
-    public ModelAndView doAddVehicleType(@ModelAttribute("newVehicle") VehicleTypeDto vehicleType, BindingResult result, RedirectAttributes redirectAttributes) {
+    public ModelAndView doAddVehicleType(@ModelAttribute("newVehicleType") VehicleTypeDto vehicleType, BindingResult result, RedirectAttributes redirectAttributes) {
         
         vehicleTypeValidator.validate(vehicleType, result);        
         

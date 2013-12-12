@@ -8,6 +8,7 @@ import cz.muni.fi.pa165.carmanagement.soap.EmployeeDto;
 import cz.muni.fi.pa165.carmanagement.soap.EmployeeManagerImpl;
 import cz.muni.fi.pa165.carmanagement.soap.EmployeeManagerImplService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +50,31 @@ public class EmployeeController {
         redirectAttributes.addFlashAttribute("message", "Employee was sucessfully added.");
         
         return "redirect:/index.htm";
+    }
+    
+    @RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
+    public ModelAndView editEmployee(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView();
+        
+        EmployeeManagerImplService employeeManagerService = new EmployeeManagerImplService();
+        EmployeeManagerImpl manEmployee = employeeManagerService.getEmployeeManagerImplPort();
+        
+        mav.addObject("employee", manEmployee.getEmployee(id));
+        
+        mav.setViewName("editEmployee");
+        return mav;
+    }
+    
+    @RequestMapping(value="/edit/{id}", method= RequestMethod.POST)
+    public String doEditEmployee(@ModelAttribute(value="employee") EmployeeDto employee, BindingResult result, @PathVariable Long id, RedirectAttributes redirectAttributes){
+        
+        EmployeeManagerImplService employeeManagerService = new EmployeeManagerImplService();
+        EmployeeManagerImpl manEmployee = employeeManagerService.getEmployeeManagerImplPort();
+        manEmployee.updateEmployee(employee);
+        
+        redirectAttributes.addFlashAttribute("message", "Employee (id: " + employee.getId().toString() + "was sucessfully edited.");
+        
+        return "redirect:/index.htm"; 
     }
     
     @RequestMapping(value="/delete/{id}")

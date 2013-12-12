@@ -41,14 +41,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${vehicle-types}" var="vehicle-type">
+                        <c:forEach items="${vehicleTypes}" var="vehicleType">
                             <tr>
-                                <td><c:out value="${vehicle-type.id}" /></td>
-                                <td><c:out value="${vehicle-type.name}" /></td>
-                                <td><c:out value="${vehicle-type.maxKm}" /></td>
+                                <td><c:out value="${vehicleType.id}" /></td>
+                                <td><c:out value="${vehicleType.name}" /></td>
+                                <td><c:out value="${vehicleType.maxKm}" /></td>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/vehicle-type/edit/${vehicle-type.id}.html" class="btn btn-warning btn-xs"><spring:message code="edit" /></a>
-                                    <a href="${pageContext.request.contextPath}/vehicle-type/delete/${vehicle-type.id}.html" class="btn btn-danger btn-xs"><spring:message code="delete" /></a>
+                                    <a href="${pageContext.request.contextPath}/vehicle-type/edit/${vehicleType.id}.html" class="btn btn-warning btn-xs"><spring:message code="edit" /></a>
+                                    <a href="${pageContext.request.contextPath}/vehicle-type/delete/${vehicleType.id}.html" class="btn btn-danger btn-xs"><spring:message code="delete" /></a>
                                 </td>
                             </tr>
                         </c:forEach>

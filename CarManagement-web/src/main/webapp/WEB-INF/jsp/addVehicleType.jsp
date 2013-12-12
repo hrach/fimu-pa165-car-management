@@ -33,7 +33,7 @@
                         <form:errors path="name" cssClass="help-block"></form:errors>                                                
                     </div> 
                 </div>
-                <c:set var="hasError"><form:errors path="maxkm"/></c:set>
+                <c:set var="hasError"><form:errors path="maxKm"/></c:set>
                 <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">                
                     <label for="input-maxkm" class="col-sm-2 control-label"><spring:message code="vehicletype.maxkm" />:</label>
                     <div class="col-sm-10">
