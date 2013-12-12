@@ -1,5 +1,5 @@
 <%-- 
-    Document   : addEmployee
+    Document   : editVehicle
     Created on : 12.12.2013, 15:38:05
     Author     : tomasbobek
 --%>
@@ -25,31 +25,27 @@
         </div>
         <div id="content" class="container">
             <div class="page-header">
-                <h1>Add employee</h1>
+                <h1>Edit vehicle</h1>
             </div>
-
-            <form:form cssClass="form-horizontal" method="POST" modelAttribute="newEmployee" action="${pageContext.request.contextPath}/employee/add">  
-                <div class="form-group">                
-                    <label for="input-firstname" class="col-sm-2 control-label">First name:</label>  
+            <form:form cssClass="form-horizontal" method="POST" modelAttribute="vehicle" action="${pageContext.request.contextPath}/vehicle/edit/${vehicle.id}.html">  
+                <div class="form-group">                                
+                    <label for="input-name" class="col-sm-2 control-label">Name:</label>  
                     <div class="col-sm-10">
-                        <form:input path="firstName" id="input-firstname" cssClass="form-control"></form:input>
+                        <form:input path="name" id="input-name" cssClass="form-control"></form:input>
                     </div> 
                 </div>
-                    
-                <div class="form-group">
-                    <label for="input-familyname" class="col-sm-2 control-label">Last name:</label>
+                <c:set var="hasError"><form:errors path="tachometer"/></c:set>
+                <div class="form-group">                
+                    <label for="input-tachometer" class="col-sm-2 control-label">Tachometer:</label>
                     <div class="col-sm-10">
-                        <form:input path="familyName" id="input-familyname" cssClass="form-control"></form:input>
+                        <form:input path="tachometer" id="input-tachometer" cssClass="form-control"></form:input>
                     </div>  
                 </div>
-                    
-                <div class="form-group">
-                    <label for="input-role" class="col-sm-2 control-label">Role:</label>
+                <div class="form-group">                
+                    <label for="input-type" class="col-sm-2 control-label">Type:</label>
                     <div class="col-sm-10">
-                        <form:select path="employeeRole" id="input-role" cssClass="form-control">
-                            <option value="0" selected="selected">-- Role</option>
-                            <option value="1">Staff</option>
-                            <option value="2">Manager</option>
+                        <form:select path="type.id" id="input-type" cssClass="form-control">
+                            <form:options items="${vehicleTypes}" itemValue="id" itemLabel="name"/>
                         </form:select>
                     </div>
                 </div>
@@ -59,7 +55,7 @@
                         <a href="${pageContext.request.contextPath}/index.htm" class="btn btn-warning">Cancel</a>
                     </div>
                 </div>    
-            </form:form>
+            </form:form>  
         </div>
     </body>
 </html>

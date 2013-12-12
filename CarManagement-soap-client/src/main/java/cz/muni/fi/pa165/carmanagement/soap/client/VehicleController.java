@@ -10,6 +10,7 @@ import cz.muni.fi.pa165.carmanagement.soap.VehicleManagerImplService;
 import cz.muni.fi.pa165.carmanagement.soap.VehicleTypeManagerImpl;
 import cz.muni.fi.pa165.carmanagement.soap.VehicleTypeManagerImplService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,6 +57,34 @@ public class VehicleController {
         redirectAttributes.addFlashAttribute("message", "Vehicle was sucessfully added.");
         
         return "redirect:/index.htm";
+    }
+    
+    @RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
+    public ModelAndView editVehicle(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView();
+        
+        VehicleManagerImplService vehicleManagerService = new VehicleManagerImplService();
+        VehicleManagerImpl manVehicle = vehicleManagerService.getVehicleManagerImplPort();
+        VehicleTypeManagerImplService vehicleTypeManagerService = new VehicleTypeManagerImplService();
+        VehicleTypeManagerImpl manVehicleType = vehicleTypeManagerService.getVehicleTypeManagerImplPort();
+        
+        mav.addObject("vehicle", manVehicle.getVehicle(id));
+        mav.addObject("vehicleTypes", manVehicleType.findAllVehicleTypes());
+        
+        mav.setViewName("editVehicle");
+        return mav;
+    }
+    
+    @RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
+    public String doEditVehicle(@ModelAttribute(value="vehicle") VehicleDto vehicle, BindingResult result, @PathVariable Long id, RedirectAttributes redirectAttributes){
+        
+        VehicleManagerImplService vehicleManagerService = new VehicleManagerImplService();
+        VehicleManagerImpl manVehicle = vehicleManagerService.getVehicleManagerImplPort();
+        manVehicle.updateVehicle(vehicle);
+        
+        redirectAttributes.addFlashAttribute("message", "Vehicle (id: " + vehicle.getId().toString() + "was sucessfully edited.");
+        
+        return "redirect:/index.htm"; 
     }
     
     @RequestMapping(value="/delete/{id}")
