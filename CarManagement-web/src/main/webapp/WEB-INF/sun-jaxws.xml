@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints version="2.0" xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
+  <endpoint implementation="cz.muni.fi.pa165.carmanagement.soap.VehicleTypeManagerImpl" name="VehicleTypeManagerImplService" url-pattern="/VehicleTypeManagerImplService"/>
+  <endpoint implementation="cz.muni.fi.pa165.carmanagement.soap.VehicleManagerImpl" name="VehicleManagerImplService" url-pattern="/VehicleManagerImplService"/>
+  <endpoint implementation="cz.muni.fi.pa165.carmanagement.soap.EmployeeManagerImpl" name="EmployeeManagerImplService" url-pattern="/EmployeeManagerImplService"/>
+</endpoints>
