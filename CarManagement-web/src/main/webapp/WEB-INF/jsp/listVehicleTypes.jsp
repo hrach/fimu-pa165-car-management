@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>List Vehicles</title>
+        <title>List Vehicle Types</title>
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
     </head>
     <body>
@@ -45,7 +45,7 @@
                             <tr>
                                 <td><c:out value="${vehicle-type.id}" /></td>
                                 <td><c:out value="${vehicle-type.name}" /></td>
-                                <td><c:out value="${vehicle-type.maxkm}" /></td>
+                                <td><c:out value="${vehicle-type.maxKm}" /></td>
                                 <td>
                                     <a href="${pageContext.request.contextPath}/vehicle-type/edit/${vehicle-type.id}.html" class="btn btn-warning btn-xs"><spring:message code="edit" /></a>
                                     <a href="${pageContext.request.contextPath}/vehicle-type/delete/${vehicle-type.id}.html" class="btn btn-danger btn-xs"><spring:message code="delete" /></a>
