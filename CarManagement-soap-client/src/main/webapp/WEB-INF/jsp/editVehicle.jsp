@@ -15,6 +15,40 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Car Management SOAP Client</title>
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('form#addVeh').submit(function() {
+                    valid = true;
+                    
+                    if($.trim($('#input-name').val()) == '') {
+                        valid = false;
+                        $('#input-name').parent().addClass('has-error');
+                    } else {
+                        $('#input-name').parent().removeClass('has-error');
+                    }
+                    
+                    if($.trim($('#input-tachometer').val()) == '') {
+                        valid = false;
+                        $('#input-tachometer').parent().addClass('has-error');
+                    } else {
+                        $('#input-tachometer').parent().removeClass('has-error');
+                    }
+                    
+                    if($.trim($('#input-type').val()) == '') {
+                        valid = false;
+                        $('#input-type').parent().addClass('has-error');
+                    } else {
+                        $('#input-type').parent().removeClass('has-error');
+                    }
+                    
+                    if(valid) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+            });
+        </script>
     </head>
 
     <body>
@@ -27,7 +61,7 @@
             <div class="page-header">
                 <h1>Edit vehicle</h1>
             </div>
-            <form:form cssClass="form-horizontal" method="POST" modelAttribute="vehicle" action="${pageContext.request.contextPath}/vehicle/edit/${vehicle.id}.html">  
+            <form:form cssClass="form-horizontal" id="addVeh" method="POST" modelAttribute="vehicle" action="${pageContext.request.contextPath}/vehicle/edit/${vehicle.id}.html">  
                 <div class="form-group">                                
                     <label for="input-name" class="col-sm-2 control-label">Name:</label>  
                     <div class="col-sm-10">

@@ -72,7 +72,7 @@ public class EmployeeController {
         EmployeeManagerImpl manEmployee = employeeManagerService.getEmployeeManagerImplPort();
         manEmployee.updateEmployee(employee);
         
-        redirectAttributes.addFlashAttribute("message", "Employee (id: " + employee.getId().toString() + "was sucessfully edited.");
+        redirectAttributes.addFlashAttribute("message", "Employee (id: " + employee.getId().toString() + ") was sucessfully edited.");
         
         return "redirect:/index.htm"; 
     }
@@ -83,7 +83,7 @@ public class EmployeeController {
         EmployeeManagerImpl manEmployee = employeeManagerService.getEmployeeManagerImplPort();
         manEmployee.removeEmployee(manEmployee.getEmployee(id));
         
-        redirectAttributes.addFlashAttribute("message", "Employee with id " + id.toString() + " was deleted.");
+        redirectAttributes.addFlashAttribute("message", "Employee (id: " + id.toString() + ") was deleted.");
 
         return "redirect:/index.htm";
     }

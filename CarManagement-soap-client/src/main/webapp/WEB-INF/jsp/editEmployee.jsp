@@ -15,6 +15,40 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Car Management SOAP Client</title>
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('form#addEmp').submit(function() {
+                    valid = true;
+                    
+                    if($.trim($('#input-firstname').val()) == '') {
+                        valid = false;
+                        $('#input-firstname').parent().addClass('has-error');
+                    } else {
+                        $('#input-firstname').parent().removeClass('has-error');
+                    }
+                    
+                    if($.trim($('#input-familyname').val()) == '') {
+                        valid = false;
+                        $('#input-familyname').parent().addClass('has-error');
+                    } else {
+                        $('#input-familyname').parent().removeClass('has-error');
+                    }
+                    
+                    if($('#input-role').val() == '0') {
+                        valid = false;
+                        $('#input-role').parent().addClass('has-error');
+                    } else {
+                        $('#input-role').parent().removeClass('has-error');
+                    }
+                    
+                    if(valid) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+            });
+        </script>
     </head>
 
     <body>
@@ -27,7 +61,7 @@
             <div class="page-header">
                 <h1>Edit employee</h1>
             </div>
-            <form:form cssClass="form-horizontal" method="POST" modelAttribute="employee" action="${pageContext.request.contextPath}/employee/edit/${employee.id}.html">  
+            <form:form cssClass="form-horizontal" id="addEmp" method="POST" modelAttribute="employee" action="${pageContext.request.contextPath}/employee/edit/${employee.id}.html">  
                  <div class="form-group">
                     <label for="label-id" class="col-sm-2 control-label">ID</label>
                     <div class="col-sm-10">

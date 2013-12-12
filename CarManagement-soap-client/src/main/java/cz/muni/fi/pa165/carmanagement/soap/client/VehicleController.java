@@ -82,7 +82,7 @@ public class VehicleController {
         VehicleManagerImpl manVehicle = vehicleManagerService.getVehicleManagerImplPort();
         manVehicle.updateVehicle(vehicle);
         
-        redirectAttributes.addFlashAttribute("message", "Vehicle (id: " + vehicle.getId().toString() + "was sucessfully edited.");
+        redirectAttributes.addFlashAttribute("message", "Vehicle (id: " + vehicle.getId().toString() + ") was sucessfully edited.");
         
         return "redirect:/index.htm"; 
     }
@@ -94,7 +94,7 @@ public class VehicleController {
         VehicleManagerImpl manVehicle = vehicleManagerService.getVehicleManagerImplPort();
         manVehicle.removeVehicle(manVehicle.getVehicle(id));
         
-        redirectAttributes.addFlashAttribute("message", "Vehicle with id " + id.toString() + " was deleted.");
+        redirectAttributes.addFlashAttribute("message", "Vehicle (id: " + id.toString() + ") was deleted.");
 
         return "redirect:/index.htm";
     }

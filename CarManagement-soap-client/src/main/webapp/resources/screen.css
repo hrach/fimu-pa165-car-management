@@ -124,3 +124,7 @@ h3 {
 .table-autosize {
     width: auto;
 }
+
+.has-error input {
+    background: #ffe3e5;
+}
