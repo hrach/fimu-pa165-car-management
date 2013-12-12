@@ -15,7 +15,7 @@ import org.springframework.validation.Validator;
  * @author tomasbobek
  */
 
-@Component("vehicleValidator")
+@Component("vehicleTypeValidator")
 public class VehicleTypeValidator implements Validator {
     @Override
     public boolean supports(Class<?> c) {
