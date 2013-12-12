@@ -31,11 +31,9 @@
         
         <div class="container">
             <div class="page-header">
-                <h1><spring:message code="rides" /></h1>
+                <h1><spring:message code="ride.new" />&nbsp;<small><spring:message code="for.employee" />&nbsp;${newRide.employee.name}</small></h1>
             </div>
             
-                <h3><spring:message code="ride.new" />&nbsp;<spring:message code="for.employee" />&nbsp;${newRide.employee.name}</h3>
-
             <form:form cssClass="form-horizontal" method="POST" modelAttribute="newRide" action="${pageContext.request.contextPath}/ride/add">  
                 <div class="form-group">
                     <label for="input-starttime" class="col-sm-2 control-label"><spring:message code="ride.starttime" />:</label>  

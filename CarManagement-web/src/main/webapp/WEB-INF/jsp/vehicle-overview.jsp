@@ -106,11 +106,11 @@
                     </tbody>
                 </table>
 
-                <h3><spring:message code="detail.newServiceInterval" /></h3>
+                <h3 style="margin-bottom: 20px; margin-top: 30px;"><spring:message code="detail.newServiceInterval" /></h3>
                 <form:form cssClass="form-horizontal" method="POST" modelAttribute="newServiceInterval" action="">
                     <c:set var="hasError"><form:errors path="serviceType.id"/></c:set>
                     <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
-                        <label for="input-type" class="col-sm-2 control-label"><spring:message code="serviceInterval.type" />:</label>  
+                        <label for="input-type" class="col-sm-2 control-label" style="width:70px;"><spring:message code="serviceInterval.type" />:</label>  
                         <div class="col-sm-4">
                             <form:select path="serviceType.id" id="input-type" cssClass="form-control">
                                 <spring:message code="serviceInterval.select" var="emptyVal"/>
@@ -122,14 +122,14 @@
                     </div>
                     <c:set var="hasError"><form:errors path="dueTime"/></c:set>
                     <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
-                        <label for="input-due" class="col-sm-2 control-label"><spring:message code="serviceInterval.dueTime" />:</label>
+                        <label for="input-due" class="col-sm-2 control-label" style="width:70px;"><spring:message code="serviceInterval.dueTime" />:</label>
                         <div class="col-sm-4">
                             <form:input path="dueTime" id="input-due" cssClass="form-control datepicker"></form:input>
                             <form:errors path="dueTime" cssClass="help-block"></form:errors>                                                                            
                         </div>  
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-4">
+                        <div class="col-sm-offset-2 col-sm-4" style="margin-left:70px;">
                             <button type="submit" class="btn btn-success"><spring:message code="changes.save" /></button>
                         </div>
                     </div>    
