@@ -21,7 +21,7 @@
         
         <div class="container">
             <div class="page-header">
-                <h1>Add Vehicle</h1>
+                <h1><spring:message code="vehicle.add" /></h1>
             </div>
 
             <form:form cssClass="form-horizontal" method="POST" modelAttribute="newVehicle" action="${pageContext.request.contextPath}/vehicle/add">  

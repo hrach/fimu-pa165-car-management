@@ -21,11 +21,9 @@
         
         <div class="container">
             <div class="page-header">
-                <h1><spring:message code="employees" /></h1>
+                <h1><spring:message code="employee.edit" /></h1>
             </div>
             
-            <h3><spring:message code="employee.edit" /></h3>
-
             <form:form cssClass="form-horizontal" method="POST" modelAttribute="employee" action="${pageContext.request.contextPath}/employee/edit/${employee.id}.html">  
                  <div class="form-group">
                     <label for="label-id" class="col-sm-2 control-label"><spring:message code="employee.id" /></label>

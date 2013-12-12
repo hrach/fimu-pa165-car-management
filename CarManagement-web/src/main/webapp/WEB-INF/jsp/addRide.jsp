@@ -32,10 +32,8 @@
         
         <div class="container">
             <div class="page-header">
-                <h1><spring:message code="rides" /></h1>
+                <h1><spring:message code="ride.add" /></h1>
             </div>
-            
-            <h3><spring:message code="ride.new" /></h3>
 
             <form:form cssClass="form-horizontal" method="POST" modelAttribute="newRide" action="${pageContext.request.contextPath}/ride/add">  
                 <c:set var="hasError"><form:errors path="startTime"/></c:set>

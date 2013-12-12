@@ -21,11 +21,9 @@
         
         <div class="container">
             <div class="page-header">
-                <h1><spring:message code="employees" /></h1>
+                <h1><spring:message code="employee.add" /></h1>
             </div>
             
-            <h3><spring:message code="employee.add" /></h3>
-
             <form:form cssClass="form-horizontal" method="POST" modelAttribute="newEmployee" action="${pageContext.request.contextPath}/employee/add">  
                 <c:set var="hasError"><form:errors path="firstName"/></c:set>
                 <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">                

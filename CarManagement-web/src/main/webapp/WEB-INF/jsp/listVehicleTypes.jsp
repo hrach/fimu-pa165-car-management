@@ -19,9 +19,6 @@
         <jsp:include page="/WEB-INF/jsp/navigation.jsp" />
         
         <div class="container">
-            <div class="page-header">
-                <h1><spring:message code="vehicletype.list" /></h1>
-            </div>
             <c:if test="${not empty message}">
                 <div class="alert alert-success alert-dismissable">
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

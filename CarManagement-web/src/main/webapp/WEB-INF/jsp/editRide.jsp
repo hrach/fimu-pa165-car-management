@@ -32,11 +32,9 @@
         
         <div class="container">
             <div class="page-header">
-                <h1><spring:message code="rides" /></h1>
+                <h1><spring:message code="ride.edit" /></h1>
             </div>
             
-            <h3><spring:message code="ride.edit" /></h3>
-
             <form:form cssClass="form-horizontal" method="POST" modelAttribute="ride" action="${pageContext.request.contextPath}/ride/edit/${ride.id}.html">  
                  <div class="form-group">
                     <label for="label-id" class="col-sm-2 control-label"><spring:message code="ride.id" /></label>
