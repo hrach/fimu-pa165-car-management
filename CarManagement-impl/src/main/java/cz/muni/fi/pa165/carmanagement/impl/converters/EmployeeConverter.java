@@ -20,6 +20,8 @@ public class EmployeeConverter extends GeneralConverter<Employee, EmployeeDto> {
         dto.setFirstName(entity.getFirstName());
         dto.setFamilyName(entity.getFamilyName());
         dto.setEmployeeRole(entity.getEmployeeRole());
+        dto.setUsername(entity.getUsername());
+        dto.setPassword(entity.getPassword());
         
         RideConverter rc = ConverterContainer.getRideConverter();
         if (!(parent == rc)) {
@@ -40,6 +42,8 @@ public class EmployeeConverter extends GeneralConverter<Employee, EmployeeDto> {
         entity.setFirstName(dto.getFirstName());
         entity.setFamilyName(dto.getFamilyName());
         entity.setEmployeeRole(dto.getEmployeeRole());
+        entity.setUsername(dto.getUsername());
+        entity.setPassword(dto.getPassword());
         
         RideConverter rc = ConverterContainer.getRideConverter();
         if (!(parent == rc)) {
