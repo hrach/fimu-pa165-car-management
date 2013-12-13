@@ -34,6 +34,8 @@ public class VehicleValidator implements Validator {
         VehicleDto dto = (VehicleDto) target;              
         
         if (dto.getFuel() == 0)
-            errors.rejectValue("fuel", "vehicle.invalid.fuel");    
+            errors.rejectValue("fuel", "vehicle.invalid.fuel");  
+        if (dto.getVIN().length() > 17)
+            errors.rejectValue("VIN", "vehicle.invalid.VIN.toolong");
     }        
 }
