@@ -24,7 +24,7 @@ public class VehicleType implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;    
-    
+
     private Long maxKm; 
     
     private String name;

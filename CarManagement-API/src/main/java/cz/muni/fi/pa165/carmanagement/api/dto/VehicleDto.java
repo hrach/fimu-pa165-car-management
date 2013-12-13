@@ -20,7 +20,7 @@ public class VehicleDto
 
     private String name;
     
-    private int constructionYear;
+    private Integer constructionYear;
     
     private String VIN;
     
@@ -51,7 +51,7 @@ public class VehicleDto
         this.type = type;
     }
 
-    public VehicleDto(String name, int constructionYear, String VIN, String registrationPlate, int fuel, Long tachometer, VehicleTypeDto type) {
+    public VehicleDto(String name, Integer constructionYear, String VIN, String registrationPlate, int fuel, Long tachometer, VehicleTypeDto type) {
         this.name = name;
         this.constructionYear = constructionYear;
         this.VIN = VIN;
@@ -95,11 +95,11 @@ public class VehicleDto
         this.tachometer = tachometer;
     }
 
-    public int getConstructionYear() {
+    public Integer getConstructionYear() {
         return constructionYear;
     }
 
-    public void setConstructionYear(int constructionYear) {
+    public void setConstructionYear(Integer constructionYear) {
         this.constructionYear = constructionYear;
     }
 

@@ -67,11 +67,11 @@
                     <div class="col-sm-10">
                         <form:select path="fuel" id="input-fuel" cssClass="form-control">
                             <option value="0" selected="selected">-- <spring:message code="vehicle.select.fuel" /></option>
-                            <option value="1"><spring:message code="vehicle.fuel.gas" /></option>
-                            <option value="2"><spring:message code="vehicle.fuel.oil" /></option>
-                            <option value="3"><spring:message code="vehicle.fuel.cng" /></option>
-                            <option value="4"><spring:message code="vehicle.fuel.lpg" /></option>
-                            <option value="5"><spring:message code="vehicle.fuel.electric" /></option>
+                            <option value="1" ${target.fuel == 1 ? 'selected="selected"' : ''}><spring:message code="vehicle.fuel.gas" /></option>
+                            <option value="2" ${vehicle.fuel == 2 ? 'selected="selected"' : ''}><spring:message code="vehicle.fuel.oil" /></option>
+                            <option value="3" ${vehicle.fuel == 3 ? 'selected="selected"' : ''}><spring:message code="vehicle.fuel.cng" /></option>
+                            <option value="4" ${vehicle.fuel == 4 ? 'selected="selected"' : ''}><spring:message code="vehicle.fuel.lpg" /></option>
+                            <option value="5" ${vehicle.fuel == 5 ? 'selected="selected"' : ''}><spring:message code="vehicle.fuel.electric" /></option>
                         </form:select>
                         <form:errors path="fuel" cssClass="help-block"></form:errors>                            
                     </div>

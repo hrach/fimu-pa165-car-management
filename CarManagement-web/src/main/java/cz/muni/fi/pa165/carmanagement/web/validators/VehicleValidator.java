@@ -26,7 +26,14 @@ public class VehicleValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "vehicle.empty.name");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "tachometer", "vehicle.empty.tachometer");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "type", "vehicle.empty.type");
-                
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "constructionYear", "vehicle.empty.constructionYear");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "registrationPlate", "vehicle.empty.registrationPlate");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "fuel", "vehicle.empty.fuel");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "VIN", "vehicle.empty.VIN");
+        
         VehicleDto dto = (VehicleDto) target;              
+        
+        if (dto.getFuel() == 0)
+            errors.rejectValue("fuel", "vehicle.invalid.fuel");    
     }        
 }

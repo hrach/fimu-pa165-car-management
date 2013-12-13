@@ -39,7 +39,7 @@ public class Vehicle implements Serializable {
     private String name;
     
     @Column (nullable = true)
-    private int constructionYear;
+    private Integer constructionYear;
     
     @Column (length = 17, nullable = true)
     private String VIN;
@@ -69,7 +69,7 @@ public class Vehicle implements Serializable {
         this.tachometer = tachometer;
     }
 
-    public Vehicle(String name, Long tachometer, VehicleType type, int constructionYear, String VIN, String registrationPlate, int fuel) {
+    public Vehicle(String name, Long tachometer, VehicleType type, Integer constructionYear, String VIN, String registrationPlate, int fuel) {
         this.name = name;
         this.constructionYear = constructionYear;
         this.VIN = VIN;
@@ -103,11 +103,11 @@ public class Vehicle implements Serializable {
         this.tachometer = tachometer;
     }
 
-    public int getConstructionYear() {
+    public Integer getConstructionYear() {
         return constructionYear;
     }
 
-    public void setConstructionYear(int constructionYear) {
+    public void setConstructionYear(Integer constructionYear) {
         this.constructionYear = constructionYear;
     }
 
