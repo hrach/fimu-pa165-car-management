@@ -41,6 +41,26 @@
                         <td><c:out value="${vehicle.name}"/></td>
                     </tr>
                     <tr>
+                        <th><spring:message code="detail.vehicle.fuel" /></th>
+                        <c:if test="${vehicle.fuel==1}"><td><spring:message code="vehicle.fuel.gas" /></td></c:if>
+                        <c:if test="${vehicle.fuel==2}"><td><spring:message code="vehicle.fuel.oil" /></td></c:if>
+                        <c:if test="${vehicle.fuel==3}"><td><spring:message code="vehicle.fuel.cng" /></td></c:if>
+                        <c:if test="${vehicle.fuel==4}"><td><spring:message code="vehicle.fuel.lpg" /></td></c:if>
+                        <c:if test="${vehicle.fuel==5}"><td><spring:message code="vehicle.fuel.electric" /></td></c:if>
+                    </tr>
+                    <tr>
+                        <th><spring:message code="detail.vehicle.VIN" /></th>
+                        <td><c:out value="${vehicle.VIN}"/></td>
+                    </tr>
+                    <tr>
+                        <th><spring:message code="detail.vehicle.constructionYear" /></th>
+                        <td><c:out value="${vehicle.constructionYear}"/></td>
+                    </tr>
+                    <tr>
+                        <th><spring:message code="detail.vehicle.registrationPlate" /></th>
+                        <td><c:out value="${vehicle.registrationPlate}"/></td>
+                    </tr>
+                    <tr>
                         <th><spring:message code="detail.vehicle.km" /></th>
                         <td><c:out value="${vehicle.sumKm}"/></td>
                     </tr>

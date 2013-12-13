@@ -27,12 +27,16 @@
             <div id="content">
 
                     <h3><spring:message code="vehicle.list" /></h3>
-                    <table class="table table-hover">
+                    <table class="table table-hover table-condensed">
                         <thead>
                             <tr>
                                 <td><spring:message code="vehicle.id" /></td>
                                 <td><spring:message code="vehicle.name" /></td>
                                 <td><spring:message code="vehicle.tachometer" /></td>
+                                <td><spring:message code="vehicle.fuel" /></td>
+                                <td><spring:message code="vehicle.registrationPlate" /></td>
+                                <td><spring:message code="vehicle.VIN" /></td>
+                                <td><spring:message code="vehicle.constructionyear" /></td>
                                 <td><spring:message code="vehicle.type" /></td>
                                 <td>&nbsp;</td>
                             </tr>
@@ -43,6 +47,14 @@
                                 <td><c:out value="${vehicle.id}" /></td>
                                 <td><c:out value="${vehicle.name}" /></td>
                                 <td><c:out value="${vehicle.tachometer}" /></td>
+                                <c:if test="${vehicle.fuel==1}"><td><spring:message code="vehicle.fuel.gas" /></td></c:if>
+                                <c:if test="${vehicle.fuel==2}"><td><spring:message code="vehicle.fuel.oil" /></td></c:if>
+                                <c:if test="${vehicle.fuel==3}"><td><spring:message code="vehicle.fuel.cng" /></td></c:if>
+                                <c:if test="${vehicle.fuel==4}"><td><spring:message code="vehicle.fuel.lpg" /></td></c:if>
+                                <c:if test="${vehicle.fuel==5}"><td><spring:message code="vehicle.fuel.electric" /></td></c:if>
+                                <td><c:out value="${vehicle.registrationPlate}" /></td>
+                                <td><c:out value="${vehicle.VIN}" /></td>
+                                <td><c:out value="${vehicle.constructionYear}" /></td>
                                 <td><c:out value="${vehicle.type.name}" /></td>
                                 <td>
                                     <a href="${pageContext.request.contextPath}/overview/vehicle/${vehicle.id}.html" class="btn btn-info btn-xs"><spring:message code="view" /></a>

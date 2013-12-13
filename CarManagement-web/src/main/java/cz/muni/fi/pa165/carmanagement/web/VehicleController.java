@@ -91,6 +91,10 @@ public class VehicleController {
             vd.setId(vehicle.getId());
             vd.setName(vehicle.getName());
             vd.setTachometer(vehicle.getTachometer());
+            vd.setConstructionYear(vehicle.getConstructionYear());
+            vd.setVIN(vehicle.getVIN());
+            vd.setRegistrationPlate(vehicle.getRegistrationPlate());
+            vd.setFuel(vehicle.getFuel());
             if (vehicle.getType() != null)
             {
                  vd.setType(vehicleTypeService.findById(vehicle.getType().getId()));
@@ -132,6 +136,10 @@ public class VehicleController {
             vd.setId(vehicle.getId());
             vd.setName(vehicle.getName());
             vd.setTachometer(vehicle.getTachometer());
+            vd.setConstructionYear(vehicle.getConstructionYear());
+            vd.setVIN(vehicle.getVIN());
+            vd.setRegistrationPlate(vehicle.getRegistrationPlate());
+            vd.setFuel(vehicle.getFuel());
             if (vehicle.getType() != null)
             {
                 vd.setType(vehicleTypeService.findById(vehicle.getType().getId()));

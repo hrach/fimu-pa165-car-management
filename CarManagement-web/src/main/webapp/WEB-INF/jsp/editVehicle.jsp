@@ -33,6 +33,50 @@
                         <form:errors path="name" cssClass="help-block"></form:errors>                                                                        
                     </div> 
                 </div>
+                    
+                <c:set var="hasError"><form:errors path="constructionYear"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">                
+                    <label for="input-constructionyear" class="col-sm-2 control-label"><spring:message code="vehicle.constructionyear" />:</label>  
+                    <div class="col-sm-10">
+                        <form:input path="constructionYear" id="input-constructionyear" cssClass="form-control"></form:input>
+                        <form:errors path="constructionYear" cssClass="help-block"></form:errors>                                                
+                    </div> 
+                </div>    
+
+                <c:set var="hasError"><form:errors path="VIN"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">                
+                    <label for="input-VIN" class="col-sm-2 control-label"><spring:message code="vehicle.VIN" />:</label>  
+                    <div class="col-sm-10">
+                        <form:input path="VIN" id="input-VIN" cssClass="form-control"></form:input>
+                        <form:errors path="VIN" cssClass="help-block"></form:errors>                                                
+                    </div> 
+                </div>  
+
+                <c:set var="hasError"><form:errors path="registrationPlate"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">                
+                    <label for="input-registrationPlate" class="col-sm-2 control-label"><spring:message code="vehicle.registrationPlate" />:</label>  
+                    <div class="col-sm-10">
+                        <form:input path="registrationPlate" id="input-registrationPlate" cssClass="form-control"></form:input>
+                        <form:errors path="registrationPlate" cssClass="help-block"></form:errors>                                                
+                    </div> 
+                </div>  
+
+               <c:set var="hasError"><form:errors path="fuel"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
+                    <label for="input-fuel" class="col-sm-2 control-label"><spring:message code="vehicle.fuel" />:</label>
+                    <div class="col-sm-10">
+                        <form:select path="fuel" id="input-fuel" cssClass="form-control">
+                            <option value="0" selected="selected">-- <spring:message code="vehicle.select.fuel" /></option>
+                            <option value="1" ${vehicle.fuel == 1 ? 'selected="selected"' : ''}><spring:message code="vehicle.fuel.gas" /></option>
+                            <option value="2" ${vehicle.fuel == 2 ? 'selected="selected"' : ''}><spring:message code="vehicle.fuel.oil" /></option>
+                            <option value="3" ${vehicle.fuel == 3 ? 'selected="selected"' : ''}><spring:message code="vehicle.fuel.cng" /></option>
+                            <option value="4" ${vehicle.fuel == 4 ? 'selected="selected"' : ''}><spring:message code="vehicle.fuel.lpg" /></option>
+                            <option value="5" ${vehicle.fuel == 5 ? 'selected="selected"' : ''}><spring:message code="vehicle.fuel.electric" /></option>
+                        </form:select>
+                        <form:errors path="fuel" cssClass="help-block"></form:errors>                            
+                    </div>
+                </div>    
+                    
                 <c:set var="hasError"><form:errors path="tachometer"/></c:set>
                 <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">                
                     <label for="input-tachometer" class="col-sm-2 control-label"><spring:message code="vehicle.tachometer" />:</label>

@@ -69,7 +69,7 @@ public class Vehicle implements Serializable {
         this.tachometer = tachometer;
     }
 
-    public Vehicle(String name, int constructionYear, String VIN, String registrationPlate, int fuel, Long tachometer, VehicleType type) {
+    public Vehicle(String name, Long tachometer, VehicleType type, int constructionYear, String VIN, String registrationPlate, int fuel) {
         this.name = name;
         this.constructionYear = constructionYear;
         this.VIN = VIN;
@@ -132,7 +132,7 @@ public class Vehicle implements Serializable {
     }
 
     public void setFuel(int fuel) {
-         if (fuel != FUEL_OIL && fuel != FUEL_GAS && fuel != FUEL_CNG && fuel != FUEL_LPG && fuel != FUEL_ELECTRIC) {
+         if (fuel != 0 && fuel != FUEL_OIL && fuel != FUEL_GAS && fuel != FUEL_CNG && fuel != FUEL_LPG && fuel != FUEL_ELECTRIC) {
             throw new IllegalArgumentException("Vehicle fuel '" + fuel + "' is not allowed.");
         }
         this.fuel = fuel;
