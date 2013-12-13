@@ -107,7 +107,12 @@ public class EmployeeController {
         
         if (result.hasErrors()) {            
             return "editEmployee";
-        } else {                
+        } else {        
+    /*        
+            if (!employee.getPassword().isEmpty()){
+                
+            }
+      */      
             employeeService.update(employee);
 
             System.out.println("Employee #"+id+" edited.");

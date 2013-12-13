@@ -58,6 +58,16 @@
                         <form:errors path="username" cssClass="help-block"></form:errors>
                     </div>  
                 </div>    
+
+                <c:set var="hasError"><form:errors path="password"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
+                    <label for="input-password" class="col-sm-2 control-label"><spring:message code="employee.password" />:</label>
+                    <div class="col-sm-10">
+                        <form:password path="password" id="input-password" cssClass="form-control" showPassword="true" />
+                        <form:errors path="password" cssClass="help-block"></form:errors>
+                        <span class="help-block"><spring:message code="employee.edit.password.helptext" /></span>
+                    </div>  
+                </div>  
                     
                 <c:set var="hasError"><form:errors path="employeeRole"/></c:set>
                 <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
