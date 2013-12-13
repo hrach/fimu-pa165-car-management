@@ -134,6 +134,8 @@
                         </div>
                     </div>    
                 </form:form>  
+                <hr>
+                <p><a class="btn btn-info" href="${pageContext.request.contextPath}/vehicle/"><span class="glyphicon glyphicon-circle-arrow-left"></span> <spring:message code="vehicle.backtolist" /></a></p>
         </div>        
         </div>
     </body>

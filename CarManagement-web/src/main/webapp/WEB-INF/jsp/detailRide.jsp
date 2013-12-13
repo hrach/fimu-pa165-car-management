@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Edit Vehicle</title>
+        <title><spring:message code="detail.ride" /></title>
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
     </head>
     <body>
@@ -73,6 +73,10 @@
         </td>
     </tr>  
 </table>
+        
+<hr>
+<p><a class="btn btn-info" href="${pageContext.request.contextPath}/ride/"><span class="glyphicon glyphicon-circle-arrow-left"></span> <spring:message code="ride.backtolist" /></a></p>
+        </div>          
             </div>
         </div>
     </body>

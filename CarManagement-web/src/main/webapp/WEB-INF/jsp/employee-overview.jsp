@@ -77,7 +77,8 @@
             <a href="${pageContext.request.contextPath}/ride/add/${employee.id}" class="btn btn-success"><spring:message code="detail.emp.newrideforemp" /></a>            
         </p>
         
-        
+           <hr>
+                <p><a class="btn btn-info" href="${pageContext.request.contextPath}/employee/"><span class="glyphicon glyphicon-circle-arrow-left"></span> <spring:message code="employee.backtolist" /></a></p>
 
         </div>
         </div>
