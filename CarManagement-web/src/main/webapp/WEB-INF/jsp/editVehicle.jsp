@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Edit Vehicle</title>
+        <title><spring:message code="vehicle.edit" /></title>
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
     </head>
     <body>

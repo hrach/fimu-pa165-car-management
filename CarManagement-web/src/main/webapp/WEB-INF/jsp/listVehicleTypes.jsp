@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>List Vehicle Types</title>
+        <title><spring:message code="vehicletype.list" /></title>
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
     </head>
     <body>
@@ -27,7 +27,7 @@
             </c:if> 
             <div id="content">
 
-                    <h3><spring:message code="home" /></h3>
+                    <h3><spring:message code="vehicletype.list" /></h3>
                     <table class="table table-hover">
                         <thead>
                             <tr>

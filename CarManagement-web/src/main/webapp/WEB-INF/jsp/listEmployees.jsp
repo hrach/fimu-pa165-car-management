@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>List Employees</title>
+        <title><spring:message code="employees.list" /></title>
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
     </head>
     <body>
