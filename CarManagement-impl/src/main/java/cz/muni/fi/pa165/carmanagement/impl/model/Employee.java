@@ -60,6 +60,14 @@ public class Employee implements Serializable {
         this.setFamilyName(familyName);
         this.setEmployeeRole(employeeRole);
     }
+    
+    public Employee(String firstName, String familyName, int employeeRole, String username, String password) {
+        this.setFirstName(firstName);
+        this.setFamilyName(familyName);
+        this.setEmployeeRole(employeeRole);
+        this.setUsername(username);
+        this.setPassword(password);
+    }
 
 
     public Long getId() {
@@ -127,7 +135,7 @@ public class Employee implements Serializable {
     
     @Override
     public String toString() {
-        return "Employee: " + this.id + ", "+ this.firstName + " " + this.familyName + ", " + this.employeeRole;
+        return "Employee: " + this.id + ", "+ this.firstName + " " + this.familyName + ", " + this.employeeRole + ", " + this.username;
     }
 
     @Override

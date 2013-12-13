@@ -22,6 +22,10 @@ public class EmployeeDto {
     
     private String familyName;
     
+    private String username;
+    
+    private String password;
+    
     private int employeeRole;
     
     private List<RideDto> rides;
@@ -29,13 +33,23 @@ public class EmployeeDto {
     public EmployeeDto() {
         this.rides = new ArrayList<RideDto>();
     }
-
+    
     public EmployeeDto(Long id, String firstName, String familyName, int employeeRole) {
         this.rides = new ArrayList<RideDto>();
         this.id = id;
         this.firstName = firstName;
         this.familyName = familyName;
         this.employeeRole = employeeRole;
+    }
+
+    public EmployeeDto(Long id, String firstName, String familyName, int employeeRole, String username, String password) {
+        this.rides = new ArrayList<RideDto>();
+        this.id = id;
+        this.firstName = firstName;
+        this.familyName = familyName;
+        this.employeeRole = employeeRole;
+        this.username = username;
+        this.password = password;
     }
 
     public Long getId() {
@@ -61,7 +75,23 @@ public class EmployeeDto {
     public void setFamilyName(String familyName) {
         this.familyName = familyName;
     }
-    
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+        
     public String getName() {
         return this.firstName + ' ' + this.familyName;
     }
