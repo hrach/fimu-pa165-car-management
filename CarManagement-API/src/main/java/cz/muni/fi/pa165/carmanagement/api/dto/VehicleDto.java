@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package cz.muni.fi.pa165.carmanagement.api.dto;
 
 import java.util.Date;
@@ -14,8 +10,8 @@ import java.util.Set;
  * 
  * @author zvonicek
  */
-public class VehicleDto
-{
+public class VehicleDto {
+
     private Long id;
 
     private String name;
@@ -37,8 +33,7 @@ public class VehicleDto
     private List<ServiceIntervalDto> serviceIntervals;
 
 
-    public VehicleDto(Long id, String name, Long tachometer, VehicleTypeDto type)
-    {
+    public VehicleDto(Long id, String name, Long tachometer, VehicleTypeDto type) {
         this.id = id;
         this.name = name;
         this.tachometer = tachometer;
@@ -61,37 +56,30 @@ public class VehicleDto
         this.type = type;
     }
         
-    public VehicleDto()
-    {
+    public VehicleDto() {
     }
 
-    public Long getId()
-    {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Long id)
-    {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public Long getTachometer()
-    {
+    public Long getTachometer() {
         return tachometer;
     }
 
-    public void setTachometer(Long tachometer)
-    {
+    public void setTachometer(Long tachometer) {
         this.tachometer = tachometer;
     }
 
@@ -127,15 +115,11 @@ public class VehicleDto
         this.fuel = fuel;
     }
     
-    
-
-    public VehicleTypeDto getType()
-    {
+    public VehicleTypeDto getType() {
         return type;
     }
 
-    public void setType(VehicleTypeDto type)
-    {
+    public void setType(VehicleTypeDto type) {
         this.type = type;
     }
 
@@ -174,16 +158,14 @@ public class VehicleDto
     }
    
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 7;
         hash = 97 * hash + (this.id != null ? this.id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         if (obj == null) {
             return false;
         }
@@ -191,9 +173,7 @@ public class VehicleDto
             return false;
         }
         final VehicleDto other = (VehicleDto) obj;
-        if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }        
+        return this.id == other.id || (this.id != null && this.id.equals(other.id));
+    }
+
 }

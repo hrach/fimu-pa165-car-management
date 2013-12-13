@@ -53,9 +53,7 @@ public class ServiceTypeDto {
             return false;
         }
         final ServiceTypeDto other = (ServiceTypeDto) obj;
-        if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return this.id == other.id || (this.id != null && this.id.equals(other.id));
     }
+
 }

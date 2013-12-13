@@ -13,9 +13,7 @@ public class VehicleTypeDto
     
     private String name;
         
-
-    public VehicleTypeDto(Long id, Long maxKm, String name)
-    {
+    public VehicleTypeDto(Long id, Long maxKm, String name) {
         this.id = id;
         this.maxKm = maxKm;
         this.name = name;
@@ -26,29 +24,22 @@ public class VehicleTypeDto
         this.name = name;
     }
     
-
-    public VehicleTypeDto()
-    {
+    public VehicleTypeDto() {
     }
     
-    
-    public Long getId()
-    {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Long id)
-    {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getMaxKm()
-    {
+    public Long getMaxKm() {
         return maxKm;
     }
 
-    public void setMaxKm(Long maxKm)
-    {
+    public void setMaxKm(Long maxKm) {
         this.maxKm = maxKm;
     }        
 
@@ -61,16 +52,14 @@ public class VehicleTypeDto
     }        
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 3;
         hash = 43 * hash + (this.id != null ? this.id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         if (obj == null) {
             return false;
         }
@@ -78,9 +67,7 @@ public class VehicleTypeDto
             return false;
         }
         final VehicleTypeDto other = (VehicleTypeDto) obj;
-        if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }        
+        return this.id == other.id || (this.id != null && this.id.equals(other.id));
+    }
+
 }
