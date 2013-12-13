@@ -26,6 +26,7 @@ public class EmployeeValidator implements Validator {
     public void validate(Object target, Errors errors) {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "employee.empty.firstname");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "familyName", "employee.empty.familyname");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "employee.empty.username");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "employeeRole", "employee.empty.role");
                 
         EmployeeDto dto = (EmployeeDto) target;      

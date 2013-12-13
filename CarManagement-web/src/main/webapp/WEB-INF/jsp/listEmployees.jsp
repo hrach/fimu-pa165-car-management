@@ -36,6 +36,7 @@
                                 <td><spring:message code="employee.id" /></td>
                                 <td><spring:message code="employee.firstname" /></td>
                                 <td><spring:message code="employee.familyname" /></td>
+                                <td><spring:message code="employee.username" /></td>
                                 <td><spring:message code="employee.role" /></td>
                                 <td><spring:message code="employee.actions" /></td>
                             </tr>
@@ -46,6 +47,7 @@
                                 <td><c:out value="${employee.id}" /></td>
                                 <td><c:out value="${employee.firstName}" /></td>
                                 <td><c:out value="${employee.familyName}" /></td>
+                                <td><c:out value="${employee.username}" /></td>
                                 <c:if test="${employee.employeeRole==1}"><td><spring:message code="employee.role.staff" /></td></c:if>
                                 <c:if test="${employee.employeeRole==2}"><td><spring:message code="employee.role.manager" /></td></c:if>
                                 <td>

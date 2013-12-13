@@ -43,6 +43,15 @@
                     </div>  
                 </div>
                     
+                <c:set var="hasError"><form:errors path="username"/></c:set>
+                <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
+                    <label for="input-username" class="col-sm-2 control-label"><spring:message code="employee.username" />:</label>
+                    <div class="col-sm-10">
+                        <form:input path="username" id="input-username" cssClass="form-control"></form:input>
+                        <form:errors path="username" cssClass="help-block"></form:errors>
+                    </div>  
+                </div>    
+                    
                 <c:set var="hasError"><form:errors path="employeeRole"/></c:set>
                 <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">
                     <label for="input-role" class="col-sm-2 control-label"><spring:message code="employee.role" />:</label>

@@ -29,6 +29,10 @@
         <td><c:out value="${employee.name}"/></td>
     </tr>
     <tr>
+        <th><spring:message code="detail.emp.username" /></th>
+        <td><c:out value="${employee.username}"/></td>
+    </tr>
+    <tr>
         <th><spring:message code="detail.emp.role" /></th>
         <td><spring:message code="detail.emp.role.${employee.employeeRole}" /></td>
     </tr>
