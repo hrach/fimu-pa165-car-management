@@ -23,6 +23,13 @@ import javax.persistence.PreRemove;
 public class Vehicle implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    public static final int FUEL_GAS = 1;
+    public static final int FUEL_OIL = 2;
+    public static final int FUEL_LPG = 3;
+    public static final int FUEL_CNG = 4;
+    public static final int FUEL_ELECTRIC = 5;
+    
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,6 +37,17 @@ public class Vehicle implements Serializable {
     
     @Column(length = 50, nullable = false)
     private String name;
+    
+    @Column (nullable = true)
+    private int constructionYear;
+    
+    @Column (length = 17, nullable = true)
+    private String VIN;
+    
+    @Column (length = 20, nullable = true)
+    private String registrationPlate;
+    
+    private int fuel;
     
     private Long tachometer;
     
@@ -50,7 +68,16 @@ public class Vehicle implements Serializable {
         this.name = name;
         this.tachometer = tachometer;
     }
-    
+
+    public Vehicle(String name, int constructionYear, String VIN, String registrationPlate, int fuel, Long tachometer, VehicleType type) {
+        this.name = name;
+        this.constructionYear = constructionYear;
+        this.VIN = VIN;
+        this.registrationPlate = registrationPlate;
+        this.fuel = fuel;
+        this.tachometer = tachometer;
+        this.type = type;
+    }  
     
     public Long getId() {
         return id;
@@ -74,6 +101,41 @@ public class Vehicle implements Serializable {
     
     public void setTchometer(Long tachometer) {
         this.tachometer = tachometer;
+    }
+
+    public int getConstructionYear() {
+        return constructionYear;
+    }
+
+    public void setConstructionYear(int constructionYear) {
+        this.constructionYear = constructionYear;
+    }
+
+    public String getVIN() {
+        return VIN;
+    }
+
+    public void setVIN(String VIN) {
+        this.VIN = VIN;
+    }
+
+    public String getRegistrationPlate() {
+        return registrationPlate;
+    }
+
+    public void setRegistrationPlate(String registrationPlate) {
+        this.registrationPlate = registrationPlate;
+    }
+
+    public int getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(int fuel) {
+         if (fuel != FUEL_OIL && fuel != FUEL_GAS && fuel != FUEL_CNG && fuel != FUEL_LPG && fuel != FUEL_ELECTRIC) {
+            throw new IllegalArgumentException("Vehicle fuel '" + fuel + "' is not allowed.");
+        }
+        this.fuel = fuel;
     }
     
     public VehicleType getType() {
@@ -102,7 +164,7 @@ public class Vehicle implements Serializable {
     
     @Override
     public String toString() {
-        return this.name + " (" + this.tachometer.toString() + " km)";
+        return this.name + " (" + this.tachometer.toString() + " km), " + this.VIN + ", " + this.registrationPlate + ", " + this.constructionYear + ", " + this.fuel;
     }
     
     @Override

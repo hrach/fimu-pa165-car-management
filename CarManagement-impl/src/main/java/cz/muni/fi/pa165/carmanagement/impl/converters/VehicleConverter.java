@@ -17,6 +17,10 @@ public class VehicleConverter extends GeneralConverter<Vehicle, VehicleDto> {
         dto.setId(entity.getId());
         dto.setName(entity.getName());
         dto.setTachometer(entity.getTachometer());
+        dto.setConstructionYear(entity.getConstructionYear());
+        dto.setFuel(entity.getFuel());
+        dto.setRegistrationPlate(entity.getRegistrationPlate());
+        dto.setVIN(entity.getVIN());
         
         VehicleTypeConverter vtc     = ConverterContainer.getVehicleTypeConverter();
         RideConverter rc             = ConverterContainer.getRideConverter();
@@ -43,6 +47,10 @@ public class VehicleConverter extends GeneralConverter<Vehicle, VehicleDto> {
         entity.setId(dto.getId());
         entity.setName(dto.getName());
         entity.setTchometer(dto.getTachometer());
+        entity.setConstructionYear(dto.getConstructionYear());
+        entity.setFuel(dto.getFuel());
+        entity.setRegistrationPlate(dto.getRegistrationPlate());
+        entity.setVIN(dto.getVIN());
         
         VehicleTypeConverter vtc     = ConverterContainer.getVehicleTypeConverter();
         RideConverter rc             = ConverterContainer.getRideConverter();

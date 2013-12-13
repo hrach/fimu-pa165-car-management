@@ -20,6 +20,14 @@ public class VehicleDto
 
     private String name;
     
+    private int constructionYear;
+    
+    private String VIN;
+    
+    private String registrationPlate;
+    
+    private int fuel; 
+    
     private Long tachometer;
 
     private VehicleTypeDto type;
@@ -39,6 +47,16 @@ public class VehicleDto
 
     public VehicleDto(String name, Long tachometer, VehicleTypeDto type) {
         this.name = name;
+        this.tachometer = tachometer;
+        this.type = type;
+    }
+
+    public VehicleDto(String name, int constructionYear, String VIN, String registrationPlate, int fuel, Long tachometer, VehicleTypeDto type) {
+        this.name = name;
+        this.constructionYear = constructionYear;
+        this.VIN = VIN;
+        this.registrationPlate = registrationPlate;
+        this.fuel = fuel;
         this.tachometer = tachometer;
         this.type = type;
     }
@@ -76,6 +94,40 @@ public class VehicleDto
     {
         this.tachometer = tachometer;
     }
+
+    public int getConstructionYear() {
+        return constructionYear;
+    }
+
+    public void setConstructionYear(int constructionYear) {
+        this.constructionYear = constructionYear;
+    }
+
+    public String getVIN() {
+        return VIN;
+    }
+
+    public void setVIN(String VIN) {
+        this.VIN = VIN;
+    }
+
+    public String getRegistrationPlate() {
+        return registrationPlate;
+    }
+
+    public void setRegistrationPlate(String registrationPlate) {
+        this.registrationPlate = registrationPlate;
+    }
+
+    public int getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(int fuel) {
+        this.fuel = fuel;
+    }
+    
+    
 
     public VehicleTypeDto getType()
     {
