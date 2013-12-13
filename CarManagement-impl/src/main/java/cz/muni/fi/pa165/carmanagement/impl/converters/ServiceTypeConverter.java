@@ -8,9 +8,10 @@ import cz.muni.fi.pa165.carmanagement.impl.model.ServiceType;
  */
 public class ServiceTypeConverter extends GeneralConverter<ServiceType, ServiceTypeDto> {
     
-    public ServiceTypeDto entityToDto(ServiceType entity, ConverterInterface parent) {
-        if (entity == null)
+    public ServiceTypeDto entityToDto(ServiceType entity, Converter parent) {
+        if (entity == null) {
             return null;
+        }
         
         ServiceTypeDto dto = new ServiceTypeDto();
         dto.setId(entity.getId());
@@ -19,9 +20,10 @@ public class ServiceTypeConverter extends GeneralConverter<ServiceType, ServiceT
         return dto;      
     }
 
-    public ServiceType dtoToEntity(ServiceTypeDto dto, ConverterInterface parent) {
-        if (dto == null)
+    public ServiceType dtoToEntity(ServiceTypeDto dto, Converter parent) {
+        if (dto == null) {
             return null;
+        }
 
         ServiceType entity = new ServiceType();
         entity.setId(dto.getId());
@@ -29,6 +31,5 @@ public class ServiceTypeConverter extends GeneralConverter<ServiceType, ServiceT
         
         return entity;     
     }
-
 
 }

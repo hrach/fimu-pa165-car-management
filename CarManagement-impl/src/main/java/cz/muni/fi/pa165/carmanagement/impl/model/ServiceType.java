@@ -1,4 +1,3 @@
-
 package cz.muni.fi.pa165.carmanagement.impl.model;
 
 import java.io.Serializable;
@@ -32,7 +31,6 @@ public class ServiceType implements Serializable {
 
 
     public ServiceType () {
-        
     }
 
     public ServiceType(String name) {

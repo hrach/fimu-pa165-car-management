@@ -1,4 +1,3 @@
-
 package cz.muni.fi.pa165.carmanagement.impl.dao;
 
 import java.util.List;

@@ -1,4 +1,3 @@
-
 package cz.muni.fi.pa165.carmanagement.impl.service;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
@@ -43,7 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional
     @Override        
     public void delete(Long id) {
-        if (id == null){
+        if (id == null) {
             throw new NullPointerException("id");
         }
         
@@ -63,7 +62,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional
     @Override        
     public EmployeeDto findById(Long id) {
-        if (id == null){
+        if (id == null) {
             throw new NullPointerException("id");
         }
         

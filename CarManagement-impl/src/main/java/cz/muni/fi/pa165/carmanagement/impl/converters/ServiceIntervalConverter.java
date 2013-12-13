@@ -8,8 +8,8 @@ import cz.muni.fi.pa165.carmanagement.impl.model.ServiceInterval;
  */
 public class ServiceIntervalConverter extends GeneralConverter<ServiceInterval, ServiceIntervalDto> {
     
-    public ServiceIntervalDto entityToDto(ServiceInterval entity, ConverterInterface parent) {
-        if (entity == null){
+    public ServiceIntervalDto entityToDto(ServiceInterval entity, Converter parent) {
+        if (entity == null) {
             return null;
         }
         
@@ -32,7 +32,7 @@ public class ServiceIntervalConverter extends GeneralConverter<ServiceInterval, 
         return dto;
     }
     
-    public ServiceInterval dtoToEntity(ServiceIntervalDto dto, ConverterInterface parent) {
+    public ServiceInterval dtoToEntity(ServiceIntervalDto dto, Converter parent) {
         if (dto == null) {
             return null;
         }

@@ -1,4 +1,3 @@
-
 package cz.muni.fi.pa165.carmanagement.impl.dao;
 
 import java.lang.reflect.ParameterizedType;
@@ -21,8 +20,7 @@ public abstract class GeneralDaoImpl<K, E> implements GeneralDao<K, E> {
     @PersistenceContext
     private EntityManager em;
 
-    
-    public GeneralDaoImpl(){
+    public GeneralDaoImpl() {
         ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
         this.entityClass = (Class<E>) genericSuperclass.getActualTypeArguments()[1];        
     }    

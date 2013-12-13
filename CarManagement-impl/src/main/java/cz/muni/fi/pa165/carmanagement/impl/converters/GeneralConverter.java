@@ -6,9 +6,9 @@ import java.util.List;
 /**
  * @author skrasek
  */
-public abstract class GeneralConverter<E, D> implements ConverterInterface {
+public abstract class GeneralConverter<E, D> implements Converter {
 
-    abstract public D entityToDto(E entity, ConverterInterface parent);
+    abstract public D entityToDto(E entity, Converter parent);
     
     public D entityToDto(E entity) {
         return this.entityToDto(entity, null);
@@ -18,7 +18,7 @@ public abstract class GeneralConverter<E, D> implements ConverterInterface {
         return this.entityToDto(entities, null);
     }
 
-    public List<D> entityToDto(List<E> entities, ConverterInterface parent) {
+    public List<D> entityToDto(List<E> entities, Converter parent) {
         if (entities == null){
             return null;
         }
@@ -31,7 +31,7 @@ public abstract class GeneralConverter<E, D> implements ConverterInterface {
         return list;
     }
 
-    abstract public E dtoToEntity(D dto, ConverterInterface parent);
+    abstract public E dtoToEntity(D dto, Converter parent);
     
     public E dtoToEntity(D dto) {
         return this.dtoToEntity(dto, null);
@@ -41,7 +41,7 @@ public abstract class GeneralConverter<E, D> implements ConverterInterface {
         return this.dtoToEntity(dtos, null);
     }
     
-    public List<E> dtoToEntity(List<D> dtos, ConverterInterface parent) {
+    public List<E> dtoToEntity(List<D> dtos, Converter parent) {
         if (dtos == null){
             return null;
         }

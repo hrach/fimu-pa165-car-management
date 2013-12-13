@@ -26,22 +26,22 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
     @Transactional
     @Override        
     public ServiceTypeDto create(ServiceTypeDto type) {
-        if (type == null)
+        if (type == null) {
             throw new NullPointerException("type");
+        }
         
         type.setId(null);
-        
         ServiceType entity = ConverterContainer.getServiceTypeConverter().dtoToEntity(type);
         dao.persist(entity);        
-        
         return ConverterContainer.getServiceTypeConverter().entityToDto(entity);
     }
 
     @Transactional
     @Override        
     public void delete(Long id) {
-        if (id == null)
+        if (id == null) {
             throw new NullPointerException("id");
+        }
         
         dao.remove(dao.findById(id));
     }
@@ -49,8 +49,9 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
     @Transactional
     @Override        
     public void update(ServiceTypeDto type) {
-        if (type == null)
+        if (type == null) {
             throw new NullPointerException("type");
+        }
         
         ServiceType entity = ConverterContainer.getServiceTypeConverter().dtoToEntity(type);
         dao.update(entity);
@@ -59,8 +60,9 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
     @Transactional
     @Override    
     public ServiceTypeDto findById(Long id) {
-        if (id == null)
+        if (id == null) {
             throw new NullPointerException("id");
+        }
         
         return ConverterContainer.getServiceTypeConverter().entityToDto(dao.findById(id));
     }

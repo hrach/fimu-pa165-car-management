@@ -1,4 +1,3 @@
-
 package cz.muni.fi.pa165.carmanagement.impl.model;
 
 import java.io.Serializable;
@@ -129,7 +128,7 @@ public class Employee implements Serializable {
         this.rides = rides;
     }
     
-    public String getFullName(){
+    public String getFullName() {
         return this.firstName + " " + this.getFamilyName();
     }
     
@@ -146,16 +145,18 @@ public class Employee implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Employee)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        Employee other = (Employee) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (obj == this) {
+            return true;
+        }
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final Employee other = (Employee) obj;
+        return this.id != null && this.id.equals(other.id);
     }
 
     @PreRemove
@@ -163,5 +164,6 @@ public class Employee implements Serializable {
         for (Ride r : rides) {
             r.setEmployee(null);
         }
-    }    
+    }
+
 }

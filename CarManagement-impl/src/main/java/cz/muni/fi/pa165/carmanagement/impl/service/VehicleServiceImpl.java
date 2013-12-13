@@ -41,8 +41,7 @@ public class VehicleServiceImpl implements VehicleService {
         
         Vehicle entity = ConverterContainer.getVehicleConverter().dtoToEntity(v);
         entity.setId(null);
-        if (entity.getType() != null)
-        {
+        if (entity.getType() != null) {
             entity.setType(typeDao.findById(entity.getType().getId()));
         }
         
@@ -54,8 +53,9 @@ public class VehicleServiceImpl implements VehicleService {
     @Transactional
     @Override    
     public void delete(Long id) {
-        if (id == null)
+        if (id == null) {
             throw new NullPointerException("id");
+        }
         
         dao.remove(dao.findById(id));
     }
@@ -63,8 +63,9 @@ public class VehicleServiceImpl implements VehicleService {
     @Transactional
     @Override
     public void update(VehicleDto v) {
-        if (v == null)
+        if (v == null) {
             throw new NullPointerException("v");
+        }
         
         Vehicle entity = ConverterContainer.getVehicleConverter().dtoToEntity(v);
         dao.update(entity);
@@ -73,8 +74,9 @@ public class VehicleServiceImpl implements VehicleService {
     @Transactional
     @Override    
     public VehicleDto findById(Long id) {
-        if (id == null)
+        if (id == null) {
             throw new NullPointerException("id");
+        }
         
         return ConverterContainer.getVehicleConverter().entityToDto(dao.findById(id));    
     }

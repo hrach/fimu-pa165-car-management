@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package cz.muni.fi.pa165.carmanagement.impl.service;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.RideDto;
@@ -62,7 +56,7 @@ public class RideServiceImpl implements RideService {
     @Transactional
     @Override        
     public void delete(Long id) {
-        if (id == null){
+        if (id == null) {
             throw new NullPointerException("id");
         }
         
@@ -82,7 +76,7 @@ public class RideServiceImpl implements RideService {
     @Transactional
     @Override        
     public RideDto findById(Long id) {
-        if (id == null){
+        if (id == null) {
             throw new NullPointerException("id");
         }
         

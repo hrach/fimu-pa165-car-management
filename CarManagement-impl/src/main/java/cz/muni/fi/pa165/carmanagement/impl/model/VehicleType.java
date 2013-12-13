@@ -1,4 +1,3 @@
-
 package cz.muni.fi.pa165.carmanagement.impl.model;
 
 import java.io.Serializable;
@@ -34,7 +33,6 @@ public class VehicleType implements Serializable {
 
    
     public VehicleType() {
-        
     }
 
     public VehicleType(Long maxKm, String name) {

@@ -1,4 +1,3 @@
-
 package cz.muni.fi.pa165.carmanagement.impl.model;
 
 import java.io.Serializable;
@@ -61,7 +60,7 @@ public class Vehicle implements Serializable {
     private List<ServiceInterval> serviceIntervals = new ArrayList<ServiceInterval>();        
     
     public Vehicle() {
-        
+
     }
     
     public Vehicle(String name, Long tachometer) {
@@ -132,7 +131,7 @@ public class Vehicle implements Serializable {
     }
 
     public void setFuel(int fuel) {
-         if (fuel != 0 && fuel != FUEL_OIL && fuel != FUEL_GAS && fuel != FUEL_CNG && fuel != FUEL_LPG && fuel != FUEL_ELECTRIC) {
+        if (fuel != 0 && fuel != FUEL_OIL && fuel != FUEL_GAS && fuel != FUEL_CNG && fuel != FUEL_LPG && fuel != FUEL_ELECTRIC) {
             throw new IllegalArgumentException("Vehicle fuel '" + fuel + "' is not allowed.");
         }
         this.fuel = fuel;

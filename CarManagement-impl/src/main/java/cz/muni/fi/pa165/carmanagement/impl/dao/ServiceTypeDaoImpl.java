@@ -1,4 +1,3 @@
-
 package cz.muni.fi.pa165.carmanagement.impl.dao;
 
 import cz.muni.fi.pa165.carmanagement.impl.model.ServiceType;

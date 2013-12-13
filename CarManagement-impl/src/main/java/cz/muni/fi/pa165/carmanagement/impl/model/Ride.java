@@ -1,4 +1,3 @@
-
 package cz.muni.fi.pa165.carmanagement.impl.model;
 
 import java.io.Serializable;
@@ -141,7 +140,7 @@ public class Ride implements Serializable {
     
     @Override
     public String toString() {
-        String output = "";
+        String output;
         
         output = "Ride: " + this.id + ", from: " + this.startTime.toString() + " to: " + this.endTime.toString() + ", ";
         output = output + "length: " + this.getRideLength() + " km, vehicle: " + this.vehicle.getName() + ", employee: " + this.employee.getFullName();
@@ -157,16 +156,19 @@ public class Ride implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Ride)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        Ride other = (Ride) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (obj == this) {
+            return true;
+        }
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final Ride other = (Ride) obj;
+        return this.id != null && this.id.equals(other.id);
+
     }
 
 }

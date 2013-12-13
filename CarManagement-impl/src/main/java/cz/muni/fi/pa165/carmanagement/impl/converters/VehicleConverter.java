@@ -8,7 +8,7 @@ import cz.muni.fi.pa165.carmanagement.impl.model.Vehicle;
  */
 public class VehicleConverter extends GeneralConverter<Vehicle, VehicleDto> {
     
-    public VehicleDto entityToDto(Vehicle entity, ConverterInterface parent) {
+    public VehicleDto entityToDto(Vehicle entity, Converter parent) {
         if (entity == null) {
             return null;
         }
@@ -38,7 +38,7 @@ public class VehicleConverter extends GeneralConverter<Vehicle, VehicleDto> {
         return dto;    
     }
 
-    public Vehicle dtoToEntity(VehicleDto dto, ConverterInterface parent) {
+    public Vehicle dtoToEntity(VehicleDto dto, Converter parent) {
         if (dto == null) {
             return null;
         }
@@ -67,6 +67,5 @@ public class VehicleConverter extends GeneralConverter<Vehicle, VehicleDto> {
         
         return entity;        
     }
-
 
 }

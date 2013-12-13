@@ -8,7 +8,7 @@ import cz.muni.fi.pa165.carmanagement.impl.model.Ride;
  */
 public class RideConverter extends GeneralConverter<Ride, RideDto> {
      
-    public RideDto entityToDto(Ride entity, ConverterInterface parent) {
+    public RideDto entityToDto(Ride entity, Converter parent) {
         if (entity == null) {
             return null;
         }
@@ -34,7 +34,7 @@ public class RideConverter extends GeneralConverter<Ride, RideDto> {
         return dto;
     }
     
-    public Ride dtoToEntity(RideDto dto, ConverterInterface parent) {
+    public Ride dtoToEntity(RideDto dto, Converter parent) {
         if (dto == null) {
             return null;
         }

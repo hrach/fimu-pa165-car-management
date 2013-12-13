@@ -1,7 +1,6 @@
 package cz.muni.fi.pa165.carmanagement.impl.converters;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.EmployeeDto;
-import cz.muni.fi.pa165.carmanagement.api.service.RideService;
 import cz.muni.fi.pa165.carmanagement.impl.model.Employee;
 
 /**
@@ -9,8 +8,8 @@ import cz.muni.fi.pa165.carmanagement.impl.model.Employee;
  */
 public class EmployeeConverter extends GeneralConverter<Employee, EmployeeDto> {
     
-    public EmployeeDto entityToDto(Employee entity, ConverterInterface parent) {
-        if (entity == null){
+    public EmployeeDto entityToDto(Employee entity, Converter parent) {
+        if (entity == null) {
             return null;
         }
         
@@ -31,7 +30,7 @@ public class EmployeeConverter extends GeneralConverter<Employee, EmployeeDto> {
         return dto;
     }
 
-    public Employee dtoToEntity(EmployeeDto dto, ConverterInterface parent) {
+    public Employee dtoToEntity(EmployeeDto dto, Converter parent) {
         if (dto == null) {
             return null;
         }

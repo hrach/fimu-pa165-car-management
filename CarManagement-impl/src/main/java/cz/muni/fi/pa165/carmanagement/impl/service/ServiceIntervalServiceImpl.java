@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package cz.muni.fi.pa165.carmanagement.impl.service;
 
 import cz.muni.fi.pa165.carmanagement.api.dto.ServiceIntervalDto;
@@ -37,16 +31,13 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
         }
         
         serviceIntervalDto.setId(null);
-        
         ServiceInterval entity = ConverterContainer.getServiceIntervalConverter().dtoToEntity(serviceIntervalDto);
-        
         dao.persist(entity);
-        
         return ConverterContainer.getServiceIntervalConverter().entityToDto(entity);
     }
 
     public void delete(Long id) {
-        if (id == null){
+        if (id == null) {
             throw new NullPointerException("id");
         }
         
@@ -66,7 +57,7 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
     @Transactional
     @Override        
     public ServiceIntervalDto findById(Long id) {
-        if (id == null){
+        if (id == null) {
             throw new NullPointerException("id");
         }
         
@@ -82,7 +73,7 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
     @Transactional
     @Override        
     public void setIntervalAsDoneForId(Long id) {
-        if (id == null){
+        if (id == null) {
             throw new NullPointerException("id");
         }
 

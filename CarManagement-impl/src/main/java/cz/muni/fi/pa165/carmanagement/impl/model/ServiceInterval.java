@@ -1,4 +1,3 @@
-
 package cz.muni.fi.pa165.carmanagement.impl.model;
 
 import java.io.Serializable;
@@ -37,7 +36,6 @@ public class ServiceInterval implements Serializable {
     private ServiceType serviceType;
 
     public ServiceInterval() {
-
     }
 
     public ServiceInterval(Date createdTime, Date dueTime, Date doneTime, Vehicle vehicle, ServiceType serviceType) {
