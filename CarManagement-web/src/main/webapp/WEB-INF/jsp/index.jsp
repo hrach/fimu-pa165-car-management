@@ -7,7 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Car Management</title>
+        <title><spring:message code="home" /></title>
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
         <script type="text/javascript">
             $(document).ready(function() {
@@ -45,6 +45,8 @@
         <jsp:include page="/WEB-INF/jsp/navigation.jsp" />
                 
         <div id="content" class="container">
+            
+            <div class="page-header"><h1><spring:message code="home" /> <small><spring:message code="home.subtitle" /></small></h1></div>
             
             <h3><spring:message code="employees.search" /></h3>
             <nav class="navbar navbar-default" role="navigation">
