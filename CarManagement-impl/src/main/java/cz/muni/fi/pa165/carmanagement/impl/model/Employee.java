@@ -36,6 +36,12 @@ public class Employee implements Serializable {
     @Column (length = 40, nullable = false)
     private String familyName;
     
+    @Column (length = 30, nullable = true)
+    private String username;
+
+    @Column (length = 40, nullable = true)
+    private String password;
+    
     private int employeeRole; // "role" is reserved word..:-/
     
     @OneToMany(mappedBy = "employee", orphanRemoval = false, fetch = FetchType.EAGER)
@@ -78,6 +84,22 @@ public class Employee implements Serializable {
 
     public void setFamilyName(String familyName) {
         this.familyName = familyName;
+    }
+    
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getEmployeeRole() {
