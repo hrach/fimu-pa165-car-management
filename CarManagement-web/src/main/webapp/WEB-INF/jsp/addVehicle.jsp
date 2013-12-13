@@ -14,6 +14,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><spring:message code="vehicle.add" /></title>
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
+        
+        <script>
+            $(function() {
+                $( ".datepicker" ).datepicker({
+                    dateFormat: "yy",
+                    dayNamesMin: [ '<spring:message code="days.short.su" />','<spring:message code="days.short.mo" />','<spring:message code="days.short.tu" />','<spring:message code="days.short.we" />','<spring:message code="days.short.th" />','<spring:message code="days.short.fr" />','<spring:message code="days.short.sa" />' ],
+                    monthNames: [ '<spring:message code="months.long.jan" />', '<spring:message code="months.long.feb" />','<spring:message code="months.long.mar" />','<spring:message code="months.long.apr" />','<spring:message code="months.long.may" />','<spring:message code="months.long.jun" />','<spring:message code="months.long.jul" />','<spring:message code="months.long.aug" />','<spring:message code="months.long.sep" />','<spring:message code="months.long.oct" />','<spring:message code="months.long.nov" />','<spring:message code="months.long.dec" />' ],
+                    firstDay: 1,
+                    changeYear: true,
+            yearRange: "-100:+0"
+                }
+                    );
+            });
+            </script>
+        
     </head>
     <body>
         
@@ -38,7 +53,7 @@
                 <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">                
                     <label for="input-constructionyear" class="col-sm-2 control-label"><spring:message code="vehicle.constructionyear" />:</label>  
                     <div class="col-sm-10">
-                        <form:input path="constructionYear" id="input-constructionyear" cssClass="form-control"></form:input>
+                        <form:input path="constructionYear" id="input-constructionyear" cssClass="form-control datepicker"></form:input>
                         <form:errors path="constructionYear" cssClass="help-block"></form:errors>                                                
                     </div> 
                 </div>    
