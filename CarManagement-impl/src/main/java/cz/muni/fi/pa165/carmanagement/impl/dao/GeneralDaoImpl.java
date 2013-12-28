@@ -18,7 +18,7 @@ public abstract class GeneralDaoImpl<K, E> implements GeneralDao<K, E> {
     private Class<E> entityClass;
 
     @PersistenceContext
-    private EntityManager em;
+    protected EntityManager em;
 
     public GeneralDaoImpl() {
         ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
