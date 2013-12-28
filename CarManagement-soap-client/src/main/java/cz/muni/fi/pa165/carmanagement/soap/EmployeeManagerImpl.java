@@ -39,6 +39,21 @@ public interface EmployeeManagerImpl {
 
     /**
      * 
+     * @param arg0
+     * @return
+     *     returns cz.muni.fi.pa165.carmanagement.soap.EmployeeDto
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getEmployee", targetNamespace = "http://soap.carmanagement.pa165.fi.muni.cz/", className = "cz.muni.fi.pa165.carmanagement.soap.GetEmployee")
+    @ResponseWrapper(localName = "getEmployeeResponse", targetNamespace = "http://soap.carmanagement.pa165.fi.muni.cz/", className = "cz.muni.fi.pa165.carmanagement.soap.GetEmployeeResponse")
+    @Action(input = "http://soap.carmanagement.pa165.fi.muni.cz/EmployeeManagerImpl/getEmployeeRequest", output = "http://soap.carmanagement.pa165.fi.muni.cz/EmployeeManagerImpl/getEmployeeResponse")
+    public EmployeeDto getEmployee(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Long arg0);
+
+    /**
+     * 
      * @return
      *     returns java.util.List<cz.muni.fi.pa165.carmanagement.soap.EmployeeDto>
      */
@@ -72,20 +87,5 @@ public interface EmployeeManagerImpl {
     public void removeEmployee(
         @WebParam(name = "arg0", targetNamespace = "")
         EmployeeDto arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns cz.muni.fi.pa165.carmanagement.soap.EmployeeDto
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getEmployee", targetNamespace = "http://soap.carmanagement.pa165.fi.muni.cz/", className = "cz.muni.fi.pa165.carmanagement.soap.GetEmployee")
-    @ResponseWrapper(localName = "getEmployeeResponse", targetNamespace = "http://soap.carmanagement.pa165.fi.muni.cz/", className = "cz.muni.fi.pa165.carmanagement.soap.GetEmployeeResponse")
-    @Action(input = "http://soap.carmanagement.pa165.fi.muni.cz/EmployeeManagerImpl/getEmployeeRequest", output = "http://soap.carmanagement.pa165.fi.muni.cz/EmployeeManagerImpl/getEmployeeResponse")
-    public EmployeeDto getEmployee(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Long arg0);
 
 }

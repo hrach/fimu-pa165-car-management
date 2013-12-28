@@ -19,12 +19,16 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="constructionYear" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="fuel" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="registrationPlate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="rides" type="{http://soap.carmanagement.pa165.fi.muni.cz/}rideDto" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="serviceIntervals" type="{http://soap.carmanagement.pa165.fi.muni.cz/}serviceIntervalDto" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="tachometer" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="type" type="{http://soap.carmanagement.pa165.fi.muni.cz/}vehicleTypeDto" minOccurs="0"/>
+ *         &lt;element name="VIN" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,23 +39,72 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "vehicleDto", propOrder = {
+    "constructionYear",
+    "fuel",
     "id",
     "name",
+    "registrationPlate",
     "rides",
     "serviceIntervals",
     "tachometer",
-    "type"
+    "type",
+    "vin"
 })
 public class VehicleDto {
 
+    protected Integer constructionYear;
+    protected int fuel;
     protected Long id;
     protected String name;
+    protected String registrationPlate;
     @XmlElement(nillable = true)
     protected List<RideDto> rides;
     @XmlElement(nillable = true)
     protected List<ServiceIntervalDto> serviceIntervals;
     protected Long tachometer;
     protected VehicleTypeDto type;
+    @XmlElement(name = "VIN")
+    protected String vin;
+
+    /**
+     * Gets the value of the constructionYear property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getConstructionYear() {
+        return constructionYear;
+    }
+
+    /**
+     * Sets the value of the constructionYear property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setConstructionYear(Integer value) {
+        this.constructionYear = value;
+    }
+
+    /**
+     * Gets the value of the fuel property.
+     * 
+     */
+    public int getFuel() {
+        return fuel;
+    }
+
+    /**
+     * Sets the value of the fuel property.
+     * 
+     */
+    public void setFuel(int value) {
+        this.fuel = value;
+    }
 
     /**
      * Gets the value of the id property.
@@ -99,6 +152,30 @@ public class VehicleDto {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Gets the value of the registrationPlate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getRegistrationPlate() {
+        return registrationPlate;
+    }
+
+    /**
+     * Sets the value of the registrationPlate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setRegistrationPlate(String value) {
+        this.registrationPlate = value;
     }
 
     /**
@@ -205,6 +282,30 @@ public class VehicleDto {
      */
     public void setType(VehicleTypeDto value) {
         this.type = value;
+    }
+
+    /**
+     * Gets the value of the vin property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getVIN() {
+        return vin;
+    }
+
+    /**
+     * Sets the value of the vin property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setVIN(String value) {
+        this.vin = value;
     }
 
 }

@@ -23,7 +23,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="familyName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="firstName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="rides" type="{http://soap.carmanagement.pa165.fi.muni.cz/}rideDto" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,7 +40,9 @@ import javax.xml.bind.annotation.XmlType;
     "familyName",
     "firstName",
     "id",
-    "rides"
+    "password",
+    "rides",
+    "username"
 })
 public class EmployeeDto {
 
@@ -46,8 +50,10 @@ public class EmployeeDto {
     protected String familyName;
     protected String firstName;
     protected Long id;
+    protected String password;
     @XmlElement(nillable = true)
     protected List<RideDto> rides;
+    protected String username;
 
     /**
      * Gets the value of the employeeRole property.
@@ -138,6 +144,30 @@ public class EmployeeDto {
     }
 
     /**
+     * Gets the value of the password property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Sets the value of the password property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPassword(String value) {
+        this.password = value;
+    }
+
+    /**
      * Gets the value of the rides property.
      * 
      * <p>
@@ -164,6 +194,30 @@ public class EmployeeDto {
             rides = new ArrayList<RideDto>();
         }
         return this.rides;
+    }
+
+    /**
+     * Gets the value of the username property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * Sets the value of the username property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUsername(String value) {
+        this.username = value;
     }
 
 }

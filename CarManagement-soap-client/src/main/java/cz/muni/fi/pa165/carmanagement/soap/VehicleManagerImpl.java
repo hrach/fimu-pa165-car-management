@@ -27,33 +27,6 @@ public interface VehicleManagerImpl {
 
     /**
      * 
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "createVehicle", targetNamespace = "http://soap.carmanagement.pa165.fi.muni.cz/", className = "cz.muni.fi.pa165.carmanagement.soap.CreateVehicle")
-    @ResponseWrapper(localName = "createVehicleResponse", targetNamespace = "http://soap.carmanagement.pa165.fi.muni.cz/", className = "cz.muni.fi.pa165.carmanagement.soap.CreateVehicleResponse")
-    @Action(input = "http://soap.carmanagement.pa165.fi.muni.cz/VehicleManagerImpl/createVehicleRequest", output = "http://soap.carmanagement.pa165.fi.muni.cz/VehicleManagerImpl/createVehicleResponse")
-    public void createVehicle(
-        @WebParam(name = "arg0", targetNamespace = "")
-        VehicleDto arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns cz.muni.fi.pa165.carmanagement.soap.VehicleDto
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getVehicle", targetNamespace = "http://soap.carmanagement.pa165.fi.muni.cz/", className = "cz.muni.fi.pa165.carmanagement.soap.GetVehicle")
-    @ResponseWrapper(localName = "getVehicleResponse", targetNamespace = "http://soap.carmanagement.pa165.fi.muni.cz/", className = "cz.muni.fi.pa165.carmanagement.soap.GetVehicleResponse")
-    @Action(input = "http://soap.carmanagement.pa165.fi.muni.cz/VehicleManagerImpl/getVehicleRequest", output = "http://soap.carmanagement.pa165.fi.muni.cz/VehicleManagerImpl/getVehicleResponse")
-    public VehicleDto getVehicle(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Long arg0);
-
-    /**
-     * 
      * @return
      *     returns java.util.List<cz.muni.fi.pa165.carmanagement.soap.VehicleDto>
      */
@@ -87,5 +60,32 @@ public interface VehicleManagerImpl {
     public void removeVehicle(
         @WebParam(name = "arg0", targetNamespace = "")
         VehicleDto arg0);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "createVehicle", targetNamespace = "http://soap.carmanagement.pa165.fi.muni.cz/", className = "cz.muni.fi.pa165.carmanagement.soap.CreateVehicle")
+    @ResponseWrapper(localName = "createVehicleResponse", targetNamespace = "http://soap.carmanagement.pa165.fi.muni.cz/", className = "cz.muni.fi.pa165.carmanagement.soap.CreateVehicleResponse")
+    @Action(input = "http://soap.carmanagement.pa165.fi.muni.cz/VehicleManagerImpl/createVehicleRequest", output = "http://soap.carmanagement.pa165.fi.muni.cz/VehicleManagerImpl/createVehicleResponse")
+    public void createVehicle(
+        @WebParam(name = "arg0", targetNamespace = "")
+        VehicleDto arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns cz.muni.fi.pa165.carmanagement.soap.VehicleDto
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getVehicle", targetNamespace = "http://soap.carmanagement.pa165.fi.muni.cz/", className = "cz.muni.fi.pa165.carmanagement.soap.GetVehicle")
+    @ResponseWrapper(localName = "getVehicleResponse", targetNamespace = "http://soap.carmanagement.pa165.fi.muni.cz/", className = "cz.muni.fi.pa165.carmanagement.soap.GetVehicleResponse")
+    @Action(input = "http://soap.carmanagement.pa165.fi.muni.cz/VehicleManagerImpl/getVehicleRequest", output = "http://soap.carmanagement.pa165.fi.muni.cz/VehicleManagerImpl/getVehicleResponse")
+    public VehicleDto getVehicle(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Long arg0);
 
 }

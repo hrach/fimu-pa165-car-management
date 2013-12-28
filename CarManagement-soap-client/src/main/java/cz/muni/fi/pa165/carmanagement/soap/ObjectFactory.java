@@ -24,10 +24,16 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _FindAllVehicleTypesResponse_QNAME = new QName("http://soap.carmanagement.pa165.fi.muni.cz/", "findAllVehicleTypesResponse");
-    private final static QName _FindAllVehicleTypes_QNAME = new QName("http://soap.carmanagement.pa165.fi.muni.cz/", "findAllVehicleTypes");
-    private final static QName _GetVehicleTypeResponse_QNAME = new QName("http://soap.carmanagement.pa165.fi.muni.cz/", "getVehicleTypeResponse");
-    private final static QName _GetVehicleType_QNAME = new QName("http://soap.carmanagement.pa165.fi.muni.cz/", "getVehicleType");
+    private final static QName _CreateEmployeeResponse_QNAME = new QName("http://soap.carmanagement.pa165.fi.muni.cz/", "createEmployeeResponse");
+    private final static QName _RemoveEmployee_QNAME = new QName("http://soap.carmanagement.pa165.fi.muni.cz/", "removeEmployee");
+    private final static QName _GetEmployeeResponse_QNAME = new QName("http://soap.carmanagement.pa165.fi.muni.cz/", "getEmployeeResponse");
+    private final static QName _UpdateEmployee_QNAME = new QName("http://soap.carmanagement.pa165.fi.muni.cz/", "updateEmployee");
+    private final static QName _FindAllEmployees_QNAME = new QName("http://soap.carmanagement.pa165.fi.muni.cz/", "findAllEmployees");
+    private final static QName _UpdateEmployeeResponse_QNAME = new QName("http://soap.carmanagement.pa165.fi.muni.cz/", "updateEmployeeResponse");
+    private final static QName _GetEmployee_QNAME = new QName("http://soap.carmanagement.pa165.fi.muni.cz/", "getEmployee");
+    private final static QName _CreateEmployee_QNAME = new QName("http://soap.carmanagement.pa165.fi.muni.cz/", "createEmployee");
+    private final static QName _FindAllEmployeesResponse_QNAME = new QName("http://soap.carmanagement.pa165.fi.muni.cz/", "findAllEmployeesResponse");
+    private final static QName _RemoveEmployeeResponse_QNAME = new QName("http://soap.carmanagement.pa165.fi.muni.cz/", "removeEmployeeResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: cz.muni.fi.pa165.carmanagement.soap
@@ -37,35 +43,99 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FindAllVehicleTypesResponse }
+     * Create an instance of {@link RemoveEmployee }
      * 
      */
-    public FindAllVehicleTypesResponse createFindAllVehicleTypesResponse() {
-        return new FindAllVehicleTypesResponse();
+    public RemoveEmployee createRemoveEmployee() {
+        return new RemoveEmployee();
     }
 
     /**
-     * Create an instance of {@link FindAllVehicleTypes }
+     * Create an instance of {@link CreateEmployeeResponse }
      * 
      */
-    public FindAllVehicleTypes createFindAllVehicleTypes() {
-        return new FindAllVehicleTypes();
+    public CreateEmployeeResponse createCreateEmployeeResponse() {
+        return new CreateEmployeeResponse();
     }
 
     /**
-     * Create an instance of {@link GetVehicleTypeResponse }
+     * Create an instance of {@link FindAllEmployees }
      * 
      */
-    public GetVehicleTypeResponse createGetVehicleTypeResponse() {
-        return new GetVehicleTypeResponse();
+    public FindAllEmployees createFindAllEmployees() {
+        return new FindAllEmployees();
     }
 
     /**
-     * Create an instance of {@link GetVehicleType }
+     * Create an instance of {@link UpdateEmployee }
      * 
      */
-    public GetVehicleType createGetVehicleType() {
-        return new GetVehicleType();
+    public UpdateEmployee createUpdateEmployee() {
+        return new UpdateEmployee();
+    }
+
+    /**
+     * Create an instance of {@link GetEmployeeResponse }
+     * 
+     */
+    public GetEmployeeResponse createGetEmployeeResponse() {
+        return new GetEmployeeResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateEmployeeResponse }
+     * 
+     */
+    public UpdateEmployeeResponse createUpdateEmployeeResponse() {
+        return new UpdateEmployeeResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetEmployee }
+     * 
+     */
+    public GetEmployee createGetEmployee() {
+        return new GetEmployee();
+    }
+
+    /**
+     * Create an instance of {@link FindAllEmployeesResponse }
+     * 
+     */
+    public FindAllEmployeesResponse createFindAllEmployeesResponse() {
+        return new FindAllEmployeesResponse();
+    }
+
+    /**
+     * Create an instance of {@link CreateEmployee }
+     * 
+     */
+    public CreateEmployee createCreateEmployee() {
+        return new CreateEmployee();
+    }
+
+    /**
+     * Create an instance of {@link RemoveEmployeeResponse }
+     * 
+     */
+    public RemoveEmployeeResponse createRemoveEmployeeResponse() {
+        return new RemoveEmployeeResponse();
+    }
+
+    /**
+     * Create an instance of {@link VehicleDto }
+     * 
+     */
+    public VehicleDto createVehicleDto() {
+        return new VehicleDto();
+    }
+
+    /**
+     * Create an instance of {@link ServiceTypeDto }
+     * 
+     */
+    public ServiceTypeDto createServiceTypeDto() {
+        return new ServiceTypeDto();
     }
 
     /**
@@ -77,39 +147,117 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllVehicleTypesResponse }{@code >}}
+     * Create an instance of {@link EmployeeDto }
      * 
      */
-    @XmlElementDecl(namespace = "http://soap.carmanagement.pa165.fi.muni.cz/", name = "findAllVehicleTypesResponse")
-    public JAXBElement<FindAllVehicleTypesResponse> createFindAllVehicleTypesResponse(FindAllVehicleTypesResponse value) {
-        return new JAXBElement<FindAllVehicleTypesResponse>(_FindAllVehicleTypesResponse_QNAME, FindAllVehicleTypesResponse.class, null, value);
+    public EmployeeDto createEmployeeDto() {
+        return new EmployeeDto();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllVehicleTypes }{@code >}}
+     * Create an instance of {@link ServiceIntervalDto }
      * 
      */
-    @XmlElementDecl(namespace = "http://soap.carmanagement.pa165.fi.muni.cz/", name = "findAllVehicleTypes")
-    public JAXBElement<FindAllVehicleTypes> createFindAllVehicleTypes(FindAllVehicleTypes value) {
-        return new JAXBElement<FindAllVehicleTypes>(_FindAllVehicleTypes_QNAME, FindAllVehicleTypes.class, null, value);
+    public ServiceIntervalDto createServiceIntervalDto() {
+        return new ServiceIntervalDto();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetVehicleTypeResponse }{@code >}}
+     * Create an instance of {@link RideDto }
      * 
      */
-    @XmlElementDecl(namespace = "http://soap.carmanagement.pa165.fi.muni.cz/", name = "getVehicleTypeResponse")
-    public JAXBElement<GetVehicleTypeResponse> createGetVehicleTypeResponse(GetVehicleTypeResponse value) {
-        return new JAXBElement<GetVehicleTypeResponse>(_GetVehicleTypeResponse_QNAME, GetVehicleTypeResponse.class, null, value);
+    public RideDto createRideDto() {
+        return new RideDto();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetVehicleType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateEmployeeResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://soap.carmanagement.pa165.fi.muni.cz/", name = "getVehicleType")
-    public JAXBElement<GetVehicleType> createGetVehicleType(GetVehicleType value) {
-        return new JAXBElement<GetVehicleType>(_GetVehicleType_QNAME, GetVehicleType.class, null, value);
+    @XmlElementDecl(namespace = "http://soap.carmanagement.pa165.fi.muni.cz/", name = "createEmployeeResponse")
+    public JAXBElement<CreateEmployeeResponse> createCreateEmployeeResponse(CreateEmployeeResponse value) {
+        return new JAXBElement<CreateEmployeeResponse>(_CreateEmployeeResponse_QNAME, CreateEmployeeResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveEmployee }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.carmanagement.pa165.fi.muni.cz/", name = "removeEmployee")
+    public JAXBElement<RemoveEmployee> createRemoveEmployee(RemoveEmployee value) {
+        return new JAXBElement<RemoveEmployee>(_RemoveEmployee_QNAME, RemoveEmployee.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEmployeeResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.carmanagement.pa165.fi.muni.cz/", name = "getEmployeeResponse")
+    public JAXBElement<GetEmployeeResponse> createGetEmployeeResponse(GetEmployeeResponse value) {
+        return new JAXBElement<GetEmployeeResponse>(_GetEmployeeResponse_QNAME, GetEmployeeResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateEmployee }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.carmanagement.pa165.fi.muni.cz/", name = "updateEmployee")
+    public JAXBElement<UpdateEmployee> createUpdateEmployee(UpdateEmployee value) {
+        return new JAXBElement<UpdateEmployee>(_UpdateEmployee_QNAME, UpdateEmployee.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllEmployees }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.carmanagement.pa165.fi.muni.cz/", name = "findAllEmployees")
+    public JAXBElement<FindAllEmployees> createFindAllEmployees(FindAllEmployees value) {
+        return new JAXBElement<FindAllEmployees>(_FindAllEmployees_QNAME, FindAllEmployees.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateEmployeeResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.carmanagement.pa165.fi.muni.cz/", name = "updateEmployeeResponse")
+    public JAXBElement<UpdateEmployeeResponse> createUpdateEmployeeResponse(UpdateEmployeeResponse value) {
+        return new JAXBElement<UpdateEmployeeResponse>(_UpdateEmployeeResponse_QNAME, UpdateEmployeeResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEmployee }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.carmanagement.pa165.fi.muni.cz/", name = "getEmployee")
+    public JAXBElement<GetEmployee> createGetEmployee(GetEmployee value) {
+        return new JAXBElement<GetEmployee>(_GetEmployee_QNAME, GetEmployee.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateEmployee }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.carmanagement.pa165.fi.muni.cz/", name = "createEmployee")
+    public JAXBElement<CreateEmployee> createCreateEmployee(CreateEmployee value) {
+        return new JAXBElement<CreateEmployee>(_CreateEmployee_QNAME, CreateEmployee.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindAllEmployeesResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.carmanagement.pa165.fi.muni.cz/", name = "findAllEmployeesResponse")
+    public JAXBElement<FindAllEmployeesResponse> createFindAllEmployeesResponse(FindAllEmployeesResponse value) {
+        return new JAXBElement<FindAllEmployeesResponse>(_FindAllEmployeesResponse_QNAME, FindAllEmployeesResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveEmployeeResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.carmanagement.pa165.fi.muni.cz/", name = "removeEmployeeResponse")
+    public JAXBElement<RemoveEmployeeResponse> createRemoveEmployeeResponse(RemoveEmployeeResponse value) {
+        return new JAXBElement<RemoveEmployeeResponse>(_RemoveEmployeeResponse_QNAME, RemoveEmployeeResponse.class, null, value);
     }
 
 }
