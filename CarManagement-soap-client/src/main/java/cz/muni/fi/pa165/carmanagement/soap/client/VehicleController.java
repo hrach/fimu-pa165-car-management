@@ -25,10 +25,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/vehicle/")
-public class VehicleController {
+public class VehicleController extends GeneralController {
 
     public VehicleController() {
-
+        super();
     }
     
     @RequestMapping(value="/add", method=RequestMethod.GET)

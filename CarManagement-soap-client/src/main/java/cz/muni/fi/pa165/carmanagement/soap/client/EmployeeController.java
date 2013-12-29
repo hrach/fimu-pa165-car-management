@@ -23,10 +23,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/employee/")
-public class EmployeeController {
+public class EmployeeController extends GeneralController {
     
     public EmployeeController() {
-
+        super();
     }
     
     @RequestMapping(value="/add", method=RequestMethod.GET)

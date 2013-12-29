@@ -22,10 +22,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/")
-public class MainController {
+public class MainController extends GeneralController {
     
     public MainController() {
-
+        super();
     }    
     
     @RequestMapping("/index")
