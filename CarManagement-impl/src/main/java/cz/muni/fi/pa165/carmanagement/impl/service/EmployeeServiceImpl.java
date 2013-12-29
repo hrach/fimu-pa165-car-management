@@ -7,6 +7,7 @@ import cz.muni.fi.pa165.carmanagement.impl.dao.EmployeeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.Employee;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Transactional
     @Override
+    @Secured({"ROLE_MANAGER", "ROLE_SOAP"})
     public EmployeeDto create(EmployeeDto employeeDto) {
         if (employeeDto == null) {
             throw new NullPointerException("employeeDto");
@@ -40,7 +42,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Transactional
-    @Override        
+    @Override     
+    @Secured({"ROLE_MANAGER", "ROLE_SOAP"})    
     public void delete(Long id) {
         if (id == null) {
             throw new NullPointerException("id");
@@ -51,6 +54,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Transactional
     @Override        
+    @Secured({"ROLE_STAFF", "ROLE_SOAP"})    
     public void update(EmployeeDto employeeDto) {
         if (employeeDto == null) {
             throw new NullPointerException("employeeDto");
@@ -61,6 +65,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Transactional
     @Override        
+    @Secured({"ROLE_STAFF", "ROLE_SOAP"})    
     public EmployeeDto findById(Long id) {
         if (id == null) {
             throw new NullPointerException("id");
@@ -70,7 +75,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Transactional
-    @Override        
+    @Override     
+    @Secured({"ROLE_STAFF", "ROLE_SOAP"})        
     public List<EmployeeDto> findAll() {
         return ConverterContainer.getEmployeeConverter().entityToDto(dao.findAll());
     }

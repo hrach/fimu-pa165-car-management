@@ -120,12 +120,17 @@ public class Employee implements Serializable {
         this.employeeRole = employeeRole;
     }
     
-    public String getStringRole() {
-        if (this.getEmployeeRole() == 1)
-            return "ROLE_STAFF";
-        else if (this.getEmployeeRole() == 2)
-            return "ROLE_MANAGER";
-        else return null;
+    public List<String> getStringRole() {
+        List<String> roles = new ArrayList<String>();
+        
+        if (this.getEmployeeRole() == 1) {
+            roles.add("ROLE_STAFF");
+        } else if (this.getEmployeeRole() == 2) {
+            roles.add("ROLE_STAFF");            
+            roles.add("ROLE_MANAGER");
+        }
+        
+        return roles;
     }
 
     public List<Ride> getRides() {

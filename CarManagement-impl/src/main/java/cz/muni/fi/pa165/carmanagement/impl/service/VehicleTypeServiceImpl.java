@@ -7,6 +7,7 @@ import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleTypeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.VehicleType;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +26,7 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
     
     @Transactional
     @Override    
+    @Secured({"ROLE_MANAGER", "ROLE_SOAP"})                            
     public VehicleTypeDto create(VehicleTypeDto type) {
         if (type == null) {
             throw new NullPointerException("type");
@@ -38,6 +40,7 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
 
     @Transactional
     @Override    
+    @Secured({"ROLE_MANAGER", "ROLE_SOAP"})                            
     public void delete(Long id) {
         if (id == null) {
             throw new NullPointerException("id");
@@ -48,6 +51,7 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
 
     @Transactional
     @Override    
+    @Secured({"ROLE_MANAGER", "ROLE_SOAP"})                            
     public void update(VehicleTypeDto type) {
         if (type == null) {
             throw new NullPointerException("type");
@@ -59,6 +63,7 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
 
     @Transactional
     @Override    
+    @Secured({"ROLE_STAFF", "ROLE_SOAP"})                            
     public VehicleTypeDto findById(Long id) {
         if (id == null) {
             throw new NullPointerException("id");
@@ -69,6 +74,7 @@ public class VehicleTypeServiceImpl implements VehicleTypeService
 
     @Transactional
     @Override    
+    @Secured({"ROLE_STAFF", "ROLE_SOAP"})                            
     public List<VehicleTypeDto> findAll() {
         return ConverterContainer.getVehicleTypeConverter().entityToDto(dao.findAll());
     }     

@@ -7,6 +7,7 @@ import cz.muni.fi.pa165.carmanagement.impl.dao.ServiceTypeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.ServiceType;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +26,7 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
     
     @Transactional
     @Override        
+    @Secured("ROLE_MANAGER")                    
     public ServiceTypeDto create(ServiceTypeDto type) {
         if (type == null) {
             throw new NullPointerException("type");
@@ -37,7 +39,8 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
     }
 
     @Transactional
-    @Override        
+    @Override       
+    @Secured("ROLE_MANAGER")                    
     public void delete(Long id) {
         if (id == null) {
             throw new NullPointerException("id");
@@ -48,6 +51,7 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
 
     @Transactional
     @Override        
+    @Secured("ROLE_MANAGER")                    
     public void update(ServiceTypeDto type) {
         if (type == null) {
             throw new NullPointerException("type");
@@ -59,6 +63,7 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
 
     @Transactional
     @Override    
+    @Secured("ROLE_STAFF")                    
     public ServiceTypeDto findById(Long id) {
         if (id == null) {
             throw new NullPointerException("id");
@@ -69,6 +74,7 @@ public class ServiceTypeServiceImpl implements ServiceTypeService {
 
     @Transactional
     @Override        
+    @Secured("ROLE_STAFF")                    
     public List<ServiceTypeDto> findAll() {
         return ConverterContainer.getServiceTypeConverter().entityToDto(dao.findAll());
     }

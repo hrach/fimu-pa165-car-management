@@ -10,6 +10,7 @@ import cz.muni.fi.pa165.carmanagement.impl.model.ServiceInterval;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +25,8 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
     }
     
     @Transactional
-    @Override        
+    @Override     
+    @Secured("ROLE_MANAGER")                
     public ServiceIntervalDto create(ServiceIntervalDto serviceIntervalDto) {
         if (serviceIntervalDto == null) {
             throw new NullPointerException("serviceIntervalDto");
@@ -36,6 +38,9 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
         return ConverterContainer.getServiceIntervalConverter().entityToDto(entity);
     }
 
+    @Transactional
+    @Override
+    @Secured("ROLE_MANAGER")                
     public void delete(Long id) {
         if (id == null) {
             throw new NullPointerException("id");
@@ -46,6 +51,7 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
 
     @Transactional
     @Override    
+    @Secured("ROLE_MANAGER")                
     public void update(ServiceIntervalDto serviceIntervalDto) {
         if (serviceIntervalDto == null) {
             throw new NullPointerException("serviceIntervalDto");
@@ -56,6 +62,7 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
 
     @Transactional
     @Override        
+    @Secured("ROLE_STAFF")                
     public ServiceIntervalDto findById(Long id) {
         if (id == null) {
             throw new NullPointerException("id");
@@ -65,13 +72,15 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
     }
 
     @Transactional
-    @Override        
+    @Override     
+    @Secured("ROLE_STAFF")                
     public List<ServiceIntervalDto> findAll() {
         return ConverterContainer.getServiceIntervalConverter().entityToDto(dao.findAll());
     }
 
     @Transactional
     @Override        
+    @Secured("ROLE_STAFF")                
     public void setIntervalAsDoneForId(Long id) {
         if (id == null) {
             throw new NullPointerException("id");
@@ -86,6 +95,7 @@ public class ServiceIntervalServiceImpl implements ServiceIntervalService {
     
     @Transactional
     @Override
+    @Secured("ROLE_MANAGER")                
     public ServiceIntervalDto updateServiceIntervalAsDone(VehicleDto vehicle, ServiceTypeDto newServiceType) {
         for (ServiceIntervalDto s : vehicle.getServiceIntervals()) {
             if (s.getDoneTime() == null && s.getServiceType().equals(newServiceType)) {

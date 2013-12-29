@@ -9,6 +9,7 @@ import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.Ride;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,6 +39,7 @@ public class RideServiceImpl implements RideService {
 
     @Transactional
     @Override        
+    @Secured("ROLE_STAFF")        
     public RideDto create(RideDto rideDto) {
         if (rideDto == null) {
             throw new NullPointerException("rideDto");
@@ -54,7 +56,8 @@ public class RideServiceImpl implements RideService {
     }
 
     @Transactional
-    @Override        
+    @Override 
+    @Secured("ROLE_MANAGER")            
     public void delete(Long id) {
         if (id == null) {
             throw new NullPointerException("id");
@@ -65,6 +68,7 @@ public class RideServiceImpl implements RideService {
 
     @Transactional
     @Override     
+    @Secured("ROLE_STAFF")            
     public void update(RideDto rideDto) {
         if (rideDto == null) {
             throw new NullPointerException("rideDto");
@@ -75,6 +79,7 @@ public class RideServiceImpl implements RideService {
 
     @Transactional
     @Override        
+    @Secured("ROLE_STAFF")            
     public RideDto findById(Long id) {
         if (id == null) {
             throw new NullPointerException("id");
@@ -85,6 +90,7 @@ public class RideServiceImpl implements RideService {
 
     @Transactional
     @Override        
+    @Secured("ROLE_STAFF")            
     public List<RideDto> findAll() {
         return ConverterContainer.getRideConverter().entityToDto(dao.findAll());
     }

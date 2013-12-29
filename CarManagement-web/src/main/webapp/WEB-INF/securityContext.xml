@@ -32,5 +32,7 @@
                 
         <authentication-provider user-service-ref="employeeUserDetailsService"></authentication-provider>
     </authentication-manager>
+    
+    <global-method-security secured-annotations="enabled" />    
 
 </beans:beans>

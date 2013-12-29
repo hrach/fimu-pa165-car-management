@@ -6,6 +6,7 @@ package cz.muni.fi.pa165.carmanagement.impl.adapter;
 
 import cz.muni.fi.pa165.carmanagement.impl.model.Employee;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,9 +24,11 @@ public class EmployeeDetailsAdapter extends User {
         this.employeeId = employee.getId();
     }
     
-    private static Set<GrantedAuthority> roleToAuthorities(String role) {
+    private static Set<GrantedAuthority> roleToAuthorities(List<String> roles) {
         Set<GrantedAuthority> auths = new HashSet<GrantedAuthority>();
-        auths.add(new SimpleGrantedAuthority(role));
+        for (String role : roles) {
+            auths.add(new SimpleGrantedAuthority(role));
+        }
         // every logged user has role USER
         auths.add(new SimpleGrantedAuthority("ROLE_USER"));
         return auths;
