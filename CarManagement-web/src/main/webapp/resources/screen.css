@@ -105,3 +105,8 @@
 .table-autosize {
     width: auto;
 }
+
+.well {
+    width: 400px;
+    margin: 150px auto;
+}
