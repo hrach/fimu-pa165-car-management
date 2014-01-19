@@ -10,7 +10,7 @@
 .navbar-inverse {
     border-radius: 0;
     width: 960px;
-    margin: 0 auto 25px auto;
+    margin: 0 auto;
     border: 0;
 }
 
@@ -109,4 +109,19 @@
 .well {
     width: 400px;
     margin: 150px auto;
+}
+
+.userBar {
+    width: 100%;
+    height: 40px;
+    background: #eee;
+    border-bottom: 1px solid #dedede;
+    margin-bottom: 25px;
+}
+
+.userBar .inner {
+    width: 930px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
 }
