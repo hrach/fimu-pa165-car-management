@@ -1,6 +1,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 
 <c:set var="path" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 <c:set var="urlpart" value="${fn:split(path,'/')}"/>
@@ -18,6 +20,20 @@
         </div>--%>
         
         <div class="pull-right">
+            
+        <div class="btn-group">
+            <a href="${pageContext.request.contextPath}/myride/" class="${urlpart[1] eq 'ride' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.myrides" /></a>
+            <button type="button" class="${urlpart[1] eq 'ride' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="${pageContext.request.contextPath}/myride/list/"><spring:message code="navigation.myrides.list" /></a></li>
+                <li><a href="${pageContext.request.contextPath}/myride/add/"><spring:message code="navigation.myrides.new" /></a></li>
+            </ul>
+        </div>    
+
+        <sec:authorize access="hasRole('ROLE_MANAGER')">
         <div class="btn-group">
             <a href="${pageContext.request.contextPath}/employee/" class="${urlpart[1] eq 'employee' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.employees" /></a>
             <button type="button" class="${urlpart[1] eq 'employee' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
@@ -65,6 +81,7 @@
                 <li><a href="${pageContext.request.contextPath}/ride/add/"><spring:message code="navigation.rides.new" /></a></li>
             </ul>
         </div>
+        </sec:authorize>
         </div>
     </nav>
 </div>
