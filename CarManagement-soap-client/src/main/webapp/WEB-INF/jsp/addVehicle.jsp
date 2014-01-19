@@ -34,6 +34,34 @@
                         $('#input-tachometer').parent().removeClass('has-error');
                     }
                     
+                    if($.trim($('#input-vin').val()) == '') {
+                        valid = false;
+                        $('#input-vin').parent().addClass('has-error');
+                    } else {
+                        $('#input-vin').parent().removeClass('has-error');
+                    }
+                    
+                    if($.trim($('#input-spz').val()) == '') {
+                        valid = false;
+                        $('#input-spz').parent().addClass('has-error');
+                    } else {
+                        $('#input-spz').parent().removeClass('has-error');
+                    }
+                    
+                    if($.trim($('#input-year').val()) == '') {
+                        valid = false;
+                        $('#input-year').parent().addClass('has-error');
+                    } else {
+                        $('#input-year').parent().removeClass('has-error');
+                    }
+                    
+                    if($.trim($('#input-fuel').val()) == '0') {
+                        valid = false;
+                        $('#input-fuel').parent().addClass('has-error');
+                    } else {
+                        $('#input-fuel').parent().removeClass('has-error');
+                    }
+                    
                     if($.trim($('#input-type').val()) == '') {
                         valid = false;
                         $('#input-type').parent().addClass('has-error');
@@ -69,12 +97,49 @@
                         <form:input path="name" id="input-name" cssClass="form-control"></form:input>                                               
                     </div> 
                 </div>
+                    
+                <div class="form-group">                
+                    <label for="input-year" class="col-sm-2 control-label">Construction year:</label>
+                    <div class="col-sm-10">
+                        <form:input path="constructionYear" id="input-year" cssClass="form-control"></form:input>
+                    </div>  
+                </div>
+                    
+                <div class="form-group">                
+                    <label for="input-vin" class="col-sm-2 control-label">VIN:</label>
+                    <div class="col-sm-10">
+                        <form:input path="VIN" id="input-vin" cssClass="form-control"></form:input>
+                    </div>  
+                </div>
+          
+                <div class="form-group">                
+                    <label for="input-spz" class="col-sm-2 control-label">License plate:</label>
+                    <div class="col-sm-10">
+                        <form:input path="registrationPlate" id="input-spz" cssClass="form-control"></form:input>
+                    </div>  
+                </div>
+                    
+                <div class="form-group">
+                    <label for="input-fuel" class="col-sm-2 control-label">Fuel:</label>
+                    <div class="col-sm-10">
+                        <form:select path="fuel" id="input-fuel" cssClass="form-control">
+                            <option value="0" selected="selected">-- Select fuel type</option>
+                            <option value="1" ${vehicle.fuel == 1 ? 'selected="selected"' : ''}>Gas</option>
+                            <option value="2" ${vehicle.fuel == 2 ? 'selected="selected"' : ''}>Oil</option>
+                            <option value="3" ${vehicle.fuel == 3 ? 'selected="selected"' : ''}>CNG</option>
+                            <option value="4" ${vehicle.fuel == 4 ? 'selected="selected"' : ''}>LPG</option>
+                            <option value="5" ${vehicle.fuel == 5 ? 'selected="selected"' : ''}>Electicity</option>
+                        </form:select>                           
+                    </div>
+                </div>
+                    
                 <div class="form-group">                
                     <label for="input-tachometer" class="col-sm-2 control-label">Tachometer:</label>
                     <div class="col-sm-10">
                         <form:input path="tachometer" id="input-tachometer" cssClass="form-control"></form:input>
                     </div>  
                 </div>
+                    
                 <div class="form-group">                
                     <label for="input-type" class="col-sm-2 control-label">Type:</label>
                     <div class="col-sm-10">
@@ -83,6 +148,7 @@
                         </form:select>
                     </div>
                 </div>
+                    
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-success">Save</button>
