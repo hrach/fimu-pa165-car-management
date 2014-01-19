@@ -70,7 +70,7 @@
 </div>
 <div class="userBar">
     <div class="inner">
-        <p style="display: inline-block;"><span style="color: #555;">Logged user:</span> <strong>John Doe</strong></p>
-        <a href="${pageContext.request.contextPath}/logout" class="btn btn-danger btn-xs" style="margin-left: 20px; display: inline-block; position: relative; top: -2px;">Logout</a>
+        <p style="display: inline-block;"><span style="color: #555;"><spring:message code="navigation.loggeduser" />:</span> <strong>John Doe</strong></p>
+        <a href="${pageContext.request.contextPath}/logout" class="btn btn-danger btn-xs" style="margin-left: 20px; display: inline-block; position: relative; top: -2px;"><spring:message code="navigation.logout" /></a>
     </div>
 </div>
