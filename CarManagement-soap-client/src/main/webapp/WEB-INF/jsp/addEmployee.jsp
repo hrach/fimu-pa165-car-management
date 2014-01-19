@@ -34,6 +34,20 @@
                         $('#input-familyname').parent().removeClass('has-error');
                     }
                     
+                    if($.trim($('#input-username').val()) == '') {
+                        valid = false;
+                        $('#input-username').parent().addClass('has-error');
+                    } else {
+                        $('#input-username').parent().removeClass('has-error');
+                    }
+                    
+                    if($.trim($('#input-password').val()) == '') {
+                        valid = false;
+                        $('#input-password').parent().addClass('has-error');
+                    } else {
+                        $('#input-password').parent().removeClass('has-error');
+                    }
+                    
                     if($('#input-role').val() == '0') {
                         valid = false;
                         $('#input-role').parent().addClass('has-error');
@@ -74,6 +88,20 @@
                     <label for="input-familyname" class="col-sm-2 control-label">Last name:</label>
                     <div class="col-sm-10">
                         <form:input path="familyName" id="input-familyname" cssClass="form-control"></form:input>
+                    </div>  
+                </div>
+                    
+                <div class="form-group">
+                    <label for="input-username" class="col-sm-2 control-label">Username:</label>
+                    <div class="col-sm-10">
+                        <form:input path="username" id="input-username" cssClass="form-control"></form:input>
+                    </div>  
+                </div>
+                    
+                <div class="form-group">
+                    <label for="input-password" class="col-sm-2 control-label">Password:</label>
+                    <div class="col-sm-10">
+                        <form:input path="password" id="input-password" cssClass="form-control"></form:input>
                     </div>  
                 </div>
                     
