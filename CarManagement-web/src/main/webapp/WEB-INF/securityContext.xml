@@ -17,7 +17,8 @@
     </http>    
     
     <http auto-config='true'>
-        <intercept-url pattern="/**" access="ROLE_USER" />
+        <intercept-url pattern="/*" access="ROLE_STAFF" />
+        <intercept-url pattern="/admin/**" access="ROLE_MANAGER" />
         <form-login login-page='/login.jsp' authentication-failure-url="/login.jsp?auth=fail"/>
         
         <logout invalidate-session="true" logout-url="/logout" logout-success-url="/" />

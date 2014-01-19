@@ -35,50 +35,50 @@
 
         <sec:authorize access="hasRole('ROLE_MANAGER')">
         <div class="btn-group">
-            <a href="${pageContext.request.contextPath}/employee/" class="${urlpart[1] eq 'employee' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.employees" /></a>
-            <button type="button" class="${urlpart[1] eq 'employee' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
+            <a href="${pageContext.request.contextPath}/admin/employee/" class="${urlpart[2] eq 'employee' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.employees" /></a>
+            <button type="button" class="${urlpart[2] eq 'employee' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu" role="menu">
-                <li><a href="${pageContext.request.contextPath}/employee/list/"><spring:message code="navigation.employees.list" /></a></li>
-                <li><a href="${pageContext.request.contextPath}/employee/add/"><spring:message code="navigation.employees.new" /></a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/employee/list/"><spring:message code="navigation.employees.list" /></a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/employee/add/"><spring:message code="navigation.employees.new" /></a></li>
             </ul>
         </div>
             
         <div class="btn-group">
-            <a href="${pageContext.request.contextPath}/vehicle/" class="${urlpart[1] eq 'vehicle' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.vehicles" /></a>
-            <button type="button" class="${urlpart[1] eq 'vehicle' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
+            <a href="${pageContext.request.contextPath}/admin/vehicle/" class="${urlpart[2] eq 'vehicle' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.vehicles" /></a>
+            <button type="button" class="${urlpart[2] eq 'vehicle' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu" role="menu">
-                <li><a href="${pageContext.request.contextPath}/vehicle/list/"><spring:message code="navigation.vehicles.list" /></a></li>
-                <li><a href="${pageContext.request.contextPath}/vehicle/add/"><spring:message code="navigation.vehicles.new" /></a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/vehicle/list/"><spring:message code="navigation.vehicles.list" /></a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/vehicle/add/"><spring:message code="navigation.vehicles.new" /></a></li>
             </ul>
         </div>
             
         <div class="btn-group">
-            <a href="${pageContext.request.contextPath}/vehicle-type/" class="${urlpart[1] eq 'vehicle-type' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.vehicletypes" /></a>
-            <button type="button" class="${urlpart[1] eq 'vehicle-type' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
+            <a href="${pageContext.request.contextPath}/admin/vehicle-type/" class="${urlpart[2] eq 'vehicle-type' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.vehicletypes" /></a>
+            <button type="button" class="${urlpart[2] eq 'vehicle-type' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu" role="menu">
-                <li><a href="${pageContext.request.contextPath}/vehicle-type/list/"><spring:message code="navigation.vehicletypes.list" /></a></li>
-                <li><a href="${pageContext.request.contextPath}/vehicle-type/add/"><spring:message code="navigation.vehicletypes.new" /></a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/vehicle-type/list/"><spring:message code="navigation.vehicletypes.list" /></a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/vehicle-type/add/"><spring:message code="navigation.vehicletypes.new" /></a></li>
             </ul>
         </div>
             
         <div class="btn-group">
-            <a href="${pageContext.request.contextPath}/ride/" class="${urlpart[1] eq 'ride' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.rides" /></a>
-            <button type="button" class="${urlpart[1] eq 'ride' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
+            <a href="${pageContext.request.contextPath}/admin/ride/" class="${urlpart[2] eq 'ride' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.rides" /></a>
+            <button type="button" class="${urlpart[2] eq 'ride' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu" role="menu">
-                <li><a href="${pageContext.request.contextPath}/ride/list/"><spring:message code="navigation.rides.list" /></a></li>
-                <li><a href="${pageContext.request.contextPath}/ride/add/"><spring:message code="navigation.rides.new" /></a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/ride/list/"><spring:message code="navigation.rides.list" /></a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/ride/add/"><spring:message code="navigation.rides.new" /></a></li>
             </ul>
         </div>
         </sec:authorize>
@@ -87,7 +87,7 @@
 </div>
 <div class="userBar">
     <div class="inner">
-        <p style="display: inline-block;"><span style="color: #555;"><spring:message code="navigation.loggeduser" />:</span> <strong>John Doe</strong></p>
+        <p style="display: inline-block;"><span style="color: #555;"><spring:message code="navigation.loggeduser" />:</span> <strong>John Doe (<sec:authentication property="principal.username"/>)</strong></p>
         <a href="${pageContext.request.contextPath}/logout" class="btn btn-danger btn-xs" style="margin-left: 20px; display: inline-block; position: relative; top: -2px;"><spring:message code="navigation.logout" /></a>
     </div>
 </div>

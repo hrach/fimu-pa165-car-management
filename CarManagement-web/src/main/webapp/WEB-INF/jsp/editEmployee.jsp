@@ -24,7 +24,7 @@
                 <h1><spring:message code="employee.edit" /></h1>
             </div>
             
-            <form:form cssClass="form-horizontal" method="POST" modelAttribute="employee" action="${pageContext.request.contextPath}/employee/edit/${employee.id}.html">  
+            <form:form cssClass="form-horizontal" method="POST" modelAttribute="employee" action="${pageContext.request.contextPath}/admin/employee/edit/${employee.id}.html">  
                  <div class="form-group">
                     <label for="label-id" class="col-sm-2 control-label"><spring:message code="employee.id" /></label>
                     <div class="col-sm-10">
@@ -84,7 +84,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-success"><spring:message code="changes.save" /></button>
-                        <a href="${pageContext.request.contextPath}/employee/" class="btn btn-warning"><spring:message code="cancel" /></a>
+                        <a href="${pageContext.request.contextPath}/admin/employee/" class="btn btn-warning"><spring:message code="cancel" /></a>
                     </div>
                 </div>    
             </form:form>  

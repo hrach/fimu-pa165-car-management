@@ -50,7 +50,7 @@
 
         <th><spring:message code="detail.ride.employee" /></th>
         <td>
-            <a href="${pageContext.request.contextPath}/overview/employee/${ride.employee.id}">         
+            <a href="${pageContext.request.contextPath}/admin/overview/employee/${ride.employee.id}">         
                 <c:out value="${ride.employee.name}"/>
             </a>                
         </td>
@@ -60,7 +60,7 @@
         <th><spring:message code="detail.ride.vehicle" /></th>
         
         <td>
-            <a href="${pageContext.request.contextPath}/overview/vehicle/${ride.vehicle.id}">
+            <a href="${pageContext.request.contextPath}/admin/overview/vehicle/${ride.vehicle.id}">
                     <c:out value="${ride.vehicle.name}"/>
             </a>
         </td>
@@ -75,7 +75,7 @@
 </table>
         
 <hr>
-<p><a class="btn btn-info" href="${pageContext.request.contextPath}/ride/"><span class="glyphicon glyphicon-circle-arrow-left"></span> <spring:message code="ride.backtolist" /></a></p>
+<p><a class="btn btn-info" href="${pageContext.request.contextPath}/admin/ride/"><span class="glyphicon glyphicon-circle-arrow-left"></span> <spring:message code="ride.backtolist" /></a></p>
         </div>          
             </div>
         </div>

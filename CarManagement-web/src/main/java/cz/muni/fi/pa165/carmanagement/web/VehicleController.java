@@ -32,7 +32,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author Jakub Marecek <xmarec at gmail.com>
  */
 @Controller
-@RequestMapping("/vehicle/")
+@RequestMapping("/admin/vehicle/")
 public class VehicleController {
     
     @Autowired
@@ -104,7 +104,7 @@ public class VehicleController {
             String message = messageSource.getMessage("message.vehicle.added", null, locale);
             redirectAttributes.addFlashAttribute("message", message);
 
-            return new ModelAndView("redirect:/vehicle/"); 
+            return new ModelAndView("redirect:/admin/vehicle/"); 
         }
     }
     
@@ -150,7 +150,7 @@ public class VehicleController {
             String message = messageSource.getMessage("message.vehicle.edited", messageParams, locale);
             redirectAttributes.addFlashAttribute("message", message);
 
-            return new ModelAndView("redirect:/vehicle/"); 
+            return new ModelAndView("redirect:/admin/vehicle/"); 
         }
     }
     
@@ -163,7 +163,7 @@ public class VehicleController {
         String message = messageSource.getMessage("message.vehicle.deleted", messageParams, locale);
         redirectAttributes.addFlashAttribute("message", message);
 
-        return "redirect:/vehicle/";
+        return "redirect:/admin/vehicle/";
     }
     
     protected ModelAndView handleRequestInternal(

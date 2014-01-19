@@ -14,8 +14,8 @@
                 $("#employeeSearch").typeahead({
                     name: "employees",
                     valueKey: "name",
-                    remote: "${pageContext.request.contextPath}/employee/search/%QUERY",
-                    template: "<a href=\"/pa165/overview/employee/{{id}}\">{{name}}</p>",
+                    remote: "${pageContext.request.contextPath}/admin/employee/search/%QUERY",
+                    template: "<a href=\"/pa165/admin/overview/employee/{{id}}\">{{name}}</p>",
                     engine: Hogan,
                     limit: 5
                 });
@@ -23,18 +23,18 @@
                 $("#vehicleSearch").typeahead({
                     name: "vehicles",
                     valueKey: "name",
-                    remote: "${pageContext.request.contextPath}/vehicle/search/%QUERY",
-                    template: "<a href=\"/pa165/overview/vehicle/{{id}}\">{{name}}</p>",
+                    remote: "${pageContext.request.contextPath}/admin/vehicle/search/%QUERY",
+                    template: "<a href=\"pa165/admin/overview/vehicle/{{id}}\">{{name}}</p>",
                     engine: Hogan,
                     limit: 5
                 });
                 
                 $('#employeeSearch').bind('typeahead:selected', function(obj, datum, name) {
-                    window.location.href = '${pageContext.request.contextPath}/overview/employee/'+datum.id;
+                    window.location.href = '${pageContext.request.contextPath}/admin/overview/employee/'+datum.id;
                 });
                 
                 $('#vehicleSearch').bind('typeahead:selected', function(obj, datum, name) {
-                    window.location.href = '${pageContext.request.contextPath}/overview/vehicle/'+datum.id;
+                    window.location.href = '${pageContext.request.contextPath}/admin/overview/vehicle/'+datum.id;
                 });
             });
         </script>

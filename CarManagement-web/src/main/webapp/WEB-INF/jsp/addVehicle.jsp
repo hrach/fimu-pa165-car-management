@@ -39,7 +39,7 @@
                 <h1><spring:message code="vehicle.add" /></h1>
             </div>
 
-            <form:form cssClass="form-horizontal" method="POST" modelAttribute="newVehicle" action="${pageContext.request.contextPath}/vehicle/add">  
+            <form:form cssClass="form-horizontal" method="POST" modelAttribute="newVehicle" action="${pageContext.request.contextPath}/admin/vehicle/add">  
                 <c:set var="hasError"><form:errors path="name"/></c:set>
                 <div class="form-group <c:out value="${not empty hasError ? 'has-error': ''}"/>">                
                     <label for="input-name" class="col-sm-2 control-label"><spring:message code="vehicle.name" />:</label>  
@@ -113,7 +113,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-success"><spring:message code="changes.save" /></button>
-                        <a href="${pageContext.request.contextPath}/vehicle/" class="btn btn-warning"><spring:message code="cancel" /></a>
+                        <a href="${pageContext.request.contextPath}/admin/vehicle/" class="btn btn-warning"><spring:message code="cancel" /></a>
                     </div>
                 </div>    
             </form:form>  

@@ -32,7 +32,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author skrasek
  */
 @Controller
-@RequestMapping("/overview/vehicle")
+@RequestMapping("/admin/overview/vehicle")
 public class VehicleOverviewController {
     
     @Autowired
@@ -126,7 +126,7 @@ public class VehicleOverviewController {
             si.setVehicle(vehicle);
             this.serviceIntervals.create(si);
             
-            return new ModelAndView("redirect:/overview/vehicle/" + id);        
+            return new ModelAndView("redirect:/admin/overview/vehicle/" + id);        
         }
     }    
 }

@@ -55,15 +55,15 @@
                                 <td><c:out value="${ride.vehicle.name}" /></td>
                                 <td><c:out value="${ride.employee.firstName}" />&nbsp;<c:out value="${ride.employee.familyName}" /></td>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/ride/detail/${ride.id}.html" class="btn btn-info btn-xs"><spring:message code="view" /></a>                                    
-                                    <a href="${pageContext.request.contextPath}/ride/edit/${ride.id}.html" class="btn btn-warning btn-xs"><spring:message code="edit" /></a>
-                                    <a href="${pageContext.request.contextPath}/ride/delete/${ride.id}.html" class="btn btn-danger btn-xs"><spring:message code="delete" /></a>
+                                    <a href="${pageContext.request.contextPath}/admin/ride/detail/${ride.id}.html" class="btn btn-info btn-xs"><spring:message code="view" /></a>                                    
+                                    <a href="${pageContext.request.contextPath}/admin/ride/edit/${ride.id}.html" class="btn btn-warning btn-xs"><spring:message code="edit" /></a>
+                                    <a href="${pageContext.request.contextPath}/admin/ride/delete/${ride.id}.html" class="btn btn-danger btn-xs"><spring:message code="delete" /></a>
                                 </td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
-                    <p><a href="${pageContext.request.contextPath}/ride/add" class="btn btn-success"><spring:message code="ride.new" /></a></p>
+                    <p><a href="${pageContext.request.contextPath}/admin/ride/add" class="btn btn-success"><spring:message code="ride.new" /></a></p>
               </div>
         </div>                        
     </body>

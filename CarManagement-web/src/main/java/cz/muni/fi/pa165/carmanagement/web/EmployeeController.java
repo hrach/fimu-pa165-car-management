@@ -30,7 +30,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author Jakub Marecek <xmarec at gmail.com>
  */
 @Controller
-@RequestMapping("/employee/")
+@RequestMapping("/admin/employee/")
 public class EmployeeController {
     
     @Autowired
@@ -85,7 +85,7 @@ public class EmployeeController {
             System.out.println("New employee added.");
 
             redirectAttributes.addFlashAttribute("message", message);
-            return "redirect:/employee/";  
+            return "redirect:/admin/employee/";  
         }
     }    
     
@@ -121,7 +121,7 @@ public class EmployeeController {
             String message = messageSource.getMessage("message.employee.edited", messageParams, locale);
             redirectAttributes.addFlashAttribute("message", message);
 
-            return "redirect:/employee/"; 
+            return "redirect:/admin/employee/"; 
         }
     }
     
@@ -135,7 +135,7 @@ public class EmployeeController {
         String message = messageSource.getMessage("message.employee.deleted", messageParams, locale);
         redirectAttributes.addFlashAttribute("message", message);
 
-        return "redirect:/employee/";
+        return "redirect:/admin/employee/";
     }
     
     @RequestMapping(value="/search/{term}")

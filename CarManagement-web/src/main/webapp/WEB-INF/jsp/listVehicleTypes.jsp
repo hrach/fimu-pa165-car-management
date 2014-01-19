@@ -44,14 +44,14 @@
                                 <td><c:out value="${vehicleType.name}" /></td>
                                 <td><c:out value="${vehicleType.maxKm}" /></td>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/vehicle-type/edit/${vehicleType.id}.html" class="btn btn-warning btn-xs"><spring:message code="edit" /></a>
-                                    <a href="${pageContext.request.contextPath}/vehicle-type/delete/${vehicleType.id}.html" class="btn btn-danger btn-xs"><spring:message code="delete" /></a>
+                                    <a href="${pageContext.request.contextPath}/admin/vehicle-type/edit/${vehicleType.id}.html" class="btn btn-warning btn-xs"><spring:message code="edit" /></a>
+                                    <a href="${pageContext.request.contextPath}/admin/vehicle-type/delete/${vehicleType.id}.html" class="btn btn-danger btn-xs"><spring:message code="delete" /></a>
                                 </td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
-                    <p><a href="${pageContext.request.contextPath}/vehicle-type/add" class="btn btn-success"><spring:message code="vehicletype.new" /></a></p>
+                    <p><a href="${pageContext.request.contextPath}/admin/vehicle-type/add" class="btn btn-success"><spring:message code="vehicletype.new" /></a></p>
               </div>
         </div>                        
     </body>

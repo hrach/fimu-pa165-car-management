@@ -68,7 +68,7 @@
             <td><c:out value="${ride.tachometerStart}"/></td>
             <td><c:out value="${ride.tachometerEnd}"/></td>
             <td>
-                <a href="${pageContext.request.contextPath}/overview/vehicle/${ride.vehicle.id}">
+                <a href="${pageContext.request.contextPath}/admin/overview/vehicle/${ride.vehicle.id}">
                     <c:out value="${ride.vehicle.name}"/>
                 </a>
             </td>
@@ -78,11 +78,11 @@
 </table>
         
         <p>
-            <a href="${pageContext.request.contextPath}/ride/add/${employee.id}" class="btn btn-success"><spring:message code="detail.emp.newrideforemp" /></a>            
+            <a href="${pageContext.request.contextPath}/admin/ride/add/${employee.id}" class="btn btn-success"><spring:message code="detail.emp.newrideforemp" /></a>            
         </p>
         
            <hr>
-                <p><a class="btn btn-info" href="${pageContext.request.contextPath}/employee/"><span class="glyphicon glyphicon-circle-arrow-left"></span> <spring:message code="employee.backtolist" /></a></p>
+                <p><a class="btn btn-info" href="${pageContext.request.contextPath}/admin/employee/"><span class="glyphicon glyphicon-circle-arrow-left"></span> <spring:message code="employee.backtolist" /></a></p>
 
         </div>
         </div>

@@ -34,7 +34,7 @@
                 <h1><spring:message code="ride.new" />&nbsp;<small><spring:message code="for.employee" />&nbsp;${newRide.employee.name}</small></h1>
             </div>
             
-            <form:form cssClass="form-horizontal" method="POST" modelAttribute="newRide" action="${pageContext.request.contextPath}/ride/add">  
+            <form:form cssClass="form-horizontal" method="POST" modelAttribute="newRide" action="${pageContext.request.contextPath}/admin/ride/add">  
                 <div class="form-group">
                     <label for="input-starttime" class="col-sm-2 control-label"><spring:message code="ride.starttime" />:</label>  
                     <div class="col-sm-10">
@@ -81,7 +81,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-success"><spring:message code="changes.save" /></button>
-                        <a href="${pageContext.request.contextPath}/overview/employee/${newRide.employee.id}.html" class="btn btn-warning"><spring:message code="cancel" /></a>
+                        <a href="${pageContext.request.contextPath}/admin/overview/employee/${newRide.employee.id}.html" class="btn btn-warning"><spring:message code="cancel" /></a>
                     </div>
                 </div>    
             </form:form>  
