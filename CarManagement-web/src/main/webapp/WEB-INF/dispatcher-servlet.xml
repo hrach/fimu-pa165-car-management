@@ -24,6 +24,7 @@
     for the index controller we are using ParameterizableViewController, so we must
     define an explicit mapping for it.
     -->
+    <!--
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
@@ -31,7 +32,7 @@
             </props>
         </property>
     </bean>
-    
+    -->
     
     <bean id="messageSource"
         class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
@@ -53,10 +54,11 @@
     <!--
     The index controller.
     -->
+    <!--
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index" />
-    
+    -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
 </beans>

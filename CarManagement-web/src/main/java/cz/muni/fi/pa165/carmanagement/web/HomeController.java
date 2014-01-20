@@ -34,7 +34,7 @@ public class HomeController {
     public HomeController() {
     }
     
-    @RequestMapping("/test")
+    @RequestMapping("/index.htm")
     public ModelAndView renderHome() {
         ModelAndView mav = new ModelAndView();        
         mav.addObject("items", vehicleType.findAll());
