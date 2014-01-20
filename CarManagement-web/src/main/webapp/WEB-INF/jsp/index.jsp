@@ -2,6 +2,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -48,9 +50,42 @@
         <div id="content" class="container">
             <div class="page-header"><h1><spring:message code="home" /> <small><spring:message code="home.subtitle" /></small></h1></div>
             <sec:authorize access="hasRole('ROLE_MANAGER')">
-                <p>Logged in as administrator - <a href="${pageContext.request.contextPath}/admin/" class="btn btn-info">Go to Admin Dashboard</a></p>
+                <p><spring:message code="home.loggedasadmin" /> - <a href="${pageContext.request.contextPath}/admin/" class="btn btn-info"><spring:message code="home.gotoadmin" /></a></p>
             </sec:authorize>
-        </div>   
+                
+                <h3><spring:message code="home.myrides" /> (${employee.name})</h3>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td><spring:message code="detail.ride.id" /></td>
+            <td><spring:message code="detail.ride.starttime" /></td>
+            <td><spring:message code="detail.ride.endtime" /></td>
+            <td><spring:message code="detail.ride.starttach" /></td>
+            <td><spring:message code="detail.ride.endtach" /></td>
+            <td><spring:message code="detail.ride.vehicle" /></td>
+        </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${employee.rides}" var="ride">
+        <tr>
+            <td><c:out value="${ride.id}"/></td>
+            <td><fmt:formatDate value="${ride.startTime}" pattern="dd/MM/yyyy" /></td>
+            <td><fmt:formatDate value="${ride.endTime}" pattern="dd/MM/yyyy" /></td>
+            <td><c:out value="${ride.tachometerStart}"/></td>
+            <td><c:out value="${ride.tachometerEnd}"/></td>
+            <td>
+                <a href="${pageContext.request.contextPath}/admin/overview/vehicle/${ride.vehicle.id}">
+                    <c:out value="${ride.vehicle.name}"/>
+                </a>
+            </td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
+        </div>
+            
+                
+
                       
     </body>
 </html>
