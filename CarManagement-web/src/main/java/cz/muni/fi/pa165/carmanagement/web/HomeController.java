@@ -44,7 +44,6 @@ public class HomeController {
     @RequestMapping("/index.htm")
     public ModelAndView renderHome(Authentication authentication) {
         
-        
         String username = authentication.getName();
         
         EmployeeDetailsAdapter eda  = (EmployeeDetailsAdapter) this.employeeUDS.loadUserByUsername(username);
@@ -54,8 +53,6 @@ public class HomeController {
         if (e == null) {
             throw new ResourceNotFoundException();
         }
-        
-        mav.addObject("name", eda.getId());
         
         mav.addObject("employee", e);
         
