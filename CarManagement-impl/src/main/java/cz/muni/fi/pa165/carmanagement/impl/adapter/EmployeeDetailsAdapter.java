@@ -18,10 +18,16 @@ import org.springframework.security.core.userdetails.User;
  */
 public class EmployeeDetailsAdapter extends User {
     private final Long employeeId;
+    private String employeeName;
+
+    public String getEmployeeName() {
+        return employeeName;
+    }        
     
     public EmployeeDetailsAdapter(Employee employee) {        
         super(employee.getUsername(), employee.getPassword(), roleToAuthorities(employee.getStringRole()));
         this.employeeId = employee.getId();
+        this.employeeName = employee.getFirstName()+" "+employee.getFamilyName();
     }
     
     private static Set<GrantedAuthority> roleToAuthorities(List<String> roles) {

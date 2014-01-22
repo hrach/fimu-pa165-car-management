@@ -7,6 +7,7 @@ package cz.muni.fi.pa165.carmanagement.impl.service;
 import cz.muni.fi.pa165.carmanagement.impl.adapter.EmployeeDetailsAdapter;
 import cz.muni.fi.pa165.carmanagement.impl.dao.EmployeeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.Employee;
+import javax.persistence.NoResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,11 +30,15 @@ public class EmployeeUserDetailsService implements UserDetailsService {
     
     @Override
     public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
-        Employee e = dao.findByUsername(string);
-        
-        if(e == null)
+        try {
+            Employee e = dao.findByUsername(string);
+            
+            if(e == null)
+                throw new UsernameNotFoundException("Employee not found");
+            
+            return new EmployeeDetailsAdapter(e);
+        } catch (NoResultException ex) {
             throw new UsernameNotFoundException("Employee not found");
-        
-        return new EmployeeDetailsAdapter(e);
+        }                
     }    
 }
