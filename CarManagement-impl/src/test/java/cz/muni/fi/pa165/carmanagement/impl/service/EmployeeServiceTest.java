@@ -16,6 +16,9 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.springframework.security.authentication.dao.ReflectionSaltSource;
+import org.springframework.security.authentication.dao.SaltSource;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 
 /**
  *
@@ -26,6 +29,7 @@ public class EmployeeServiceTest extends TestCase {
     
     private EmployeeServiceImpl employeeService;    
     @Mock private EmployeeDaoImpl employeeDao;    
+    @Mock private ShaPasswordEncoder passwordEncoder;
     
     @Before
     public void setUp() throws Exception {
@@ -33,11 +37,12 @@ public class EmployeeServiceTest extends TestCase {
         
         employeeService = new EmployeeServiceImpl();
         employeeService.setDao(employeeDao);
+        employeeService.setPasswordEncoder(passwordEncoder);
     }
 
     @Test
     public void testCreate() {
-        EmployeeDto t = new EmployeeDto((long)1, "John", "Doe", 1);
+        EmployeeDto t = new EmployeeDto((long)1, "John", "Doe", 1, "doe", "doe");
                 
         EmployeeDto t2 = employeeService.create(t);
         

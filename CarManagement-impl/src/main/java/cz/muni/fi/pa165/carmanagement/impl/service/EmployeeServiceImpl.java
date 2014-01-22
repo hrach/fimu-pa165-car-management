@@ -7,9 +7,12 @@ import cz.muni.fi.pa165.carmanagement.impl.dao.EmployeeDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.model.Employee;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+
 
 /**
  * @author Jakub Marecek <xmarec at gmail.com>
@@ -19,11 +22,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeDaoImpl dao;
-
+    
+    @Autowired
+    private ShaPasswordEncoder passwordEncoder;   
+    
     public void setDao(EmployeeDaoImpl dao) {
         this.dao = dao;
     }
 
+    public void setPasswordEncoder(ShaPasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }    
 
     @Transactional
     @Override
@@ -32,10 +41,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employeeDto == null) {
             throw new NullPointerException("employeeDto");
         }
-        
+               
         employeeDto.setId(null);
-        
-        Employee entity = ConverterContainer.getEmployeeConverter().dtoToEntity(employeeDto);
+                
+        Employee entity = ConverterContainer.getEmployeeConverter().dtoToEntity(employeeDto);                
+        entity.setPassword(passwordEncoder.encodePassword(entity.getPassword(), null));
+
         dao.persist(entity);   
         
         return ConverterContainer.getEmployeeConverter().entityToDto(entity);
@@ -60,7 +71,10 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new NullPointerException("employeeDto");
         }
         
-        dao.update(ConverterContainer.getEmployeeConverter().dtoToEntity(employeeDto));        
+        Employee entity = ConverterContainer.getEmployeeConverter().dtoToEntity(employeeDto);
+        entity.setPassword(passwordEncoder.encodePassword(entity.getPassword(), null));
+        
+        dao.update(entity);        
     }
 
     @Transactional
@@ -80,5 +94,4 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<EmployeeDto> findAll() {
         return ConverterContainer.getEmployeeConverter().entityToDto(dao.findAll());
     }
-
 }
