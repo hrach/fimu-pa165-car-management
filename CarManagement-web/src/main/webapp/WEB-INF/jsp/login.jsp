@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
+        <title><spring:message code="login.login" /></title>
         <jsp:include page="/WEB-INF/jsp/header.jsp" />
         <script type="text/javascript">
             $(document).ready(function() {
@@ -45,11 +45,11 @@
     </head>
 <body onload='document.f.j_username.focus();'>
     <div class="well">
-	<h1 style="margin-top: 5px;">Login</h1>
+	<h1 style="margin-top: 5px;"><spring:message code="login.login" /></h1>
  
         <c:if test="${'fail' eq param.auth}">
 		<div class="alert alert-danger">
-			Your login attempt was not successful, try again.<br /> Caused :
+                        <spring:message code="login.failure" /><br /> <spring:message code="login.cause" />:
 			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 		</div>
 	</c:if>
@@ -57,17 +57,17 @@
 	<form name="f" id="login" action="<c:url value='j_spring_security_check' />" method="POST">
  
             <div class="form-group">
-                <label for="name">Username</label>
-		<input type="text" name="j_username" value="" placeholder="Username" id="name"  class="form-control">
+                <label for="name"><spring:message code="login.username" /></label>
+		<input type="text" name="j_username" value="" placeholder="<spring:message code='login.username' />" id="name"  class="form-control">
             </div>
             <div class="form-group">
-                <label for="pass">Password</label>
-                <input type="password" name="j_password" placeholder="Password" id="pass"  class="form-control">
+                <label for="pass"><spring:message code="login.password" /></label>
+                <input type="password" name="j_password" placeholder="<spring:message code="login.password" />" id="pass"  class="form-control">
             </div>
             
             <hr style="border-color: #dfdfdf;">
             
-            <input name="submit" type="submit" value="Submit" class="btn btn-primary">
+            <input name="submit" type="submit" value="<spring:message code='login.submit' />" class="btn btn-primary">
  
 	</form>
     </div>

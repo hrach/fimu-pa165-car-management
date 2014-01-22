@@ -60,9 +60,9 @@ public class HomeController {
         return mav;
     }
 
-    @RequestMapping("/test2")
-    public String renderHome2() {
-        return "index";
+    @RequestMapping("/login")
+    public String renderLogin() {
+        return "login";
     }    
     
     protected ModelAndView handleRequestInternal(
