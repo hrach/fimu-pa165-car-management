@@ -154,7 +154,7 @@ public class MyRideController {
             ModelAndView mav = new ModelAndView();        
             mav.addObject("vehicles", vehicleService.findAll());
             mav.addObject("employees", employeeService.findAll());            
-            mav.setViewName("addRide");
+            mav.setViewName("addMyRide");
             
             return mav;
         } else {       

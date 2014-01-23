@@ -115,10 +115,10 @@
                     <c:forEach items="${vehicle.serviceIntervals}" var="interval">
                         <tr>
                             <td><c:out value="${interval.serviceType.name}"/></td>
-                            <td><c:out value="${interval.createdTime}"/></td>
-                            <td><c:out value="${interval.dueTime}"/></td>
+                            <td><fmt:formatDate value="${interval.createdTime}" pattern="dd/MM/yyyy" /></td>
+                            <td><fmt:formatDate value="${interval.dueTime}" pattern="dd/MM/yyyy" /></td>
                             <td>
-                                <c:out value="${interval.doneTime}"/>
+                                <fmt:formatDate value="${interval.doneTime}" pattern="dd/MM/yyyy" />
                                 <!-- tady v pripade ze to neni null asi zobrazit hlavne nejakou fajfku -->
                             </td>
                         </tr>

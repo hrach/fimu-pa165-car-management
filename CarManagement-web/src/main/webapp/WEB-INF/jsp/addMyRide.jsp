@@ -97,7 +97,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-success"><spring:message code="changes.save" /></button>
-                        <a href="${pageContext.request.contextPath}/admin/ride/" class="btn btn-warning"><spring:message code="cancel" /></a>
+                        <a href="${pageContext.request.contextPath}/myride/" class="btn btn-warning"><spring:message code="cancel" /></a>
                     </div>
                 </div>    
             </form:form>  

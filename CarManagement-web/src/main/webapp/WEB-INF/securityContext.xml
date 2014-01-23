@@ -19,7 +19,8 @@
     
     <http auto-config='true'>
         <intercept-url pattern="/*" access="ROLE_STAFF" />
-        <intercept-url pattern="/admin/**" access="ROLE_MANAGER" />
+        <intercept-url pattern="/myride/" access="ROLE_STAFF" />
+        <intercept-url pattern="/admin/*" access="ROLE_MANAGER" />
         <form-login login-page='/login' authentication-failure-url="/login?auth=fail"/>
         
         <logout invalidate-session="true" logout-url="/logout" logout-success-url="/" />
