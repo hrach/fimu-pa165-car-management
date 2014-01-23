@@ -22,8 +22,8 @@
         <div class="pull-right">
             
         <div class="btn-group">
-            <a href="${pageContext.request.contextPath}/myride/" class="${urlpart[1] eq 'ride' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.myrides" /></a>
-            <button type="button" class="${urlpart[1] eq 'ride' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
+            <a href="${pageContext.request.contextPath}/myride/" class="${urlpart[1] eq 'myride' ? 'btn btn-info link' : 'btn btn-default link'}"><spring:message code="navigation.myrides" /></a>
+            <button type="button" class="${urlpart[1] eq 'myride' ? 'btn btn-info dropdown-toggle' : 'btn btn-default dropdown-toggle'}" data-toggle="dropdown">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
