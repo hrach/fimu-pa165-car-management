@@ -7,6 +7,8 @@ Aplikácia eviduje vozidlá vo vozovom parku imaginárnej organizácie. Pre kaž
 
 Pro spuštění aplikace je nutný běžící databázový server na adrese 'localhost:1527/pa165'
 
+Výchozí uživatelské jméno a heslo pro správce je *admin*
+
 ### Webová aplikace
 
 Webová aplikace lze spustit pomocí 'mvn tomcat7:run' na modulu CarManagement-web. Samotná aplikace pak běží na adrese http://localhost:8080/pa165/
