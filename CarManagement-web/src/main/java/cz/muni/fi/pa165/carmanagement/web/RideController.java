@@ -107,7 +107,7 @@ public class RideController {
         ModelAndView mav = new ModelAndView();
         
         mav.addObject("newRide", new RideDto());
-        mav.addObject("vehicles", vehicleService.findAll());
+        mav.addObject("vehicles", vehicleService.findAllSuitableForSelection());
         mav.addObject("employees", employeeService.findAll());
         
         mav.setViewName("addRide");
@@ -132,8 +132,7 @@ public class RideController {
         newRide.setEmployee(e);
         
         mav.addObject("newRide", newRide);
-        mav.addObject("vehicles", vehicleService.findAll());
-   //     mav.addObject("employees", employeeService.findAll());
+        mav.addObject("vehicles", vehicleService.findAllSuitableForSelection());
         
         mav.setViewName("addRideForEmployee");
         return mav;
@@ -146,7 +145,7 @@ public class RideController {
         
         if (result.hasErrors()) {
             ModelAndView mav = new ModelAndView();        
-            mav.addObject("vehicles", vehicleService.findAll());
+            mav.addObject("vehicles", vehicleService.findAllSuitableForSelection());
             mav.addObject("employees", employeeService.findAll());            
             mav.setViewName("addRide");
             
@@ -181,7 +180,7 @@ public class RideController {
         }
         
         mav.addObject("ride", ride);
-        mav.addObject("vehicles", vehicleService.findAll());
+        mav.addObject("vehicles", vehicleService.findAllSuitableForSelection());
         mav.addObject("employees", employeeService.findAll());
 
         System.out.println("Ride edit:"+id+"\n");
@@ -197,7 +196,7 @@ public class RideController {
         
         if (result.hasErrors()) {
             ModelAndView mav = new ModelAndView();        
-            mav.addObject("vehicles", vehicleService.findAll());
+            mav.addObject("vehicles", vehicleService.findAllSuitableForSelection());
             mav.addObject("employees", employeeService.findAll());             
             mav.setViewName("editRide");
             
@@ -250,7 +249,7 @@ public class RideController {
         }
         
         mav.addObject("ride", ride);
-        mav.addObject("vehicles", vehicleService.findAll());
+        mav.addObject("vehicles", vehicleService.findAllSuitableForSelection());
         mav.addObject("employees", employeeService.findAll());
         
         mav.setViewName("detailRide");

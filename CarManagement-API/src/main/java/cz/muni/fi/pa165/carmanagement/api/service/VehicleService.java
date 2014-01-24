@@ -18,4 +18,5 @@ public interface VehicleService {
     
     public List<VehicleDto> findAll();       
 
+    public List<VehicleDto> findAllSuitableForSelection();    
 }

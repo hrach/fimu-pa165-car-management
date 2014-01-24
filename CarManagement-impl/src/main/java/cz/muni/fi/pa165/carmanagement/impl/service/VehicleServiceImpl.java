@@ -5,7 +5,10 @@ import cz.muni.fi.pa165.carmanagement.api.service.VehicleService;
 import cz.muni.fi.pa165.carmanagement.impl.converters.ConverterContainer;
 import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleDaoImpl;
 import cz.muni.fi.pa165.carmanagement.impl.dao.VehicleTypeDaoImpl;
+import cz.muni.fi.pa165.carmanagement.impl.model.ServiceInterval;
 import cz.muni.fi.pa165.carmanagement.impl.model.Vehicle;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -93,4 +96,25 @@ public class VehicleServiceImpl implements VehicleService {
         return ConverterContainer.getVehicleConverter().entityToDto(dao.findAll());
     }
 
+    @Transactional
+    @Override
+    @Secured({"ROLE_STAFF", "ROLE_SOAP"})                            
+    public List<VehicleDto> findAllSuitableForSelection() {
+        List<Vehicle> vehicles = dao.findAllSuitableForSelection();
+        List<VehicleDto> vehiclesDto = new ArrayList<VehicleDto>();
+                
+        for (Vehicle vehicle : vehicles) {
+            boolean valid = true; 
+            for (ServiceInterval i : vehicle.getServiceIntervals()) {
+                if (i.getDoneTime() == null && i.getDueTime().before(new Date())) {
+                    valid = false;
+                }
+            }
+            
+            if (valid)
+                vehiclesDto.add(ConverterContainer.getVehicleConverter().entityToDto(vehicle));
+        }
+                
+        return vehiclesDto;        
+    }
 }

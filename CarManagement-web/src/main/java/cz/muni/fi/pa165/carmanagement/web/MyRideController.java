@@ -139,7 +139,7 @@ public class MyRideController {
         newRide.setEmployee(e);
         
         mav.addObject("newRide", newRide);
-        mav.addObject("vehicles", vehicleService.findAll());
+        mav.addObject("vehicles", vehicleService.findAllSuitableForSelection());
         
         mav.setViewName("addMyRide");
         return mav;
@@ -152,7 +152,7 @@ public class MyRideController {
         
         if (result.hasErrors()) {
             ModelAndView mav = new ModelAndView();        
-            mav.addObject("vehicles", vehicleService.findAll());
+            mav.addObject("vehicles", vehicleService.findAllSuitableForSelection());
             mav.addObject("employees", employeeService.findAll());            
             mav.setViewName("addMyRide");
             
@@ -187,7 +187,7 @@ public class MyRideController {
         }
         
         mav.addObject("ride", ride);
-        mav.addObject("vehicles", vehicleService.findAll());
+        mav.addObject("vehicles", vehicleService.findAllSuitableForSelection());
         mav.addObject("employees", employeeService.findAll());
         
         mav.setViewName("detailMyRide");
