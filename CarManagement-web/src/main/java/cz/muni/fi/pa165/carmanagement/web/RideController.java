@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,7 +107,9 @@ public class RideController {
     public ModelAndView addRide() {
         ModelAndView mav = new ModelAndView();
         
-        mav.addObject("newRide", new RideDto());
+        RideDto newRide = new RideDto();
+        newRide.setStartTime(GregorianCalendar.getInstance().getTime());
+        mav.addObject("newRide", newRide);
         mav.addObject("vehicles", vehicleService.findAllSuitableForSelection());
         mav.addObject("employees", employeeService.findAll());
         
@@ -128,6 +131,7 @@ public class RideController {
         System.out.println("Adding new ride for employee #"+e.getId());
         
         RideDto newRide = new RideDto();
+        newRide.setStartTime(GregorianCalendar.getInstance().getTime());
         
         newRide.setEmployee(e);
         
