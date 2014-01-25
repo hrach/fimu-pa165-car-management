@@ -41,7 +41,6 @@
                                 <td><spring:message code="ride.tachometerend" /></td>
 <%--                                <td><spring:message code="ride.description" /></td> --%>
                                 <td><spring:message code="ride.vehicle" /></td>
-                                <td><spring:message code="ride.employee" /></td>
                                 <td>&nbsp;</td>
                             </tr>
                         </thead>
