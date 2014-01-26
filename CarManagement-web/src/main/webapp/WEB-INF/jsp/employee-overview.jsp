@@ -2,6 +2,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -76,14 +78,14 @@
     </c:forEach>
     </tbody>
 </table>
-        
-        <p>
-            <a href="${pageContext.request.contextPath}/admin/ride/add/${employee.id}" class="btn btn-success"><spring:message code="detail.emp.newrideforemp" /></a>            
-        </p>
-        
-           <hr>
-                <p><a class="btn btn-info" href="${pageContext.request.contextPath}/admin/employee/"><span class="glyphicon glyphicon-circle-arrow-left"></span> <spring:message code="employee.backtolist" /></a></p>
+        <sec:authorize access="hasRole('ROLE_MANAGER')">                        
+            <p>
+                <a href="${pageContext.request.contextPath}/admin/ride/add/${employee.id}" class="btn btn-success"><spring:message code="detail.emp.newrideforemp" /></a>            
+            </p>
 
+               <hr>
+                    <p><a class="btn btn-info" href="${pageContext.request.contextPath}/admin/employee/"><span class="glyphicon glyphicon-circle-arrow-left"></span> <spring:message code="employee.backtolist" /></a></p>
+        </sec:authorize>
         </div>
         </div>
     </body>
